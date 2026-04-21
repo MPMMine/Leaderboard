@@ -1,0 +1,51 @@
+{
+  "name": "COUNT-CP",
+  "description": "",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": false,
+    "integer": true
+  },
+  "language": {
+    "name": "CPMpy",
+    "level": "high"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "doi": "10.4230/LIPICS.CP.2022.29",
+      "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CP.2022.29",
+      "author": "Kumar, Mohit and Kolb, Samuel and Guns, Tias",
+      "keywords": "Constraint Learning, Constraint Programming, Model Synthesis, Applied computing → Operations research",
+      "language": "en",
+      "title": "Learning Constraint Programming Models from Data Using Generate-And-Aggregate",
+      "journal": "LIPIcs, Volume 235, CP 2022",
+      "volume": "235",
+      "pages": "29:1–29:16",
+      "publisher": "Schloss Dagstuhl – Leibniz-Zentrum für Informatik",
+      "year": "2022",
+      "copyright": "Creative Commons Attribution 4.0 International license"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.4230/LIPICS.CP.2022.29",
+    "repo": "https://github.com/ML-KULeuven/COUNT-CP"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "GEQCA-II",
+  "description": "Generic Qualitative Constraint Acquisition II",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": false,
+    "nonlinear": false,
+    "global": false,
+    "qualitative": true
+  },
+  "variables": {
+    "binary": true,
+    "continuous": false,
+    "integer": false
+  },
+  "language": {
+    "name": "unspecified",
+    "level": "low"
+  },
+  "artifacts": {
+    "queries": {
+      "membership": false,
+      "partial": false,
+      "qualitative": true,
+      "universal": true
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Belaid2024",
+      "title": "Query-driven Qualitative Constraint Acquisition",
+      "volume": "79",
+      "ISSN": "1076-9757",
+      "url": "https://doi.org/10.1613/jair.1.14752",
+      "DOI": "10.1613/jair.1.14752",
+      "journal": "Journal of Artificial Intelligence Research",
+      "publisher": "AI Access Foundation",
+      "author": "Belaid, Mohamed-Bachir and Belmecheri, Nassim and Gotlieb, Arnaud and Lazaar, Nadjib and Spieker, Helge",
+      "year": "2024",
+      "month": "jan",
+      "pages": "241–271"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1613/jair.1.14752",
+    "repo": "https://github.com/lirmm/ConstraintAcquisition/tree/GEQCA"
+  }
+}

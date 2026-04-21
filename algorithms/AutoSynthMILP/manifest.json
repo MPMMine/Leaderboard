@@ -1,0 +1,52 @@
+{
+  "name": "AutoSynthMILP",
+  "description": "Automatic Synthesis of constraints from examples using Mixed Integer Linear Programming",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "Minibex",
+    "level": "low"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": true,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Pawlak2017",
+      "title": "Automatic synthesis of constraints from examples using mixed integer linear programming",
+      "volume": "261",
+      "ISSN": "0377-2217",
+      "url": "http://doi.org/10.1016/j.ejor.2017.02.034",
+      "doi": "10.1016/j.ejor.2017.02.034",
+      "number": "3",
+      "journal": "European Journal of Operational Research",
+      "publisher": "Elsevier BV",
+      "author": "Pawlak, Tomasz P. and Krawiec, Krzysztof",
+      "year": "2017",
+      "month": "sept",
+      "pages": "1141–1157"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1016/j.ejor.2017.02.034",
+    "repo": "https://www.cs.put.poznan.pl/tpawlak/link/?EJORConsSynth"
+  }
+}

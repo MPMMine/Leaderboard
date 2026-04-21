@@ -1,0 +1,66 @@
+{
+  "name": "ESOCCS",
+  "description": "Evolutionary Strategy-based One-Class Constraint Synthesis",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "LP",
+    "level": "low"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "citationKey": "Pawlak2018",
+      "series": "GECCO ’18",
+      "title": "Performance improvements for evolutionary strategy-based one-class constraint synthesis",
+      "url": "https://doi.org/10.1145/3205455.3205504",
+      "DOI": "10.1145/3205455.3205504",
+      "booktitle": "Proceedings of the Genetic and Evolutionary Computation Conference",
+      "publisher": "ACM",
+      "author": "Pawlak, Tomasz P.",
+      "year": "2018",
+      "month": "july",
+      "pages": "873–880",
+      "collection": "GECCO ’18"
+    },
+    {
+      "type": "article",
+      "citationKey": "Pawlak2019",
+      "title": "Synthesis of Mathematical Programming models with one-class evolutionary strategies",
+      "volume": "44",
+      "ISSN": "2210-6502",
+      "url": "https://doi.org/10.1016/j.swevo.2018.04.007",
+      "DOI": "10.1016/j.swevo.2018.04.007",
+      "journal": "Swarm and Evolutionary Computation",
+      "publisher": "Elsevier BV",
+      "author": "Pawlak, Tomasz P.",
+      "year": "2019",
+      "month": "feb",
+      "pages": "335–348"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1145/3205455.3205504",
+    "repo": "https://www.cs.put.poznan.pl/tpawlak/link/?ESOCCS2"
+  }
+}

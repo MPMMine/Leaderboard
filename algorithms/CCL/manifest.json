@@ -1,0 +1,49 @@
+{
+  "name": "CCL",
+  "description": "Chance Constraint Learning",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "",
+    "level": ""
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    },
+    "model": {
+      "type": "conceptual"
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Alcantara2023",
+      "title": "On data-driven chance constraint learning for mixed-integer optimization problems",
+      "journal": "Applied Mathematical Modelling",
+      "DOI": "10.1016/j.apm.2023.04.032",
+      "url": "https://doi.org/10.1016/j.apm.2023.04.032",
+      "author": "Alcántara, Antonio and Ruiz, Carlos",
+      "year": "2023"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1016/j.apm.2023.04.032",
+    "repo": "https://github.com/antonioalcantaramata/ccl_tool/"
+  }
+}

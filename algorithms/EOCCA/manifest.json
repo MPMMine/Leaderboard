@@ -1,0 +1,52 @@
+{
+  "name": "EOCCA",
+  "description": "Ellipsoidal One-Class Constraint Acquisition",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": false,
+    "nonlinear": true,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "AMPL",
+    "level": "low"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Pawlak2021",
+      "title": "Ellipsoidal one-class constraint acquisition for quadratically constrained programming",
+      "volume": "293",
+      "ISSN": "0377-2217",
+      "url": "https://doi.org/10.1016/j.ejor.2020.12.018",
+      "DOI": "10.1016/j.ejor.2020.12.018",
+      "number": "1",
+      "journal": "European Journal of Operational Research",
+      "publisher": "Elsevier BV",
+      "author": "Pawlak, Tomasz P. and Litwiniuk, Bartosz",
+      "year": "2021",
+      "month": "aug",
+      "pages": "36–49"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1016/j.ejor.2020.12.018",
+    "repo": "https://gitlab.com/Litwiniuk/EOCCA/"
+  }
+}

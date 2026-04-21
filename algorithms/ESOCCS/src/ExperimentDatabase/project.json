@@ -1,0 +1,11 @@
+﻿{
+  "supports": {},
+  "dependencies": {
+    "Microsoft.Data.Sqlite": "1.1.0",
+    "NETStandard.Library": "1.6.1",
+    "System.Data.Common": "4.3.0"
+  },
+  "frameworks": {
+    "netstandard1.5": {}
+  }
+}

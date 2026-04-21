@@ -1,0 +1,23 @@
+from Solver.Constraints.Global.SumBinaryGreaterEqual import SumBinaryGreaterEqual
+from Solver.Constraints.Global.SumBinaryLessEqual import SumBinaryLessEqual
+from Solver.Constraints.General.LessEqual import LessEqual
+
+array: mapping1 = [1..30];
+
+set: V = 1..1;
+
+var 0..0: l;
+var 1..21: threshold1;
+var 1..21: threshold2;
+
+var 0..0: false;
+var 1..1: true;
+
+constraint SumBinaryGreaterEqual(V, threshold1, mapping1, true);
+constraint SumBinaryLessEqual(V, threshold2, mapping1, true);
+
+int_search([threshold2], DeepSearch, Smallest);
+int_search([threshold1], DeepSearch, Largest);
+global_search(Priority);
+
+set_priority([threshold1, threshold2], 2);

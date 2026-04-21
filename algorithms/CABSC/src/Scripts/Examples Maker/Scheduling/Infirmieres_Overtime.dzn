@@ -1,0 +1,5 @@
+threshold_lower = 3;
+threshold_upper = 7;
+		n_nurses = 3;
+		n_weeks = 2;
+		seq = seq_search([]);

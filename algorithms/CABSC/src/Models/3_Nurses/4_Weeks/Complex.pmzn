@@ -1,0 +1,149 @@
+from Boolean import Xor
+from Boolean import Or
+from Boolean import Implication
+from Global import SumBinaryGreaterEqual
+from Global import SumBinaryLessEqual
+from Global import NotEqualFromSet
+from Global import Sequence
+from General import LessEqual
+from General import LessThan
+int: len = 28;
+int: low = 0;
+int: high = 7;
+set: domain = low..high;
+set: V = 1..2;
+array: mapping1 = [len*0+1..len*1];
+array: mapping2 = [len*1+1..len*2];
+array: mapping3 = [len*2+1..len*3];
+
+var domain: l;
+var domain: u;
+var domain: k;
+var 0..7: threshold_lower;
+var 0..7: threshold_upper;
+
+var 0..1: presence_sequence;
+var 0..1: presence_sum;
+var 0..0: false;
+var 1..1: true;
+% Min/max during the week
+var 1..1: one;
+var 2..2: two;
+var 3..3: three;
+var 3..3: nurses;
+array: monday1 = [1+len*0,1+len*1,1+len*2];
+array: tuesday1 = [2+len*0,2+len*1,2+len*2];
+array: wednesday1 = [3+len*0,3+len*1,3+len*2];
+array: thursday1 = [4+len*0,4+len*1,4+len*2];
+array: friday1 = [5+len*0,5+len*1,5+len*2];
+array: saturday1 = [6+len*0,6+len*1,6+len*2];
+array: sunday1 = [7+len*0,7+len*1,7+len*2];
+array: monday2 = [8+len*0,8+len*1,8+len*2];
+array: tuesday2 = [9+len*0,9+len*1,9+len*2];
+array: wednesday2 = [10+len*0,10+len*1,10+len*2];
+array: thursday2 = [11+len*0,11+len*1,11+len*2];
+array: friday2 = [12+len*0,12+len*1,12+len*2];
+array: saturday2 = [13+len*0,13+len*1,13+len*2];
+array: sunday2 = [14+len*0,14+len*1,14+len*2];
+array: monday3 = [15+len*0,15+len*1,15+len*2];
+array: tuesday3 = [16+len*0,16+len*1,16+len*2];
+array: wednesday3 = [17+len*0,17+len*1,17+len*2];
+array: thursday3 = [18+len*0,18+len*1,18+len*2];
+array: friday3 = [19+len*0,19+len*1,19+len*2];
+array: saturday3 = [20+len*0,20+len*1,20+len*2];
+array: sunday3 = [21+len*0,21+len*1,21+len*2];
+array: monday4 = [22+len*0,22+len*1,22+len*2];
+array: tuesday4 = [23+len*0,23+len*1,23+len*2];
+array: wednesday4 = [24+len*0,24+len*1,24+len*2];
+array: thursday4 = [25+len*0,25+len*1,25+len*2];
+array: friday4 = [26+len*0,26+len*1,26+len*2];
+array: saturday4 = [27+len*0,27+len*1,27+len*2];
+array: sunday4 = [28+len*0,28+len*1,28+len*2];
+constraint Sequence(one, three, nurses, V, monday1, true);
+constraint Sequence(one, three, nurses, V, tuesday1, true);
+constraint Sequence(one, three, nurses, V, wednesday1, true);
+constraint Sequence(one, three, nurses, V, thursday1, true);
+constraint Sequence(two, three, nurses, V, friday1, true);
+constraint Sequence(two, three, nurses, V, saturday1, true);
+constraint Sequence(two, three, nurses, V, sunday1, true);
+constraint Sequence(one, three, nurses, V, monday2, true);
+constraint Sequence(one, three, nurses, V, tuesday2, true);
+constraint Sequence(one, three, nurses, V, wednesday2, true);
+constraint Sequence(one, three, nurses, V, thursday2, true);
+constraint Sequence(two, three, nurses, V, friday2, true);
+constraint Sequence(two, three, nurses, V, saturday2, true);
+constraint Sequence(two, three, nurses, V, sunday2, true);
+constraint Sequence(one, three, nurses, V, monday3, true);
+constraint Sequence(one, three, nurses, V, tuesday3, true);
+constraint Sequence(one, three, nurses, V, wednesday3, true);
+constraint Sequence(one, three, nurses, V, thursday3, true);
+constraint Sequence(two, three, nurses, V, friday3, true);
+constraint Sequence(two, three, nurses, V, saturday3, true);
+constraint Sequence(two, three, nurses, V, sunday3, true);
+constraint Sequence(one, three, nurses, V, monday4, true);
+constraint Sequence(one, three, nurses, V, tuesday4, true);
+constraint Sequence(one, three, nurses, V, wednesday4, true);
+constraint Sequence(one, three, nurses, V, thursday4, true);
+constraint Sequence(two, three, nurses, V, friday4, true);
+constraint Sequence(two, three, nurses, V, saturday4, true);
+constraint Sequence(two, three, nurses, V, sunday4, true);
+
+constraint NotEqualFromSet(V, mapping1, mapping3, true);
+% Normal sequence
+constraint Sequence(l, u, k, V, mapping1, presence_sequence);
+constraint Sequence(l, u, k, V, mapping2, presence_sequence);
+constraint Sequence(l, u, k, V, mapping3, presence_sequence);
+constraint LessThan(u, k, presence_sequence);
+constraint LessEqual(l, u, presence_sequence);
+% Threshold (if sequence can't be satisfied)
+array: week1_nurse1 = [1+7*0+len*0..7*1+len*0];
+array: week1_nurse2 = [1+7*0+len*1..7*1+len*1];
+array: week1_nurse3 = [1+7*0+len*2..7*1+len*2];
+array: week2_nurse1 = [1+7*1+len*0..7*2+len*0];
+array: week2_nurse2 = [1+7*1+len*1..7*2+len*1];
+array: week2_nurse3 = [1+7*1+len*2..7*2+len*2];
+array: week3_nurse1 = [1+7*2+len*0..7*3+len*0];
+array: week3_nurse2 = [1+7*2+len*1..7*3+len*1];
+array: week3_nurse3 = [1+7*2+len*2..7*3+len*2];
+array: week4_nurse1 = [1+7*3+len*0..7*4+len*0];
+array: week4_nurse2 = [1+7*3+len*1..7*4+len*1];
+array: week4_nurse3 = [1+7*3+len*2..7*4+len*2];
+
+
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse3, presence_sum);
+% Relations between the presences of constraints
+constraint Xor(presence_sequence, presence_sum, true);
+% Heuristics
+int_search([presence_sequence, presence_sum], DeepSearch, Largest);
+int_search([k, l, threshold_upper], DeepSearch, Largest);
+int_search([threshold_lower, u], DeepSearch, Smallest);
+global_search(Priority);
+
+set_priority([presence_sequence], 1);
+set_priority([presence_sum], 2);
+set_priority([threshold_lower, threshold_upper], 3);
+set_priority([l, u], 4);
+set_priority(k, 5);

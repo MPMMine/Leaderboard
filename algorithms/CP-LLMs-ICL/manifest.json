@@ -1,0 +1,50 @@
+{
+  "name": "ConsModelLLM",
+  "description": "",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": true
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "CPMpy",
+    "level": "high"
+  },
+  "artifacts": {
+    "text": {
+      "language": "English",
+      "type": "informal"
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "citationKey": "https://doi.org/10.4230/lipics.cp.2024.20",
+      "doi": "10.4230/LIPICS.CP.2024.20",
+      "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CP.2024.20",
+      "author": "Michailidis, Kostis and Tsouros, Dimos and Guns, Tias",
+      "keywords": "Constraint Modelling, Constraint Acquisition, Constraint Programming, Large Language Models, In-Context Learning, Natural Language Processing, Named Entity Recognition, Retrieval-Augmented Generation, Optimisation, Theory of computation → Constraint and logic programming, Computing methodologies → Natural language generation, Computing methodologies → Discrete space search",
+      "language": "en",
+      "title": "Constraint Modelling with LLMs Using In-Context Learning",
+      "journal": "LIPIcs, Volume 307, CP 2024",
+      "volume": "307",
+      "pages": "20:1–20:27",
+      "publisher": "Schloss Dagstuhl – Leibniz-Zentrum für Informatik",
+      "year": "2024",
+      "copyright": "Creative Commons Attribution 4.0 International license"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.4230/lipics.cp.2024.20",
+    "repo": "https://github.com/kostis-init/CP-LLMs-ICL"
+  }
+}

@@ -1,0 +1,164 @@
+from Boolean import Xor
+from Boolean import Or
+from Boolean import Implication
+from Global import SumBinaryGreaterEqual
+from Global import SumBinaryLessEqual
+from Global import NotEqualFromSet
+from Global import Sequence
+from General import LessEqual
+from General import LessThan
+int: len = 42;
+int: low = 0;
+int: high = 7;
+set: domain = low..high;
+set: V = 1..2;
+array: mapping1 = [len*0+1..len*1];
+array: mapping2 = [len*1+1..len*2];
+array: mapping3 = [len*2+1..len*3];
+array: mapping4 = [len*3+1..len*4];
+array: mapping5 = [len*4+1..len*5];
+array: mapping6 = [len*5+1..len*6];
+
+var domain: l;
+var domain: u;
+var domain: k;
+var 0..7: threshold_lower;
+var 0..7: threshold_upper;
+
+var 0..1: presence_sequence;
+var 0..1: presence_sum;
+var 0..0: false;
+var 1..1: true;
+% Normal sequence
+constraint Sequence(l, u, k, V, mapping1, presence_sequence);
+constraint Sequence(l, u, k, V, mapping2, presence_sequence);
+constraint Sequence(l, u, k, V, mapping3, presence_sequence);
+constraint Sequence(l, u, k, V, mapping4, presence_sequence);
+constraint Sequence(l, u, k, V, mapping5, presence_sequence);
+constraint Sequence(l, u, k, V, mapping6, presence_sequence);
+constraint LessThan(u, k, presence_sequence);
+constraint LessEqual(l, u, presence_sequence);
+% Threshold (if sequence can't be satisfied)
+array: week1_nurse1 = [1+7*0+len*0..7*1+len*0];
+array: week1_nurse2 = [1+7*0+len*1..7*1+len*1];
+array: week1_nurse3 = [1+7*0+len*2..7*1+len*2];
+array: week1_nurse4 = [1+7*0+len*3..7*1+len*3];
+array: week1_nurse5 = [1+7*0+len*4..7*1+len*4];
+array: week1_nurse6 = [1+7*0+len*5..7*1+len*5];
+array: week2_nurse1 = [1+7*1+len*0..7*2+len*0];
+array: week2_nurse2 = [1+7*1+len*1..7*2+len*1];
+array: week2_nurse3 = [1+7*1+len*2..7*2+len*2];
+array: week2_nurse4 = [1+7*1+len*3..7*2+len*3];
+array: week2_nurse5 = [1+7*1+len*4..7*2+len*4];
+array: week2_nurse6 = [1+7*1+len*5..7*2+len*5];
+array: week3_nurse1 = [1+7*2+len*0..7*3+len*0];
+array: week3_nurse2 = [1+7*2+len*1..7*3+len*1];
+array: week3_nurse3 = [1+7*2+len*2..7*3+len*2];
+array: week3_nurse4 = [1+7*2+len*3..7*3+len*3];
+array: week3_nurse5 = [1+7*2+len*4..7*3+len*4];
+array: week3_nurse6 = [1+7*2+len*5..7*3+len*5];
+array: week4_nurse1 = [1+7*3+len*0..7*4+len*0];
+array: week4_nurse2 = [1+7*3+len*1..7*4+len*1];
+array: week4_nurse3 = [1+7*3+len*2..7*4+len*2];
+array: week4_nurse4 = [1+7*3+len*3..7*4+len*3];
+array: week4_nurse5 = [1+7*3+len*4..7*4+len*4];
+array: week4_nurse6 = [1+7*3+len*5..7*4+len*5];
+array: week5_nurse1 = [1+7*4+len*0..7*5+len*0];
+array: week5_nurse2 = [1+7*4+len*1..7*5+len*1];
+array: week5_nurse3 = [1+7*4+len*2..7*5+len*2];
+array: week5_nurse4 = [1+7*4+len*3..7*5+len*3];
+array: week5_nurse5 = [1+7*4+len*4..7*5+len*4];
+array: week5_nurse6 = [1+7*4+len*5..7*5+len*5];
+array: week6_nurse1 = [1+7*5+len*0..7*6+len*0];
+array: week6_nurse2 = [1+7*5+len*1..7*6+len*1];
+array: week6_nurse3 = [1+7*5+len*2..7*6+len*2];
+array: week6_nurse4 = [1+7*5+len*3..7*6+len*3];
+array: week6_nurse5 = [1+7*5+len*4..7*6+len*4];
+array: week6_nurse6 = [1+7*5+len*5..7*6+len*5];
+
+
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse4, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse4, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse5, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse5, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week1_nurse6, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week1_nurse6, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse4, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse4, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse5, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse5, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week2_nurse6, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week2_nurse6, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse4, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse4, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse5, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse5, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week3_nurse6, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week3_nurse6, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse4, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse4, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse5, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse5, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week4_nurse6, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week4_nurse6, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week5_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week5_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week5_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week5_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week5_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week5_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week5_nurse4, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week5_nurse4, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week5_nurse5, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week5_nurse5, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week5_nurse6, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week5_nurse6, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week6_nurse1, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week6_nurse1, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week6_nurse2, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week6_nurse2, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week6_nurse3, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week6_nurse3, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week6_nurse4, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week6_nurse4, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week6_nurse5, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week6_nurse5, presence_sum);
+constraint SumBinaryGreaterEqual(V, threshold_lower, week6_nurse6, presence_sum);
+constraint SumBinaryLessEqual(V, threshold_upper, week6_nurse6, presence_sum);
+% Relations between the presences of constraints
+constraint Xor(presence_sequence, presence_sum, true);
+% Heuristics
+int_search([presence_sequence, presence_sum], DeepSearch, Largest);
+int_search([k, l, threshold_upper], DeepSearch, Largest);
+int_search([threshold_lower, u], DeepSearch, Smallest);
+global_search(Priority);
+
+set_priority([presence_sequence], 1);
+set_priority([presence_sum], 2);
+set_priority([threshold_lower, threshold_upper], 3);
+set_priority([l, u], 4);
+set_priority(k, 5);

@@ -1,0 +1,52 @@
+{
+  "name": "GOCCS",
+  "description": "Genetic One-Class Constraint Synthesis",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "LP",
+    "level": "low"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Pawlak2019",
+      "title": "Synthesis of Constraints for Mathematical Programming With One-Class Genetic Programming",
+      "volume": "23",
+      "ISSN": "1941-0026",
+      "url": "https://doi.org/10.1109/TEVC.2018.2835565",
+      "DOI": "10.1109/tevc.2018.2835565",
+      "number": "1",
+      "journal": "IEEE Transactions on Evolutionary Computation",
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "author": "Pawlak, Tomasz P. and Krawiec, Krzysztof",
+      "year": "2019",
+      "month": "feb",
+      "pages": "117–129"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1109/TEVC.2018.2835565",
+    "repo": "https://www.cs.put.poznan.pl/tpawlak/link/?GOCCS"
+  }
+}

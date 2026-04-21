@@ -1,0 +1,51 @@
+{
+  "name": "OCCALS",
+  "description": "One-Class Constraint Acquisition with Local Search",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "LP",
+    "level": "low"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "citationKey": "Sroka2018",
+      "series": "GECCO ’18",
+      "title": "One-class constraint acquisition with local search",
+      "url": "https://doi.org/10.1145/3205455.3205480",
+      "DOI": "10.1145/3205455.3205480",
+      "booktitle": "Proceedings of the Genetic and Evolutionary Computation Conference",
+      "publisher": "ACM",
+      "author": "Sroka, Daniel and Pawlak, Tomasz P.",
+      "year": "2018",
+      "month": "july",
+      "pages": "363–370",
+      "collection": "GECCO ’18"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1145/3205455.3205480",
+    "repo": "https://github.com/SzybkiDanny/ConstraintsSynthesis"
+  }
+}

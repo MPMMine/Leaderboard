@@ -1,0 +1,52 @@
+[submodule "algorithms/ARNOLD/src"]
+	path = algorithms/ARNOLD/src
+	url = https://github.com/mohitKULeuven/arnold.git
+[submodule "algorithms/CMAESOCCS/src"]
+	path = algorithms/CMAESOCCS/src
+	url = https://github.com/krml19/cma-es-modeling.git
+[submodule "algorithms/SmartFPTuner/src"]
+	path = algorithms/SmartFPTuner/src
+	url = https://github.com/oprecomp/StaticFPTuner.git
+[submodule "algorithms/CONJURE/src"]
+	path = algorithms/CONJURE/src
+	url = https://github.com/conjure-cp/conjure.git
+[submodule "algorithms/CP-LLMs-ICL/src"]
+	path = algorithms/CP-LLMs-ICL/src
+	url = https://github.com/kostis-init/CP-LLMs-ICL.git
+[submodule "algorithms/EOCCA/src"]
+	path = algorithms/EOCCA/src
+	url = https://gitlab.com/Litwiniuk/EOCCA.git
+[submodule "algorithms/EML/src"]
+	path = algorithms/EML/src
+	url = https://github.com/emlopt/emllib
+[submodule "algorithms/GECS/src"]
+	path = algorithms/GECS/src
+	url = https://github.com/tomash87/GECS
+[submodule "algorithms/COUNT-CP/src"]
+	path = algorithms/COUNT-CP/src
+	url = https://github.com/ML-KULeuven/COUNT-CP
+[submodule "algorithms/QuAcq2/src"]
+	path = algorithms/QuAcq2/src
+	url = https://github.com/Dimosts/QuAcq2.git
+[submodule "algorithms/GrowAcq/src"]
+	path = algorithms/GrowAcq/src
+	url = https://github.com/Dimosts/ActiveConLearn.git
+[submodule "algorithms/CCL/src"]
+	path = algorithms/CCL/src
+	url = https://github.com/antonioalcantaramata/ccl_tool.git
+[submodule "algorithms/OCCALS/src"]
+	path = algorithms/OCCALS/src
+	url = https://github.com/SzybkiDanny/ConstraintsSynthesis.git
+[submodule "algorithms/CSC4.5/src"]
+	path = algorithms/CSC4.5/src
+	url = https://github.com/Lotafak/CSC4.5
+[submodule "algorithms/GEQCA-II/src"]
+	path = algorithms/GEQCA-II/src
+	url = https://github.com/lirmm/ConstraintAcquisition.git
+	branch = GEQCA
+[submodule "algorithms/URPiLs/src"]
+	path = algorithms/URPiLs/src
+	url = https://github.com/shs-it/prolothar-constraint-acquisition.git
+[submodule "algorithms/PACQ/src"]
+	path = algorithms/PACQ/src
+	url = https://gite.lirmm.fr/constraint-acquisition-team/pacq.git

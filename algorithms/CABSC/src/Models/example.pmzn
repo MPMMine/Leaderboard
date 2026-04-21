@@ -1,0 +1,31 @@
+from Global import LinearEquation
+from General import Equal
+from General import NotEqual
+
+int: low = 1;
+int: high = 10;
+set: domain = low..high;
+array: mapping_x_y = [1..2];
+array: mapping_x = [1];
+array: mapping_y = [2];
+
+var domain: a; %Such that a*x + b*y <= c
+var domain: b;
+var domain: c;
+var 0..0: zero;
+var 4..4: five;
+var 1..1: true;
+var 0..1: presence;
+var 0..1: presence2;
+
+constraint LinearEquation(mapping_x, [a], ">=", zero, presence);
+constraint LinearEquation(mapping_y, [b], ">=", zero, presence);
+constraint NotEqual(a, b, presence);
+%constraint Equal(true, b, true);
+constraint LinearEquation(mapping_x_y, [a,b], "<=", c, presence);
+
+int_search(c, DeepSearch, Smallest);
+int_search([a,b], DeepSearch, Largest);
+global_search(Priority);
+set_priority(presence, 1);
+set_priority([a,b,c], 2);

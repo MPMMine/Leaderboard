@@ -1,0 +1,51 @@
+{
+  "name": "CMAESOCCS",
+  "description": "CMA-Evolutionary Strategy One-Class Constraint Synthesis",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "LP",
+    "level": "low"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "citationKey": "Karmelita2020",
+      "series": "GECCO ’20",
+      "title": "CMA-ES for one-class constraint synthesis",
+      "url": "https://doi.org/10.1145/3377930.3389807",
+      "DOI": "10.1145/3377930.3389807",
+      "booktitle": "Proceedings of the 2020 Genetic and Evolutionary Computation Conference",
+      "publisher": "ACM",
+      "author": "Karmelita, Marcin and Pawlak, Tomasz P.",
+      "year": "2020",
+      "month": "june",
+      "pages": "859–867",
+      "collection": "GECCO ’20"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1145/3377930.3389807",
+    "repo": "https://github.com/krml19/cma-es-modeling"
+  }
+}

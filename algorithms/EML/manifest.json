@@ -1,0 +1,53 @@
+{
+  "name": "EML",
+  "description": "Empirical Model Learning",
+  "objective": {
+    "linear": true,
+    "nonlinear": true
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": true
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "cplex_api",
+    "level": "high"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": true,
+      "unlabelled": false,
+      "dependent_variable": true
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Lombardi2017",
+      "title": "Empirical decision model learning",
+      "volume": "244",
+      "ISSN": "0004-3702",
+      "url": "https://doi.org/10.1016/j.artint.2016.01.005",
+      "DOI": "10.1016/j.artint.2016.01.005",
+      "journal": "Artificial Intelligence",
+      "publisher": "Elsevier BV",
+      "author": "Lombardi, Michele and Milano, Michela and Bartolini, Andrea",
+      "year": "2017",
+      "month": "mar",
+      "pages": "343–367"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1016/j.artint.2016.01.005",
+    "repo": "https://github.com/emlopt/emllib",
+    "homepage": "https://emlopt.github.io/",
+    "resources": "https://bitbucket.org/m_lombardi/eml-aij-2015-resources"
+  }
+}

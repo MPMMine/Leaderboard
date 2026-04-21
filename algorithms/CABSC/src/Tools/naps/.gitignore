@@ -1,0 +1,12 @@
+*~
+*.o
+*.op
+*.od
+*.or
+*.ox
+*.mk
+naps
+*_profile
+*_debug
+*_release
+*_static

@@ -1,0 +1,51 @@
+{
+  "name": "SmartFPTuner",
+  "description": "",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": false
+  },
+  "variables": {
+    "binary": false,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "unspecified",
+    "level": "unspecified"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": true,
+      "unlabelled": false,
+      "dependent_variable": true
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "citationKey": "Borghesi2020",
+      "series": "CF ’20",
+      "title": "Combining learning and optimization for transprecision computing",
+      "url": "http://doi.org/10.1145/3387902.3392615",
+      "DOI": "10.1145/3387902.3392615",
+      "booktitle": "Proceedings of the 17th ACM International Conference on Computing Frontiers",
+      "publisher": "ACM",
+      "author": "Borghesi, Andrea and Tagliavini, Giuseppe and Lombardi, Michele and Benini, Luca and Milano, Michela",
+      "year": "2020",
+      "month": "may",
+      "pages": "10–18",
+      "collection": "CF ’20"
+    }
+  ],
+  "links": {
+    "paper": "http://doi.org/10.1145/3387902.3392615",
+    "repo": "https://github.com/oprecomp/StaticFPTuner"
+  }
+}

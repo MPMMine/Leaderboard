@@ -1,0 +1,50 @@
+{
+  "name": "PACQ",
+  "description": "Parallel Acquisition",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": false,
+    "integer": true
+  },
+  "language": {
+    "name": "unspecified",
+    "level": "low"
+  },
+  "artifacts": {
+    "queries": {
+      "membership": true,
+      "partial": true
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Lazaar2021",
+      "title": "Parallel Constraint Acquisition",
+      "volume": "35",
+      "ISSN": "2159-5399",
+      "url": "https://doi.org/10.1609/aaai.v35i5.16504",
+      "DOI": "10.1609/aaai.v35i5.16504",
+      "number": "5",
+      "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+      "publisher": "Association for the Advancement of Artificial Intelligence (AAAI)",
+      "author": "Lazaar, Nadjib",
+      "year": "2021",
+      "month": "may",
+      "pages": "3860–3867"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1609/aaai.v35i5.16504",
+    "repo": "https://gite.lirmm.fr/constraint-acquisition-team/pacq"
+  }
+}

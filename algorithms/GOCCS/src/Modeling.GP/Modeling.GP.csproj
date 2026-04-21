@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E0723829-1890-47DF-A0DB-29088BA99811}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Modeling.GP</RootNamespace>
+    <AssemblyName>Modeling.GP</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <BaseAddress>4456448</BaseAddress>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accord, Version=3.4.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.4.0\lib\net46\Accord.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.4.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.4.0\lib\net46\Accord.Math.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Math.Core, Version=3.4.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.4.0\lib\net46\Accord.Math.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.4.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.4.0\lib\net46\Accord.Statistics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Solver.Foundation, Version=3.0.2.10889, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Microsoft.Solver.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.3.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BestSoFarChangedEventArgs.cs" />
+    <Compile Include="Criterion.cs" />
+    <Compile Include="DrawWithoutReplacement.cs" />
+    <Compile Include="DrawWithReplacement.cs" />
+    <Compile Include="Fitness.cs" />
+    <Compile Include="GenerationChangedEventArgs.cs" />
+    <Compile Include="Generic\ChildNodeDescriptor.cs" />
+    <Compile Include="Generic\FullBase.cs" />
+    <Compile Include="Generic\GrowBase.cs" />
+    <Compile Include="Generic\ITreeNode.cs" />
+    <Compile Include="Generic\eLS.cs" />
+    <Compile Include="Generic\LS.cs" />
+    <Compile Include="MP\ModelingGPNSGA2.cs" />
+    <Compile Include="NSGA2\NSGA2PostSelection.cs" />
+    <Compile Include="Generic\RS.cs" />
+    <Compile Include="Generic\TreeNodeExtensions.cs" />
+    <Compile Include="Generic\UniformNodeSelector.cs" />
+    <Compile Include="InstructionSet.cs" />
+    <Compile Include="MP\Constraint.cs" />
+    <Compile Include="MP\ConstraintFixer.cs" />
+    <Compile Include="MP\ConstraintSatisfaction.cs" />
+    <Compile Include="MP\IConstraint.cs" />
+    <Compile Include="MP\Instructions\Constant.cs" />
+    <Compile Include="MP\Instructions\GaussianERC.cs" />
+    <Compile Include="MP\Instructions\Min.cs" />
+    <Compile Include="MP\Instructions\Max.cs" />
+    <Compile Include="MP\Instructions\Div.cs" />
+    <Compile Include="MP\Instructions\MPTreeNode.cs" />
+    <Compile Include="MP\Instructions\Pow.cs" />
+    <Compile Include="MP\Instructions\Sqrt.cs" />
+    <Compile Include="MP\Instructions\Pow3.cs" />
+    <Compile Include="MP\Instructions\Pow2.cs" />
+    <Compile Include="MP\Instructions\Sub.cs" />
+    <Compile Include="MP\Instructions\Sum.cs" />
+    <Compile Include="MP\Instructions\Mul.cs" />
+    <Compile Include="MP\Instructions\Sin.cs" />
+    <Compile Include="MP\Instructions\Cos.cs" />
+    <Compile Include="MP\Instructions\Times.cs" />
+    <Compile Include="MP\Instructions\Variable.cs" />
+    <Compile Include="MP\ModelingGP.cs" />
+    <Compile Include="MP\MPExecutionState.cs" />
+    <Compile Include="MP\MPModel.cs" />
+    <Compile Include="MP\MPModelExtensions.cs" />
+    <Compile Include="MP\MPStatistics.cs" />
+    <Compile Include="MP\Operators\CSM.cs" />
+    <Compile Include="MP\Operators\CSX.cs" />
+    <Compile Include="MP\Operators\CTM.cs" />
+    <Compile Include="MP\Operators\CTX.cs" />
+    <Compile Include="MP\Operators\Full.cs" />
+    <Compile Include="MP\Operators\GCM.cs" />
+    <Compile Include="MP\Operators\Grow.cs" />
+    <Compile Include="MP\Operators\RCM.cs" />
+    <Compile Include="MP\Operators\RHH.cs" />
+    <Compile Include="NSGA2\INSGA2Solution.cs" />
+    <Compile Include="NSGA2\NSGA2TS.cs" />
+    <Compile Include="ScalarFitness.cs" />
+    <Compile Include="Shuffle.cs" />
+    <Compile Include="SimpleStatistics.cs" />
+    <Compile Include="Tree\TreeGP.cs" />
+    <Compile Include="IPopulation.cs" />
+    <Compile Include="ISearchAlgorithm.cs" />
+    <Compile Include="PopulationWrapper.cs" />
+    <Compile Include="Source.cs" />
+    <Compile Include="SourceCollection.cs" />
+    <Compile Include="StackState.cs" />
+    <Compile Include="Tree\Full.cs" />
+    <Compile Include="Tree\Grow.cs" />
+    <Compile Include="Generic\INodeSelector.cs" />
+    <Compile Include="Generic\KozaNodeSelector.cs" />
+    <Compile Include="Tree\RHH.cs" />
+    <Compile Include="Generic\SelectedNodeDescriptor.cs" />
+    <Compile Include="Tree\TM.cs" />
+    <Compile Include="Generic\TreeNode.cs" />
+    <Compile Include="Tree\TX.cs" />
+    <Compile Include="ComponentBase.cs" />
+    <Compile Include="Generic\TreeInitializationBase.cs" />
+    <Compile Include="Tree\ExecutableTreeNode.cs" />
+    <Compile Include="Tree\TreeSolution.cs" />
+    <Compile Include="Generic\TS.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IComponent.cs" />
+    <Compile Include="IExecutionState.cs" />
+    <Compile Include="IProblem.cs" />
+    <Compile Include="ISolution.cs" />
+    <Compile Include="ISolutionList.cs" />
+    <Compile Include="Population.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionList.cs" />
+    <Compile Include="VectorFitness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExperimentDatabase\ExperimentDatabase.csproj">
+      <Project>{82718702-da36-4230-b769-3504c2087a04}</Project>
+      <Name>ExperimentDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modeling.Common\Modeling.Common.csproj">
+      <Project>{3f1f4f22-58cf-4e0a-8e6d-3414cc166d25}</Project>
+      <Name>Modeling.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modeling.Utils\Modeling.Utils.csproj">
+      <Project>{84a5efb0-9be7-40fe-98b3-0625511b249f}</Project>
+      <Name>Modeling.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.4.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.4.0\build\Accord.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Accord.3.4.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.4.0\build\Accord.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

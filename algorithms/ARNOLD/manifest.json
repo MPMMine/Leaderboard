@@ -1,0 +1,50 @@
+{
+  "name": "ARNOLD",
+  "description": "AcquiRing NOn-Linear moDels",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": false
+  },
+  "variables": {
+    "binary": false,
+    "continuous": false,
+    "integer": true
+  },
+  "language": {
+    "name": "MiniZinc",
+    "level": "high"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "id": "Kumar2019",
+      "series": "IJCAI-2019",
+      "title": "Acquiring Integer Programs from Data",
+      "url": "https://doi.org/10.24963/ijcai.2019/158",
+      "doi": "10.24963/ijcai.2019/158",
+      "booktitle": "Proceedings of the Twenty-Eighth International Joint Conference on Artificial Intelligence",
+      "publisher": "International Joint Conferences on Artificial Intelligence Organization",
+      "author": "Kumar, Mohit and Teso, Stefano and De Raedt, Luc",
+      "year": 2019,
+      "month": "aug",
+      "pages": "1130–1136"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.24963/ijcai.2019/158",
+    "repo": "https://github.com/mohitKULeuven/arnold"
+  }
+}

@@ -1,0 +1,1302 @@
+
+Debug.C,187
+vec<cchar*>* debug_names 24,1320
+void dump(28,1455
+void dump(34,1662
+void dump(46,1958
+void dump(54,2117
+void dump(65,2363
+void dump(77,2614
+void dump(95,3162
+void dump(110,3471
+
+Hardware_adders.C,78
+int estimatedAdderCost(24,1322
+void rippleAdder(48,1831
+void addPb(77,2840
+
+Hardware_clausify.C,930
+struct Clausifier23,1321
+    Solver&      s;Clausifier::s25,1341
+    vec<Lit>     tmp_clause;Clausifier::tmp_clause26,1361
+    vec<Formula> tmp_marked;Clausifier::tmp_marked27,1390
+    Clausifier(Clausifier::Clausifier29,1420
+    static /*WARNING*/ CMap<int>      occ;Clausifier::occ31,1459
+    static /*WARNING*/ CMap<Var>      vmap;Clausifier::vmap32,1502
+    static /*WARNING*/ CMap<Clausifier::CMap33,1546
+    static /*WARNING*/ CMap<Lit,true> vmapp;Clausifier::vmapp33,1546
+    FMap<bool>   seen;Clausifier::seen34,1591
+    inline void clause(Clausifier::clause36,1615
+    inline void clause(Clausifier::clause38,1749
+    inline void clause(Clausifier::clause40,1910
+void Clausifier::usage(56,2439
+void Clausifier::collect(75,2867
+void Clausifier::_collect(84,3094
+Lit Clausifier::polarityClausify(98,3429
+Lit Clausifier::basicClausify(253,8745
+void clausify(348,11530
+void clausify(364,11905
+
+Hardware_sorters.C,245
+macro Formula operator && operator &&24,1403
+macro Formula operator || operator ||36,1747
+static inline void cmp2(42,1927
+static void riffle(55,2180
+static void unriffle(64,2381
+static void oddEvenMerge(73,2596
+void oddEvenSort(97,3377
+
+Main.C,1348
+bool     opt_satlive 41,1842
+bool     opt_ansi 42,1873
+char*    opt_cnf 43,1904
+int      opt_verbosity 44,1935
+bool     opt_try 45,1963
+SolverT  opt_solver 47,2124
+ConvertT opt_convert 48,2165
+ConvertT opt_convert_goal 49,2204
+bool     opt_convert_weak 50,2243
+bool     opt_avoid_interval_constraint 51,2278
+GpwT     opt_convert_gpw 54,2401
+bool     opt_convert_bdd_monotonic 55,2443
+int      opt_convert_bdd_decomposition 57,2544
+bool     opt_convert_bdd_interval 58,2620
+bool     opt_convert_bdd_increasing_order 59,2663
+double   opt_bdd_thres 60,2714
+double   opt_sort_thres 61,2746
+double   opt_goal_bias 62,2779
+Int      opt_goal 63,2811
+Command  opt_command 64,2849
+bool     opt_branch_pbvars 65,2892
+int      opt_polarity_sug 66,2928
+bool     opt_old_format 67,2960
+bool     opt_extract_ucore 68,2996
+int      opt_ucore_mode 69,3032
+bool     opt_model_check 71,3065
+char*    opt_input 73,3102
+char*    opt_result 74,3130
+cchar* doc 78,3260
+bool oneof(140,6808
+void parseOptions(161,7258
+void reportf(266,12652
+PbSolver*   pb_solver 297,13395
+bool model_check(301,13541
+void outputResult(328,14319
+static void SIGINT_handler(368,15479
+static void SIGTERM_handler(375,15716
+void printStats(383,15945
+PbSolver::solve_Command convert(394,16609
+int main(408,17036
+#define N 458,19049
+void test(460,19063
+
+MiniSat.C,1024
+namespace MiniSat 25,1337
+#define L_IND 31,1514
+#define L_ind 32,1538
+#define L_LIT 33,1591
+#define L_lit(34,1616
+inline void check(MiniSat::check37,1746
+void removeWatch(MiniSat::removeWatch44,1909
+bool Solver::newClause(59,2421
+void Solver::remove(142,5159
+bool Solver::simplify(170,6017
+Var Solver::newVar(189,6540
+bool Solver::assume(208,7034
+void Solver::cancelUntil(216,7267
+void Solver::record(230,7795
+#define ANALYZE_LIT(245,8149
+void Solver::analyze(273,9534
+#define REMOVABLE_LIT(362,12266
+bool Solver::removable(376,13467
+bool Solver::enqueue(414,14748
+Clause* Solver::propagate(441,15620
+struct reduceDB_lt 517,18360
+struct reduceDB_lt { bool operator () reduceDB_lt::operator ()517,18360
+void Solver::reduceDB(518,18503
+void Solver::simplifyDB(548,19524
+lbool Solver::search(590,20976
+double Solver::progressEstimate(687,24197
+void Solver::varRescaleActivity(700,24489
+void Solver::claRescaleActivity(710,24674
+bool Solver::solve(727,25315
+void Solver::exportClauses(772,27076
+
+OptimalBase.C,155
+int primes[primes25,1428
+#define ExpensiveBigConstants32,2449
+#define AllDigitsImportant33,2479
+void optimizeBase(37,2509
+void optimizeBase(128,5640
+
+PbParser.C,1649
+class FileBuffer 28,1470
+    File    in;FileBuffer::in29,1489
+    int     next;FileBuffer::next30,1505
+    int     line;FileBuffer::line32,1531
+    FileBuffer(FileBuffer::FileBuffer33,1549
+   ~FileBuffer(FileBuffer::~FileBuffer37,1759
+    int  operator * FileBuffer::operator *38,1779
+    void operator ++ FileBuffer::operator ++39,1820
+class StringBuffer 43,1901
+    cchar*  ptr;StringBuffer::ptr44,1922
+    cchar*  last;StringBuffer::last45,1939
+    int     line;StringBuffer::line47,1965
+    StringBuffer(StringBuffer::StringBuffer48,1983
+    StringBuffer(StringBuffer::StringBuffer49,2076
+   ~StringBuffer(StringBuffer::~StringBuffer50,2161
+    int  operator * StringBuffer::operator *51,2183
+    void operator ++ StringBuffer::operator ++52,2246
+static void skipWhitespace(90,3659
+static void skipLine(95,3797
+static void skipComments(102,3953
+static bool skipEndOfLine(106,4136
+static bool skipText(113,4346
+static Int parseInt(120,4515
+static char* parseIdent(142,5238
+void parseExpr(156,5817
+void parseSize(184,6747
+void parseGoal(207,7194
+int parseInequality(228,7815
+bool parseConstrs(252,8352
+static bool parse_PB(297,9707
+void parse_PB_file(318,10428
+#define Solver 329,10793
+struct DummySolver 331,10821
+    Map<DummySolver::Map332,10842
+    Map<cchar*, int> name2index;DummySolver::name2index332,10842
+    vec<cchar*>      index2name;DummySolver::index2name333,10875
+    int getVar(DummySolver::getVar335,10909
+    void alloc(DummySolver::alloc342,11141
+    void addGoal(DummySolver::addGoal344,11241
+    bool addConstr(DummySolver::addConstr346,11343
+void test(352,11609
+
+PbSolver.C,673
+int n_defequivs=26,1379
+int n_goalasps=27,1398
+int PbSolver::getVar(33,1552
+void PbSolver::allocConstrs(51,2054
+void PbSolver::addGoal(58,2184
+bool PbSolver::addConstr(68,2510
+#define Copy 83,3054
+#define CopyInv 84,3230
+static Int gcd(217,7316
+bool PbSolver::normalizePb(235,8190
+void PbSolver::storePb(366,12571
+bool PbSolver::propagate(383,13331
+void PbSolver::propagate(474,15938
+void PbSolver::setupOccurs(522,17675
+static bool lhsEq(549,18572
+static bool lhsEqc(555,18850
+void PbSolver::findIntervals(562,19071
+bool PbSolver::rewriteAlmostClauses(609,20520
+Int evalGoal(704,23310
+void PbSolver::exportVar(730,24062
+void PbSolver::solve(740,24311
+
+PbSolver_convert.C,35
+bool PbSolver::convertPbs(31,1843
+
+PbSolver_convertAdd.C,94
+static inline void bitAdder(27,1449
+static Formula lte(37,1730
+void linearAddition(60,2470
+
+PbSolver_convertBdd.C,99
+#define lit2fml(28,1483
+  buildBDD_i(33,1586
+  buildBDD(141,6296
+Formula convertToBdd(239,9602
+
+PbSolver_convertSort.C,361
+#define pf(26,1441
+void nothing(28,1480
+#define lit2fml(34,1606
+void buildSorter(38,1658
+void buildSorter(48,1937
+class Exception_TooBig 57,2161
+void buildConstraint(60,2196
+void convert(136,4738
+Formula lexComp(150,5094
+Formula lexComp(171,5910
+Formula buildConstraint(177,6068
+Formula buildConstraintGpw(218,7297
+Formula buildConstraint(251,8210
+
+SatELite.C,4594
+namespace SatELite 30,1605
+bool opt_confl_1sub SatELite::opt_confl_1sub35,1845
+bool opt_confl_ksub SatELite::opt_confl_ksub36,1875
+bool opt_var_elim SatELite::opt_var_elim37,1906
+bool opt_0sub SatELite::opt_0sub38,1936
+bool opt_1sub SatELite::opt_1sub39,1966
+bool opt_2sub SatELite::opt_2sub40,1996
+bool opt_repeated_sub SatELite::opt_repeated_sub41,2027
+bool opt_def_elim SatELite::opt_def_elim42,2058
+bool opt_unit_def SatELite::opt_unit_def43,2088
+bool opt_hyper1_res SatELite::opt_hyper1_res44,2118
+bool opt_pure_literal SatELite::opt_pure_literal45,2148
+bool opt_asym_branch SatELite::opt_asym_branch46,2179
+bool opt_keep_all SatELite::opt_keep_all47,2210
+bool opt_no_random SatELite::opt_no_random48,2241
+bool opt_pre_sat SatELite::opt_pre_sat49,2272
+bool opt_ext_sat SatELite::opt_ext_sat50,2303
+bool opt_niver SatELite::opt_niver51,2334
+cchar* input_file SatELite::input_file52,2365
+cchar* output_file SatELite::output_file53,2394
+cchar* varmap_file SatELite::varmap_file54,2423
+cchar* elimed_file SatELite::elimed_file55,2452
+cchar* model_file SatELite::model_file56,2481
+extern int verbosity;SatELite::verbosity57,2510
+#define BCNF_CHUNK_LIMIT 70,3047
+class BcnfWriter SatELite::BcnfWriter77,3200
+    FILE*   out;SatELite::BcnfWriter::out78,3219
+    int     n_vars;SatELite::BcnfWriter::n_vars79,3236
+    int     n_clauses;SatELite::BcnfWriter::n_clauses80,3256
+    int     chunk_sz;SatELite::BcnfWriter::chunk_sz81,3279
+    int*    chunk;SatELite::BcnfWriter::chunk82,3301
+    int     stated_n_vars;SatELite::BcnfWriter::stated_n_vars85,3329
+    int     stated_n_clauses;SatELite::BcnfWriter::stated_n_clauses86,3385
+    int  nVars SatELite::BcnfWriter::nVars92,3515
+    int  nClauses(SatELite::BcnfWriter::nClauses93,3558
+BcnfWriter::BcnfWriter(97,3609
+BcnfWriter::~BcnfWriter(111,4335
+void BcnfWriter::addClause(129,4744
+static vec<FILE*>  tmp_fps;153,5773
+static vec<cchar*> tmp_files;154,5801
+FILE* createTmpFile(158,5878
+void deleteTmpFile(178,6463
+void deleteTmpFiles(199,7145
+FINALIZER(209,7318
+struct Size24 230,8008
+struct Size24 { char dummy[Size24::dummy230,8008
+struct Size28 231,8043
+struct Size28 { char dummy[Size28::dummy231,8043
+VecAlloc<Size24> mem24;232,8078
+VecAlloc<Size28> mem28;233,8102
+template <> macro void* ymalloc<ymalloc236,8177
+macro void yfree(244,8399
+#define ymalloc 255,8710
+#define yfree 256,8734
+int Solver::allocClauseId(264,9001
+void Solver::freeClauseId(286,9473
+Clause Solver::allocClause(298,9692
+Clause Solver::addClause(321,10491
+void Solver::deallocClause(431,13911
+void Solver::unlinkClause(443,14183
+bool Solver::propagateClause(499,15719
+void Solver::calcReason(530,16569
+void Solver::strengthenClause(542,16964
+void Solver::setOccurMode(560,17454
+void Solver::setupWatches(585,18340
+Var Solver::newVar(609,19182
+bool Solver::assume(637,19961
+inline void Solver::undoOne(646,20206
+void Solver::cancel(660,20570
+void Solver::cancelUntil(672,20931
+void Solver::record(678,21113
+Solver::~Solver(690,21401
+void Solver::analyze(716,23422
+bool Solver::enqueue(916,30807
+void Solver::propagateToplevel(957,32445
+Clause Solver::propagate(1002,34390
+Clause Solver::propagate(1039,35327
+Clause Solver::propagate(1098,37012
+bool satisfied(1165,39508
+struct reduceDB_lt 1173,39773
+struct reduceDB_lt { bool operator () reduceDB_lt::operator ()1173,39773
+void Solver::reduceDB(1174,39875
+void Solver::compressDB(1201,40632
+void Solver::simplifyDB(1235,42109
+lbool Solver::search(1286,44826
+void Solver::extendModel(1371,48206
+double Solver::progressEstimate(1468,51237
+void Solver::varRescaleActivity(1482,51625
+void Solver::claRescaleActivity(1492,51810
+bool Solver::solve(1510,52898
+#define Report(1565,55698
+#define Report2(1567,55821
+macro bool has(1570,55913
+bool subset(1579,56110
+bool subset(1593,56502
+macro bool subset(1603,56673
+bool selfSubset(1608,56799
+macro bool selfSubset(1627,57312
+void Solver::findSubsumed(1638,57574
+bool Solver::isSubsumed(1662,58230
+void Solver::subsume0(1687,58844
+void Solver::subsume1(1702,59119
+void Solver::subsume1(1754,60417
+void Solver::simplifyBySubsumption(1784,61044
+void Solver::orderVarsForElim(2047,72133
+bool merge(2068,72716
+bool merge(2091,73605
+Lit Solver::findUnitDef(2115,74271
+bool Solver::findDef(2147,75277
+int Solver::substitute(2205,77030
+void Solver::asymmetricBranching(2287,79436
+bool Solver::maybeEliminate(2416,83997
+    #define MigrateToPsNs 2434,84520
+    #define DeallocPsNs 2435,84732
+void Solver::clauseReduction(2621,92037
+
+Debug.h,49
+#define Debug_h21,1295
+macro void dump(41,1840
+
+Hardware.h,27
+#define Hardware_h21,1298
+
+Main.h,1248
+#define Main_h21,1294
+enum SolverT 28,1430
+enum SolverT  { st_MiniSat,28,1430
+enum SolverT  { st_MiniSat, st_SatELite,28,1430
+enum SolverT  { st_MiniSat, st_SatELite, st_GlueMiniSat,28,1430
+enum SolverT  { st_MiniSat, st_SatELite, st_GlueMiniSat, st_MiniSat22,28,1430
+enum SolverT  { st_MiniSat, st_SatELite, st_GlueMiniSat, st_MiniSat22, st_Glucose10 28,1430
+enum ConvertT 29,1517
+enum ConvertT { ct_Sorters,29,1517
+enum ConvertT { ct_Sorters, ct_Adders,29,1517
+enum ConvertT { ct_Sorters, ct_Adders, ct_BDDs,29,1517
+enum ConvertT { ct_Sorters, ct_Adders, ct_BDDs, ct_Mixed,29,1517
+enum ConvertT { ct_Sorters, ct_Adders, ct_BDDs, ct_Mixed, ct_Undef 29,1517
+enum Command 30,1587
+enum Command  { cmd_Minimize,30,1587
+enum Command  { cmd_Minimize, cmd_FirstSolution,30,1587
+enum Command  { cmd_Minimize, cmd_FirstSolution, cmd_AllSolutions 30,1587
+enum GpwT 31,1656
+enum GpwT     { gt_none,31,1656
+enum GpwT     { gt_none, gt_positive,31,1656
+enum GpwT     { gt_none, gt_positive, gt_negative,31,1656
+enum GpwT     { gt_none, gt_positive, gt_negative, gt_low,31,1656
+enum GpwT     { gt_none, gt_positive, gt_negative, gt_low, gt_high,31,1656
+enum GpwT     { gt_none, gt_positive, gt_negative, gt_low, gt_high, gt_both 31,1656
+
+MiniSat.h,4368
+#define MiniSat_h27,1596
+class Clause 38,1840
+    uint    size_learnt;39,1855
+    Lit     data[data40,1880
+    Clause(43,1963
+    int     size 48,2163
+    bool    learnt 49,2234
+    Lit     operator 50,2304
+    Lit&    operator 51,2370
+    float&  activity 52,2436
+class LitClauseUnion 60,2664
+    void* data;LitClauseUnion::data61,2687
+    LitClauseUnion(LitClauseUnion::LitClauseUnion62,2703
+    bool        isLit LitClauseUnion::isLit67,2849
+    bool        isNull LitClauseUnion::isNull68,2934
+    Lit         getLit LitClauseUnion::getLit69,3010
+    Clause*     getClause LitClauseUnion::getClause70,3103
+    bool        operator==(LitClauseUnion::operator==71,3180
+    bool        operator!=(LitClauseUnion::operator!=72,3258
+inline LitClauseUnion makeLit 74,3339
+inline LitClauseUnion makeClause 75,3449
+struct SolverStats 82,3693
+    int64   clauses,SolverStats::clauses83,3740
+    int64   clauses, clauses_literals,SolverStats::clauses_literals83,3740
+    int64   clauses, clauses_literals, learnts,SolverStats::learnts83,3740
+    int64   clauses, clauses_literals, learnts, learnts_literals,SolverStats::learnts_literals83,3740
+    int64   clauses, clauses_literals, learnts, learnts_literals, max_literals,SolverStats::max_literals83,3740
+    int64   clauses, clauses_literals, learnts, learnts_literals, max_literals, tot_literals;SolverStats::tot_literals83,3740
+    SolverStats(SolverStats::SolverStats84,3834
+struct SearchParams 88,3965
+    double  var_decay,SearchParams::var_decay89,3987
+    double  var_decay, clause_decay,SearchParams::clause_decay89,3987
+    double  var_decay, clause_decay, random_var_freq;SearchParams::random_var_freq89,3987
+    SearchParams(SearchParams::SearchParams90,4090
+class Solver 94,4210
+    vec<Clause*>        clauses;Solver::clauses96,4236
+    vec<Clause*>        learnts;Solver::learnts97,4308
+    double              cla_inc;Solver::cla_inc98,4375
+    double              cla_decay;Solver::cla_decay99,4451
+    vec<double>         activity;Solver::activity101,4553
+    vec<char>           polarity;Solver::polarity102,4651
+    double              var_inc;Solver::var_inc103,4799
+    double              var_decay;Solver::var_decay104,4877
+    VarOrder            order;Solver::order105,5026
+                        watches;Solver::watches108,5144
+    bool                ok;Solver::ok111,5292
+    vec<int>            assigns;Solver::assigns112,5429
+    vec<Lit>            trail;Solver::trail113,5550
+    vec<char>           polarity_sug;Solver::polarity_sug114,5619
+    vec<int>            trail_lim;Solver::trail_lim116,5769
+    vec<Lit>            trail_copy;Solver::trail_copy117,5872
+    vec<LitClauseUnion> reason;Solver::reason118,5933
+    vec<int>            level;Solver::level119,6065
+    int                 root_level;Solver::root_level120,6173
+    int                 last_simplify;Solver::last_simplify121,6248
+    int                 qhead;Solver::qhead122,6347
+    vec<char>           analyze_seen;Solver::analyze_seen126,6484
+    vec<Lit>            toclear;Solver::toclear127,6522
+    vec<Lit>            stack;Solver::stack128,6555
+    Clause*             tmp_binary;Solver::tmp_binary129,6586
+    void    varBumpActivity(Solver::varBumpActivity151,7343
+    void    varDecayActivity(Solver::varDecayActivity155,7588
+    void    claDecayActivity(Solver::claDecayActivity157,7707
+    void    claBumpActivity Solver::claBumpActivity163,7921
+    bool    locked Solver::locked165,8086
+    int     decisionLevel(Solver::decisionLevel168,8276
+    Solver(Solver::Solver171,8352
+   ~Solver(Solver::~Solver187,9002
+    lbool   value(Solver::value193,9211
+    lbool   value(Solver::value194,9274
+    int     nAssigns(Solver::nAssigns196,9381
+    int     nClauses(Solver::nClauses197,9433
+    int     nLearnts(Solver::nLearnts198,9487
+    SolverStats stats;Solver::stats202,9596
+    int     nVars Solver::nVars207,9704
+    bool    addUnit(Solver::addUnit208,9758
+    bool    addClause(Solver::addClause209,9825
+    bool    okay(Solver::okay215,10051
+    bool    solve(Solver::solve218,10163
+    double      progress_estimate;Solver::progress_estimate220,10225
+    vec<lbool>  model;Solver::model221,10283
+    int         verbosity;Solver::verbosity222,10385
+
+OptimalBase.h,30
+#define OptimalBase_h21,1301
+
+PbParser.h,27
+#define PbParser_h21,1298
+
+PbSolver.h,2357
+#define PbSolver_h21,1298
+class Linear 32,1563
+    int     orig_size;Linear::orig_size33,1578
+    int     size;Linear::size35,1644
+    Int     lo,Linear::lo36,1692
+    Int     lo, hi;Linear::hi36,1692
+    Lit     dlt;Linear::dlt38,1851
+    char    data[Linear::data40,1942
+    Linear(Linear::Linear43,2068
+    Lit operator [] Linear::operator []49,2410
+    Int operator () Linear::operator ()50,2486
+    Lit& operator [] Linear::operator []51,2586
+    Int& operator () Linear::operator ()52,2657
+class PbSolver 63,3021
+    Solver              sat_solver;PbSolver::sat_solver65,3049
+    bool&               ok;PbSolver::ok66,3115
+    StackAlloc<char*>   mem;PbSolver::mem70,3448
+    vec<Linear*>        constrs;PbSolver::constrs73,3639
+    Linear*             goal;PbSolver::goal74,3711
+    vec<int>            n_occurs;PbSolver::n_occurs76,3889
+    vec<vec<int> >      occur;PbSolver::occur77,3967
+    int                 propQ_head;PbSolver::propQ_head79,4085
+    bool    addUnit PbSolver::addUnit86,4274
+    PbSolver(PbSolver::PbSolver96,4823
+    lbool   value(PbSolver::value113,5534
+    lbool   value(PbSolver::value114,5608
+    int     nVars(PbSolver::nVars115,5736
+    int     nConstrs(PbSolver::nConstrs116,5798
+    BasicSolverStats& stats;PbSolver::stats119,5882
+    int     declared_n_vars;PbSolver::declared_n_vars121,5912
+    int     declared_n_constrs;PbSolver::declared_n_constrs122,6021
+    int     pb_n_vars;PbSolver::pb_n_vars123,6132
+    int     pb_n_constrs;PbSolver::pb_n_constrs124,6227
+    Map<PbSolver::Map126,6325
+    Map<cchar*, int>    name2index;PbSolver::name2index126,6325
+    vec<cchar*>         index2name;PbSolver::index2name127,6361
+    vec<bool>           best_model;PbSolver::best_model128,6397
+    Int                 best_goalvalue;PbSolver::best_goalvalue129,6480
+    vec<int>            ucore_var_id;PbSolver::ucore_var_id130,6601
+    bool    okay(PbSolver::okay141,6986
+    enum solve_Command PbSolver::solve_Command143,7025
+    enum solve_Command { sc_Minimize,PbSolver::solve_Command::sc_Minimize143,7025
+    enum solve_Command { sc_Minimize, sc_FirstSolution,PbSolver::solve_Command::sc_FirstSolution143,7025
+    enum solve_Command { sc_Minimize, sc_FirstSolution, sc_AllSolutions PbSolver::solve_Command::sc_AllSolutions143,7025
+
+SatELite.h,8386
+#define SatELite_h27,1566
+class Queue 60,2463
+    vec<T>  elems;61,2477
+    int     first;62,2496
+    Queue(64,2523
+    void insert(65,2554
+    T    dequeue(66,2596
+    void clear(67,2646
+    int  size(68,2699
+    bool has(69,2755
+#define BUMP_MORE82,3369
+struct Clause_t 91,3517
+    int     id_;Clause_t::id_92,3535
+            uint64  abst_;Clause_t::abst_95,3611
+            uint    size_learnt;Clause_t::size_learnt96,3638
+            char    _vec[Clause_t::_vec99,3699
+    Lit     data[Clause_t::data102,3761
+    vec<Lit>&   Vec(Clause_t::Vec104,3783
+    bool       dynamic Clause_t::dynamic108,3880
+    int        size Clause_t::size109,3947
+    Lit&       operator [] Clause_t::operator []110,4047
+    const Lit& operator [] Clause_t::operator []111,4143
+    Lit&       operator () Clause_t::operator ()112,4239
+    const Lit& operator () Clause_t::operator ()113,4328
+    void       push Clause_t::push114,4417
+    void       clear Clause_t::clear115,4500
+    vec<Lit>&  asVec Clause_t::asVec116,4583
+    Clause_t(Clause_t::Clause_t119,4687
+   ~Clause_t(Clause_t::~Clause_t120,4745
+class Clause 124,4811
+    Clause_t* ptr_;Clause::ptr_125,4826
+    Clause(Clause::Clause127,4854
+    Clause(Clause::Clause128,4894
+    Clause(Clause::Clause129,4932
+    Clause_t* ptr(Clause::ptr130,4970
+    bool    operator == Clause::operator ==132,5018
+    bool    null(Clause::null133,5095
+    void    zero(Clause::zero134,5166
+    bool       dynamic Clause::dynamic136,5230
+    int        size Clause::size137,5304
+    Lit&       operator [] Clause::operator []138,5375
+    const Lit& operator [] Clause::operator []139,5448
+    Lit&       operator () Clause::operator ()140,5521
+    const Lit& operator () Clause::operator ()141,5594
+    void       push Clause::push144,5684
+    void       clear Clause::clear145,5756
+    vec<Lit>&  asVec Clause::asVec146,5828
+    int        id Clause::id149,5921
+    uint64     abst Clause::abst150,6009
+    bool       learnt Clause::learnt151,6099
+    float&     activity Clause::activity152,6199
+const Clause Clause_NULL 155,6337
+macro bool operator < operator <157,6375
+macro uint hash(158,6464
+class CSet 166,6637
+    vec<int>    where;CSet::where167,6650
+    vec<Clause> which;CSet::which168,6715
+    vec<int>    free;CSet::free169,6807
+    Clause  operator [] CSet::operator []172,6884
+    int     size CSet::size173,6951
+    int     nElems CSet::nElems174,7018
+    bool    add(CSet::add176,7100
+    bool    exclude(CSet::exclude192,7503
+    void    clear(CSet::clear202,7781
+macro void remove(218,8122
+template <class T> macro void maybeRemove(226,8307
+macro int find(229,8419
+macro int find(235,8567
+struct SolverStats 245,8918
+    int64   reduceDBs;SolverStats::reduceDBs246,8965
+    SolverStats(SolverStats::SolverStats247,8988
+struct SearchParams 251,9033
+    double  var_decay,SearchParams::var_decay252,9055
+    double  var_decay, clause_decay,SearchParams::clause_decay252,9055
+    double  var_decay, clause_decay, random_var_freq;SearchParams::random_var_freq252,9055
+    bool    simplify;SearchParams::simplify253,9158
+    SearchParams(SearchParams::SearchParams254,9180
+enum OccurMode 257,9326
+enum OccurMode { occ_Off,OccurMode::occ_Off257,9326
+enum OccurMode { occ_Off, occ_Permanent,OccurMode::occ_Permanent257,9326
+enum OccurMode { occ_Off, occ_Permanent, occ_All OccurMode::occ_All257,9326
+struct Solver 260,9380
+    bool                ok;Solver::ok264,9410
+    vec<Clause>         constrs;Solver::constrs265,9547
+    vec<int>            constrs_free;Solver::constrs_free266,9614
+    vec<Clause>         learnts;Solver::learnts267,9688
+    vec<int>            learnts_free;Solver::learnts_free268,9754
+    double              cla_inc;Solver::cla_inc269,9827
+    double              cla_decay;Solver::cla_decay270,9903
+    int                 n_literals;Solver::n_literals271,10004
+    FILE*               elim_out;Solver::elim_out272,10116
+    char*               elim_out_file;Solver::elim_out_file273,10220
+    vec<vec<Clause>*>   iter_vecs;Solver::iter_vecs274,10278
+    vec<CSet*>          iter_sets;Solver::iter_sets275,10425
+    vec<double>         activity;Solver::activity277,10505
+    vec<char>           polarity_sug;Solver::polarity_sug278,10603
+    double              var_inc;Solver::var_inc279,10744
+    double              var_decay;Solver::var_decay280,10822
+    vec<double>         lt_activity;Solver::lt_activity282,10992
+    VarOrder2           order;Solver::order283,11055
+    VarOrder            order;Solver::order285,11150
+    vec<vec<Clause> >   watches;Solver::watches288,11247
+    bool                watches_setup;Solver::watches_setup289,11393
+    vec<vec<Clause> >   occur;Solver::occur290,11490
+    OccurMode           occur_mode;Solver::occur_mode291,11596
+    vec<int>            n_occurs;Solver::n_occurs292,11680
+    Queue<Lit>          propQ;Solver::propQ293,11804
+    vec<int>            assigns;Solver::assigns295,11867
+    vec<Lit>            units;Solver::units296,11962
+    vec<Lit>            trail;Solver::trail297,12079
+    vec<int>            trail_lim;Solver::trail_lim298,12148
+    vec<Clause>         reason;Solver::reason299,12251
+    vec<int>            level;Solver::level300,12383
+    int                 root_level;Solver::root_level301,12491
+    int                 last_simplify;Solver::last_simplify302,12566
+    vec<char>           touched;Solver::touched304,12666
+    vec<Var>            touched_list;Solver::touched_list305,12815
+    CSet                cl_touched;Solver::cl_touched306,12900
+    CSet                cl_added;Solver::cl_added307,12965
+    bool                fwd_subsump;Solver::fwd_subsump308,13025
+    vec<char>           var_elimed;Solver::var_elimed310,13100
+    vec<char>           frozen;Solver::frozen311,13202
+    int64               last_inspects;Solver::last_inspects313,13303
+    vec<char>           seen_tmp;Solver::seen_tmp317,13514
+    vec<char>           touched_tmp;Solver::touched_tmp318,13582
+    vec<Lit>            unit_tmp;Solver::unit_tmp319,13706
+    vec<Lit>            io_tmp;Solver::io_tmp320,13771
+    void    createTmpFiles(Solver::createTmpFiles346,14906
+    void    deleteTmpFiles(Solver::deleteTmpFiles352,15158
+    void    registerIteration Solver::registerIteration353,15258
+    void    unregisterIteration(Solver::unregisterIteration354,15344
+    void    registerIteration Solver::registerIteration355,15433
+    void    unregisterIteration(Solver::unregisterIteration356,15519
+    void    varBumpActivity(Solver::varBumpActivity362,15713
+    void    varDecayActivity(Solver::varDecayActivity369,16032
+    void    claBumpActivity(Solver::claBumpActivity372,16152
+    void    claDecayActivity(Solver::claDecayActivity373,16256
+    bool    locked Solver::locked383,16568
+    int     decisionLevel(Solver::decisionLevel384,16639
+    void    watch Solver::watch386,16701
+    void    unwatch Solver::unwatch387,16775
+    Solver(Solver::Solver395,16964
+    lbool   value(Solver::value425,18103
+    lbool   value(Solver::value426,18160
+    int     nAssigns Solver::nAssigns428,18261
+    int     nLiterals(Solver::nLiterals429,18314
+    int     nClauses Solver::nClauses430,18365
+    int     nLearnts Solver::nLearnts431,18442
+    SolverStats stats;Solver::stats435,18574
+    int     nVars Solver::nVars440,18682
+    void    addUnit(Solver::addUnit441,18736
+    void    removeClause(Solver::removeClause445,18955
+    void    freeze(Solver::freeze447,19070
+    void    thaw Solver::thaw448,19115
+    bool    okay(Solver::okay452,19184
+    bool    solve(Solver::solve455,19312
+    double      progress_estimate;Solver::progress_estimate457,19378
+    vec<lbool>  model;Solver::model458,19436
+    int         verbosity;Solver::verbosity459,19538
+    void touch(Solver::touch463,19669
+    void touch(Solver::touch464,19750
+    bool updateOccur(Solver::updateOccur465,19791
+#define L_IND 494,20861
+#define L_ind 495,20885
+#define L_LIT 496,20938
+#define L_lit(497,20963
+  inline void check(501,21107
+  #define check 503,21162
+macro void dump(507,21194
+macro void dump(513,21428
+macro void dump(520,21700
+macro void dump(526,21943
+
+Solver.h,1551
+#define Solver_h21,1296
+class Solver 30,1497
+    MiniSat ::Solver*    minisat;Solver::minisat31,1512
+    SatELite::Solver*    satelite;Solver::satelite32,1546
+    GlueMiniSat::Solver* glueminisat;Solver::glueminisat33,1581
+    BasicSolverStats     basicStats;Solver::basicStats35,1620
+    bool                 dummyOK;Solver::dummyOK36,1657
+    GlueMiniSat::Lit lit2lit(Solver::lit2lit38,1692
+    void vec2vec(Solver::vec2vec41,1800
+    lbool lbool2lbool(Solver::lbool2lbool45,1966
+    bool& ok_ref(Solver::ok_ref56,2251
+    BasicSolverStats& stats_ref Solver::stats_ref66,2913
+    int assigns(Solver::assigns74,3181
+    int trail_size(Solver::trail_size81,3470
+    Lit trail(Solver::trail88,3736
+    void setVerbosity(Solver::setVerbosity95,4087
+    Var newVar(Solver::newVar120,5913
+    bool addClause(Solver::addClause128,6256
+    bool addUnit(Solver::addUnit139,6653
+    void freeze(Solver::freeze146,6927
+    void suggestPolarity(Solver::suggestPolarity152,7053
+    bool solve(Solver::solve157,7266
+    bool solve(Solver::solve173,7931
+    lbool model(Solver::model177,8116
+    bool varElimed(Solver::varElimed184,8366
+    int ucore_vars(Solver::ucore_vars190,8505
+    int ucore_varsSize(Solver::ucore_varsSize198,8696
+    int ucore_clauses(Solver::ucore_clauses206,8887
+    int ucore_clausesSize(Solver::ucore_clausesSize214,9087
+    bool okay(Solver::okay222,9287
+    int nVars(Solver::nVars229,9508
+    void exportCnf(Solver::exportCnf232,9645
+    Solver(Solver::Solver253,10705
+
+SolverTypes.h,997
+#define SolverTypes_h28,1558
+typedef int Var;40,1865
+#define var_Undef 41,1882
+class Lit 44,1907
+    int     x;Lit::x45,1919
+    Lit(Lit::Lit47,1942
+    explicit Lit(Lit::Lit48,2013
+inline Lit operator ~ operator ~59,2332
+inline bool sign 60,2398
+inline int  var 61,2443
+inline int  index(62,2489
+inline Lit  toLit(63,2627
+inline bool operator == operator ==64,2682
+inline bool operator < operator <65,2754
+macro uint64 abstLit(70,3005
+#define L_LIT 74,3178
+#define L_lit(75,3203
+struct BasicSolverStats 79,3345
+    int64   starts,BasicSolverStats::starts80,3371
+    int64   starts, decisions,BasicSolverStats::decisions80,3371
+    int64   starts, decisions, propagations,BasicSolverStats::propagations80,3371
+    int64   starts, decisions, propagations, inspects,BasicSolverStats::inspects80,3371
+    int64   starts, decisions, propagations, inspects, conflicts;BasicSolverStats::conflicts80,3371
+    BasicSolverStats(BasicSolverStats::BasicSolverStats81,3437
+
+VarOrder.h,630
+#define VarOrder_h28,1622
+struct VarOrder_lt 36,1788
+    const vec<double>&  activity;37,1809
+    bool operator 38,1843
+    VarOrder_lt(39,1917
+class VarOrder 42,1982
+    const vec<int>&     assigns;VarOrder::assigns43,1999
+    const vec<double>&  activity;VarOrder::activity44,2087
+    Heap<VarOrder_lt>   heap;VarOrder::heap45,2173
+    double              random_seed;VarOrder::random_seed46,2203
+    vec<char>           dvars;VarOrder::dvars49,2293
+    VarOrder(VarOrder::VarOrder51,2325
+void VarOrder::newVar(62,2848
+void VarOrder::update(71,3015
+void VarOrder::undo(78,3100
+Var VarOrder::select(85,3194
+
+ADTs/FEnv.C,264
+namespace FEnv 22,1298
+    vec<NodeData>       nodes;FEnv::nodes23,1315
+    Map<FEnv::Map24,1346
+    Map<NodeData, int>  uniqueness_table;FEnv::uniqueness_table24,1346
+    vec<int>            stack;FEnv::stack26,1389
+bool eval(34,1533
+bool eval(73,2802
+
+ADTs/File.C,175
+void File::open(23,1299
+void File::open(35,1598
+void File::close(67,2514
+void File::seek(78,2686
+int64 File::tell(92,3053
+void putUInt(105,3328
+uint64 getUInt(138,4334
+
+ADTs/Global.C,103
+char* vnsprintf(26,1356
+char* nsprintf(48,1870
+macro bool hasChar(59,2137
+void splitString(63,2257
+
+ADTs/FEnv.h,4539
+#define FEnv_h21,1294
+#define ENV 26,1412
+#define FML 27,1429
+#define UNDEF_INDEX 28,1449
+enum Op 32,1511
+enum Op { op_And,32,1511
+enum Op { op_And, op_Equiv 32,1511
+class FML 37,1696
+    unsigned  data;FML::data38,1708
+    FML(FML::FML40,1736
+    FML(FML::FML41,1770
+    operator unsigned(FML::operator unsigned43,1936
+namespace ENV 48,2092
+    struct NodeData ENV::NodeData49,2108
+        unsigned data0;ENV::NodeData::data050,2130
+        unsigned data1;ENV::NodeData::data151,2154
+        unsigned data2;ENV::NodeData::data252,2178
+        NodeData(ENV::NodeData::NodeData54,2203
+        unsigned hash(ENV::NodeData::hash56,2365
+        bool operator == ENV::NodeData::operator ==57,2459
+    extern vec<NodeData>       nodes;ENV::nodes60,2603
+    extern Map<ENV::Map61,2641
+    extern Map<NodeData, int>  uniqueness_table;ENV::uniqueness_table61,2641
+macro bool operator == operator ==66,2794
+macro bool operator != operator !=67,2871
+macro bool operator < operator <68,2948
+template<> struct Hash<Hash69,3025
+template<> struct Hash<FML> { unsigned operator () Hash::operator ()69,3025
+macro FML   neg 71,3118
+macro FML   unsign(72,3188
+macro FML   id 73,3259
+macro bool  sign 75,3350
+macro bool  compo 76,3411
+macro int   index 77,3472
+macro int   sindex(78,3533
+macro FML FormulaC(80,3595
+macro FML FormulaA(81,3680
+namespace ENV 82,3765
+    macro FML Comp_new(ENV::Comp_new83,3781
+    macro FML Atom_new(ENV::Atom_new84,3870
+#define tag_Atom 90,4080
+#define tag_Bin 92,4109
+#define tag_ITE 93,4128
+#define tag_FA 94,4147
+#define tag_ITEn 95,4166
+#define tag_ITEp 96,4220
+macro int ctag(98,4266
+macro int ctag(99,4342
+macro int tag 100,4418
+macro bool Atom_p(102,4487
+macro bool Bin_p 103,4534
+macro bool ITE_p 104,4589
+macro bool FA_p 105,4644
+macro bool ITEn_p 106,4698
+macro bool ITEp_p 107,4755
+macro Op   op 110,4913
+macro FML  left 111,4990
+macro FML  right 112,5075
+macro FML  cond 113,5160
+macro FML  tt 114,5245
+macro FML  ff 115,5330
+macro bool isCarry(116,5415
+macro FML  FA_x 117,5494
+macro FML  FA_y 118,5579
+macro FML  FA_c 119,5664
+macro ENV::NodeData Bin_newData(123,5851
+macro ENV::NodeData ITE_newData(132,6142
+macro ENV::NodeData ITEn_newData(141,6431
+macro ENV::NodeData ITEp_newData(150,6722
+macro ENV::NodeData FA_newData(160,7014
+namespace ENV 170,7385
+    macro FML new_helper(ENV::new_helper171,7401
+    macro FML newS_helper(ENV::newS_helper176,7575
+macro FML Bin_new 185,7874
+macro FML Bin_newS(188,8115
+macro FML ITE_new 190,8231
+macro FML ITE_newS(193,8464
+macro FML ITEn_new 195,8575
+macro FML ITEn_newS(198,8811
+macro FML ITEp_new 200,8924
+macro FML ITEp_newS(203,9160
+macro FML FA_new 205,9273
+macro FML FA_newS(208,9547
+#define atom_Undef 212,9788
+#define atom_True 213,9812
+const FML _undef_ 215,9837
+const FML _error_ 216,9891
+const FML _1_ 217,9945
+const FML _0_ 218,9999
+macro bool Exeception_p(221,10086
+macro bool Exeception_p(222,10156
+macro bool Const_p 223,10226
+macro bool Const_p 224,10295
+macro bool Var_p 225,10364
+macro bool Var_p 226,10425
+macro Formula var(230,10525
+namespace ENV 235,10685
+    template <class T, bool sgn ENV::sgn236,10701
+        typedef FML Key;ENV::Key238,10782
+        typedef T   Datum;ENV::Datum239,10807
+namespace ENV 245,11052
+    template <class T, bool sgn ENV::sgn246,11068
+        typedef FML Key;ENV::Key250,11178
+        typedef T   Datum;ENV::Datum251,11203
+    template <class T, bool sgn ENV::sgn258,11590
+        typedef FML Key;ENV::Key263,11721
+        typedef T   Datum;ENV::Datum264,11746
+#define AMap 270,11952
+#define CMap 271,11979
+#define FMap 272,12006
+macro Formula operator ~ operator ~276,12135
+macro Formula operator & operator &279,12196
+macro Formula operator | operator |291,12540
+macro Formula operator ^ operator ^294,12616
+macro Formula operator &= operator &=307,12975
+macro Formula operator |= operator |=308,13047
+macro Formula operator ^= operator ^=309,13119
+macro Formula FAs(312,13193
+macro Formula FAc(332,13740
+macro Formula ITE(356,14334
+macro Formula ITEp(380,15066
+macro Formula ITEn(381,15149
+namespace FEnv 388,15385
+    extern vec<int> stack;FEnv::stack389,15402
+    macro void clear(FEnv::clear390,15429
+    macro void push(FEnv::push391,15497
+    macro void pop(FEnv::pop392,15550
+    macro void keep(FEnv::keep396,15697
+    macro int  topSize(FEnv::topSize397,15737
+#undef ENV404,15952
+#undef FML405,15963
+#undef UNDEF_INDEX406,15974
+
+ADTs/File.h,1163
+#define File_h21,1294
+#define lseek64 27,1372
+#define open64 28,1451
+#define File_BufSize 35,1654
+enum FileMode 37,1763
+enum FileMode { READ,37,1763
+enum FileMode { READ, WRITE 37,1763
+class File 42,1863
+    int         fd;File::fd43,1876
+    FileMode    mode;File::mode44,1935
+    uchar*      buf;File::buf45,1986
+    int         size;File::size46,2039
+    int         pos;File::pos47,2129
+    bool        own_fd;File::own_fd48,2187
+    #define DEFAULTS 51,2296
+    File(File::File52,2379
+    File(File::File54,2409
+    File(File::File57,2510
+    #undef DEFAULTS59,2586
+   ~File(File::~File61,2607
+    bool null(File::null68,2906
+    int releaseDescriptor(File::releaseDescriptor71,3000
+    FileMode getMode(File::getMode77,3228
+    void setMode(File::setMode80,3281
+    int getCharQ(File::getCharQ91,3561
+    int putCharQ(File::putCharQ102,3968
+    int getChar(File::getChar111,4286
+    int putChar(File::putChar115,4382
+    bool eof(File::eof119,4484
+    void flush(File::flush128,4742
+macro uint64 encode64(144,5134
+macro int64  decode64(145,5250
+macro void   putInt 146,5364
+macro uint64 getInt 147,5441
+
+ADTs/Global.h,4895
+#define Global_h27,1579
+typedef INT64              int64;45,1909
+typedef UINT64             uint64;46,1943
+typedef INT_PTR            intp;47,1978
+typedef UINT_PTR           uintp;48,2011
+#define I64_fmt 49,2045
+typedef long long          int64;51,2074
+typedef unsigned long long uint64;52,2108
+typedef __PTRDIFF_TYPE__   intp;53,2143
+typedef unsigned __PTRDIFF_TYPE__ uintp;54,2176
+#define I64_fmt 55,2217
+typedef signed char    schar;58,2247
+typedef unsigned char  uchar;59,2277
+typedef unsigned int   uint;60,2307
+typedef unsigned long  ulong;61,2336
+typedef const char     cchar;62,2366
+typedef short          int16;63,2396
+typedef unsigned short uint16;64,2426
+typedef int            int32;65,2457
+typedef unsigned       uint32;66,2487
+#define LP64 70,2536
+#define macro 73,2653
+template<class T> macro T min(75,2682
+template<class T> macro T max(76,2750
+template <> struct STATIC_ASSERTION_FAILURE<STATIC_ASSERTION_FAILURE79,2868
+#define TEMPLATE_FAIL 80,2921
+#define PANIC(82,2978
+#define Ping 83,3059
+#define INITIALIZER(85,3155
+#define FINALIZER(86,3324
+#define elemsof(88,3494
+macro void swp(91,3558
+#define ___noreturn 97,3697
+#define ___unused 98,3751
+#define ___const 99,3803
+#define ___format(100,3854
+#define ___malloc 102,3993
+#define ___malloc104,4051
+#define ___noreturn107,4082
+#define ___unused108,4102
+#define ___const109,4120
+#define ___format(110,4137
+#define ___malloc111,4169
+template<class T> macro T* xmalloc(123,4566
+template<class T> macro T* xrealloc(128,4718
+template<class T> macro void xfree(133,4892
+macro char* Xstrdup(137,5012
+#define xstrdup(142,5165
+macro char* xstrndup(145,5249
+macro double drand(157,5656
+macro int irand(164,5884
+macro double cpuTime(174,6112
+macro double cpuTime(179,6242
+struct Pair 191,6561
+    Fst     fst;Pair::fst195,6629
+    Snd     snd;Pair::snd196,6646
+    Pair(Pair::Pair198,6664
+    Pair(Pair::Pair199,6683
+    Pair(Pair::Pair202,6790
+    void split(Pair::split204,6866
+inline bool operator == operator ==208,6979
+inline bool operator < operator <212,7140
+inline Pair<Fst, Snd> Pair_new(217,7327
+struct Interval 223,7448
+  Data  fst,Interval::fst225,7467
+  Data  fst, snd;Interval::snd225,7467
+  Interval(Interval::Interval227,7486
+  Interval(Interval::Interval228,7507
+  Interval(Interval::Interval231,7596
+  void split(Interval::split233,7664
+inline bool operator == operator ==240,7853
+inline bool operator < operator <244,8008
+inline Interval<Data> Interval_new(248,8137
+class vec 293,9435
+    T*  data;vec::data294,9447
+    int sz;vec::sz295,9461
+    int cap;vec::cap296,9473
+    typedef int Key;vec::Key303,9585
+    typedef T   Datum;vec::Datum304,9606
+    vec(vec::vec307,9651
+    vec(vec::vec308,9722
+    vec(vec::vec309,9807
+    vec(vec::vec310,9897
+   ~vec(vec::~vec311,10041
+    T*       release vec::release314,10164
+    operator T* vec::operator T*315,10264
+    operator const vec::operator const316,10351
+    int      size vec::size319,10432
+    void     shrink vec::shrink320,10486
+    void     shrink_ vec::shrink_321,10605
+    void     pop vec::pop322,10684
+    void     clear_ vec::clear_326,10870
+    void     capacity vec::capacity327,10921
+    void     push vec::push330,10995
+    void     push vec::push331,11096
+    void     push_ vec::push_333,11288
+    const T& last vec::last334,11350
+    T&       last vec::last335,11412
+    const T& operator [] vec::operator []339,11515
+    T&       operator [] vec::operator []340,11615
+    const T& operator [] vec::operator []342,11723
+    T&       operator [] vec::operator []343,11791
+    vec<T>&  operator = vec::operator =347,11911
+             vec vec::vec348,11984
+    void copyTo(vec::copyTo351,12086
+    void moveTo(vec::moveTo352,12213
+void vec<T>::grow(grow356,12365
+void vec<T>::growTo(growTo363,12603
+void vec<T>::growTo(growTo370,12788
+void vec<T>::clear(clear377,12956
+macro void xfreeAll(389,13345
+class lbool 398,13574
+    int     value;lbool::value399,13588
+    explicit lbool(lbool::lbool400,13607
+    lbool(lbool::lbool403,13657
+    lbool(lbool::lbool404,13690
+    int toInt(lbool::toInt405,13732
+    bool  operator == lbool::operator ==407,13777
+    bool  operator != lbool::operator !=408,13859
+    lbool operator ~ lbool::operator ~409,13941
+inline int   toInt 415,14125
+inline lbool toLbool(416,14177
+inline char  name 417,14228
+const lbool l_True 419,14407
+const lbool l_False 420,14442
+const lbool l_Undef 421,14477
+const lbool l_Error 422,14512
+#define __SGI_STL_INTERNAL_RELOPS430,14814
+template <class T> macro bool operator != operator !=431,14848
+template <class T> macro bool operator > operator >432,14937
+template <class T> macro bool operator <= operator <=433,15026
+template <class T> macro bool operator >= operator >=434,15115
+
+ADTs/Hash_standard.h,1666
+#define Hash_standard_h21,1303
+static int prime_twins[prime_twins28,1449
+template <class K> struct Hash 35,1808
+template <class K> struct Hash  { uint operator () Hash::operator ()35,1808
+template <class K> struct Equal 36,1922
+template <class K> struct Equal { bool operator () Equal::operator ()36,1922
+template <class K> struct Hash_params 38,2039
+    static uint hash Hash_params::hash39,2079
+    static bool equal(Hash_params::equal40,2152
+#define DefineHash(51,2485
+#define DefineEqual(52,2596
+template <class S, class T> struct Hash <Pair<S,T> > { uint operator () operator ()57,2732
+template <class S, class T> struct Equal<Pair<S,T> > { bool operator () operator ()58,2912
+template <class S> struct Hash 62,3133
+template <class S> struct Hash <Interval<S> > { uint operator () Hash::operator ()62,3133
+template <class S> struct Equal<Equal63,3271
+template <class S> struct Equal<Interval<S> > { bool operator () Equal::operator ()63,3271
+template <class K> struct Hash<Hash69,3448
+template <class K> struct Hash<const K*> { uint operator () Hash::operator ()69,3448
+template <class K> struct Hash<Hash70,3616
+template <class K> struct Hash<K*>       { uint operator () Hash::operator ()70,3616
+template <class K> struct Hash<Hash72,3790
+template <class K> struct Hash<const K*> { uint operator () Hash::operator ()72,3790
+template <class K> struct Hash<Hash73,3914
+template <class K> struct Hash<K*>       { uint operator () Hash::operator ()73,3914
+DefineHash (const char*, uint v = 0; for (int i = 0; key[i] != '\0'; i++) v 78,4061
+DefineHash (char*, uint v = 0; for (int i = 0; key[i] != '\0'; i++) v 80,4263
+
+ADTs/Heap.h,813
+#define __HEAP__21,1296
+static inline int left 23,1314
+static inline int right(24,1364
+static inline int parent(25,1418
+class Heap 28,1487
+    C        comp;Heap::comp30,1509
+    vec<int> heap;Heap::heap31,1528
+    vec<int> indices;Heap::indices32,1567
+    inline void percolateUp(Heap::percolateUp34,1615
+    inline void percolateDown(Heap::percolateDown46,1931
+    bool ok(Heap::ok60,2373
+    Heap(Heap::Heap63,2448
+    void setBounds Heap::setBounds65,2492
+    bool inHeap Heap::inHeap66,2569
+    void increase Heap::increase67,2642
+    bool empty Heap::empty68,2735
+    void insert(Heap::insert70,2795
+    int  getmin(Heap::getmin77,2939
+    int  peekmin(Heap::peekmin88,3203
+    bool heapProperty(Heap::heapProperty90,3247
+    bool heapProperty(Heap::heapProperty91,3303
+
+ADTs/Int.h,2798
+#define Int_h21,1293
+struct Exception_IntOverflow 28,1431
+    char* where;29,1462
+    Exception_IntOverflow(30,1479
+#define Int_Max__ 41,1815
+#define Int_Min__ 42,1857
+#define Int_Undef__ 43,1890
+#define A1 47,2031
+#define A2 48,2071
+class Int 53,2327
+    int64   data;Int::data54,2339
+    Int(Int::Int56,2365
+    Int(Int::Int57,2398
+    Int(Int::Int58,2428
+    uint hash(Int::hash62,2563
+    bool operator == Int::operator ==64,2632
+    bool operator != Int::operator !=65,2704
+    bool operator < Int::operator <66,2776
+    bool operator > Int::operator >67,2848
+    bool operator <= Int::operator <=68,2920
+    bool operator >= Int::operator >=69,2992
+    Int  operator & Int::operator &71,3065
+    Int& operator >>= Int::operator >>=72,3141
+    Int  operator - Int::operator -74,3204
+    Int& operator ++ Int::operator ++75,3268
+    Int& operator -= Int::operator -=76,3335
+    Int& operator += Int::operator +=77,3414
+    Int& operator *= Int::operator *=78,3493
+    Int& operator /= Int::operator /=79,3572
+    Int  operator + Int::operator +80,3651
+    Int  operator - Int::operator -81,3727
+    Int  operator * Int::operator *82,3803
+    Int  operator / Int::operator /83,3879
+    Int  operator % Int::operator %84,3955
+#define Int_MAX 91,4317
+#define Int_MIN 92,4348
+#undef A194,4380
+#undef A295,4390
+#define A1 108,4795
+#define A2 109,4824
+#define Int_MIN 113,4979
+#define Int_MAX 114,5011
+class Int 117,5044
+    mpz_t*  data;Int::data118,5056
+    bool small(Int::small120,5281
+    Int(Int::Int125,5408
+    Int(Int::Int127,5484
+    Int(Int::Int132,5593
+    Int(Int::Int137,5717
+   ~Int(Int::~Int145,5933
+    Int& operator = Int::operator =152,6050
+    bool operator == Int::operator ==173,6729
+    bool operator < Int::operator <180,6960
+    bool operator != Int::operator !=197,7532
+    bool operator >= Int::operator >=198,7608
+    bool operator > Int::operator >199,7683
+    bool operator <= Int::operator <=200,7755
+    Int  operator + Int::operator +204,7900
+    Int  operator - Int::operator -205,8016
+    Int  operator * Int::operator *206,8132
+    Int  operator / Int::operator /207,8248
+    Int  operator % Int::operator %208,8364
+    Int& operator += Int::operator +=210,8481
+    Int& operator -= Int::operator -=211,8581
+    Int& operator *= Int::operator *=212,8681
+    Int& operator /= Int::operator /=213,8781
+    Int& operator %= Int::operator %=214,8881
+    Int& operator ++ Int::operator ++215,8981
+    Int& operator -- Int::operator --216,9033
+    Int operator - Int::operator -218,9086
+    Int add(Int::add226,9336
+    Int  operator & Int::operator &238,9587
+    Int& operator >>= Int::operator >>=239,9700
+    uint hash(Int::hash258,10325
+
+ADTs/Map.h,186
+#define Map_h27,1464
+    typedef K Key;115,3972
+    typedef D Datum;116,3991
+    Map<K,D,Par>& operator = operator =129,4483
+    #define SEARCH(157,5684
+    #undef SEARCH247,8624
+
+ADTs/Sort.h,748
+#define Sort_h29,1639
+struct LessThan_default 38,1798
+    bool operator () LessThan_default::operator ()39,1824
+struct LessThan_reverse 43,1896
+    bool operator () LessThan_reverse::operator ()44,1922
+void selectionSort(52,2114
+template <class T> static inline void selectionSort(66,2466
+void sort(71,2634
+template <class T, class LessThan> void sort(95,3218
+template <class T> static inline void sort(97,3358
+void sortUnique(102,3508
+template <class T> static inline void sortUnique(121,3843
+template <class T, class LessThan> void sort(129,4088
+template <class T> void sort(131,4192
+template <class T> void sortr(133,4272
+template <class T, class LessThan> void sortUnique(137,4355
+template <class T> void sortUnique(143,4577
+
+ADTs/StackAlloc.h,274
+#define StackAlloc_h21,1300
+struct Allocator 27,1442
+template<class T, int cap=37,1672
+template<class T, int cap,61,2403
+T* StackAlloc<T,cap,lim>::alloc_helper(alloc_helper62,2439
+template<class T, int cap,79,3013
+void StackAlloc<T,cap,lim>::freeAll(freeAll80,3049
+
+ADTs/VecAlloc.h,65
+#define VecAlloc_h2,19
+template <class T, int chunk_size 8,161
+
+ADTs/VecMaps.h,1469
+#define VecMaps_h21,1297
+class BitMap 28,1493
+    vec<unsigned>   v;BitMap::v29,1508
+    bool            bool_null;BitMap::bool_null30,1531
+    unsigned word(BitMap::word32,1563
+    unsigned mask(BitMap::mask33,1644
+    typedef int  Key;BitMap::Key35,1740
+    typedef bool Datum;BitMap::Datum36,1762
+    BitMap(BitMap::BitMap38,1787
+    BitMap(BitMap::BitMap39,1845
+    BitMap(BitMap::BitMap40,1903
+    bool at(BitMap::at42,2025
+    void set(BitMap::set46,2208
+    void clear(BitMap::clear53,2486
+class VecMap 58,2546
+    vec<T>  v;VecMap::v59,2561
+    T       T_null;VecMap::T_null60,2576
+    typedef int Key;VecMap::Key63,2605
+    typedef T   Datum;VecMap::Datum64,2626
+    VecMap(VecMap::VecMap66,2650
+    VecMap(VecMap::VecMap67,2721
+    VecMap(VecMap::VecMap68,2792
+    T at(VecMap::at70,2864
+    void set(VecMap::set74,3030
+    void clear(VecMap::clear78,3192
+struct VecMap<VecMap82,3244
+    VecMap(VecMap::VecMap83,3275
+    VecMap(VecMap::VecMap84,3340
+    VecMap(VecMap::VecMap85,3405
+class DeckMap 90,3494
+    VecMap<T>   pos,DeckMap::pos91,3510
+    VecMap<T>   pos, neg;DeckMap::neg91,3510
+    typedef int Key;DeckMap::Key94,3545
+    typedef T   Datum;DeckMap::Datum95,3566
+    DeckMap(DeckMap::DeckMap97,3590
+    DeckMap(DeckMap::DeckMap98,3671
+    DeckMap(DeckMap::DeckMap99,3752
+    T at(DeckMap::at101,3834
+    void set(DeckMap::set104,3939
+    void clear(DeckMap::clear107,4057

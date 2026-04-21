@@ -1,0 +1,6 @@
+l = 1;
+		u = 2;
+		k = 4;
+		n_nurses = 2;
+		n_weeks = 1;
+		seq = seq_search([restart_luby(10)]);

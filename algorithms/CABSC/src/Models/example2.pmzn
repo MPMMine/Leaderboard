@@ -1,0 +1,27 @@
+from Global import LinearEquation
+from General import LessThan
+
+int: low = 1;
+int: high = 6;
+set: domain = low..high;
+array: mapping_x_y = [1..2];
+
+var domain: a1; %Such that a*x+b*y=c
+var domain: b1;
+var domain: c1;
+var 0..1: presence1;
+
+var domain: a2; %Such that a*x+b*y=c
+var domain: b2;
+var domain: c2;
+var 0..1: presence2;
+
+constraint LinearEquation(mapping_x_y, [a1,b1], "<=", c1, presence1);
+constraint LinearEquation(mapping_x_y, [a2,b2], "<=", c2, presence2);
+
+int_search([c1, c2], DeepSearch, Smallest);
+int_search([a1, a2, b1, b2], DeepSearch, Largest);
+global_search(Priority);
+set_priority([presence1, presence2], 1);
+set_priority([a1, a2, b1, b2], 2);
+set_priority([c1, c2], 3);

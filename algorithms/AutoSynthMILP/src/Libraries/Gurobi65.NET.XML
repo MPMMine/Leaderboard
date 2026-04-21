@@ -1,0 +1,2917 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gurobi65.NET</name>
+    </assembly>
+    <members>
+        <member name="T:Gurobi.GRB">
+            <summary>
+            Class for various Gurobi constants.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.METHOD_AUTO">
+            <summary>
+            Constant for Method parameter -
+            choose method automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.METHOD_PRIMAL">
+            <summary>
+            Constant for Method and NodeMethod parameters -
+            use primal simplex.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.METHOD_DUAL">
+            <summary>
+            Constant for Method and NodeMethod parameters -
+            use dual simplex.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.METHOD_BARRIER">
+            <summary>
+            Constant for Method and NodeMethod parameters -
+            use barrier.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.METHOD_CONCURRENT">
+            <summary>
+            Constant for Method parameters - use concurrent optimizer.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.METHOD_DETERMINISTIC_CONCURRENT">
+            <summary>
+            Constant for Method parameter - use deterministic concurrent optimizer.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.FEASRELAX_LINEAR">
+            <summary>
+            minimize linearly weighted sum of penalties for feasrelax model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.FEASRELAX_QUADRATIC">
+            <summary>
+            minimize quadratically weighted sum of penalties for feasrelax model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.FEASRELAX_CARDINALITY">
+            <summary>
+            minimize weighted cardinality of relaxations for feasrelax model.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.DoubleParam">
+            <summary>
+            List of double-valued parameters.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.Cutoff">
+            <summary>
+            Target solution objective value.  The Gurobi solver will only attempt
+            to find solutions whose objective values are better than the specified
+            target.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.IterationLimit">
+            <summary>
+            Limit on the number of simplex iterations that will be performed.
+            Optimization will terminate when this limit is reached.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.NodeLimit">
+            <summary>
+            Limit on the number of branch-and-bound nodes that will be explored.
+            Optimization will terminate when this limit is reached.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.TimeLimit">
+            <summary>
+            Limit on the amount of time that will be used for an optimization.
+            Optimization will terminate when this limit is reached.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.BarConvTol">
+            <summary>
+            Convergence tolerance for barrier solver.  Optimization terminates
+            when the relative difference between the primal and dual objective
+            is less than this tolerance.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.BarQCPConvTol">
+            <summary>
+            Convergence tolerance for barrier solver when solving a QCP model.
+            Optimization terminates when the relative difference between the
+            primal and dual objective is less than this tolerance.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.FeasibilityTol">
+            <summary>
+            Primal feasibility tolerance.  All constraints must be satisfied
+            to this tolerance.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.ImproveStartGap">
+            <summary>
+            The MIP solver can change parameter settings in the middle of the
+            search in order to adopt a strategy that gives up on moving the best
+            bound and instead devotes all of its effort towards finding better
+            feasible solutions.  This parameter specifies the optimality gap
+            at which the MIP solve will switch to this strategy.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.ImproveStartNodes">
+            <summary>
+            The MIP solver can change parameter settings in the middle of the
+            search in order to adopt a strategy that gives up on moving the best
+            bound and instead devotes all of its effort towards finding better
+            feasible solutions.  This parameter specifies the explored node
+            count at which the MIP solve will switch to this strategy.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.ImproveStartTime">
+            <summary>
+            The MIP solver can change parameter settings in the middle of the
+            search in order to adopt a strategy that gives up on moving the best
+            bound and instead devotes all of its effort towards finding better
+            feasible solutions.  This parameter specifies the elapsed solver
+            runtime at which the MIP solve will switch to this strategy.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.IntFeasTol">
+            <summary>
+            Integer feasibility tolerance.  Integer variables must take
+            values that are no more than the specified tolerance away
+            from the nearest integer.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.MarkowitzTol">
+            <summary>
+            Threshold pivoting tolerance.  Used to limit numerical error in the
+            simplex algorithm.  A larger value may avoid numerical problems in rare
+            situations, but it will harm performance for most models.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.MIPGap">
+            <summary>
+            MIP optimality tolerance.  Solution is declared optimal when the
+            relative difference between the lower and upper bound is below
+            the specified value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.MIPGapAbs">
+            <summary>
+            MIP optimality tolerance.  Solution is declared optimal when the
+            absolute different between the lower and upper bound is below
+            the specified value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.OptimalityTol">
+            <summary>
+            Dual feasibility tolerance.  All dual constraints must be satisfied
+            to this tolerance.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.PSDTol">
+            <summary>
+            QP positive semi-definite tolerance.  Sets a limit on the amount
+            of diagonal perturbation that the optimizer is allowed to perform
+            on the Q matrix in order to correct minor PSD violations.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.ObjScale">
+            <summary>
+            Simplex objective scaling.  By default, the algorithm chooses
+            automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.PerturbValue">
+            <summary>
+            Magnitude of the simplex perturbation (when perturbation is required).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.Heuristics">
+            <summary>
+            Fraction of runtime spent in MIP heuristics.  Larger values
+            produce more and better feasible solutions, at a cost of slower
+            progress in the best bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.NodefileStart">
+            <summary>
+            Amount of storage the MIP nodes can consume (in GB) before nodes are
+            written to disk.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.FeasRelaxBigM">
+            <summary>
+            FeasRelax bigM for the cardinality type.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.TuneTimeLimit">
+            <summary>
+            Limit on the amount of time that will be used for
+            the tuning tool (in seconds).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.PreSOS1BigM">
+            <summary>
+            Largest big-M value presolve is allowed to use when
+            converting an SOS-1 constraint into binary form.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleParam.PreSOS2BigM">
+            <summary>
+            Largest big-M value presolve is allowed to use when
+            converting an SOS-2 constraint into binary form.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.IntParam">
+            <summary>
+            List of integer-valued parameters.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.BarIterLimit">
+            <summary>
+            Limit on the number of barrier iterations that will be performed.
+            Optimization will terminate when this limit is reached.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.SolutionLimit">
+            <summary>
+            Limit on the number of feasible solutions found by the Gurobi MIP
+            solver.  Optimization will terminate when this limit is reached.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.NormAdjust">
+            <summary>
+            Chooses from among multiple pricing norm variants.  By default, the
+            algorithm chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Sifting">
+            <summary>
+            Dual simplex sifting strategy for LP, MIP root and MIP nodes.
+            By default, the algorithm chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.SiftMethod">
+            <summary>
+            Chooses from dual, primal and barrier to solve sifting subproblem.
+            By default, the algorithm chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Quad">
+            <summary>
+            Enables or disables quad precision computation in simplex.  By default,
+            the algorithm chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.ScaleFlag">
+            <summary>
+            Controls model scaling.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.SimplexPricing">
+            <summary>
+            Simplex variable pricing strategy.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.BarCorrectors">
+            <summary>
+            The number of central corrections applied during the barrier
+            solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.BarHomogeneous">
+            <summary>
+            Determines whether the homogeneous algorithm is used when
+            solving a model using barrier.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.BarOrder">
+            <summary>
+            Barrier ordering strategy.  By default, the algorithm chooses
+            automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Crossover">
+            <summary>
+            Type of crossover performed after barrier.  By default, the algorithm
+            choose automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.CrossoverBasis">
+            <summary>
+            Type of initial crossover basis construction.  The default value of
+            0 builds a basis quickly.  Choose value 1 for a more expensive basis
+            that is often more numerically stable.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.BranchDir">
+            <summary>
+            Branch direction.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.MinRelNodes">
+            <summary>
+            Number of nodes to explore in the Minimum Relaxation heuristic.
+            Heuristic is performed at the end of the MIP root node, and only
+            when no feasible solution is available.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.MIPFocus">
+            <summary>
+            Focus of MIP search.  Allows you to change the focus to finding
+            feasible solution, proving optimality, or moving the objective bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.NodeMethod">
+            <summary>
+            Algorithm used to solve the MIP node relaxations.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.NoRelHeuristic">
+            <summary>
+            Enables the NoRel heuristic, which searches for feasible solutions
+            to a MIP model before solving the root relaxation.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PumpPasses">
+            <summary>
+            Number of passes of the MIP feasibility pump heuristic performed.
+            Heuristic is performed at the end of the MIP root node, and only
+            when no feasible solution is available.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.RINS">
+            <summary>
+            Frequency at which to apply the RINS heuristic.  The default value
+            of -1 is an automatic setting.  A value of 0 shuts off the RINS
+            heuristic.  Setting the parameter to a positive value n applies the
+            RINS at every n-th node in the MIP search tree.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.SolutionNumber">
+            <summary>
+            When querying an alternate MIP solution through the Xn attribute,
+            determines which solution is retrieved.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.SubMIPNodes">
+            <summary>
+            Limit on the number of nodes explored in local search heuristics.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Symmetry">
+            <summary>
+            Symmetry detection level.  By default, the algorithm choose
+            automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.VarBranch">
+            <summary>
+            Branch variable selection strategy.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.ZeroObjNodes">
+            <summary>
+            Number of nodes to explore in the Zero Objective heuristic.
+            Heuristic is performed at the end of the MIP root node, and only
+            when no feasible solution is available.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Cuts">
+            <summary>
+            Global cut generation control.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.CliqueCuts">
+            <summary>
+            Clique cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.CoverCuts">
+            <summary>
+            Cover cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.FlowCoverCuts">
+            <summary>
+            Flow cover cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.FlowPathCuts">
+            <summary>
+            Flow path cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.GUBCoverCuts">
+            <summary>
+            GUB cover cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.ImpliedCuts">
+            <summary>
+            Implied bound cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.MIPSepCuts">
+            <summary>
+            MIP separation cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.MIRCuts">
+            <summary>
+            Mixed Integer Rounding (MIR) cut generation.  Overrides the
+            Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.ModKCuts">
+            <summary>
+            Mod-K cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.NetworkCuts">
+            <summary>
+            Network cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.SubMIPCuts">
+            <summary>
+            Sub-MIP cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.ZeroHalfCuts">
+            <summary>
+            Zero-half cut generation.  Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.CutAggPasses">
+            <summary>
+            Maximum number of aggregation passes performed during cut generation.
+            Overrides the Cuts parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.CutPasses">
+            <summary>
+            Maximum number of cut passes performed during cut generation.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.GomoryPasses">
+            <summary>
+            Maximum number of Gomory cut passes performed.  Overrides the Cuts
+            parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.NumericFocus">
+            <summary>
+            Numerically conservative level.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.AggFill">
+            <summary>
+            Presolve aggregation fill level.  Amount of constraint matrix fill
+            to allow in a single aggregation step.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Aggregate">
+            <summary>
+            Enable/disable aggregation in presolve.  In rare instances,
+            aggregation can lead to an accumulation of numerical errors.  Turning
+            it off can sometimes improve solution accuracy.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.DisplayInterval">
+            <summary>
+            Frequency at which log lines are printed (in seconds).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.DualReductions">
+            <summary>
+            Enable/disable dual reductions in MIP.  Disable dual reductions
+            if you plan to add lazy constraints.  Otherwise, incorrect
+            solutions may result.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.IISMethod">
+            <summary>
+            The method used to compute an Irreducible Infeasible Subsystem.
+            Method 0 is typically much faster, but method 1 can product
+            a much smaller IIS.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.InfUnbdInfo">
+            <summary>
+            Make additional information available for infeasible or
+            unbounded LP models
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Method">
+            <summary>
+            Algorithm used to solve continuous linear models.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.OutputFlag">
+            <summary>
+            Enable/disable Gurobi console output. By default, the Gurobi
+            solver produces no output.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PreCrush">
+            <summary>
+            Allows presolve to translate constraints on the original model
+            to equivalent constraints on the presolved model.  Enable this
+            when you are using callbacks to add your own cuts.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PreDepRow">
+            <summary>
+            Presolve dependent row elimination.  Controls whether presolve
+            attempts to remove linearly dependent rows from the model.  By
+            default, the dependent row reduction is on for continuous models
+            and off for MIP models.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PreDual">
+            <summary>
+            Presolve dualization strategy for continuous models.  Forming
+            the dual of the input model can sometimes significantly reduce
+            solution times.  By default, the algorithm chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PreQLinearize">
+            <summary>
+            Presolve Q matrix linearization.  Option 1 will attempt to
+            linearize quadratic constraints or a quadratic objective.
+            Option 0 always leaves Q matrices unmodified.
+            The default setting chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PrePasses">
+            <summary>
+            Presolve pass limit.  Controls the number of passes performed
+            by presolve.  The default value of -1 chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Presolve">
+            <summary>
+            Presolve level.  More aggressive presolve reductions can produce
+            a model that is easier to solve, but such reductions can be expensive.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Threads">
+            <summary>
+            Parallel Gurobi MIP thread count.  The default value of 0 uses all
+            of the processors in the machine.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.MIQCPMethod">
+            <summary>
+            Indicator to solve QCP node relaxation or to use outer approximation.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.QCPDual">
+            <summary>
+            Indicator to compute QCP duals.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.LogToConsole">
+            <summary>
+            Indicates whether the Gurobi log should be sent to the console.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PreSparsify">
+            <summary>
+            Presolve matrix sparsification.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.PreMIQCPForm">
+            <summary>
+            MIQCP, MISOCP or disaggregated MISOCP for the presolved model
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Seed">
+            <summary>
+            Random number seed.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.ConcurrentMIP">
+            <summary>
+            Enables concurrent MIP.  A value of 'n' causes the MIP solver
+            to solve 'n' independent MIP models, using different parameter
+            settings for each.  The optimization terminates when the
+            the first model solves.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.ConcurrentJobs">
+            <summary>
+            Enables the distributed concurrent optimizer.  A value of 'n' causes
+            the concurrent optimizer to create 'n' independent models, using
+            different parameter settings for each.  Each of these models
+            is sent to a distributed worker machine for processing.  The list
+            of available distributed workers should be specified via the
+            'WorkerPool'parameter.  The optimization terminates when the first
+            model solves.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.DistributedMIPJobs">
+            <summary>
+            Enables distributed MIP.  A value of 'n' causes the
+            MIP solver to divide the work of solving the MIP model
+            among 'n' worker machines.  The list of available
+            workers should be specified via the 'WorkerPool'
+            parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.LazyConstraints">
+            <summary>
+            Shuts off features that are incompatible with lazy
+            constraints.  Programs that add lazy constraints must set
+            this parameter to 1.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.TuneCriterion">
+            <summary>
+            A MIP model can often be too hard to solve. Different users
+            may have different criterions, some want smaller MIPGap, while
+            others want better incumbent solutions. This parameter allows you
+            to specify different tuning citerions, 0 for runtime, 1 for MIPGap,
+            2 for objective value. The default value of -1 chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.TuneJobs">
+            <summary>
+            Enables distributed parallel tuning.  A value of n causes the
+            tuning tool to distribute tuning work among n parallel jobs.
+            Jobs are distributed among a set of distributed worker machines.
+            Use the WorkerPool parameter to provide a list of available distributed
+            workers.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.TuneOutput">
+            <summary>
+            Controls the amount of output produced by the tuning tool.  Level 0
+            produces no output; level 1 produces tuning summary output only when a
+            new best parameter set is found; level 2 produces tuning summary
+            output for each parameter set that is tried; level 3 produces tuning
+            summary output, plus detailed solver output, for each parameter set
+            tried.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.TuneResults">
+            <summary>
+            The tuning tool often finds multiple parameter sets that produce
+            better results than the baseline settings.  This parameter controls
+            how many of these sets should be retained when tuning is complete.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.TuneTrials">
+            <summary>
+            Performance on a MIP model can sometimes experience significant
+            variations due to random effects.  As a result, the tuning tool may
+            return parameter sets that improve on the baseline only due
+            to randomness.  This parameter allows you to perform multiple solves
+            for each parameter set, using different random number seeds
+            for each, in order to reduce the influence of randomness on the results.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Disconnected">
+            <summary>
+            A MIP model can sometimes be made up of multiple, completely
+            independent sub-models.  This parameter controls how aggressively
+            we try to exploit this structure.  A value of 0 ignores this
+            structure entirely, while larger values try more aggressive
+            approaches.  The default value of -1 chooses automatically.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.UpdateMode">
+            <summary>
+            Controls the way how to update a model. Value 0 is default and doesn't
+            allow adding both new variables and new constraints before calling
+            update, while value 1 allows. In most cases, value 0 and value 1 will
+            have the same behavior for updating a model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.WorkerPort">
+            <summary>
+            When using a distributed parallel algorithm (distributed MIP,
+            distributed concurrent, or distributed tuning), this parameter
+            allows you to specify a non-default port number for the distributed
+            worker machines.  All workers should use the same port number.
+            The list of distributed workers should be specified via the
+            'WorkerPool' parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntParam.Record">
+            <summary>
+            Enables replay, which writes one or more files that capture
+            the sequence of Gurobi commands that your program issues.
+            These files can be replayed later using the Gurobi
+            command-line tool.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.StringParam">
+            <summary>
+            List of string-valued parameters.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringParam.LogFile">
+            <summary>
+            The name of the Gurobi log file.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringParam.NodefileDir">
+            <summary>
+            Directory in which MIP node files are stored.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringParam.ResultFile">
+            <summary>
+            Result file to write when optimization is complete.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringParam.WorkerPassword">
+            <summary>
+            When using a distributed parallel algorithm (distributed MIP,
+            distributed concurrent, or distributed tuning), this parameter
+            is used to provide
+            the password for the distributed workers that will be used.  The
+            list of distributed workers should be specified via the 'WorkerPool'
+            parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringParam.WorkerPool">
+            <summary>
+            When using a distributed parallel algorithm (distributed MIP,
+            distributed concurrent, or distributed tuning), use this parameter
+            to provide a
+            comma-separated list of available distributed worker machines.
+            The password
+            for these workers should be provided via the 'WorkerPassword'
+            parameter.  Use the 'ConcurrentJobs' or 'TuneJobs' parameters
+            to indicate how many total jobs should be launched on these
+            workers.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.IntAttr">
+            <summary>
+            List of integer-valued attributes.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumConstrs">
+            <summary>
+            The number of constraints in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumVars">
+            <summary>
+            The number of variables in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumSOS">
+            <summary>
+            The number of SOS constraints in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumQConstrs">
+            <summary>
+            The number of quadratic constraints in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumNZs">
+            <summary>
+            The number of non-zero coefficients in the constraint matrix.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumQNZs">
+            <summary>
+            The number of non-zero coefficients in the quadratic objective.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumQCNZs">
+            <summary>
+            The number of non-zero coefficients in the quadratic constraints
+            (includes both the linear and quadratic terms).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumIntVars">
+            <summary>
+            The number of integer variables (including binaries) in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumBinVars">
+            <summary>
+            The number of binary variables in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.NumPWLObjVars">
+            <summary>
+            The number of variables with PWL objectives in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.ModelSense">
+            <summary>
+            Optimization sense (+1 for minimize, -1 for maximize).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IsMIP">
+            <summary>
+            Indicates whether the model is a MIP.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IsQP">
+            <summary>
+            Indicates whether the model has a quadratic objective.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IsQCP">
+            <summary>
+            Indicates whether the model has quadratic constraints.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.Status">
+            <summary>
+            Current optimization status of the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.SolCount">
+            <summary>
+            Number of solutions found.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.BarIterCount">
+            <summary>
+            Number of barrier iterations performed in most recent optimization.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.VarHintPri">
+            <summary>
+            Variable hint priorities.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.VBasis">
+            <summary>
+            The status of a variable in the current simplex basis.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.CBasis">
+            <summary>
+            The status of a constraint in the current simplex basis.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.PWLObjCvx">
+            <summary>
+            The convex status of the piecewise linear objective of a variable
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.BranchPriority">
+            <summary>
+            Variable branching priority.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.VarPreStat">
+            <summary>
+            Status of variable in presolved model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IISMinimal">
+            <summary>
+            Indicates whether the current IIS is minimal.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IISLB">
+            <summary>
+            Indicates whether a variable lower bound participates in the current
+            IIS.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IISUB">
+            <summary>
+            Indicates whether a variable upper bound participates in the current
+            IIS.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IISConstr">
+            <summary>
+            Indicates whether a constraint participates in the current IIS.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IISSOS">
+            <summary>
+            Indicates whether an SOS constraint participates in the current IIS.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.IISQConstr">
+            <summary>
+            Indicates whether a quadratic constraint participates in the current IIS.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.TuneResultCount">
+            <summary>
+            Number of improving parameter sets stored by the tuning tool.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.IntAttr.Lazy">
+            <summary>
+            Determines whether the constraint is treated as a lazy constraint.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.CharAttr">
+            <summary>
+            List of character-valued attributes.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.CharAttr.VType">
+            <summary>
+            Variable type.  Options are GRB.CONTINUOUS, GRB.BINARY, GRB.INTEGER,
+            GRB.SEMICONT, or GRB.SEMIINT.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.CharAttr.Sense">
+            <summary>
+            Constraint sense.  Options are GRB.LESS_EQUAL, GRB.GREATER_EQUAL, or
+            GRB.EQUAL.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.CharAttr.QCSense">
+            <summary>
+            Quadratic constraint sense.  Options are GRB.LESS_EQUAL, GRB.GREATER_EQUAL, or
+            GRB.EQUAL.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.DoubleAttr">
+            <summary>
+            List of double-valued attributes.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.Runtime">
+            <summary>
+            Runtime for most recent optimization (in seconds).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.ObjCon">
+            <summary>
+            Model objective constant.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.LB">
+            <summary>
+            Variable lower bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.UB">
+            <summary>
+            Variable upper bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.Obj">
+            <summary>
+            Variable objective value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.Start">
+            <summary>
+            Variable MIP start values.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.VarHintVal">
+            <summary>
+            Variable hint values.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.PreFixVal">
+            <summary>
+            For variables fixed by presolve, gives the value of the variable.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.RHS">
+            <summary>
+            Constraint right-hand side value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.QCRHS">
+            <summary>
+            Quadratic constraint right-hand side value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MaxCoeff">
+            <summary>
+            Maximum constraint coefficient (in absolute value).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MinCoeff">
+            <summary>
+            Minimum (non-zero) constraint coefficient (in absolute value).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MaxBound">
+            <summary>
+            Maximum finite variable bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MinBound">
+            <summary>
+            Minimum (non-zero) variable bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MaxObjCoeff">
+            <summary>
+            Maximum objective coefficient (in absolute value).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MinObjCoeff">
+            <summary>
+            Minimum (non-zero) objective coefficient (in absolute value).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MaxRHS">
+            <summary>
+            Maximum constraint right-hand side value (in absolute value).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MinRHS">
+            <summary>
+            Minimum (non-zero) constraint right-hand side value (in absolute value).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.ObjVal">
+            <summary>
+            Objective value for current solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.ObjBound">
+            <summary>
+            Best available bound on solution (lower bound for minimization,
+            upper bound for maximization).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.ObjBoundC">
+            <summary>
+            Best available continuous bound on solution (lower bound for
+            minimization, upper bound for maximization).  This value does
+            not take advantage of non-trivial objective GCD's to improve
+            the bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.MIPGap">
+            <summary>
+            Current relative MIP optimality gap.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.IterCount">
+            <summary>
+            Number of simplex iterations performed in most recent optimization.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.NodeCount">
+            <summary>
+            Number of branch-and-cut nodes explored in most recent optimization.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.X">
+            <summary>
+            Variable value in the current solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.Xn">
+            <summary>
+            Variable value in an alternate MIP solution (the specific alternate
+            solution is chosen using the SolutionNumber parameter).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.BarX">
+            <summary>
+            Variable value in best barrier iterate (before applying crossover).
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.RC">
+            <summary>
+            Variable reduced cost in the current solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.Pi">
+            <summary>
+            Constraint dual value in the current solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.QCPi">
+            <summary>
+            Quadratic constraint dual value in the current solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.Slack">
+            <summary>
+            Constraint slack in the current solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.QCSlack">
+            <summary>
+            Quadratic constraint slack in the current solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.Kappa">
+            <summary>
+            Estimated basis condition number.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.DoubleAttr.KappaExact">
+            <summary>
+            Exact basis condition number.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.StringAttr">
+            <summary>
+            List of string-valued attributes.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringAttr.ModelName">
+            <summary>
+            Model name.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringAttr.VarName">
+            <summary>
+            Variable name.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringAttr.ConstrName">
+            <summary>
+            Constraint name.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.StringAttr.QCName">
+            <summary>
+            Quadratic constraint name.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.Status">
+            <summary>
+            Optimization status codes
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.LOADED">
+            <summary>
+            Model is loaded, but no solution information is available.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.OPTIMAL">
+            <summary>
+            Model was solved to optimality (subject to tolerances) and an optimal
+            solution is available.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.INFEASIBLE">
+            <summary>
+            Model was proven to be infeasible.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.INF_OR_UNBD">
+            <summary>
+            Model was proven to be either infeasible or unbounded.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.UNBOUNDED">
+            <summary>
+            Model was proven to be unbounded.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.CUTOFF">
+            <summary>
+            Optimal objective was proven to be worse than the value specified
+            in the Cutoff parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.ITERATION_LIMIT">
+            <summary>
+            Optimization terminated because the total number of simplex
+            iterations performed exceeded the limit specified in the IterationLimit
+            parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.NODE_LIMIT">
+            <summary>
+            Optimization terminated because the total number of branch-and-cut
+            nodes explored exceeded the limit specified in the NodeLimit
+            parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.TIME_LIMIT">
+            <summary>
+            Optimization terminated because the total elapsed time
+            exceeded the limit specified in the TimeLimit parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.SOLUTION_LIMIT">
+            <summary>
+            Optimization terminated because the number of solutions found
+            reached the value specified in the SolutionLimit parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.INTERRUPTED">
+            <summary>
+            Optimization was terminated by the user.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.NUMERIC">
+            <summary>
+            Optimization was terminated due to unrecoverable numerical
+            difficulties.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.SUBOPTIMAL">
+            <summary>
+            Optimization terminated with a sub-optimal solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Status.INPROGRESS">
+            <summary>
+            Optimization is still in progress.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.Callback">
+            <summary>
+            Gurobi callback codes.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.POLLING">
+            <summary>
+            Periodic polling callback.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.PRESOLVE">
+            <summary>
+            Currently performing presolve.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.SIMPLEX">
+            <summary>
+            Currently in simplex.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP">
+            <summary>
+            Currently in MIP.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPSOL">
+            <summary>
+            Found a new MIP incumbent.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE">
+            <summary>
+            Currently exploring a MIP node.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.BARRIER">
+            <summary>
+            Currently in barrier.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MESSAGE">
+            <summary>
+            Printing a log message.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.PRE_COLDEL">
+            <summary>
+            Returns the number of columns removed by presolve to this point.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.PRE_ROWDEL">
+            <summary>
+            Returns the number of rows removed by presolve to this point.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.PRE_SENCHG">
+            <summary>
+            Returns the number of constraint senses changed by presolve to this
+            point.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.PRE_BNDCHG">
+            <summary>
+            Returns the number of bounds changed by presolve to this point.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.PRE_COECHG">
+            <summary>
+            Returns the number of coefficients changed by presolve to this point.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.SPX_ITRCNT">
+            <summary>
+            Returns the current simplex iteration count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.SPX_OBJVAL">
+            <summary>
+            Returns the current simplex objective value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.SPX_PRIMINF">
+            <summary>
+            Returns the current simplex primal infeasibility.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.SPX_DUALINF">
+            <summary>
+            Returns the current simplex dual infeasibility.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.SPX_ISPERT">
+            <summary>
+            Returns 1 if the model has been perturbed.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP_OBJBST">
+            <summary>
+            Returns the current best objective value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP_OBJBND">
+            <summary>
+            Returns the current best objective bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP_NODCNT">
+            <summary>
+            Returns the current explored node count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP_SOLCNT">
+            <summary>
+            Returns the current solution count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP_CUTCNT">
+            <summary>
+            Returns the current cutting plane count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP_NODLFT">
+            <summary>
+            Returns the current unexplored node count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIP_ITRCNT">
+            <summary>
+            Returns the current simplex iteration count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPSOL_SOL">
+            <summary>
+            Returns the new solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPSOL_OBJ">
+            <summary>
+            Returns the objective value for the new solution.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPSOL_OBJBST">
+            <summary>
+            Returns the current best objective value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPSOL_OBJBND">
+            <summary>
+            Returns the current best objective bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPSOL_NODCNT">
+            <summary>
+            Returns the current explored node count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPSOL_SOLCNT">
+            <summary>
+            Returns the current solution count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE_STATUS">
+            <summary>
+            Returns the status of the current node relaxation.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE_REL">
+            <summary>
+            Returns the current node relaxation solution or ray.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE_OBJBST">
+            <summary>
+            Returns the current best objective value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE_OBJBND">
+            <summary>
+            Returns the current best objective bound.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE_NODCNT">
+            <summary>
+            Returns the current explored node count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE_SOLCNT">
+            <summary>
+            Returns the current solution count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MIPNODE_BRVAR">
+            <summary>
+            Returns the branching variable for the current node.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.BARRIER_ITRCNT">
+            <summary>
+            Returns the current barrier iteration count.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.BARRIER_PRIMOBJ">
+            <summary>
+            Returns the current barrier primal objective value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.BARRIER_DUALOBJ">
+            <summary>
+            Returns the current barrier dual objective value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.BARRIER_PRIMINF">
+            <summary>
+            Returns the current barrier primal infeasibility.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.BARRIER_DUALINF">
+            <summary>
+            Returns the current barrier dual infeasibility.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.BARRIER_COMPL">
+            <summary>
+            Returns the current barrier complementarity violation.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.MSG_STRING">
+            <summary>
+            Returns the message that is being printed.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Callback.RUNTIME">
+            <summary>
+            Returns the elapsed solver runtime (in seconds).
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRB.Error">
+            <summary>
+            Gurobi error codes.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.OUT_OF_MEMORY">
+            <summary>
+            Available memory was exhausted.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NULL_ARGUMENT">
+            <summary>
+            NULL input value provided for a required argument.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.INVALID_ARGUMENT">
+            <summary>
+            Invalid input value.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.UNKNOWN_ATTRIBUTE">
+            <summary>
+            Tried to query or set an unknown attribute.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.DATA_NOT_AVAILABLE">
+            <summary>
+            Tried to query or set an attribute that could not be accessed.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.INDEX_OUT_OF_RANGE">
+            <summary>
+            Index for attribute query was out of range.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.UNKNOWN_PARAMETER">
+            <summary>
+            Tried to query or set an unknown parameter.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.VALUE_OUT_OF_RANGE">
+            <summary>
+            Tried to set a parameter to a value that is outside its valid range.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NO_LICENSE">
+            <summary>
+            Failed to obtain a Gurobi license.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.SIZE_LIMIT_EXCEEDED">
+            <summary>
+            Attempted to solve a model that is larger than the limit for a
+            trial license.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.CALLBACK">
+            <summary>
+            Problem in callback.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.FILE_READ">
+            <summary>
+            Failed to read the requested file.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.FILE_WRITE">
+            <summary>
+            Failed to write the requested file.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NUMERIC">
+            <summary>
+            Numerical error during requested operation.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.IIS_NOT_INFEASIBLE">
+            <summary>
+            Attempted to perform infeasibility analysis on a feasible model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NOT_FOR_MIP">
+            <summary>
+            Requested operation not valid for a MIP model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.OPTIMIZATION_IN_PROGRESS">
+            <summary>
+            Tried to access a model while optimization was in progress.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.DUPLICATES">
+            <summary>
+            Constraint, variable, or SOS contained duplicate indices.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NODEFILE">
+            <summary>
+            Error in reading or writing a MIP node file.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.Q_NOT_PSD">
+            <summary>
+            non-PSD Q matrix in the objective or in a quadratic constraint.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.QCP_EQUALITY_CONSTRAINT">
+            <summary>
+            Equality quadratic constraints.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NETWORK">
+            <summary>
+            Network error.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.JOB_REJECTED">
+            <summary>
+            Job rejected from Compute Server queue.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NOT_SUPPORTED">
+            <summary>
+            Operation is not supported in the current usage environment.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.EXCEED_2B_NONZEROS">
+            <summary>
+            Result is larger than return value allows.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.INVALID_PIECEWIE_OBJ">
+            <summary>
+            Problem with piecewise-linear objective function.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.NOT_IN_MODEL">
+            <summary>
+            Tried to access a constraint or variable that is not in the model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.FAILED_TO_CREATE_MODEL">
+            <summary>
+            Failed to create the requested model.
+            </summary>
+        </member>
+        <member name="F:Gurobi.GRB.Error.INTERNAL">
+            <summary>
+            Internal Gurobi error.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBColumn">
+            <summary>
+            Gurobi column class.  A column consists of a list of
+            coefficient-constraint pairs.  Columns are used to represent the set
+            of constraints in which a variables participates, and the associated
+            coefficients.  Columns are temporary objects that typically have short
+            lifespans.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.GetConstr(System.Int32)">
+            <summary>
+            Retrieves the constraint for term i in the column.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.GetCoeff(System.Int32)">
+            <summary>
+            Retrieves the coefficient for term i in the column.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.AddTerm(System.Double,Gurobi.GRBConstr)">
+            <summary>
+            Adds a term into the column.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.AddTerms(System.Double[],Gurobi.GRBConstr[])">
+            <summary>
+            Adds multiple terms into the column.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.AddTerms(System.Double[],Gurobi.GRBConstr[],System.Int32,System.Int32)">
+            <summary>
+            Adds multiple terms into the column.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.Remove(System.Int32)">
+            <summary>
+            Removes term i from the column.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.Remove(Gurobi.GRBConstr)">
+            <summary>
+            Removes all terms involving the specified constraint from the column.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBColumn.Clear">
+            <summary>
+            Remove all terms from a column.
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBColumn.Size">
+            <summary>
+            Returns the numbers of terms in the column.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBConstr">
+            <summary>
+            Gurobi constraint class.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.SameAs(Gurobi.GRBConstr)">
+            <summary>
+            Indicates whether two GRBVar objects refer to the same Gurobi model
+            variable.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Get(Gurobi.GRB.IntAttr)">
+            <summary>
+            Queries the value of an integer-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Get(Gurobi.GRB.CharAttr)">
+            <summary>
+            Queries the value of a character-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Get(Gurobi.GRB.DoubleAttr)">
+            <summary>
+            Queries the value of a double-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Get(Gurobi.GRB.StringAttr)">
+            <summary>
+            Queries the value of a string-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Set(Gurobi.GRB.IntAttr,System.Int32)">
+            <summary>
+            Modifies the value of an integer-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Set(Gurobi.GRB.CharAttr,System.Char)">
+            <summary>
+            Modifies the value of a character-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Set(Gurobi.GRB.DoubleAttr,System.Double)">
+            <summary>
+            Modifies the value of a double-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBConstr.Set(Gurobi.GRB.StringAttr,System.String)">
+            <summary>
+            Modifies the value of a string-valued constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Message(System.String)">
+            <summary>
+            Adds a user-generated message to the Gurobi log.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Get(Gurobi.GRB.IntParam)">
+            <summary>
+            Retrieves the value of an integer-valued parameter.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Get(Gurobi.GRB.DoubleParam)">
+            <summary>
+            Retrieves the value of a double-valued parameter.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Get(Gurobi.GRB.StringParam)">
+            <summary>
+            Retrieves the value of a string-valued parameter.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Set(Gurobi.GRB.IntParam,System.Int32)">
+            <summary>
+            Modifies the value of an int-valued parameter.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Set(Gurobi.GRB.DoubleParam,System.Double)">
+            <summary>
+            Modifies the value of a double-valued parameter.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Set(Gurobi.GRB.StringParam,System.String)">
+            <summary>
+            Modifies the value of a string-valued parameter.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Set(System.String,System.String)">
+            <summary>
+            Modifies the value of a parameter.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.GetParamInfo(Gurobi.GRB.IntParam,System.Int32[])">
+            <summary>
+            Returns detailed information about an int-valued parameter.
+            The current value is returned in info[0],
+            the minimum allowed value in info[1],
+            the maximum allowed value in info[2],
+            and the default value in info[3].
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.GetParamInfo(Gurobi.GRB.DoubleParam,System.Double[])">
+            <summary>
+            Returns detailed information about a double-valued parameter.
+            The current value is returned in info[0],
+            the minimum allowed value in info[1],
+            the maximum allowed value in info[2],
+            and the default value in info[3].
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.GetParamInfo(Gurobi.GRB.StringParam,System.String[])">
+            <summary>
+            Returns detailed information about a string-valued parameter.
+            The current value is returned in info[0],
+            and the default value in info[1].
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.ResetParams">
+            <summary>
+            Resets all parameters to their default values.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.WriteParams(System.String)">
+            <summary>
+            Writes all non-default parameter settings to the specified file.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.ReadParams(System.String)">
+            <summary>
+            Reads new parameter settings from the specified file.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Dispose">
+            <summary>
+            Release the resources associated with this environment.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBEnv.Release">
+            <summary>
+            Release the Gurobi license associated with this environment.
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBEnv.ErrorMsg">
+            <summary>
+            Gets the error message for the current exception.
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBException.ErrorCode">
+            <summary>
+            Gets the error code for the most recent Gurobi exception.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBExpr">
+            <summary>
+            Gurobi expression class.  A linear expression consists of a
+            constants term, plus a list of coefficient-variable pairs that capture
+            the linear terms.  Linear expressions are used to build constraints.
+            They are temporary objects that typically have short lifespans.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBLinExpr">
+            <summary>
+            Gurobi linear expression class.  A linear expression consists of a
+            constants term, plus a list of coefficient-variable pairs that capture
+            the linear terms.  Linear expressions are used to build constraints.
+            They are temporary objects that typically have short lifespans.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.GetVar(System.Int32)">
+            <summary>
+            Retrieves the variable for term i in the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.GetCoeff(System.Int32)">
+            <summary>
+            Retrieves the coefficient for term i in the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.AddConstant(System.Double)">
+            <summary>
+            Adds a constant into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.AddTerm(System.Double,Gurobi.GRBVar)">
+            <summary>
+            Adds a term into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.AddTerms(System.Double[],Gurobi.GRBVar[])">
+            <summary>
+            Adds multiple terms into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.AddTerms(System.Double[],Gurobi.GRBVar[],System.Int32,System.Int32)">
+            <summary>
+            Adds multiple terms into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.Add(Gurobi.GRBLinExpr)">
+            <summary>
+            Adds an expression into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.MultAdd(System.Double,Gurobi.GRBLinExpr)">
+            <summary>
+            Adds a linear multiple of an expression into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.Remove(System.Int32)">
+            <summary>
+            Removes term i from the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.Remove(Gurobi.GRBVar)">
+            <summary>
+            Removes all terms involving the specified variable from the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBLinExpr.Clear">
+            <summary>
+            Sets the expression to 0.
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBLinExpr.Size">
+            <summary>
+            Returns the numbers of terms in the expression (not including the
+            constant).
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBLinExpr.Constant">
+            <summary>
+            Retrieves the constant term in the expression.
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBLinExpr.Value">
+            <summary>
+            Computes the value of the expression for the current solution.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBModel">
+            <summary>
+            Gurobi model object.  A model captures all the constraints and
+            variables associated with one optimization problem.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Read(System.String)">
+            <summary>
+            Imports data from a file into the model.  Supported file suffixes are
+            .mst (MIP start), .bas (simplex basis), or .prm (parameters).
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Write(System.String)">
+            <summary>
+            Exports data from a model to a file.  The model itself can
+            be exported by writing a .mps, .rew, .lp, or .rlp file.
+            Additionally, you can write a .ilp file (for writing an IIS),
+            a .sol file (for writing the current solution vector),
+            a .mst file (for writing the current MIP solution as a start vector),
+            a .bas file (for writing the current simplex basis),
+            or a .prm file (for writing modified parameter settings).
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Sync">
+            <summary>
+            When performing non-blocking optimization on a Compute Server,
+            call this routine to wait for the optimization to finish.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.FixedModel">
+            <summary>
+            Create the fixed model associated with a MIP model, where
+            every integer variable is fixed to the value that variables takes
+            in the current MIP solution.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Presolve">
+            <summary>
+            Returns the presolve version of the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.FeasRelax(System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Relax a model by adding penalty variables with a penalty objective
+            in a simple way
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.FeasRelax(System.Int32,System.Boolean,Gurobi.GRBVar[],System.Double[],System.Double[],Gurobi.GRBConstr[],System.Double[])">
+            <summary>
+            Relax a model by adding penalty variables with a penalty objective.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetVars">
+            <summary>
+            Returns an array containing all variables in the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetVarByName(System.String)">
+            <summary>
+            Retrieves a variable from its name.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetConstrs">
+            <summary>
+            Returns an array containing all constraints in the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetConstrByName(System.String)">
+            <summary>
+            Retrieves a constraint from its name.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetSOSs">
+            <summary>
+            Returns an array containing all SOS constraints in the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetQConstrs">
+            <summary>
+            Returns an array containing all quadratic constraints in the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetObjective">
+            <summary>
+            Returns the model objective.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetPWLObj(Gurobi.GRBVar,System.Double[],System.Double[])">
+            <summary>
+            Retrieves the piecewise linear objective for the specified variable.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.SetObjective(Gurobi.GRBExpr)">
+            <summary>
+            Sets the model objective equal to the argument expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.SetObjective(Gurobi.GRBExpr,System.Int32)">
+            <summary>
+            Sets the model objective equal to the argument expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.SetPWLObj(Gurobi.GRBVar,System.Double[],System.Double[])">
+            <summary>
+            Set the piecewise linear objective for the specified variable.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Optimize">
+            <summary>
+            Optimizes a model.  The algorithm used for the optimization depends on
+            the model type (simplex for a continuous model; branch-and-cut for a
+            MIP model).
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.OptimizeAsync">
+            <summary>
+            Optimizes a model asynchronously.  This method routines immediately.
+            Use Sync() to synchronize with the optimization thread.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.ComputeIIS">
+            <summary>
+            Computes an Irreducible Infeasible Subsystem (IIS) for an infeasible
+            model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Reset">
+            <summary>
+            Resets the model to an unsolved state, discarding
+            any previously computed solution information.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Terminate">
+            <summary>
+            Generates a request to terminate the current optimization.
+            This method can be called at any time during the optimization.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Tune">
+            <summary>
+            Perform an automated search for parameter settings that improve
+            performance.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetTuneResult(System.Int32)">
+            <summary>
+            Perform an automated search for parameter settings that improve
+            performance.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Update">
+            <summary>
+            Processes any pending model modifications.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddVar(System.Double,System.Double,System.Double,System.Char,System.String)">
+            <summary>
+            Adds a new variable to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddVar(System.Double,System.Double,System.Double,System.Char,Gurobi.GRBConstr[],System.Double[],System.String)">
+            <summary>
+            Adds a new variable to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddVar(System.Double,System.Double,System.Double,System.Char,Gurobi.GRBColumn,System.String)">
+            <summary>
+            Adds a new variable to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddVars(System.Int32,System.Char)">
+            <summary>
+            Adds new variables to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddVars(System.Double[],System.Double[],System.Double[],System.Char[],System.String[])">
+            <summary>
+            Adds new variables to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddVars(System.Double[],System.Double[],System.Double[],System.Char[],System.String[],System.Int32,System.Int32)">
+            <summary>
+            Adds new variables to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddVars(System.Double[],System.Double[],System.Double[],System.Char[],System.String[],Gurobi.GRBColumn[])">
+            <summary>
+            Adds new variables to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddConstr(Gurobi.GRBTempConstr,System.String)">
+            <summary>
+            Adds a new constraint to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddConstr(Gurobi.GRBLinExpr,System.Char,Gurobi.GRBLinExpr,System.String)">
+            <summary>
+            Adds a new constraint to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddRange(Gurobi.GRBLinExpr,System.Double,System.Double,System.String)">
+            <summary>
+            Adds a new range constraint to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddConstrs(System.Int32)">
+            <summary>
+            Adds new constraints to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddConstrs(Gurobi.GRBLinExpr[],System.Char[],System.Double[],System.String[])">
+            <summary>
+            Adds new constraints to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddConstrs(Gurobi.GRBLinExpr[],System.Char[],System.Double[],System.String[],System.Int32,System.Int32)">
+            <summary>
+            Adds new constraints to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddRanges(Gurobi.GRBLinExpr[],System.Double[],System.Double[],System.String[])">
+            <summary>
+            Adds new range constraints to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Remove(Gurobi.GRBVar)">
+            <summary>
+            Removes the specified variable from the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Remove(Gurobi.GRBConstr)">
+            <summary>
+            Removes the specified constraint from the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.ChgCoeff(Gurobi.GRBConstr,Gurobi.GRBVar,System.Double)">
+            <summary>
+            Changes the coefficient for the specified variable in the specified
+            constraint to the specified new value.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.ChgCoeffs(Gurobi.GRBConstr[],Gurobi.GRBVar[],System.Double[])">
+            <summary>
+            Changes the coefficients for a list of constraint, variables pairs.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetCoeff(Gurobi.GRBConstr,Gurobi.GRBVar)">
+            <summary>
+            Retrieves the coefficient for the specified variable in the specified
+            constraint.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetCol(Gurobi.GRBVar)">
+            <summary>
+            Retrieves a column from the constraint matrix.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetRow(Gurobi.GRBConstr)">
+            <summary>
+            Retrieves a row from the constraint matrix.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetQCRow(Gurobi.GRBQConstr)">
+            <summary>
+            Retrieves the left-hand side expression for a quadratic constraint.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddSOS(Gurobi.GRBVar[],System.Double[],System.Int32)">
+            <summary>
+            Adds a new SOS constraint to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddQConstr(Gurobi.GRBTempConstr,System.String)">
+            <summary>
+            Adds a new constraint to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.AddQConstr(Gurobi.GRBQuadExpr,System.Char,Gurobi.GRBQuadExpr,System.String)">
+            <summary>
+            Adds a new quadratic constraint to the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetSOS(Gurobi.GRBSOS,Gurobi.GRBVar[],System.Double[],System.Int32[])">
+            <summary>
+            Retrieves details about the specified SOS constraint.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Remove(Gurobi.GRBSOS)">
+            <summary>
+            Removes the specified SOS constraint from the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Remove(Gurobi.GRBQConstr)">
+            <summary>
+            Removes the specified quadratic constraint from the model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetEnv">
+            <summary>
+            Retrieves the GRBEnv object associated with the specified model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.GetConcurrentEnv(System.Int32)">
+            <summary>
+            Creates a concurrent environment for the specified model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.DiscardConcurrentEnvs">
+            <summary>
+            Destroys all concurrent environments associated with a model.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr)">
+            <summary>
+            Retrieves the value of an integer-valued model attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr)">
+            <summary>
+            Retrieves the value of a double-valued model attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr)">
+            <summary>
+            Retrieves the value of a string-valued model attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,System.Int32)">
+            <summary>
+            Modifies the value of an integer-valued model attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,System.Double)">
+            <summary>
+            Modifies the value of a double-valued model attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,System.String)">
+            <summary>
+            Modifies the value of a string-valued model attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBVar[])">
+            <summary>
+            Retrieves an int-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBVar[])">
+            <summary>
+            Retrieves a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[])">
+            <summary>
+            Retrieves a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBVar[])">
+            <summary>
+            Retrieves a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBVar[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves an int-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBVar[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBVar[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBVar[0:,0:])">
+            <summary>
+            Retrieves an int-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBVar[0:,0:])">
+            <summary>
+            Retrieves a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[0:,0:])">
+            <summary>
+            Retrieves a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBVar[0:,0:])">
+            <summary>
+            Retrieves a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBVar[0:,0:,0:])">
+            <summary>
+            Retrieves an int-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBVar[0:,0:,0:])">
+            <summary>
+            Retrieves a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[0:,0:,0:])">
+            <summary>
+            Retrieves a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBVar[0:,0:,0:])">
+            <summary>
+            Retrieves a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[])">
+            <summary>
+            Retrieves an int-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[])">
+            <summary>
+            Retrieves a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[])">
+            <summary>
+            Retrieves a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[])">
+            <summary>
+            Retrieves a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves an int-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[0:,0:])">
+            <summary>
+            Retrieves an int-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[0:,0:])">
+            <summary>
+            Retrieves a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[0:,0:])">
+            <summary>
+            Retrieves a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[0:,0:])">
+            <summary>
+            Retrieves a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[0:,0:,0:])">
+            <summary>
+            Retrieves an int-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[0:,0:,0:])">
+            <summary>
+            Retrieves a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[0:,0:,0:])">
+            <summary>
+            Retrieves a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[0:,0:,0:])">
+            <summary>
+            Retrieves a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[])">
+            <summary>
+            Retrieves a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[])">
+            <summary>
+            Retrieves a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[])">
+            <summary>
+            Retrieves a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[],System.Int32,System.Int32)">
+            <summary>
+            Retrieves a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[0:,0:])">
+            <summary>
+            Retrieves a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[0:,0:])">
+            <summary>
+            Retrieves a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[0:,0:])">
+            <summary>
+            Retrieves a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[0:,0:,0:])">
+            <summary>
+            Retrieves a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[0:,0:,0:])">
+            <summary>
+            Retrieves a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Get(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[0:,0:,0:])">
+            <summary>
+            Retrieves a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBVar[],System.Int32[])">
+            <summary>
+            Modifies an integer-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBVar[],System.Char[])">
+            <summary>
+            Modifies a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[],System.Double[])">
+            <summary>
+            Modifies a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBVar[],System.String[])">
+            <summary>
+            Modifies a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBVar[],System.Int32[],System.Int32,System.Int32)">
+            <summary>
+            Modifies an integer-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBVar[],System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[],System.Double[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBVar[],System.String[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBVar[0:,0:],System.Int32[0:,0:])">
+            <summary>
+            Modifies an integer-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBVar[0:,0:],System.Char[0:,0:])">
+            <summary>
+            Modifies a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[0:,0:],System.Double[0:,0:])">
+            <summary>
+            Modifies a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBVar[0:,0:],System.String[0:,0:])">
+            <summary>
+            Modifies a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBVar[0:,0:,0:],System.Int32[0:,0:,0:])">
+            <summary>
+            Modifies an integer-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBVar[0:,0:,0:],System.Char[0:,0:,0:])">
+            <summary>
+            Modifies a char-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBVar[0:,0:,0:],System.Double[0:,0:,0:])">
+            <summary>
+            Modifies a double-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBVar[0:,0:,0:],System.String[0:,0:,0:])">
+            <summary>
+            Modifies a string-valued attribute for an array of variables.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[],System.Int32[])">
+            <summary>
+            Modifies an integer-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[],System.Char[])">
+            <summary>
+            Modifies a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[],System.Double[])">
+            <summary>
+            Modifies a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[],System.String[])">
+            <summary>
+            Modifies a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[],System.Int32[],System.Int32,System.Int32)">
+            <summary>
+            Modifies an integer-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[],System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[],System.Double[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[],System.String[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[0:,0:],System.Int32[0:,0:])">
+            <summary>
+            Modifies an integer-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[0:,0:],System.Char[0:,0:])">
+            <summary>
+            Modifies a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[0:,0:],System.Double[0:,0:])">
+            <summary>
+            Modifies a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[0:,0:],System.String[0:,0:])">
+            <summary>
+            Modifies a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.IntAttr,Gurobi.GRBConstr[0:,0:,0:],System.Int32[0:,0:,0:])">
+            <summary>
+            Modifies an integer-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBConstr[0:,0:,0:],System.Char[0:,0:,0:])">
+            <summary>
+            Modifies a char-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBConstr[0:,0:,0:],System.Double[0:,0:,0:])">
+            <summary>
+            Modifies a double-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBConstr[0:,0:,0:],System.String[0:,0:,0:])">
+            <summary>
+            Modifies a string-valued attribute for an array of constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[],System.Char[])">
+            <summary>
+            Modifies a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[],System.Double[])">
+            <summary>
+            Modifies a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[],System.String[])">
+            <summary>
+            Modifies a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[],System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[],System.Double[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[],System.String[],System.Int32,System.Int32)">
+            <summary>
+            Modifies a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[0:,0:],System.Char[0:,0:])">
+            <summary>
+            Modifies a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[0:,0:],System.Double[0:,0:])">
+            <summary>
+            Modifies a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[0:,0:],System.String[0:,0:])">
+            <summary>
+            Modifies a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.CharAttr,Gurobi.GRBQConstr[0:,0:,0:],System.Char[0:,0:,0:])">
+            <summary>
+            Modifies a char-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.DoubleAttr,Gurobi.GRBQConstr[0:,0:,0:],System.Double[0:,0:,0:])">
+            <summary>
+            Modifies a double-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.Set(Gurobi.GRB.StringAttr,Gurobi.GRBQConstr[0:,0:,0:],System.String[0:,0:,0:])">
+            <summary>
+            Modifies a string-valued attribute for an array of quadratic constraints.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBModel.SetCallback(Gurobi.GRBCallback)">
+            <summary>
+            Sets the callback object.  The Callback() method on this object will
+            be called periodically from the Gurobi solver.  This gives you the
+            opportunity to obtain more detailed information about the state of
+            the optimization.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBQConstr">
+            <summary>
+            Gurobi quadratic constraint class.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQConstr.Get(Gurobi.GRB.CharAttr)">
+            <summary>
+            Queries the value of a character-valued quadratic constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQConstr.Get(Gurobi.GRB.IntAttr)">
+            <summary>
+            Queries the value of an int-valued quadratic constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQConstr.Get(Gurobi.GRB.DoubleAttr)">
+            <summary>
+            Queries the value of a double-valued quadratic constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQConstr.Get(Gurobi.GRB.StringAttr)">
+            <summary>
+            Queries the value of a string-valued quadratic constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQConstr.Set(Gurobi.GRB.CharAttr,System.Char)">
+            <summary>
+            Modifies the value of a character-valued quadratic constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQConstr.Set(Gurobi.GRB.DoubleAttr,System.Double)">
+            <summary>
+            Modifies the value of a double-valued quadratic constraint attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQConstr.Set(Gurobi.GRB.StringAttr,System.String)">
+            <summary>
+            Modifies the value of a string-valued quadratic constraint attribute.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBQuadExpr">
+            <summary>
+            Gurobi linear expression class.  A linear expression consists of a
+            constants term, plus a list of coefficient-variable pairs that capture
+            the linear terms.  Linear expressions are used to build constraints.
+            They are temporary objects that typically have short lifespans.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.GetVar1(System.Int32)">
+            <summary>
+            Retrieves the first variable for quadratic term i in the quadratic expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.GetVar2(System.Int32)">
+            <summary>
+            Retrieves the first variable for quadratic term i in the quadratic expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.GetCoeff(System.Int32)">
+            <summary>
+            Retrieves the coefficient for term i in the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.AddConstant(System.Double)">
+            <summary>
+            Adds a constant into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.AddTerm(System.Double,Gurobi.GRBVar)">
+            <summary>
+            Adds a term into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.AddTerm(System.Double,Gurobi.GRBVar,Gurobi.GRBVar)">
+            <summary>
+            Adds a term into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.AddTerms(System.Double[],Gurobi.GRBVar[])">
+            <summary>
+            Adds multiple terms into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.AddTerms(System.Double[],Gurobi.GRBVar[],Gurobi.GRBVar[])">
+            <summary>
+            Adds multiple terms into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.AddTerms(System.Double[],Gurobi.GRBVar[],System.Int32,System.Int32)">
+            <summary>
+            Adds multiple terms into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.AddTerms(System.Double[],Gurobi.GRBVar[],Gurobi.GRBVar[],System.Int32,System.Int32)">
+            <summary>
+            Adds multiple terms into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.Add(Gurobi.GRBLinExpr)">
+            <summary>
+            Adds an expression into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.Add(Gurobi.GRBQuadExpr)">
+            <summary>
+            Adds an expression into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.MultAdd(System.Double,Gurobi.GRBLinExpr)">
+            <summary>
+            Adds a linear multiple of an expression into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.MultAdd(System.Double,Gurobi.GRBQuadExpr)">
+            <summary>
+            Adds a linear multiple of an expression into the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.Remove(System.Int32)">
+            <summary>
+            Removes term i from the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.Remove(Gurobi.GRBVar)">
+            <summary>
+            Removes all terms involving the specified variable from the expression.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBQuadExpr.Clear">
+            <summary>
+            Sets the expression to 0.
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBQuadExpr.Size">
+            <summary>
+            Returns the numbers of terms in the expression (not including the
+            constant).
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBQuadExpr.LinExpr">
+            <summary>
+            Retrieves the constant term in the expression.
+            </summary>
+        </member>
+        <member name="P:Gurobi.GRBQuadExpr.Value">
+            <summary>
+            Computes the value of the expression for the current solution.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBSOS">
+            <summary>
+            Gurobi SOS constraint class.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBSOS.Get(Gurobi.GRB.IntAttr)">
+            <summary>
+            Queries the value of an integer-valued SOS attribute.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBTempConstr">
+            <summary>
+            Gurobi temporary constraint class.  Objects of this class are created
+            as intermediate results when building constraints using overloaded
+            comparison operators.  You will generally never store objects
+            of this class in your own variables.
+            </summary>
+        </member>
+        <member name="T:Gurobi.GRBVar">
+            <summary>
+            Gurobi variable class.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.SameAs(Gurobi.GRBVar)">
+            <summary>
+            Indicates whether two GRBVar objects refer to the same Gurobi model
+            variable.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Get(Gurobi.GRB.IntAttr)">
+            <summary>
+            Retrieves the value of an integer-valued variable attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Get(Gurobi.GRB.CharAttr)">
+            <summary>
+            Retrieves the value of a character-valued variable attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Get(Gurobi.GRB.DoubleAttr)">
+            <summary>
+            Retrieves the value of a double-valued variable attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Get(Gurobi.GRB.StringAttr)">
+            <summary>
+            Retrieves the value of a string-valued variable attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Set(Gurobi.GRB.IntAttr,System.Int32)">
+            <summary>
+            Modifies the value of an integer-valued variable attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Set(Gurobi.GRB.CharAttr,System.Char)">
+            <summary>
+            Modifies the value of a character-valued variable attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Set(Gurobi.GRB.DoubleAttr,System.Double)">
+            <summary>
+            Modifies the value of a double-valued variable attribute.
+            </summary>
+        </member>
+        <member name="M:Gurobi.GRBVar.Set(Gurobi.GRB.StringAttr,System.String)">
+            <summary>
+            Modifies the value of a string-valued variable attribute.
+            </summary>
+        </member>
+    </members>
+</doc>

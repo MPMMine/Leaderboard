@@ -1,0 +1,51 @@
+{
+  "name": "CSC4.5",
+  "description": "Constraint Synthesis with C4.5",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": true,
+    "integer": true
+  },
+  "language": {
+    "name": "LP",
+    "level": "low"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Kudla2018",
+      "title": "One-class synthesis of constraints for Mixed-Integer Linear Programming with C4.5 decision trees",
+      "volume": "68",
+      "ISSN": "1568-4946",
+      "url": "https://doi.org/10.1016/j.asoc.2018.03.025",
+      "DOI": "10.1016/j.asoc.2018.03.025",
+      "journal": "Applied Soft Computing",
+      "publisher": "Elsevier BV",
+      "author": "Kudła, Patryk and Pawlak, Tomasz P.",
+      "year": "2018",
+      "month": "july",
+      "pages": "1–12"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1016/j.asoc.2018.03.02",
+    "repo": "https://github.com/Lotafak/CSC4.5"
+  }
+}

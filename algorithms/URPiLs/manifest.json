@@ -1,0 +1,52 @@
+{
+  "name": "URPiLs",
+  "description": "Unveiling Rules from PosItive LabelS",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": false,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": false,
+    "integer": false
+  },
+  "language": {
+    "name": "unspecified",
+    "level": "unspecified"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Wiegand2024",
+      "title": "What Are the Rules? Discovering Constraints from Data",
+      "volume": "38",
+      "ISSN": "2159-5399",
+      "url": "https://doi.org/10.1609/aaai.v38i8.28658",
+      "DOI": "10.1609/aaai.v38i8.28658",
+      "number": "8",
+      "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+      "publisher": "Association for the Advancement of Artificial Intelligence (AAAI)",
+      "author": "Wiegand, Boris and Klakow, Dietrich and Vreeken, Jilles",
+      "year": "2024",
+      "month": "mar",
+      "pages": "8182–8190"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.1609/aaai.v38i8.28658",
+    "repo": "https://github.com/shs-it/prolothar-constraint-acquisition"
+  }
+}

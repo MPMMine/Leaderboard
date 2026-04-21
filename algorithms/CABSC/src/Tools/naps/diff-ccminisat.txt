@@ -1,0 +1,248 @@
+diff -rc ccminisat/core/Solver.cc ccminisat.bk/core/Solver.cc
+*** ccminisat/core/Solver.cc	2016-03-22 11:53:41.513943000 +0900
+--- ccminisat.bk/core/Solver.cc	2015-12-01 13:11:03.000000000 +0900
+***************
+*** 285,294 ****
+  void Solver::detach_CCClause(CRef cr, bool strict) {
+      const Clause& c = ca[cr];
+      assert(c.size() > 1);
+      if (strict){
+!       for(int i = 0 ; i <= c.cc_const(); i++)
+          remove(cc_watches[~c[i]], CCWatcher(cr));
+        
+      }else{
+--- 285,294 ----
+  void Solver::detach_CCClause(CRef cr, bool strict) {
+      const Clause& c = ca[cr];
+      assert(c.size() > 1);
+      if (strict){
+!       for(int i = 0 ; i < c.cc_const(); i++)
+          remove(cc_watches[~c[i]], CCWatcher(cr));
+        
+      }else{
+***************
+*** 303,316 ****
+  
+  void Solver::removeClause(CRef cr) {
+      Clause& c = ca[cr];
+!     if(c.cc_const() >=2)
+!       detach_CCClause(cr);
+!     else
+!       detachClause(cr);
+      // Don't leave pointers to free'd memory!
+!     if (locked(c)) {
+!       vardata[var(c[0])].reason = CRef_Undef;
+!     }
+      c.mark(1); 
+      ca.free(cr);
+  }
+--- 303,311 ----
+  
+  void Solver::removeClause(CRef cr) {
+      Clause& c = ca[cr];
+!     detachClause(cr);
+      // Don't leave pointers to free'd memory!
+!     if (locked(c)) vardata[var(c[0])].reason = CRef_Undef;
+      c.mark(1); 
+      ca.free(cr);
+  }
+***************
+*** 1066,1072 ****
+  
+      solves++;
+  
+!     max_learnts               = nClauses() * learntsize_factor;
+      //max_learnts               = 10000 * nClauses() * learntsize_factor;
+      learntsize_adjust_confl   = learntsize_adjust_start_confl;
+      learntsize_adjust_cnt     = (int)learntsize_adjust_confl;
+--- 1057,1063 ----
+  
+      solves++;
+  
+!     max_learnts               = weight_learnts * learntsize_factor;
+      //max_learnts               = 10000 * nClauses() * learntsize_factor;
+      learntsize_adjust_confl   = learntsize_adjust_start_confl;
+      learntsize_adjust_cnt     = (int)learntsize_adjust_confl;
+diff -rc ccminisat/core/SolverTypes.h ccminisat.bk/core/SolverTypes.h
+*** ccminisat/core/SolverTypes.h	2016-03-22 11:53:41.509943000 +0900
+--- ccminisat.bk/core/SolverTypes.h	2015-12-01 13:41:50.000000000 +0900
+***************
+*** 451,517 ****
+      //if (other.size() < size() || (!learnt() && !other.learnt() && (extra.abst & ~other.extra.abst) != 0))
+      assert(!header.learnt);   assert(!other.header.learnt);
+      assert(header.has_extra); assert(other.header.has_extra);
+!     //    if (other.header.size < header.size || (data[header.size].abs & ~other.data[other.header.size].abs) != 0)
+!     //        return lit_Error;
+  
+      Lit        ret = lit_Undef;
+      const Lit* c   = (const Lit*)(*this);
+      const Lit* d   = (const Lit*)other;
+-     int count_diff = 0;
+  
+      for (unsigned i = 0; i < header.size; i++) {
+          // search for c[i] or ~c[i]
+          for (unsigned j = 0; j < other.header.size; j++)
+  	  if (c[i] == d[j]){
+  	    goto ok;
+  	  }
+  	  else if (ret == lit_Undef && c[i] == ~d[j]){
+  	      count_diff++;
+  	      ret = c[i];
+  	      goto ok;
+              }
+  	  else if(header.cc_const - count_diff > other.header.cc_const){
+! 	    count_diff++;
+  	    goto ok;
+  	  }	
+          // did not find it
+          return lit_Error;
+      ok:;
+      }
+!     if(header.cc_const - count_diff >= other.header.cc_const){
+!       //      if(count_diff > 0)
+!       //    printf("clauseRemove \n");
+        return lit_Undef;
+!     }
+!     if(header.cc_const >= other.header.cc_const ){
+!       // printf("LitRemove >%d< \n",toInt(ret));
+        return ret;
+!     }
+!     return lit_Error;
+! 
+  }
+  
+  inline void Clause::strengthen(Lit p)
+--- 451,485 ----
+      //if (other.size() < size() || (!learnt() && !other.learnt() && (extra.abst & ~other.extra.abst) != 0))
+      assert(!header.learnt);   assert(!other.header.learnt);
+      assert(header.has_extra); assert(other.header.has_extra);
+!     if (other.header.size < header.size || (data[header.size].abs & ~other.data[other.header.size].abs) != 0)
+!         return lit_Error;
+  
+      Lit        ret = lit_Undef;
+      const Lit* c   = (const Lit*)(*this);
+      const Lit* d   = (const Lit*)other;
+  
+      for (unsigned i = 0; i < header.size; i++) {
+          // search for c[i] or ~c[i]
+          for (unsigned j = 0; j < other.header.size; j++)
+              if (c[i] == d[j])
+                  goto ok;
+              else if (ret == lit_Undef && c[i] == ~d[j]){
+                  ret = c[i];
+                  goto ok;
+              }
+          // did not find it
+          return lit_Error;
+      ok:;
+      }
+!     if(header.cc_const >= other.header.cc_const && ret == lit_Undef){
+        return lit_Undef;
+!     }else if(header.cc_const <= other.header.cc_const  && ret != lit_Undef){
+        return ret;
+!     }else{
+!       return lit_Error;
+!     }  
+  }
+  
+  inline void Clause::strengthen(Lit p)
+diff -rc ccminisat/simp/SimpSolver.cc ccminisat.bk/simp/SimpSolver.cc
+*** ccminisat/simp/SimpSolver.cc	2016-03-22 11:53:41.433943000 +0900
+--- ccminisat.bk/simp/SimpSolver.cc	2015-12-01 13:32:11.000000000 +0900
+***************
+*** 213,219 ****
+  void SimpSolver::removeClause(CRef cr)
+  {
+      const Clause& c = ca[cr];
+!     if(c.cc_const()>=2)printf("a CCClause is be removed\n");
+      if (use_simplification)
+          for (int i = 0; i < c.size(); i++){
+              n_occ[toInt(c[i])]--;
+--- 213,219 ----
+  void SimpSolver::removeClause(CRef cr)
+  {
+      const Clause& c = ca[cr];
+      if (use_simplification)
+          for (int i = 0; i < c.size(); i++){
+              n_occ[toInt(c[i])]--;
+***************
+*** 234,274 ****
+      // FIX: this is too inefficient but would be nice to have (properly implemented)
+      // if (!find(subsumption_queue, &c))
+      subsumption_queue.insert(cr);
+-     if(c.cc_const()>= 2)
+-       printf("strengthen CCClause\n");
+  
+!     if (c.size() == c.cc_const() + 1){
+          removeClause(cr);
+          c.strengthen(l);
+      }else{
+-       if(c.cc_const()>= 2)
+- 	detach_CCClause(cr, true);
+-       else
+          detachClause(cr, true);
+  
+!       c.strengthen(l);
+!       if(c.cc_const()>= 2)
+! 	attach_CCClause(cr);
+!       else
+! 	attachClause(cr);
+! 
+!       remove(occurs[var(l)], cr);
+!       n_occ[toInt(l)]--;
+!       updateElimHeap(var(l));
+!     }
+!     if(c.cc_const() >= 2)
+!       if(c.size() == c.cc_const()){
+! 	for(int i = 0; i < c.size();i++)
+! 	  enqueue(c[i]);
+! 	//	printf("now returning\n");
+! 	return propagate() == CRef_Undef;
+!       }
+!       else{
+! 	//	printf("now returning true \n");
+! 	return true;
+!       }
+!     else
+!       return c.size() == 1 ? enqueue(c[0]) && propagate() == CRef_Undef : true;
+  }
+  
+  
+--- 234,253 ----
+      // FIX: this is too inefficient but would be nice to have (properly implemented)
+      // if (!find(subsumption_queue, &c))
+      subsumption_queue.insert(cr);
+  
+!     if (c.size() == 2){
+          removeClause(cr);
+          c.strengthen(l);
+      }else{
+          detachClause(cr, true);
++         c.strengthen(l);
++         attachClause(cr);
++         remove(occurs[var(l)], cr);
++         n_occ[toInt(l)]--;
++         updateElimHeap(var(l));
++     }
+  
+!     return c.size() == 1 ? enqueue(c[0]) && propagate() == CRef_Undef : true;
+  }
+  
+  
+***************
+*** 434,440 ****
+                      subsumed++, removeClause(cs[j]);
+                  else if (l != lit_Error){
+                      deleted_literals++;
+
+                      if (!strengthenClause(cs[j], ~l))
+                          return false;
+  
+--- 413,419 ----
+                      subsumed++, removeClause(cs[j]);
+                  else if (l != lit_Error){
+                      deleted_literals++;
+
+                      if (!strengthenClause(cs[j], ~l))
+                          return false;
+  

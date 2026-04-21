@@ -1,0 +1,54 @@
+{
+  "name": "CABSC",
+  "description": "Constraint Acquisition Based on Solution Counting",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": true,
+    "global": true
+  },
+  "variables": {
+    "binary": true,
+    "continuous": false,
+    "integer": true
+  },
+  "language": {
+    "name": "MiniZinc",
+    "level": "high"
+  },
+  "artifacts": {
+    "examples": {
+      "feasible": true,
+      "infeasible": false,
+      "unlabelled": false,
+      "dependent_variable": false
+    },
+    "model": {
+      "type": "metamodel"
+    }
+  },
+  "references": [
+    {
+      "type": "inproceedings",
+      "doi": "10.4230/LIPICS.CP.2022.15",
+      "url": "https://doi.org/10.4230/LIPICS.CP.2022.15",
+      "author": "Coulombe, Christopher and Quimper, Claude-Guy",
+      "keywords": "Constraint acquisition, CSP, Model counting, Solution counting, Computing methodologies → Modeling methodologies",
+      "language": "en",
+      "title": "Constraint Acquisition Based on Solution Counting",
+      "journal": "LIPIcs, Volume 235, CP 2022",
+      "volume": "235",
+      "pages": "15:1–15:16",
+      "publisher": "Schloss Dagstuhl – Leibniz-Zentrum für Informatik",
+      "year": "2022",
+      "copyright": "Creative Commons Attribution 4.0 International license"
+    }
+  ],
+  "links": {
+    "paper": "https://doi.org/10.4230/LIPICS.CP.2022.15",
+    "repo": "https://cquimper.github.io/publications/CABSC.zip"
+  }
+}
