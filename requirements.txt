@@ -1,0 +1,7 @@
+scikit-learn
+pandas
+docker
+minizinc
+dist-util
+lark
+colorlog

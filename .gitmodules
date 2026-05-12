@@ -1,6 +1,3 @@
-[submodule "algorithms/ARNOLD/src"]
-	path = algorithms/ARNOLD/src
-	url = https://github.com/mohitKULeuven/arnold.git
 [submodule "algorithms/CMAESOCCS/src"]
 	path = algorithms/CMAESOCCS/src
 	url = https://github.com/krml19/cma-es-modeling.git
