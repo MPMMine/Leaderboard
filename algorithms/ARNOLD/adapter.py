@@ -17,7 +17,7 @@ class Adapter(AbstractAdapter):
     image_tag: str
     container_tag: str
     container: docker.models.containers.Container
-    container_counter = itertools.count(start=1) # atomic counter
+    container_counter = itertools.count(start=1)  # atomic counter
 
     @override
     def __init__(self, configuration: Configuration):
@@ -72,26 +72,28 @@ class Adapter(AbstractAdapter):
             params |= instance.keys()
             variables |= example.keys()
 
-            return "--example " + " ".join(
-                [f"{n}={self.translate_value(v)}" for n, v in (instance | example).items()])
+            translate_value = Adapter.translate_value  # optimize attribute lookup
+            return "--example " + " ".join([f"{n}={translate_value(v)}" for n, v in (instance | example).items()])
 
         examples = data.apply(format_example, axis=1)
 
         return f"bash -c 'python /app/code/run.py --var {" ".join(params | variables)} --input_var {" ".join(params)} {" ".join(examples)} 2>&1 | sed \"s/^/% /\" ; cat -u /app/model.mzn 2>/dev/null ; rm -f /app/model.mzn'"
 
-    def translate_value(self, value: Any) -> str:
-        match value:
-            case bool() | int() | float():
-                return str(value)
-            case str():
-                return value
-            case list() | range() | set():
-                return f"[{",".join([self.translate_value(v) for v in value])}]"
-            case _:
-                raise TypeError(f"Unknown type {type(value)}")
+    @staticmethod
+    def translate_value(value: Any) -> str:
+        value_type = type(value)
+        if value_type is bool or value_type is int or value_type is float:
+            return str(value)
+        if value_type is str:
+            return value
+        if value_type is list or value_type is range or value_type is set:
+            translate_value = Adapter.translate_value  # optimize attribute lookup
+            return f"[{",".join([translate_value(v) for v in value])}]"
+
+        raise TypeError(f"Unknown type {type(value)}")
 
     def run_in_container(self, cmd: str) -> str:
-        result = self.container.exec_run(cmd, tty=True)
+        result = self.container.exec_run(cmd)
         if result.exit_code == 0:
             return result.output.decode("utf-8")
         raise AdapterException(
@@ -100,5 +102,8 @@ class Adapter(AbstractAdapter):
     @override
     def __del__(self):
         logging.info(f"Cleaning up {self.container_tag} docker container...")
-        self.container.stop()
-        self.container.remove()
+        try:
+            self.container.stop()
+            self.container.remove()
+        except docker.errors.NotFound:
+            pass

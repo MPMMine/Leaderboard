@@ -1,8 +1,11 @@
 import importlib.util
+import logging
 import sys
 import threading
 from pathlib import Path
 from typing import Any
+
+import colorlog
 
 _lock = threading.Lock()
 
@@ -41,3 +44,14 @@ def load_class(module_name: str, file_path: Path, class_name: str, *args, **kwar
             return cls(*args, **kwargs)
         except AttributeError:
             raise AttributeError(f"Class '{class_name}' does not exist in {file_path}.")
+
+def configure_logging():
+    handler = logging.StreamHandler()
+    handler.setFormatter(colorlog.ColoredFormatter(log_colors={
+        'DEBUG': 'cyan',
+        'INFO': 'green',
+        'WARNING': 'yellow',
+        'ERROR': 'red',
+        'CRITICAL': 'bold_red',
+    }))
+    logging.basicConfig(level=logging.INFO, handlers=[handler])

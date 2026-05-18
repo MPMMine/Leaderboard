@@ -9,15 +9,16 @@ from datetime import timedelta
 from pathlib import Path
 from typing import Generator
 
+import minizinc
 import pandas as pd
-from minizinc import Instance, Model, Solver, Status, Method
+from minizinc import Instance, Model, Solver, Status
 from minizinc.dzn import parse_dzn
 from minizinc.error import MiniZincWarning, MiniZincError
 from sklearn.model_selection import StratifiedShuffleSplit
 
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException
 from mpmmine.evaluator.configuration import Configuration
-from mpmmine.evaluator.util import load_class
+from mpmmine.util import load_class
 
 
 class Evaluator:
@@ -38,9 +39,10 @@ class Evaluator:
 
     def run(self):
         cfg = self.configuration
+        cfg.get_results_root().mkdir(parents=True, exist_ok=True)
 
         # save config
-        with (self.get_resulting_model_root() / "config.json").open("wt") as f:
+        with (self.configuration.get_config_path()).open("wt") as f:
             json.dump({k: v for k, v in asdict(cfg).items() if k != "mpmmine"}, f, indent=2)
 
         statistics = pd.DataFrame()
@@ -51,6 +53,8 @@ class Evaluator:
             )
 
             fold_statistics = pd.DataFrame(test)
+            discovery_time = 0.0
+            test_time = 0.0
 
             try:
                 discovery_time = time.perf_counter()
@@ -58,7 +62,7 @@ class Evaluator:
                 discovery_time = time.perf_counter() - discovery_time
 
                 # save mzn
-                mzn_path = self.get_resulting_model_path(fold_id)
+                mzn_path = self.configuration.get_resulting_model_path(fold_id)
                 with open(mzn_path, "w") as f:
                     f.write(mzn)
                     f.write("\n")
@@ -71,15 +75,18 @@ class Evaluator:
             except AdapterException as e:
                 logging.error(e)
                 # save mzn
-                mzn_path = self.get_resulting_model_path(fold_id)
+                mzn_path = self.configuration.get_resulting_model_path(fold_id)
                 with open(mzn_path, "w") as f:
                     f.write(textwrap.indent(str(e), "% "))
                     f.write("\n")
-                fold_statistics["error"] = str(e)
+                fold_statistics["error"] = Evaluator.format_error(str(e))
 
             fold_statistics["fold"] = fold_id
             fold_statistics["train_solutions"] = len(train[train["actual_class"].astype(bool)])
             fold_statistics["train_non_solutions"] = len(train[~train["actual_class"].astype(bool)])
+            fold_statistics["minizinc_version"] = minizinc.default_driver.minizinc_version
+            fold_statistics["solver"] = self.solver.name
+            fold_statistics["solver_version"] = self.solver.version
             fold_statistics["discovery_time"] = discovery_time
             fold_statistics["test_time"] = test_time
 
@@ -87,7 +94,7 @@ class Evaluator:
             statistics = pd.concat([statistics, fold_statistics], ignore_index=True)
 
         # save statistics
-        csv_path = self.get_resulting_model_root() / "test_statistics.csv"
+        csv_path = self.configuration.get_statistics_path()
         statistics[statistics.columns.drop(["instance", "example"])].to_csv(csv_path, index=False)
 
         logging.info(
@@ -154,19 +161,6 @@ class Evaluator:
             all_data = pd.concat([all_data, solutions], ignore_index=True)
         return all_data
 
-    def get_resulting_model_path(self, fold_id: int) -> Path:
-        instance_root = self.get_resulting_model_root()
-        mzn_path = instance_root / f"model_fold_{fold_id}.mzn"
-        return mzn_path
-
-    def get_resulting_model_root(self) -> Path:
-        cfg = self.configuration
-        results_root = (Path(__file__).parent.parent.parent.parent / "results" / cfg.algorithm).resolve()
-        instance_root = (results_root / "problems" / cfg.problem_id / "models" / cfg.model_id / "instances" /
-                         ", ".join(cfg.instance_ids) / str(cfg.train_sol_limit + cfg.train_non_sol_limit))
-        instance_root.mkdir(parents=True, exist_ok=True)
-        return instance_root
-
     def test(self, mzn_path: Path, test: pd.DataFrame):
         """
         Runs the given MiniZinc model on all test examples.
@@ -181,7 +175,7 @@ class Evaluator:
             instance = Instance(self.solver, model)
 
             def actual_test(row) -> pd.Series:
-                nonlocal model
+                nonlocal instance
                 satisfied = None
                 error = None
                 used_params = []
@@ -218,10 +212,10 @@ class Evaluator:
                             case Status.UNSATISFIABLE:
                                 satisfied = False
                 except (MiniZincError, RuntimeError, TimeoutError) as e:
-                    error = e
+                    error = str(e)
                 return pd.Series({
                     "predicted_class": satisfied,
-                    "error": error,
+                    "error": Evaluator.format_error(error),
                     "used_params": used_params,
                     "unused_params": unused_params,
                     "used_vars": used_vars,
@@ -236,3 +230,12 @@ class Evaluator:
                     # report only unique warnings
                     for w in set((w.category.__name__, str(w.message)) for w in caught_warnings):
                         mzn.write(f"% {w[0]}: {w[1]}\n")
+
+    @staticmethod
+    def format_error(err: str | None) -> str | None:
+        if err is None or len(err) == 0:
+            return None
+        if len(err) <= 503:
+            return err
+        else:
+            return f"{err[:250]}...{err[-250:]}"

@@ -31,7 +31,7 @@ class MPMMine:
         The list of available problems.
         :return:
         """
-        return [self.get_problem(path) for path in (self.path / "problems").glob("P*")]
+        return sorted([self.get_problem(path) for path in (self.path / "problems").glob("P*")], key=lambda p: p.id)
 
     def __getitem__(self, id: str) -> Problem | Model | Instance | Description | Solution:
         id_parts = self.id_regex.fullmatch(id)
@@ -93,14 +93,14 @@ class Problem:
         This property is lazy-initialized.
         :return:
         """
-        return [
+        return sorted([
             Model(
                 id=(id_ := path.name.split()[0]),
                 full_id=f"{self.full_id}{id_}",
                 path=path / "model.dzn",
                 problem=self
             ) for path in (self.path / "models").glob(f"M*")
-        ]
+        ], key=lambda m: m.id)
 
     def get_model(self, id: str) -> Model:
         """
@@ -144,14 +144,14 @@ class Model:
         This property is lazy-initialized.
         :return:
         """
-        return [
+        return sorted([
             Instance(
                 id=(id_ := path.name.split()[0]),
                 full_id=f"{self.full_id}{id_}",
                 path=path / "instance.dzn",
                 model=self
             ) for path in (self.path.with_name("instances")).glob(f"I*")
-        ]
+        ], key=lambda i: i.id)
 
     def get_instance(self, id: str) -> Instance:
         if MPMMine.instance_id_regex.fullmatch(id) is None:
