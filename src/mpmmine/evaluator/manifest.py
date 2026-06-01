@@ -1,4 +1,7 @@
-from dataclasses import dataclass, Field
+import json
+from dataclasses import dataclass
+from pathlib import Path
+
 
 @dataclass(frozen=True)
 class AlgorithmManifest:
@@ -11,6 +14,11 @@ class AlgorithmManifest:
     artifacts: dict[str, dict[str, bool]]
     references: dict[str, bool]
     links: dict[str, bool]
+
+    @staticmethod
+    def from_file(path: Path) -> AlgorithmManifest:
+        with open(path, "r") as f:
+            return AlgorithmManifest(**json.load(f))
 
 
 @dataclass(frozen=True)

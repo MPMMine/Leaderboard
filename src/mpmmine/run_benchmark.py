@@ -1,7 +1,6 @@
-import json
 import logging
 import os
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Generator
 
@@ -56,8 +55,8 @@ def main():
                         instance_ids=[instance.id],
                         train_sol_limit=train_sol_limit,
                         train_non_sol_limit=train_non_sol_limit,
-                        test_sol_limit=1000,
-                        test_non_sol_limit=1000,
+                        test_sol_limit=100,
+                        test_non_sol_limit=100,
                         cv_folds=5,
                         seed=42
                     )
@@ -109,7 +108,7 @@ def get_instances(mpmmine: MPMMine) -> Generator[Instance, None, None]:
 
 
 def get_training_sizes() -> list[int]:
-    return [2, 10, 50, 100]
+    return [2, 10, 30, 50, 75, 100]
 
 
 def run_evaluation(cfg: Configuration):
@@ -118,8 +117,7 @@ def run_evaluation(cfg: Configuration):
 
 
 def get_algorithm_manifest(algorithm: Path) -> AlgorithmManifest:
-    with open(algorithm / "manifest.json", "r") as f:
-        return AlgorithmManifest(**json.load(f))
+    return AlgorithmManifest.from_file(algorithm / "manifest.json")
 
 
 def is_complete(cfg: Configuration) -> bool:

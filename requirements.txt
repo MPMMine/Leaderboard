@@ -5,4 +5,4 @@ minizinc
 dist-util
 lark
 colorlog
-pygwalker
+streamlit

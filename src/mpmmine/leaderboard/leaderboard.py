@@ -4,43 +4,126 @@ from pathlib import Path
 from typing import Generator
 
 import pandas as pd
-import pygwalker as pyg
+import scipy.stats
+from pandas import DataFrame
 
+from mpmmine import MPMMine
 from mpmmine.evaluator.configuration import Configuration
 
 
 class Leaderboard:
     result_path: Path
+    mpmmine: MPMMine
 
-    def __init__(self, result_path: Path):
+    def __init__(self, result_path: Path, mpmmine: MPMMine):
         self.result_path = result_path
+        self.mpmmine = mpmmine
 
-    def report(self, report_file: Path):
+    def report(self, raw_file: Path, agg_file: Path):
         statistics = self.collect_statistics()
-        with open(report_file, "w", encoding="utf-8") as f:
-            f.write(pyg.to_html(statistics))
+        # statistics.to_csv(raw_file, index=False)
+
+        cv_aggregates = self.aggregate_folds(statistics)
+        report = self.calculate_cv_statistics(cv_aggregates)
+
+        report.to_csv(agg_file, index=True)
+
+    def aggregate_folds(self, statistics: pd.DataFrame) -> pd.DataFrame:
+        logging.info("Aggregating cross-validation folds...")
+
+        statistics["has_algorithm_error"] = ~statistics["algorithm_error"].isna()
+        statistics["has_evaluation_error"] = ~statistics["evaluation_error"].isna()
+        statistics["is_correct"] = (~statistics["has_algorithm_error"] &
+                                    ~statistics["has_evaluation_error"] &
+                                    statistics["actual_class"] == statistics["predicted_class"])
+        cv_aggregates = statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions", "fold"]
+        ).agg(
+            accuracy=pd.NamedAgg(column="is_correct", aggfunc="mean"),
+            test_count=pd.NamedAgg(column="actual_class", aggfunc="count"),
+            algorithm_error_prob=pd.NamedAgg(column="has_algorithm_error", aggfunc="mean"),
+            algorithm_error=pd.NamedAgg(column="algorithm_error", aggfunc=Leaderboard.keep_unique_str),
+            evaluation_error_prob=pd.NamedAgg(column="has_evaluation_error", aggfunc="mean"),
+            evaluation_error=pd.NamedAgg(column="evaluation_error", aggfunc=Leaderboard.keep_unique_str),
+            # all rows should have the same discovery time as training is done only once
+            discovery_time=pd.NamedAgg(column="discovery_time", aggfunc="mean"),
+            test_time=pd.NamedAgg(column="test_time", aggfunc="sum"),  # total test time
+            results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
+        )
+        return cv_aggregates
+
+    def calculate_cv_statistics(self, cv_aggregates: DataFrame) -> DataFrame:
+        logging.info("Calculating k-fold cross-validation aggregations...")
+
+        def ci(x):
+            return scipy.stats.t.ppf(0.975, len(x)) * x.sem()
+
+        report = cv_aggregates.reset_index().groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions"]
+        ).agg(
+            folds=pd.NamedAgg(column="fold", aggfunc="max"),
+            accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
+            accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
+            test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
+            test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
+            test_count_total=pd.NamedAgg(column="test_count", aggfunc="sum"),
+            algorithm_error_prob_mean=pd.NamedAgg(column="algorithm_error_prob", aggfunc="mean"),
+            algorithm_error_prob_095ci=pd.NamedAgg(column="algorithm_error_prob", aggfunc=ci),
+            algorithm_error=pd.NamedAgg(column="algorithm_error", aggfunc=Leaderboard.keep_unique_str),
+            evaluation_error_prob_mean=pd.NamedAgg(column="evaluation_error_prob", aggfunc="mean"),
+            evaluation_error_prob_095ci=pd.NamedAgg(column="evaluation_error_prob", aggfunc=ci),
+            evaluation_error=pd.NamedAgg(column="evaluation_error", aggfunc=Leaderboard.keep_unique_str),
+            discovery_time_mean=pd.NamedAgg(column="discovery_time", aggfunc="mean"),
+            discovery_time_095ci=pd.NamedAgg(column="discovery_time", aggfunc=ci),
+            test_time_mean=pd.NamedAgg(column="test_time", aggfunc="mean"),
+            test_time_095ci=pd.NamedAgg(column="test_time", aggfunc=ci),
+            input_path=pd.NamedAgg(column="problem_instance", aggfunc=Leaderboard.keep_unique_str),
+            results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str)
+        )
+        return report
+
+    @staticmethod
+    def keep_unique_str(x):
+        return ", ".join(x.dropna().astype(str).unique())
 
     def collect_statistics(self) -> pd.DataFrame:
+        logging.info("Collecting statistics...")
         statistics = pd.DataFrame()
         for path in self.evaluation_runs_iterator():
             try:
                 config_path = path / "config.json"
 
                 config = Configuration(**json.loads(config_path.read_text(encoding="utf-8")), mpmmine=None)
+                # noinspection PyTypeChecker
                 run_statistics: pd.DataFrame = pd.read_csv(
                     config.get_statistics_path(),
                     dtype={
-                        "predicted_class": "bool"
+                        "predicted_class": pd.BooleanDtype()
                     }
                 )
                 run_statistics["algorithm"] = config.algorithm
+
+                run_statistics["problem"] = f"MPMMine-{config.problem_id}"
+                run_statistics["problem_model"] = f"MPMMine-{config.problem_id}{config.model_id}"
+
+                instance_ids = [f"MPMMine-{config.problem_id}{config.model_id}{i}" for i in config.instance_ids]
+                run_statistics["problem_instance"] = ", ".join(instance_ids)
+                run_statistics["problem_instance_path"] = (
+                    ",".join(str(self.mpmmine[instance].path) for instance in instance_ids))
+
                 run_statistics["cv_folds"] = config.cv_folds
                 run_statistics["seed"] = config.seed
+                run_statistics["results_path"] = str(path.relative_to(self.result_path))
 
                 statistics = pd.concat([statistics, run_statistics], ignore_index=True)
             except FileNotFoundError as e:
                 logging.error(e)
 
+        statistics["train_count"] = statistics["train_solutions"] + statistics["train_non_solutions"]
+
+        logging.info(f"Collected {len(statistics)} rows...")
         return statistics
 
     def evaluation_runs_iterator(self) -> Generator[Path, None, None]:

@@ -79,7 +79,7 @@ class Evaluator:
                 with open(mzn_path, "w") as f:
                     f.write(textwrap.indent(str(e), "% "))
                     f.write("\n")
-                fold_statistics["error"] = Evaluator.format_error(str(e))
+                fold_statistics["algorithm_error"] = Evaluator.format_error(str(e))
 
             fold_statistics["fold"] = fold_id
             fold_statistics["train_solutions"] = len(train[train["actual_class"].astype(bool)])
@@ -201,12 +201,12 @@ class Evaluator:
                             else:
                                 unused_vars.append(k)
 
-                        result = copy.solve(time_limit=timedelta(seconds=10))
+                        result = copy.solve(time_limit=timedelta(seconds=30))
                         match result.status:
                             case Status.ERROR:
-                                raise RuntimeError("Solving failed")
+                                raise RuntimeError("Solving failed while verifying an example")
                             case Status.UNKNOWN:
-                                raise TimeoutError("Timeout while solving")
+                                raise TimeoutError("Timeout while verifying an example")
                             case Status.UNBOUNDED | Status.SATISFIED | Status.ALL_SOLUTIONS | Status.OPTIMAL_SOLUTION:
                                 satisfied = True
                             case Status.UNSATISFIABLE:
@@ -215,7 +215,7 @@ class Evaluator:
                     error = str(e)
                 return pd.Series({
                     "predicted_class": satisfied,
-                    "error": Evaluator.format_error(error),
+                    "evaluation_error": Evaluator.format_error(error),
                     "used_params": used_params,
                     "unused_params": unused_params,
                     "used_vars": used_vars,
