@@ -97,8 +97,6 @@ def get_algorithms() -> Generator[Path, None, None]:
 
 def get_instances(mpmmine: MPMMine) -> Generator[Instance, None, None]:
     for problem in mpmmine.problems:
-        if problem.id == "P016":
-            continue  # FIXME: temporary condition, for tests; minizinc-py does not parse instance dzn files for this problem
         for model in problem.models:
             for instance in model.instances:
                 if not any(instance.solutions) and not any(instance.non_solutions):
