@@ -1,3 +1,13 @@
+import sys
+from pathlib import Path
+
+# Resolve the absolute path to the repository root or target directory
+repo_root = Path(__file__).resolve().parent.parent
+
+# Append to sys.path if not already present
+if str(repo_root) not in sys.path:
+    sys.path.append(str(repo_root))
+
 import datetime
 import logging
 from functools import reduce
