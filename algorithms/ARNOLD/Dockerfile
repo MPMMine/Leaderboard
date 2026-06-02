@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 # Clone the repository
-RUN git clone https://github.com/mohitKULeuven/arnold.git .
+RUN git clone https://github.com/MPMMine/algorithm-mohitKULeuven-arnold.git .
 
 # Install the required Python packages
 RUN pip install --no-cache-dir scipy numpy pymzn
