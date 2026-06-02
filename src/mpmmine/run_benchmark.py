@@ -81,7 +81,7 @@ def main():
             except BaseException as e:
                 logging.critical(e, exc_info=True)
             finally:
-                if i % 10 == 0:
+                if i % 2 == 0:
                     logging.info(f"Progress: {i / len(tasks) * 100 : .1f}% ({i}/{len(tasks)})")
         logging.info("Done")
 

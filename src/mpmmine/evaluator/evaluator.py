@@ -73,7 +73,7 @@ class Evaluator:
                 test_time = time.perf_counter() - test_time
 
             except AdapterException as e:
-                logging.error(e)
+                logging.error(Evaluator.format_error(str(e)))
                 # save mzn
                 mzn_path = self.configuration.get_resulting_model_path(fold_id)
                 with open(mzn_path, "w") as f:
