@@ -201,7 +201,7 @@ class Evaluator:
                             else:
                                 unused_vars.append(k)
 
-                        result = copy.solve(time_limit=timedelta(seconds=30))
+                        result = copy.solve(time_limit=timedelta(seconds=60), optimisation_level=0)
                         match result.status:
                             case Status.ERROR:
                                 raise RuntimeError("Solving failed while verifying an example")
