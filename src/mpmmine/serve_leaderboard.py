@@ -599,10 +599,12 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 alt.Y2(f"{measure_desc["mean"]}_ub:Q")
             )) + line_layer
 
-        endpoint_base = base.encode(
+        endpoint_base = (base
+        .transform_filter("datum.value != null")
+        .encode(
             alt.X(x_axis, aggregate="max"),
             alt.Y("value:Q", aggregate=alt.ArgmaxDef(argmax=x_axis))
-        )
+        ))
 
         circle_marker = endpoint_base.mark_circle()
         text_marker = endpoint_base.mark_text(align="left", dx=4).encode(
