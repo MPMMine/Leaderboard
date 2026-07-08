@@ -6,6 +6,7 @@ import time
 import warnings
 from dataclasses import asdict
 from datetime import timedelta
+from functools import reduce
 from pathlib import Path
 from typing import Generator
 
@@ -16,7 +17,7 @@ from minizinc.dzn import parse_dzn
 from minizinc.error import MiniZincWarning, MiniZincError
 from sklearn.model_selection import StratifiedShuffleSplit
 
-from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException
+from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar
 from mpmmine.evaluator.configuration import Configuration
 from mpmmine.util import load_class
 
@@ -58,7 +59,8 @@ class Evaluator:
 
             try:
                 discovery_time = time.perf_counter()
-                mzn = self.adapter.run(train, fold_id)
+                train, symbols = self.parse_dzn_and_extract_symbols_(train)
+                mzn = self.adapter.run(train, symbols, fold_id)
                 discovery_time = time.perf_counter() - discovery_time
 
                 # save mzn
@@ -100,6 +102,52 @@ class Evaluator:
         logging.info(
             f"Finished evaluation of {cfg.algorithm} on MPMMine-{cfg.problem_id}{cfg.model_id} instances {",".join(cfg.instance_ids)}"
         )
+
+    def parse_dzn_and_extract_symbols_(self, data: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, MznVar]]:
+        symbols: dict[str, MznVar] = dict()
+
+        # pass 1: get symbols and calculate their domains
+        def parse(row) -> pd.Series:
+            nonlocal symbols
+
+            params = parse_dzn(row["instance"])
+            vars = parse_dzn(row["example"])
+
+            for k, v in params.items():
+                param = self.to_MznVar_(k, v, False)
+                if k in symbols:
+                    symbols[k] = symbols[k].merge_inplace(param)
+                else:
+                    symbols[k] = param
+            for k, v in vars.items():
+                var = self.to_MznVar_(k, v, True)
+                if k in symbols:
+                    symbols[k] = symbols[k].merge_inplace(var)
+                else:
+                    symbols[k] = var
+
+            return pd.Series({"instance_obj": params, "example_obj": vars})
+
+        # noinspection PyTypeChecker
+        return pd.concat([data, data.apply(parse, axis=1)], axis=1), symbols
+
+    def to_MznVar_(self, name: str, value: int | float | set | list, is_var: bool) -> MznVar:
+        value_type = type(value)
+        if value_type is int or value_type is float:
+            return MznVar(name, value_type.__name__, None, [], value, value, is_var)
+        elif value_type is set or value_type is range or value_type is list:
+            sub_var = reduce(MznVar.merge_inplace, (self.to_MznVar_(name, v, is_var) for v in value))
+            col_type = "array" if value_type is list else "set"
+            indices = [set(value)] if value_type is not list else [{1, len(value)}]
+            # noinspection PyTypeChecker
+            return MznVar(name=name,
+                          domain=sub_var.domain,
+                          collection=col_type,
+                          indices=indices + sub_var.indices,
+                          min=sub_var.min,
+                          max=sub_var.max,
+                          var=is_var)
+        raise ValueError(f"Unknown value type: {value}: {value_type}")
 
     def cross_validation(self) -> Generator[tuple[pd.DataFrame, pd.DataFrame], None, None]:
         cfg = self.configuration
@@ -240,3 +288,4 @@ class Evaluator:
             return err
         else:
             return f"{err[:750]}...{err[-750:]}"
+

@@ -1,6 +1,8 @@
 import logging
 import os
 import platform
+from dataclasses import dataclass
+from typing import Literal
 
 import docker
 import pandas as pd
@@ -54,11 +56,14 @@ class AbstractAdapter:
             return "linux/arm64"
         return "linux/amd64"  # Default fallback for x86_64/AMD64
 
-    def run(self, train_data: pd.DataFrame, fold_id: int) -> str:
+    def run(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
         """
-        Runs the algorithm given the training data and fold identifier.
-        :param train_data:
-        :param fold_id:
+        Runs the algorithm given the training data and fold identifier. This method is intended to be overridden by
+        the actual implementation of the adapter.
+        :param train_data: The pandas frame of training data.
+        :param symbols: The dictionary of MiniZinc symbols extracted solely from the training data; no information is
+        read from the reference MiniZinc model.
+        :param fold_id: The index of the fold in k-fold cross validation; 1-based.
         :return: The resulting MiniZinc model.
         """
         raise NotImplementedError
@@ -66,9 +71,55 @@ class AbstractAdapter:
     def __del__(self):
         """
         Executes after completing all runs. This method is intended to clean up resources, e.g.,
-        stop the Docker container.
+        stop the Docker container. This method is intended to be overridden by the actual implementation of the adapter.
         """
         raise NotImplementedError
 
+
 class AdapterException(Exception):
     pass
+
+
+@dataclass
+class MznVar:
+    name: str
+    domain: str
+    collection: Literal["array", "set"] | None
+    indices: list[set[int]]
+    min: float | int
+    max: float | int
+    var: bool
+
+    def merge_inplace(self, other: MznVar) -> MznVar:
+        assert (self.name == other.name)
+        assert (self.collection == other.collection)
+
+        if self.domain == "float" or other.domain == "float":
+            self.domain = "float"
+        elif self.domain == "int" or other.domain == "int":
+            self.domain = "int"
+        elif self.domain == "bool" or other.domain == "bool":
+            self.domain = "bool"
+        else:
+            raise AdapterException(f"Unknown domain: {self.domain}")
+
+        self.indices = [a | b for a, b in zip(self.indices, other.indices)]
+        self.min = min(self.min, other.min)
+        self.max = max(self.max, other.max)
+        self.var = max(self.var, other.var)
+
+        return self
+
+    def __str__(self) -> str:
+        out = ""
+        if self.collection == "array":
+            out += f"array[{", ".join(f"{min(i)}..{max(i)}" for i in self.indices)}] of "
+        if self.var:
+            out += "var "
+        if self.collection == "set":
+            assert len(self.indices) > 0
+            out += f"set of {min(self.indices[0])}..{max(self.indices[0])}"
+        else:
+            out += f"{self.min}..{self.max}"
+        out += f": {self.name};"
+        return out

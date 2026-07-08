@@ -4,17 +4,14 @@ import os
 import re
 import sqlite3
 import textwrap
-from dataclasses import dataclass
-from functools import reduce
 from pathlib import Path
-from typing import override, Literal
+from typing import override
 
 import docker
 import pandas as pd
 from docker.types import Mount
-from minizinc.dzn import parse_dzn
 
-from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException
+from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar
 from mpmmine.evaluator.configuration import Configuration
 
 
@@ -22,7 +19,6 @@ class Adapter(AbstractAdapter):
     container: docker.models.containers.Container
     data_path: Path
     var_regex = re.compile(r"([a-zA-Zー][a-zA-Z0-9ー]*)((?:ᐨ\d+)+)?")
-    index_regex = re.compile(r"(ᐨ\d+)+")
 
     @override
     def __init__(self, configuration: Configuration):
@@ -67,13 +63,13 @@ class Adapter(AbstractAdapter):
         )
 
     @override
-    def run(self, train_data: pd.DataFrame, fold_id: int) -> str:
+    def run(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
         cfg = self.configuration
         csv_path = self.data_path / f"input_{cfg.problem_id}{cfg.model_id}{",".join(cfg.instance_ids)}_{os.getpid()}.csv"
         sqlite_path = self.data_path / f"output_{cfg.problem_id}{cfg.model_id}{",".join(cfg.instance_ids)}_{os.getpid()}.sqlite"
 
         try:
-            csv, symbols = self.translate_input(train_data)
+            csv = self.translate_input(train_data, symbols)
             csv.to_csv(csv_path, index=False)
 
             logging.debug(f"Running {self.configuration.algorithm} on {csv_path.name}...")
@@ -91,40 +87,15 @@ class Adapter(AbstractAdapter):
             csv_path.unlink(missing_ok=True)
             sqlite_path.unlink(missing_ok=True)
 
-    def translate_input(self, data: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, MznVar]]:
+    def translate_input(self,
+                        data: pd.DataFrame,
+                        symbols: dict[str, MznVar]
+                        ) -> pd.DataFrame:
         # Target CSV format:
         # Type,       Variable1[domain|min|max],Variable2[domain|min|max],...
         # Feasible,   0.000, 1.000,...
         # Infeasible, 1.000, 1.000,...
 
-        symbols: dict[str, MznVar] = dict()
-
-        # pass 1: get symbols and calculate their domains
-        def parse(row) -> pd.Series:
-            nonlocal symbols
-
-            params = parse_dzn(row["instance"])
-            vars = parse_dzn(row["example"])
-
-            for k, v in params.items():
-                param = self.to_MznVar(k, v, False)
-                if k in symbols:
-                    symbols[k] = symbols[k].merge_inplace(param)
-                else:
-                    symbols[k] = param
-            for k, v in vars.items():
-                var = self.to_MznVar(k, v, True)
-                if k in symbols:
-                    symbols[k] = symbols[k].merge_inplace(var)
-                else:
-                    symbols[k] = var
-
-            return pd.Series({"instance_obj": params, "example_obj": vars})
-
-        # noinspection PyTypeChecker
-        csv: pd.DataFrame = pd.concat([data, data.apply(parse, axis=1)], axis=1)
-
-        # pass 2: convert value
         def format_example(row) -> pd.Series:
             nonlocal symbols
             params_flat = self.flatten(row["instance_obj"], symbols)
@@ -145,7 +116,8 @@ class Adapter(AbstractAdapter):
 
             return pd.Series(terms)
 
-        csv = csv.apply(format_example, axis=1)
+        # noinspection PyTypeChecker
+        csv: pd.DataFrame = data.apply(format_example, axis=1)
 
         # Modeling.MP does not support missing values
         # A missing value resulting from cross product indicates a wrong combination of parameter and variable anyway
@@ -155,7 +127,7 @@ class Adapter(AbstractAdapter):
         csv.rename(columns=self.get_type_spec(csv, symbols), inplace=True)
 
         col_order = ['Type'] + [col for col in csv.columns if col != 'Type']
-        return (csv[col_order], symbols)
+        return csv[col_order]
 
     def flatten(self,
                 dictionary: dict[str, int | float | set | list],
@@ -176,7 +148,7 @@ class Adapter(AbstractAdapter):
             assert symbol.collection == "set"
             assert len(symbol.indices) == 1
             output = {}
-            for i in symbol.indices[0]:
+            for i in range(min(symbol.indices[0]), max(symbol.indices[0]) + 1):
                 assert type(i) is int, f"Indices must be integer: {i}"
                 output.update(self.flatten_value(f"{name_prefix}ᐨ{i}", int(i in value), symbol))
             return output
@@ -188,25 +160,7 @@ class Adapter(AbstractAdapter):
                 # Other Letter (Lo) Unicode class, which is allowed)
                 output.update(self.flatten_value(f"{name_prefix}ᐨ{i}", value, symbol))
             return output
-        raise ValueError(f"Unknown value type: {value}: {value_type}")
-
-    def to_MznVar(self, name: str, value: int | float | set | list, is_var: bool) -> MznVar:
-        value_type = type(value)
-        if value_type is int or value_type is float:
-            return MznVar(name, value_type.__name__, None, [], value, value, is_var)
-        elif value_type is set or value_type is range or value_type is list:
-            sub_var = reduce(MznVar.merge_inplace, (self.to_MznVar(name, v, is_var) for v in value))
-            col_type = "array" if value_type is list else "set"
-            indices = [set(value)] if value_type is not list else [{1, len(value)}]
-            # noinspection PyTypeChecker
-            return MznVar(name=name,
-                          domain=sub_var.domain,
-                          collection=col_type,
-                          indices=indices + sub_var.indices,
-                          min=sub_var.min,
-                          max=sub_var.max,
-                          var=is_var)
-        raise ValueError(f"Unknown value type: {value}: {value_type}")
+        raise TypeError(f"Unknown value type: {value}: {value_type}")
 
     def get_type_spec(self, csv: pd.DataFrame, symbols: dict[str, MznVar]) -> dict:
         col2type_spec = {}
@@ -289,10 +243,6 @@ class Adapter(AbstractAdapter):
                                  ) -> str:
         return "\n".join(str(v) for v in sorted(symbols.values(), key=lambda s: s.var))
 
-    @staticmethod
-    def translate_index(match: re.Match) -> str:
-        return f"[{match.group(0)[1:].replace("ᐨ", ", ")}]"
-
     def translate_constraints(self, constraints: list[tuple[int, str]], symbols: dict[str, MznVar]) -> str:
         def translate_var(match: re.Match) -> str:
             symbol = symbols[match.group(1).replace("ー", "_")]
@@ -315,48 +265,3 @@ class Adapter(AbstractAdapter):
             self.container.remove()
         except docker.errors.NotFound:
             pass
-
-
-@dataclass
-class MznVar:
-    name: str
-    domain: str
-    collection: Literal["array", "set"] | None
-    indices: list[set[int]]
-    min: float | int
-    max: float | int
-    var: bool
-
-    def merge_inplace(self, other: MznVar) -> MznVar:
-        assert (self.name == other.name)
-        assert (self.collection == other.collection)
-
-        if self.domain == "float" or other.domain == "float":
-            self.domain = "float"
-        elif self.domain == "int" or other.domain == "int":
-            self.domain = "int"
-        elif self.domain == "bool" or other.domain == "bool":
-            self.domain = "bool"
-        else:
-            raise AdapterException(f"Unknown domain: {self.domain}")
-
-        self.indices = [a | b for a, b in zip(self.indices, other.indices)]
-        self.min = min(self.min, other.min)
-        self.max = max(self.max, other.max)
-        self.var = max(self.var, other.var)
-
-        return self
-
-    def __str__(self) -> str:
-        out = ""
-        if self.collection == "array":
-            out += f"array[{", ".join(f"{min(i)}..{max(i)}" for i in self.indices)}] of "
-        if self.var:
-            out += "var "
-        if self.collection == "set":
-            assert len(self.indices) > 0
-            out += f"set of {min(self.indices[0])}..{max(self.indices[0])}"
-        else:
-            out += f"{self.min}..{self.max}"
-        out += f": {self.name};"
-        return out
