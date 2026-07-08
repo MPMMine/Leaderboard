@@ -1,7 +1,4 @@
-import itertools
 import logging
-import os
-from pathlib import Path
 from typing import override, Any
 
 import docker
@@ -13,37 +10,11 @@ from mpmmine.evaluator.configuration import Configuration
 
 
 class Adapter(AbstractAdapter):
-    docker_client = docker.from_env()
-    image_tag: str
-    container_tag: str
     container: docker.models.containers.Container
-    container_counter = itertools.count(start=1)  # atomic counter
 
     @override
     def __init__(self, configuration: Configuration):
         super().__init__(configuration)
-
-        self.image_tag = f"{configuration.algorithm.lower()}:latest"
-        self.container_tag = f"{configuration.algorithm}_MPMMine-{configuration.problem_id}{configuration.model_id}_{os.getpid()}"
-
-        logging.info(f"Building {self.image_tag} docker image...")
-        image, logs = self.docker_client.images.build(
-            path=str(Path(__file__).parent.resolve()),
-            tag=self.image_tag
-        )
-
-        for line in logs:
-            if 'stream' in line:
-                logging.debug(line['stream'].strip())
-
-        try:
-            # remove old container if exists
-            old = self.docker_client.containers.get(self.container_tag)
-            logging.info(f"Removing old {self.container_tag} docker container...")
-            old.stop()
-            old.remove()
-        except docker.errors.NotFound:
-            pass
 
         logging.info(f"Starting {self.container_tag} docker container...")
         self.container = self.docker_client.containers.run(

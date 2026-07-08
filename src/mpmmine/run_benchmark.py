@@ -16,6 +16,8 @@ def main():
 
     mpmmine = MPMMine(Path("~/Projects/MPMMine/MPMMine").expanduser())
 
+    # To facilitate debugging, replace ProcessPoolExecutor with ThreadPoolExecutor with max_workers set to 1
+    # Note that ThreadPoolExecutor with max_workers greater than 1 may not work correctly due to race conditions in library code.
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
         # with ThreadPoolExecutor(max_workers=1) as executor:
         tasks = []
@@ -90,7 +92,7 @@ def get_algorithms() -> Generator[Path, None, None]:
     all_algorithms = Path(__file__).parent.parent.parent / "algorithms"
     for algorithm in all_algorithms.iterdir():
         if algorithm.is_dir() and not algorithm.name.startswith('.'):
-            if algorithm.name != "ARNOLD":  # FIXME: temporary condition, for tests
+            if algorithm.name not in {"ARNOLD", "AutoSynthMILP"}:  # FIXME: temporary condition, for tests
                 continue
             yield algorithm
 
@@ -111,7 +113,10 @@ def get_training_sizes() -> list[int]:
 
 def run_evaluation(cfg: Configuration):
     configure_logging()
-    Evaluator(cfg).run()
+    try:
+        Evaluator(cfg).run()
+    except BaseException as e:
+        logging.critical(e, exc_info=True)
 
 
 def get_algorithm_manifest(algorithm: Path) -> AlgorithmManifest:

@@ -18,6 +18,9 @@ class Configuration:
     cv_folds: int = 10
     seed: int = 0
 
+    def get_algorithm_root(self) -> Path:
+        return Path(__file__).parent.parent.parent.parent / "algorithms" / self.algorithm
+
     def get_results_root(self) -> Path:
         results_root = (Path(__file__).parent.parent.parent.parent / "results" / self.algorithm).resolve()
         instance_root = (results_root / "problems" / self.problem_id / "models" / self.model_id / "instances" /

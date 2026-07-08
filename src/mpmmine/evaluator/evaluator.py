@@ -29,7 +29,7 @@ class Evaluator:
     def __init__(self, configuration: Configuration):
         self.configuration = configuration
 
-        algorithm_path = self.get_algorithm_root()
+        algorithm_path = configuration.get_algorithm_root()
         self.adapter = load_class(
             module_name=f"{configuration.algorithm}_adapter",
             file_path=algorithm_path / "adapter.py",
@@ -100,9 +100,6 @@ class Evaluator:
         logging.info(
             f"Finished evaluation of {cfg.algorithm} on MPMMine-{cfg.problem_id}{cfg.model_id} instances {",".join(cfg.instance_ids)}"
         )
-
-    def get_algorithm_root(self) -> Path:
-        return Path(__file__).parent.parent.parent.parent / "algorithms" / self.configuration.algorithm
 
     def cross_validation(self) -> Generator[tuple[pd.DataFrame, pd.DataFrame], None, None]:
         cfg = self.configuration
@@ -231,11 +228,15 @@ class Evaluator:
                     for w in set((w.category.__name__, str(w.message)) for w in caught_warnings):
                         mzn.write(f"% {w[0]}: {w[1]}\n")
 
+    def __del__(self):
+        if self.adapter is not None:
+            del self.adapter
+
     @staticmethod
     def format_error(err: str | None) -> str | None:
         if err is None or len(err) == 0:
             return None
-        if len(err) <= 503:
+        if len(err) <= 1503:
             return err
         else:
-            return f"{err[:250]}...{err[-250:]}"
+            return f"{err[:750]}...{err[-750:]}"
