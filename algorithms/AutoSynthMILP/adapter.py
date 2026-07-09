@@ -65,8 +65,8 @@ class Adapter(AbstractAdapter):
     @override
     def run(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
         cfg = self.configuration
-        csv_path = self.data_path / f"input_{cfg.problem_id}{cfg.model_id}{",".join(cfg.instance_ids)}_{os.getpid()}.csv"
-        sqlite_path = self.data_path / f"output_{cfg.problem_id}{cfg.model_id}{",".join(cfg.instance_ids)}_{os.getpid()}.sqlite"
+        csv_path = self.data_path / f"input_{cfg.problem_id}{cfg.model_id}{",".join(cfg.instance_ids)}_{len(train_data)}_{fold_id}_{os.getpid()}.csv"
+        sqlite_path = self.data_path / f"output_{cfg.problem_id}{cfg.model_id}{",".join(cfg.instance_ids)}_{len(train_data)}_{fold_id}_{os.getpid()}.sqlite"
 
         try:
             csv = self.translate_input(train_data, symbols)
