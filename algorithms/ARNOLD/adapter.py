@@ -63,7 +63,7 @@ class Adapter(AbstractAdapter):
         replace_sets(params)
         replace_sets(variables)
 
-        return f"bash -c 'python /app/code/run.py --var {" ".join(params | variables)} --input_var {" ".join(params)} {" ".join(examples)} 2>&1 | sed \"s/^/% /\"; cat -u /app/model.mzn 2>/dev/null; rm -f /app/model.mzn'"
+        return f"timeout {self.configuration.run_timeout} bash -c 'python /app/code/run.py --var {" ".join(params | variables)} --input_var {" ".join(params)} {" ".join(examples)} 2>&1 | sed \"s/^/% /\"; cat -u /app/model.mzn 2>/dev/null; rm -f /app/model.mzn'"
 
     @staticmethod
     def translate_value(value: Any, symbol: MznVar) -> str:
@@ -86,7 +86,7 @@ class Adapter(AbstractAdapter):
         if result.exit_code == 0:
             return result.output.decode("utf-8")
         raise AdapterException(
-            f"Failed to run:\n\t{cmd}\n\tin container {self.container.name}:\n\texit code: {result.exit_code}\n\terror: {result.output.decode("utf-8")}")
+            f"Failed to run:\n\t{cmd}\n\tin container {self.container.name}:\n\texit code: {(c := result.exit_code) + (" (TIMEOUT)" if c == 124 else "")}\n\terror: {result.output.decode("utf-8")}")
 
     def translate_output(self, mzn: str, symbols: dict[str, MznVar]) -> str:
         first = True

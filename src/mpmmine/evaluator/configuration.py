@@ -17,6 +17,7 @@ class Configuration:
     test_non_sol_limit: int
     cv_folds: int = 10
     seed: int = 0
+    run_timeout: int = 1200  # seconds
 
     def get_algorithm_root(self) -> Path:
         return Path(__file__).parent.parent.parent.parent / "algorithms" / self.algorithm
