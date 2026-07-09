@@ -6,6 +6,7 @@ from typing import Literal
 
 import docker
 import pandas as pd
+from filelock import FileLock
 
 from mpmmine.evaluator.configuration import Configuration
 
@@ -28,14 +29,15 @@ class AbstractAdapter:
         self.image_tag = f"{configuration.algorithm.lower()}:latest"
         self.container_tag = f"{configuration.algorithm}_MPMMine-{configuration.problem_id}{configuration.model_id}_{os.getpid()}"
 
-        logging.info(f"Building {self.image_tag} docker image...")
         target_platform = self.get_docker_platform_()
-        image, logs = self.docker_client.images.build(
-            path=str(configuration.get_algorithm_root().resolve()),
-            tag=self.image_tag,
-            platform=target_platform,  # Ensures base images are pulled for the correct architecture
-            buildargs={"TARGETPLATFORM": target_platform},  # Injects the variable into the Dockerfile ARG
-        )
+        with FileLock((configuration.get_algorithm_root() / "Dockerfile.lock").resolve()):
+            logging.info(f"Building {self.image_tag} docker image...")
+            image, logs = self.docker_client.images.build(
+                path=str(configuration.get_algorithm_root().resolve()),
+                tag=self.image_tag,
+                platform=target_platform,  # Ensures base images are pulled for the correct architecture
+                buildargs={"TARGETPLATFORM": target_platform},  # Injects the variable into the Dockerfile ARG
+            )
 
         for line in logs:
             if 'stream' in line:
