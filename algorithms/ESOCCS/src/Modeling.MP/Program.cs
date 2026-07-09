@@ -29,8 +29,9 @@ namespace Modeling.MP
         static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            TestSampling();
-            return;
+            // MPMMine Leaderboard: commented out, as this runs a sampler test rather than the ESOCCS algorithm.
+            //TestSampling();
+            //return;
 
             //Sample();
             using (Database = new Database(OutputPath))

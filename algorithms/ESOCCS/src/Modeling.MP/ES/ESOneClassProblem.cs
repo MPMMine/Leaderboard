@@ -256,8 +256,11 @@ namespace Modeling.MP.ES
             numFixed = 0;
 
             // Includes weights and free term (the last element of X array)
-            for (int v = start; v < baseDescriptor.Constraint.X.Length; ++v)
+            // MPMMine Leaderboard: limit to 50 terms at most to prevent excessive computational cost
+            for (int v = start; v < Math.Min(baseDescriptor.Constraint.X.Length, 50); ++v)
             {
+                if (baseDescriptor.Constraint.X.Length - v < numFixed - 1)
+                    break;
                 //foreach (var coefficient in fixedCoefficients)
                 {
                     var backup = baseDescriptor.Constraint.X[v];

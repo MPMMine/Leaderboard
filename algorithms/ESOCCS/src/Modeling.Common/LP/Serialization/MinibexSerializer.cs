@@ -92,12 +92,14 @@ namespace Modeling.Common.LP.Serialization
 
         protected virtual void Serialize(IDictionary<Variable, double> weights, StringBuilder builder)
         {
+            var startLength = builder.Length;
             foreach (var pair in weights)
             {
                 this.Print(pair, builder);
             }
 
-            if (weights.Count > 0)
+            // MPMMine Leaderboard: fixed IndexOutOfRangeException
+            if (builder.Length > startLength)
             {
                 builder.Remove(builder.Length - 3, 3);
             }

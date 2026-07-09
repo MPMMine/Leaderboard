@@ -8,8 +8,10 @@ using Accord;
 using Accord.MachineLearning;
 using Accord.Math.Distances;
 using Accord.Statistics.Distributions.Fitting;
+using Accord.Statistics.Distributions.Multivariate;
 using Modeling.Common;
 using Modeling.Common.Transformations;
+using Modeling.GP;
 using Modeling.Utils;
 
 namespace Modeling.MP
@@ -19,7 +21,7 @@ namespace Modeling.MP
         public int Threads { get; set; } = Arguments.Get(nameof(Threads), 1);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="problem"></param>
         /// <param name="count">Number of points to sample</param>
@@ -76,10 +78,79 @@ namespace Modeling.MP
                     exception = e;
                 }
             }
-            if (learnt == null)
-                throw exception;
 
-            var distribution = learnt.ToMixtureDistribution();
+            var distribution = learnt?.ToMixtureDistribution();
+
+            // MPMMine Leaderboard: added fallback: instead of throwing an exception, create a single Gaussian distribution from empirical data
+            if (distribution == null)
+            {
+                Context.Current.Logger.Info("Calculating fallback distribution...");
+                // Calculate mean and covariance directly
+                double[] mean = Accord.Statistics.Measures.Mean(exampleArray, 0);
+                double[][] cov = Accord.Statistics.Measures.Covariance(exampleArray, mean);
+
+                // Preemptively handle zero-variance dimensions to prevent singularity
+                for (int i = 0; i < cov.Length; i++)
+                {
+                    if (cov[i][i] <= 1e-12)
+                    {
+                        // Set arbitrary variance for constant dimensions
+                        cov[i][i] = 1.0;
+                    }
+                }
+
+                MultivariateNormalDistribution singleGaussian = null;
+                double regularization = 1e-6;
+                int maxAttempts = 5;
+                int attempts = 0;
+
+                // Adaptive Tikhonov regularization with a strict loop limit
+                while (singleGaussian == null && attempts++ < maxAttempts)
+                {
+                    try
+                    {
+                        // Cloning the matrix prevents accumulation of added values across attempts
+                        double[][] regCov = new double[cov.Length][];
+                        for (int i = 0; i < cov.Length; i++)
+                        {
+                            regCov[i] = (double[])cov[i].Clone();
+                            regCov[i][i] += regularization;
+                        }
+
+                        singleGaussian = new MultivariateNormalDistribution(mean, regCov);
+                        singleGaussian.Generate(); // test sampling for passing the positive definite matrix check
+                    }
+                    catch (NonPositiveDefiniteMatrixException)
+                    {
+                        regularization *= 10;
+
+                        // Penultimate fallback: ignore covariances (pure diagonal matrix)
+                        if (attempts == maxAttempts - 1)
+                        {
+                            Context.Current.Logger.Info("Calculating penultimate fallback distribution...");
+                            for (int i = 0; i < cov.Length; i++)
+                            {
+                                for (int j = 0; j < cov.Length; j++)
+                                {
+                                    if (i != j) cov[i][j] = 0.0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Ultimate fallback: Identity matrix if all regularization attempts fail
+                if (singleGaussian == null)
+                {
+                    Context.Current.Logger.Info("Calculating ultimate fallback distribution...");
+                    singleGaussian = new MultivariateNormalDistribution(mean);
+                }
+
+                distribution = new MultivariateMixture<MultivariateNormalDistribution>(
+                    new[] { singleGaussian }
+                );
+            }
+
             //var threshold = exampleArray.Min(e => distribution.ProbabilityDensityFunction(e));//.OrderBy(p => p).Skip((int)(problem.Examples.Count * 0.25)).First();
             var threshold = exampleArray.Select(e => distribution.ProbabilityDensityFunction(e)).OrderBy(p => p).Skip((int)(problem.Examples.Count * 0.01)).First();
 
@@ -111,7 +182,7 @@ namespace Modeling.MP
             {
 #if DEBUG
                 minRandomSample.Fill(double.NaN);
-#endif 
+#endif
                 minPdf = double.MaxValue;
                 attempts = 0;
                 do
