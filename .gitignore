@@ -224,3 +224,6 @@ __marimo__/
 
 # Temporary data files
 /algorithms/*/data/
+
+# Docker locks
+Dockerfile.lock

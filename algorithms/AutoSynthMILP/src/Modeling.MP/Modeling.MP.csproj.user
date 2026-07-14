@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>Modeling.MP.exe seed=0 benchmark=Modeling.Common.Benchmarks.Cube5 samples=100 preference=0.0 linear=True quadratic=True trigonometric=False MaxConstraints=15 SimplexIterLimit=1E7 MIPNodeLimit=1E5 TimeLimit=20 output=statistics.sqlite</StartArguments>
-  </PropertyGroup>
-</Project>
