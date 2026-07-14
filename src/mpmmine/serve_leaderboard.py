@@ -95,21 +95,21 @@ class Model:
         return list(self.data["algorithm"].unique())
 
     def get_artifact_types(self) -> list[str]:
-        return [t
+        return sorted({t
                 for algo in self.get_algorithms()
-                for t in self.manifests[algo].artifacts.keys()]
+                       for t in self.manifests[algo].artifacts.keys()})
 
     def get_problems(self) -> list[str]:
-        return list(self.data["problem"].unique())
+        return sorted(list(self.data["problem"].unique()))
 
     def get_problem_models(self) -> list[str]:
-        return list(self.data["problem_model"].unique())
+        return sorted(list(self.data["problem_model"].unique()))
 
     def get_problem_instances(self) -> list[str]:
-        return list(self.data["problem_instance"].unique())
+        return sorted(list(self.data["problem_instance"].unique()))
 
     def get_train_counts(self) -> list[int]:
-        return list(self.data["train_count"].unique())
+        return sorted(list(self.data["train_count"].unique()))
 
 
 class Statistics:
