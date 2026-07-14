@@ -212,7 +212,7 @@ class Adapter(AbstractAdapter):
                          symbols: dict[str, MznVar],
                          log: str
                          ) -> str:
-        with sqlite3.connect(output_sqlite) as conn:
+        with sqlite3.connect(output_sqlite, autocommit=False) as conn:
             cursor = conn.cursor()
             experiment = cursor.execute("SELECT e.id FROM experiments e").fetchall()
             if len(experiment) == 0:
@@ -235,6 +235,8 @@ class Adapter(AbstractAdapter):
             log = textwrap.indent(log, "% ")
             var_str = self.translate_variables_back(variables, symbols)
             const_str = self.translate_constraints(constraints, symbols)
+            conn.commit()
+
             return f"{log}\n{var_str}\n\n{const_str}"
 
     def translate_variables_back(self,
