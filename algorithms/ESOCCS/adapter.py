@@ -210,7 +210,7 @@ class Adapter(AbstractAdapter):
         if result.exit_code == 0:
             return result.output.decode("utf-8")
         raise AdapterException(
-            f"Failed to run:\n\t{cmd}\n\tin container {self.container.name}:\n\texit code: {(c := result.exit_code) + (" (TIMEOUT)" if c == 124 else "")}\n\terror: {result.output.decode("utf-8")}")
+            f"Failed to run:\n\t{cmd}\n\tin container {self.container.name}:\n\texit code: {str(c := result.exit_code) + (" (TIMEOUT)" if c == 124 else "")}\n\terror: {result.output.decode("utf-8")}")
 
     def translate_output(self,
                          output_sqlite: Path,
