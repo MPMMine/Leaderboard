@@ -5,9 +5,9 @@ from typing import Generator
 
 import pandas as pd
 import scipy.stats
+from mpmmine.dataset import MPMMine
 from pandas import DataFrame
 
-from mpmmine import MPMMine
 from mpmmine.evaluator.configuration import Configuration
 
 

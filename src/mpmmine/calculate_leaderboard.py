@@ -1,6 +1,7 @@
 from pathlib import Path
 
-from mpmmine import MPMMine
+from mpmmine.dataset import MPMMine
+
 from mpmmine.leaderboard.leaderboard import Leaderboard
 from mpmmine.util import configure_logging
 

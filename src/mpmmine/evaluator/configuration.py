@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-from mpmmine import MPMMine
+from mpmmine.dataset import MPMMine
 
 
 @dataclass(frozen=True)

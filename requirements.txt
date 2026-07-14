@@ -6,3 +6,4 @@ dist-util
 lark
 colorlog
 streamlit
+mpmmine>=0.0.3

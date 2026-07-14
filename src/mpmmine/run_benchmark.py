@@ -4,7 +4,8 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Generator
 
-from mpmmine import MPMMine, Instance
+from mpmmine.dataset import MPMMine, Instance
+
 from mpmmine.evaluator.configuration import Configuration
 from mpmmine.evaluator.evaluator import Evaluator
 from mpmmine.evaluator.manifest import AlgorithmManifest
@@ -92,7 +93,8 @@ def get_algorithms() -> Generator[Path, None, None]:
     all_algorithms = Path(__file__).parent.parent.parent / "algorithms"
     for algorithm in all_algorithms.iterdir():
         if algorithm.is_dir() and not algorithm.name.startswith('.'):
-            if algorithm.name not in {"ARNOLD", "AutoSynthMILP"}:  # FIXME: temporary condition, for tests
+            if algorithm.name not in {"ARNOLD", "AutoSynthMILP", "ESOCCS",
+                                      "GOCCS"}:  # FIXME: temporary condition, for tests
                 continue
             yield algorithm
 
