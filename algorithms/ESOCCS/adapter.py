@@ -101,7 +101,7 @@ class Adapter(AbstractAdapter):
             params_flat = self.flatten(row["instance_obj"], symbols)
             vars_flat = self.flatten(row["example_obj"], symbols)
 
-            # The cross product below turns out to be very computationally expensive to handle by the AutoSynthMILP
+            # The cross product below turns out to be very computationally expensive to handle by the Modeling.MP
             # implementation. Instead, we just provide it with all parameters and variables, preventing so
             # parameter * variable products.
             # terms: dict[str, int | float | str] = \
@@ -160,7 +160,7 @@ class Adapter(AbstractAdapter):
         elif value_type is list:
             output = {}
             for i, value in enumerate(value, start=1):
-                # Note that underscore (_) is not supported in variable name in AutoSynthMILP implementation
+                # Note that underscore (_) is not supported in variable name in Modeling.MP implementation
                 # Using U+1428 Canadian Syllabics Final Short Horizontal Stroke instead (as it belongs to the
                 # Other Letter (Lo) Unicode class, which is allowed)
                 output.update(self.flatten_value(f"{name_prefix}ᐨ{i}", value, symbol))
