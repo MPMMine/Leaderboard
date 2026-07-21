@@ -1,0 +1,53 @@
+[project]
+name = "mpmmine-leaderboard"
+version = "0.0.1.20260721"
+authors = [
+    { name = "Tomasz P. Pawlak", email = "tpawlak@cs.put.poznan.pl" },
+    { name = "Rafał Stachowiak", email = "rstachowiak@cs.put.poznan.pl" }
+]
+description = "A leaderboard of Mathematical Programming model mining algorithms"
+readme = "README.md"
+requires-python = ">=3.13"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Typing :: Typed"
+]
+license = "Apache-2.0"
+license-files = ["LICEN[CS]E*"]
+dependencies = [
+    "scikit-learn",
+    "pandas",
+    "docker",
+    "minizinc",
+    "dist-util",
+    "lark",
+    "colorlog",
+    "streamlit",
+    "mpmmine>=0.1.0"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/MPMMine/Leaderboard"
+Repository = "https://github.com/MPMMine/Leaderboard.git"
+Issues = "https://github.com/MPMMine/Leaderboard/issues"
+Dataset = "https://github.com/MPMMine/MPMMine"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mpmmine"]
+
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
