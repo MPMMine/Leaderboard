@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 import logging
 import os
 from concurrent.futures import ProcessPoolExecutor
@@ -15,7 +16,11 @@ from mpmmine.util import configure_logging
 def main():
     configure_logging()
 
-    mpmmine = MPMMine(Path("~/Projects/MPMMine/MPMMine").expanduser())
+    parser = ArgumentParser()
+    parser.add_argument("mpmmine_path", type=Path)
+    args = parser.parse_args()
+
+    mpmmine = MPMMine(args.mpmmine_path.expanduser())
 
     # To facilitate debugging, replace ProcessPoolExecutor with ThreadPoolExecutor with max_workers set to 1
     # Note that ThreadPoolExecutor with max_workers greater than 1 may not work correctly due to race conditions in library code.
