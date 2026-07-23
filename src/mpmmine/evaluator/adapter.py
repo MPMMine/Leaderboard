@@ -6,6 +6,7 @@ from typing import Literal
 
 import docker
 import pandas as pd
+from docker import DockerClient
 from filelock import FileLock
 
 from mpmmine.evaluator.configuration import Configuration
@@ -13,7 +14,7 @@ from mpmmine.evaluator.configuration import Configuration
 
 class AbstractAdapter:
     configuration: Configuration
-    docker_client = docker.from_env()
+    docker_client: DockerClient
     image_tag: str
     container_tag: str
     container: docker.models.containers.Container
@@ -25,6 +26,7 @@ class AbstractAdapter:
         the docker image, and then run this image as container using algorithm-specific requirements.
         """
         self.configuration = configuration
+        self.docker_client = docker.from_env()
 
         self.image_tag = f"{configuration.algorithm.lower()}:latest"
         self.container_tag = f"{configuration.algorithm}_MPMMine-{configuration.problem_id}{configuration.model_id}_{os.getpid()}"
