@@ -26,12 +26,12 @@ dependencies = [
     "scikit-learn",
     "pandas",
     "docker",
-    "minizinc",
+    "minizinc[dzn]",
     "dist-util",
     "lark",
     "colorlog",
     "streamlit",
-    "mpmmine>=0.1.0"
+    "mpmmine>=0.1.1"
 ]
 
 [project.optional-dependencies]
