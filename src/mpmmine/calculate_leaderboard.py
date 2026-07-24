@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 
 from mpmmine.dataset import MPMMine
@@ -8,7 +9,12 @@ from mpmmine.util import configure_logging
 
 def main():
     configure_logging()
-    mpmmine = MPMMine(Path("~/Projects/MPMMine/MPMMine").expanduser())
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mpmmine_path", type=Path, help="Path to the MPMMine dataset")
+    args = parser.parse_args()
+
+    mpmmine = MPMMine(args.mpmmine_path.expanduser())
 
     repo_root = Path(__file__).parent.parent.parent
     leaderboard = Leaderboard(

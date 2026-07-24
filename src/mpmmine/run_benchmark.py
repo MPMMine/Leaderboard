@@ -17,7 +17,7 @@ def main():
     configure_logging()
 
     parser = ArgumentParser()
-    parser.add_argument("mpmmine_path", type=Path)
+    parser.add_argument("mpmmine_path", type=Path, help="Path to the MPMMine dataset")
     args = parser.parse_args()
 
     mpmmine = MPMMine(args.mpmmine_path.expanduser())
