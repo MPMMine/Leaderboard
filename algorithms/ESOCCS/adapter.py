@@ -120,7 +120,6 @@ class Adapter(AbstractAdapter):
         csv: pd.DataFrame = data.apply(format_example, axis=1)
 
         # Modeling.MP does not support missing values
-        # A missing value resulting from cross product indicates a wrong combination of parameter and variable anyway
         csv.dropna(axis=1, inplace=True)
 
         # Calculate variable domains and rename columns to include type specification
