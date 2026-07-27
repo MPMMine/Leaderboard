@@ -1,7 +1,8 @@
-from argparse import ArgumentParser
 import logging
 import os
+from argparse import ArgumentParser
 from concurrent.futures import ProcessPoolExecutor
+from dataclasses import replace
 from pathlib import Path
 from typing import Generator
 
@@ -12,7 +13,6 @@ from mpmmine.evaluator.evaluator import Evaluator
 from mpmmine.evaluator.manifest import AlgorithmManifest
 from mpmmine.util import configure_logging
 
-
 def main():
     configure_logging()
 
@@ -20,7 +20,8 @@ def main():
     parser.add_argument("mpmmine_path", type=Path, help="Path to the MPMMine dataset")
     args = parser.parse_args()
 
-    mpmmine = MPMMine(args.mpmmine_path.expanduser())
+    mpmmine_path = args.mpmmine_path.expanduser()
+    mpmmine = MPMMine(mpmmine_path)
 
     # To facilitate debugging, replace ProcessPoolExecutor with ThreadPoolExecutor with max_workers set to 1
     # Note that ThreadPoolExecutor with max_workers greater than 1 may not work correctly due to race conditions in library code.
@@ -57,7 +58,7 @@ def main():
 
                     cfg = Configuration(
                         algorithm=algorithm.name,
-                        mpmmine=mpmmine,
+                        mpmmine=mpmmine_path,
                         problem_id=instance.model.problem.id,
                         model_id=instance.model.id,
                         instance_ids=[instance.id],
@@ -121,7 +122,8 @@ def get_training_sizes() -> list[int]:
 def run_evaluation(cfg: Configuration):
     configure_logging()
     try:
-        Evaluator(cfg).run()
+        cfg_with_mpmmine = replace(cfg, mpmmine=MPMMine(cfg.mpmmine))
+        Evaluator(cfg_with_mpmmine).run()
     except BaseException as e:
         logging.critical(e, exc_info=True)
 

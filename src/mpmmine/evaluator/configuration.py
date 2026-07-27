@@ -7,7 +7,7 @@ from mpmmine.dataset import MPMMine
 @dataclass(frozen=True)
 class Configuration:
     algorithm: str
-    mpmmine: MPMMine | None
+    mpmmine: MPMMine | Path | None
     problem_id: str
     model_id: str
     instance_ids: list[str]

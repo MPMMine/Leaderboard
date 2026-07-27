@@ -9,6 +9,7 @@ import colorlog
 
 _lock = threading.Lock()
 
+
 def load_class(module_name: str, file_path: Path, class_name: str, *args, **kwargs) -> Any:
     """
     Loads a class from a given file path.
@@ -45,6 +46,7 @@ def load_class(module_name: str, file_path: Path, class_name: str, *args, **kwar
         except AttributeError:
             raise AttributeError(f"Class '{class_name}' does not exist in {file_path}.")
 
+
 def configure_logging():
     handler = logging.StreamHandler()
     handler.setFormatter(colorlog.ColoredFormatter(log_colors={
@@ -55,3 +57,12 @@ def configure_logging():
         'CRITICAL': 'bold_red',
     }))
     logging.basicConfig(level=logging.INFO, handlers=[handler])
+
+
+def format_error(err: str | None) -> str | None:
+    if err is None or len(err) == 0:
+        return None
+    if len(err) <= 1503:
+        return err
+    else:
+        return f"{err[:750]}...{err[-750:]}"
