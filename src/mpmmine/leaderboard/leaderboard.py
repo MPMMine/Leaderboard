@@ -23,13 +23,19 @@ class Leaderboard:
         statistics = self.collect_statistics()
         # statistics.to_csv(raw_file, index=False)
 
-        cv_aggregates = self.aggregate_folds(statistics)
+        cv_aggregates = self.calculate_fold_statistics(statistics)
         report = self.calculate_cv_statistics(cv_aggregates)
 
         report.to_csv(agg_file, index=True)
 
-    def aggregate_folds(self, statistics: pd.DataFrame) -> pd.DataFrame:
-        logging.info("Aggregating cross-validation folds...")
+    def calculate_fold_statistics(self, statistics: pd.DataFrame) -> pd.DataFrame:
+        """
+        Calculates aggregated conformance measures from per-example raw statistics, separately for each fold
+        in k-fold cross-validation.
+        :param statistics: Per-example statistics.
+        :return: Per-fold statistics.
+        """
+        logging.info("Calculates per-fold statistics...")
 
         statistics["has_algorithm_error"] = ~statistics["algorithm_error"].isna()
         statistics["has_evaluation_error"] = ~statistics["evaluation_error"].isna()
@@ -54,6 +60,12 @@ class Leaderboard:
         return cv_aggregates
 
     def calculate_cv_statistics(self, cv_aggregates: DataFrame) -> DataFrame:
+        """
+        Calculates expected values and 0.95-confidence intervals of conformance measures based on values obtained for
+        individual folds k-fold cross-validation.
+        :param cv_aggregates:
+        :return:
+        """
         logging.info("Calculating k-fold cross-validation aggregations...")
 
         def ci(x):

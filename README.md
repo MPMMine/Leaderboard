@@ -247,6 +247,34 @@ Your implementation will be thoroughly verified by our team, and the results wil
 infrastructure. If the results are consistent, then the results obtained on our infrastructure will be included in the
 leaderboard.
 
+### Adding conformance measures
+
+The Leaderboard shows accuracy, error probability, and discovery times of algorithms by default. However, this framework
+is extensible. To implement new measure follow these steps.
+
+1. If existing per-example statistics collected in the `results` directory in files `test_statistics.csv` are enough for
+   calculating a new measure, extend `calculate_fold_statistics()` and `calculate_cv_statistics()` in
+   `src/mpmmine/leaderboard/leaderboard.py` with code that aggregates this low-level statistics into the desired
+   measure.
+   Function `calculate_fold_statistics()` aggregates per-example raw statistics into values of conformance measures for
+   individual folds of k-fold cross validation. Function `calculate_cv_statistics()` calculates expected values and
+   0.95-confidence intervals of conformance measures based on values obtained for individual folds.
+
+2. To extend per-example statistics, create a new class inheriting from class `AbstractMeasure` and append it to the
+   `measures` list at the top of definition of the `Evaluator` class in `src/mpmmine/evaluator/evaluator.py`.
+
+### Including a measure and results in the official leaderboard
+
+1. Fork the Leaderboard repository within your own profile.
+2. Create and test a measure using the [above-mentioned guide](#contributing).
+3. Run evaluation for all algorithms using your own infrastructure.
+4. Commit & push the measure, and the evaluation results.
+5. Create [pull request](https://github.com/MPMMine/Leaderboard/pulls).
+
+Your implementation will be thoroughly verified by our team, and the results will be re-evaluated using our
+infrastructure. If the results are consistent, then the results obtained on our infrastructure will be included in the
+leaderboard.
+
 ## Hardware & software requirements
 
 Running benchmarks requires:
@@ -260,4 +288,6 @@ Running benchmarks requires:
 * Hardware-accelerated virtualization (supported by many modern CPUs).
 * Memory consumption depends highly on the algorithms put under evaluation; as rough estimate, we require 4GB RAM per
   each CPU core, in parallel evaluation mode.
+* It requires roughly 2-3GB free disk space per algorithm to build and store Docker images and containers, and the
+  resulting data.
 
