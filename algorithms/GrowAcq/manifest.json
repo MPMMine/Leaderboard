@@ -1,0 +1,51 @@
+{
+  "name": "GrowAcq",
+  "description": "",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": false,
+    "integer": true
+  },
+  "language": {
+    "name": "high-level",
+    "level": "CPMpy"
+  },
+  "artifacts": {
+    "queries": {
+      "membership": true,
+      "partial": true
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "Tsouros2024",
+      "title": "Learning to Learn in Interactive Constraint Acquisition",
+      "volume": "38",
+      "ISSN": "2159-5399",
+      "url": "http://doi.org/10.1609/aaai.v38i8.28655",
+      "DOI": "10.1609/aaai.v38i8.28655",
+      "number": "8",
+      "journal": "Proceedings of the AAAI Conference on Artificial Intelligence",
+      "publisher": "Association for the Advancement of Artificial Intelligence (AAAI)",
+      "author": "Tsouros, Dimosthenis and Berden, Senne and Guns, Tias",
+      "year": "2024",
+      "month": "mar",
+      "pages": "8154–8162"
+    }
+  ],
+  "links": {
+    "paper": "http://doi.org/10.1609/aaai.v38i8.28655",
+    "repo": "https://github.com/Dimosts/ActiveConLearn",
+    "repo_fork": "https://github.com/MPMMine/Dimosts-ActiveConLearn"
+  }
+}

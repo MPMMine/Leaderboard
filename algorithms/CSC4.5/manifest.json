@@ -46,6 +46,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1016/j.asoc.2018.03.02",
-    "repo": "https://github.com/Lotafak/CSC4.5"
+    "repo": "https://github.com/Lotafak/CSC4.5",
+    "repo_fork": "https://github.com/MPMMine/Lotafak-CSC4.5"
   }
 }

@@ -45,6 +45,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.24963/ijcai.2019/158",
-    "repo": "https://github.com/mohitKULeuven/arnold"
+    "repo": "https://github.com/mohitKULeuven/arnold",
+    "repo_fork": "https://github.com/MPMMine/algorithm-mohitKULeuven-arnold"
   }
 }

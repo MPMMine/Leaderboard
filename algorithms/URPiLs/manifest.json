@@ -47,6 +47,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1609/aaai.v38i8.28658",
-    "repo": "https://github.com/shs-it/prolothar-constraint-acquisition"
+    "repo": "https://github.com/shs-it/prolothar-constraint-acquisition",
+    "repo_fork": "https://github.com/MPMMine/shs-it-prolothar-constraint-acquisition"
   }
 }

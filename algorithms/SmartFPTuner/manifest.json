@@ -46,6 +46,7 @@
   ],
   "links": {
     "paper": "http://doi.org/10.1145/3387902.3392615",
-    "repo": "https://github.com/oprecomp/StaticFPTuner"
+    "repo": "https://github.com/oprecomp/StaticFPTuner",
+    "repo_fork": "https://github.com/MPMMine/oprecomp-StaticFPTuner"
   }
 }

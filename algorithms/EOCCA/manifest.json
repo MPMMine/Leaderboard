@@ -47,6 +47,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1016/j.ejor.2020.12.018",
-    "repo": "https://gitlab.com/Litwiniuk/EOCCA/"
+    "repo": "https://gitlab.com/Litwiniuk/EOCCA/",
+    "repo_fork": "https://github.com/MPMMine/Litwiniuk-EOCCA"
   }
 }

@@ -47,6 +47,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1613/jair.1.14752",
-    "repo": "https://github.com/lirmm/ConstraintAcquisition/tree/GEQCA"
+    "repo": "https://github.com/lirmm/ConstraintAcquisition/tree/GEQCA",
+    "repo_fork": "https://github.com/MPMMine/lirmm-ConstraintAcquisition/tree/GEQCA"
   }
 }

@@ -1,0 +1,47 @@
+{
+  "name": "GrowAcq",
+  "description": "",
+  "objective": {
+    "linear": false,
+    "nonlinear": false
+  },
+  "constraints": {
+    "linear": true,
+    "nonlinear": false,
+    "global": false
+  },
+  "variables": {
+    "binary": true,
+    "continuous": false,
+    "integer": true
+  },
+  "language": {
+    "name": "high-level",
+    "level": "CPMpy"
+  },
+  "artifacts": {
+    "queries": {
+      "membership": true,
+      "partial": true
+    }
+  },
+  "references": [
+    {
+      "type": "article",
+      "citationKey": "10.1007/978-3-030-30048-7_41",
+      "title": "Structure-Driven Multiple Constraint Acquisition",
+      "DOI": "10.1007/978-3-030-30048-7_41",
+      "booktitle": "Principles and Practice of Constraint Programming",
+      "publisher": "Springer International Publishing",
+      "author": "Tsouros, Dimosthenis C. and Stergiou, Kostas and Bessiere, Christian",
+      "year": "2019",
+      "pages": "709--725",
+      "isbn": "978-3-030-30048-7"
+    }
+  ],
+  "links": {
+    "paper": "http://doi.org/10.1007/978-3-030-30048-7_41",
+    "repo": "https://github.com/Dimosts/ActiveConLearn",
+    "repo_fork": "https://github.com/MPMMine/Dimosts-ActiveConLearn"
+  }
+}

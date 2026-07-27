@@ -45,6 +45,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1609/aaai.v35i5.16504",
-    "repo": "https://gite.lirmm.fr/constraint-acquisition-team/pacq"
+    "repo": "https://gite.lirmm.fr/constraint-acquisition-team/pacq",
+    "repo_fork": "https://github.com/MPMMine/constraint-acquisition-team-pacq"
   }
 }

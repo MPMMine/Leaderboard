@@ -45,6 +45,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.4230/lipics.cp.2024.20",
-    "repo": "https://github.com/kostis-init/CP-LLMs-ICL"
+    "repo": "https://github.com/kostis-init/CP-LLMs-ICL",
+    "repo_fork": "https://github.com/MPMMine/kostis-init-CP-LLMs-ICL"
   }
 }

@@ -46,6 +46,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1145/3205455.3205480",
-    "repo": "https://github.com/SzybkiDanny/ConstraintsSynthesis"
+    "repo": "https://github.com/SzybkiDanny/ConstraintsSynthesis",
+    "repo_fork": "https://github.com/MPMMine/SzybkiDanny-ConstraintsSynthesis"
   }
 }

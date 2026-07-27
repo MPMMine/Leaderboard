@@ -59,6 +59,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1016/j.artint.2022.103751",
-    "repo": "https://github.com/conjure-cp/conjure"
+    "repo": "https://github.com/conjure-cp/conjure",
+    "repo_fork": "https://github.com/MPMMine/conjure-cp-conjure"
   }
 }

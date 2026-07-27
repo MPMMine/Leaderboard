@@ -44,6 +44,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.1016/j.apm.2023.04.032",
-    "repo": "https://github.com/antonioalcantaramata/ccl_tool/"
+    "repo": "https://github.com/antonioalcantaramata/ccl_tool/",
+    "repo_fork": "https://github.com/MPMMine/antonioalcantaramata-ccl_tool"
   }
 }

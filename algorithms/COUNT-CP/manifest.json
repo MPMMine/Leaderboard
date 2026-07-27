@@ -46,6 +46,7 @@
   ],
   "links": {
     "paper": "https://doi.org/10.4230/LIPICS.CP.2022.29",
-    "repo": "https://github.com/ML-KULeuven/COUNT-CP"
+    "repo": "https://github.com/ML-KULeuven/COUNT-CP",
+    "repo_fork": "https://github.com/MPMMine/ML-KULeuven-COUNT-CP"
   }
 }

@@ -47,6 +47,7 @@
   "links": {
     "paper": "https://doi.org/10.1016/j.artint.2016.01.005",
     "repo": "https://github.com/emlopt/emllib",
+    "repo_fork": "https://github.com/MPMMine/emlopt-emllib",
     "homepage": "https://emlopt.github.io/",
     "resources": "https://bitbucket.org/m_lombardi/eml-aij-2015-resources"
   }
