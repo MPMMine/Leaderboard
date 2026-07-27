@@ -59,7 +59,7 @@ benchmark.
 Raw results must be aggregated before feeding to the interactive dashboard. To aggregate results, run:
 
 ```shell
-PYTHONPATH=src python3 calculate_leaderboard.py
+PYTHONPATH=src python3 calculate_leaderboard.py /path/to/MPMMine-zstd.sqlite
 ```
 
 This will create `leaderboard.csv` and `leaderboard_raw.csv` files. The former is actually required to run the
