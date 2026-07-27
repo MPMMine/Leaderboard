@@ -36,12 +36,16 @@ Modeling.MP assumes that all variables are scalars. It does not support arrays, 
 does not natively support named parameters. Hence, the adapter takes the following means to translate MiniZinc data
 files to the Modeling.MP input in the `.csv` format.
 
-### Flatten variables and parameters
+### Convert parameters to variables
 
-Scalar variables and parameters (later on referred to as *symbols*) are copied to the `.csv` as is. Arrays are flattened
-by converting to scalers in which symbol name is appended with indices of individual values. sets are converted to
-multiple binary symbols representing the inclusion (1) or exclusion (0) of the value in a set.
-See `Adapter.translate_input()` for details.
+All parameters are converted to variables with domain narrowed to values included in the training data. Later on we
+refer to parameters and variables together to as *symbols*.
+
+### Flatten symbols
+
+Scalar symbols are copied to the `.csv` as is. Arrays are flattened by converting to scalers in which symbol name is
+appended with indices of individual values. sets are converted to multiple binary symbols representing the inclusion (1)
+or exclusion (0) of the value in a set. See `Adapter.translate_input()` for details.
 
 ## Translation of the resulting MP model to MiniZinc model `.mzn`
 
@@ -49,9 +53,10 @@ Modeling.MP produces models
 in [LP format](https://docs.gurobi.com/projects/optimizer/en/current/reference/fileformats/modelformats.html#lp-format)
 and [Minibex format](https://ibex-team.github.io/ibex-lib/minibex.html). They both are stored in the SQLite database
 produced as the output of the algorithm run. The adapter uses the LP format representation and converts it
-statement-by-statement into MiniZinc. If input data contains sets, the adapter adds auxiliary variables and constraints
-in post-processing, that convert sets from the original `.dzn` to the binary symbols employed by the discovered MP
-model. See `Adapter.translate_output()` for details.
+statement-by-statement into MiniZinc, translating flattened arrays into indexed access to the original symbols. If
+input data contains sets, the adapter adds auxiliary variables and constraints in post-processing, that convert sets
+from the original `.dzn` to the binary symbols employed by the discovered MP model. See `Adapter.translate_output()`
+for details.
 
 ## Known issues
 
