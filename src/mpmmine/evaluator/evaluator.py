@@ -4,28 +4,30 @@ import logging
 import textwrap
 import time
 import warnings
-from dataclasses import asdict
-from datetime import timedelta
+from dataclasses import asdict, replace
 from functools import reduce
-from pathlib import Path
 from typing import Generator
 
 import minizinc
 import pandas as pd
-from minizinc import Instance, Model, Solver, Status
+from minizinc import Instance, Model, Solver
 from minizinc.dzn import parse_dzn
-from minizinc.error import MiniZincWarning, MiniZincError
+from minizinc.error import MiniZincWarning
 from sklearn.model_selection import StratifiedShuffleSplit
 
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar
 from mpmmine.evaluator.configuration import Configuration
-from mpmmine.util import load_class
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix
+from mpmmine.util import load_class, format_error
 
 
 class Evaluator:
     configuration: Configuration
     solver = Solver.lookup("gurobi")
     adapter: AbstractAdapter
+    measures: list[AbstractMeasure] = [
+        ConfusionMatrix()
+    ]
 
     def __init__(self, configuration: Configuration):
         self.configuration = configuration
@@ -44,7 +46,9 @@ class Evaluator:
 
         # save config
         with (self.configuration.get_config_path()).open("wt") as f:
-            json.dump({k: v for k, v in asdict(cfg).items() if k != "mpmmine"}, f, indent=2)
+            cfg_copy = asdict(replace(cfg, mpmmine=None))
+            cfg_copy.pop("mpmmine")
+            json.dump(cfg_copy, f, indent=2)
 
         statistics = pd.DataFrame()
         for (fold_id, data) in enumerate(self.cross_validation(), start=1):
@@ -59,7 +63,7 @@ class Evaluator:
 
             try:
                 discovery_time = time.perf_counter()
-                train, symbols = self.parse_dzn_and_extract_symbols_(train)
+                train, symbols = self._parse_dzn_and_extract_symbols(train)
                 mzn = self.adapter.run(train, symbols, fold_id)
                 discovery_time = time.perf_counter() - discovery_time
 
@@ -71,17 +75,17 @@ class Evaluator:
 
                 # run tests
                 test_time = time.perf_counter()
-                self.test(mzn_path, fold_statistics)
+                self._test(mzn_path, fold_statistics)
                 test_time = time.perf_counter() - test_time
 
             except AdapterException as e:
-                logging.error(Evaluator.format_error(str(e)))
+                logging.error(format_error(str(e)))
                 # save mzn
                 mzn_path = self.configuration.get_resulting_model_path(fold_id)
                 with open(mzn_path, "w") as f:
                     f.write(textwrap.indent(str(e), "% "))
                     f.write("\n")
-                fold_statistics["algorithm_error"] = Evaluator.format_error(str(e))
+                fold_statistics["algorithm_error"] = format_error(str(e))
 
             fold_statistics["fold"] = fold_id
             fold_statistics["train_solutions"] = len(train[train["actual_class"].astype(bool)])
@@ -103,7 +107,7 @@ class Evaluator:
             f"Finished evaluation of {cfg.algorithm} on MPMMine-{cfg.problem_id}{cfg.model_id} instances {",".join(cfg.instance_ids)}"
         )
 
-    def parse_dzn_and_extract_symbols_(self, data: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, MznVar]]:
+    def _parse_dzn_and_extract_symbols(self, data: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, MznVar]]:
         symbols: dict[str, MznVar] = dict()
 
         # pass 1: get symbols and calculate their domains
@@ -114,13 +118,13 @@ class Evaluator:
             vars = parse_dzn(row["example"])
 
             for k, v in params.items():
-                param = self.to_MznVar_(k, v, False)
+                param = self._to_MznVar(k, v, False)
                 if k in symbols:
                     symbols[k] = symbols[k].merge_inplace(param)
                 else:
                     symbols[k] = param
             for k, v in vars.items():
-                var = self.to_MznVar_(k, v, True)
+                var = self._to_MznVar(k, v, True)
                 if k in symbols:
                     symbols[k] = symbols[k].merge_inplace(var)
                 else:
@@ -131,12 +135,12 @@ class Evaluator:
         # noinspection PyTypeChecker
         return pd.concat([data, data.apply(parse, axis=1)], axis=1), symbols
 
-    def to_MznVar_(self, name: str, value: int | float | set | list, is_var: bool) -> MznVar:
+    def _to_MznVar(self, name: str, value: int | float | set | list, is_var: bool) -> MznVar:
         value_type = type(value)
         if value_type is int or value_type is float:
             return MznVar(name, value_type.__name__, None, [], value, value, is_var)
         elif value_type is set or value_type is range or value_type is list:
-            sub_var = reduce(MznVar.merge_inplace, (self.to_MznVar_(name, v, is_var) for v in value))
+            sub_var = reduce(MznVar.merge_inplace, (self._to_MznVar(name, v, is_var) for v in value))
             col_type = "array" if value_type is list else "set"
             indices = [set(value)] if value_type is not list else [{1, len(value)}]
             # noinspection PyTypeChecker
@@ -206,86 +210,38 @@ class Evaluator:
             all_data = pd.concat([all_data, solutions], ignore_index=True)
         return all_data
 
-    def test(self, mzn_path: Path, test: pd.DataFrame):
+    def _test(self, mzn_path: str, test_set: pd.DataFrame):
         """
         Runs the given MiniZinc model on all test examples.
         Caution! The provided dataframe test is modified in place.
         :param mzn_path:
-        :param test:
+        :param test_set:
         :return:
         """
-        with warnings.catch_warnings(record=True, category=MiniZincWarning) as caught_warnings:
+        with (warnings.catch_warnings(record=True, category=MiniZincWarning) as caught_warnings):
             warnings.simplefilter("always", category=MiniZincWarning)
             model = Model(mzn_path)
             instance = Instance(self.solver, model)
 
-            def actual_test(row) -> pd.Series:
-                nonlocal instance
-                satisfied = None
-                error = None
-                used_params = []
-                unused_params = []
-                used_vars = []
-                unused_vars = []
+            for measure in self.measures:
+                value = measure.calculate(model, instance, test_set)
 
-                try:
-                    with instance.branch() as copy:
-                        instance_dzn = parse_dzn(row["instance"])  # add instance params
-                        for k, v in instance_dzn.items():
-                            if k in copy.input:
-                                copy[k] = v
-                                used_params.append(k)
-                            else:
-                                unused_params.append(k)
+                if isinstance(value, float) or isinstance(value, int) or isinstance(value, bool) or \
+                        isinstance(value, pd.Series):
+                    name = type(measure).__name__
+                    test_set[name] = value  # broadcasts automatically for primitive types
+                elif isinstance(value, pd.DataFrame):
+                    test_set[value.columns] = value
+                else:
+                    raise ValueError(f"Unsupported value: {type(value)}")
 
-                        example_dzn = parse_dzn(row["example"])  # add solution/non-solution
-                        for k, v in example_dzn.items():
-                            if k in copy.output:
-                                copy[k] = v
-                                used_vars.append(k)
-                            else:
-                                unused_vars.append(k)
-
-                        result = copy.solve(time_limit=timedelta(seconds=60), optimisation_level=0)
-                        match result.status:
-                            case Status.ERROR:
-                                raise RuntimeError("Solving failed while verifying an example")
-                            case Status.UNKNOWN:
-                                raise TimeoutError("Timeout while verifying an example")
-                            case Status.UNBOUNDED | Status.SATISFIED | Status.ALL_SOLUTIONS | Status.OPTIMAL_SOLUTION:
-                                satisfied = True
-                            case Status.UNSATISFIABLE:
-                                satisfied = False
-                except (MiniZincError, RuntimeError, TimeoutError) as e:
-                    error = str(e)
-                return pd.Series({
-                    "predicted_class": satisfied,
-                    "evaluation_error": Evaluator.format_error(error),
-                    "used_params": used_params,
-                    "unused_params": unused_params,
-                    "used_vars": used_vars,
-                    "unused_vars": unused_vars,
-                })
-
-            results = test.apply(actual_test, axis=1)
-            test[results.columns] = results
-
-            if caught_warnings and len(caught_warnings) > 0:
-                with open(mzn_path, "at") as mzn:
-                    # report only unique warnings
-                    for w in set((w.category.__name__, str(w.message)) for w in caught_warnings):
-                        mzn.write(f"% {w[0]}: {w[1]}\n")
+        if caught_warnings and len(caught_warnings) > 0:
+            with open(mzn_path, "at") as mzn:
+                # report only unique warnings
+                for w in set((w.category.__name__, str(w.message)) for w in caught_warnings):
+                    mzn.write(f"% {w[0]}: {w[1]}\n")
 
     def __del__(self):
         if self.adapter is not None:
             del self.adapter
-
-    @staticmethod
-    def format_error(err: str | None) -> str | None:
-        if err is None or len(err) == 0:
-            return None
-        if len(err) <= 1503:
-            return err
-        else:
-            return f"{err[:750]}...{err[-750:]}"
 
