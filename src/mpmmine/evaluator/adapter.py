@@ -26,12 +26,12 @@ class AbstractAdapter:
         the docker image, and then run this image as container using algorithm-specific requirements.
         """
         self.configuration = configuration
-        self.docker_client = docker.from_env()
+        self.docker_client = docker.from_env(timeout=120)
 
         self.image_tag = f"{configuration.algorithm.lower()}:latest"
         self.container_tag = f"{configuration.algorithm}_MPMMine-{configuration.problem_id}{configuration.model_id}_{os.getpid()}"
 
-        target_platform = self.get_docker_platform_()
+        target_platform = self._get_docker_platform()
         with FileLock((configuration.get_algorithm_root() / "Dockerfile.lock").resolve()):
             logging.info(f"Building {self.image_tag} docker image...")
             image, logs = self.docker_client.images.build(
@@ -54,7 +54,7 @@ class AbstractAdapter:
         except docker.errors.NotFound:
             pass
 
-    def get_docker_platform_(self):
+    def _get_docker_platform(self):
         arch = platform.machine().lower()
         if arch in ['arm64', 'aarch64']:
             return "linux/arm64"
