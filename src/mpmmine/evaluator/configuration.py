@@ -1,3 +1,4 @@
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -39,4 +40,6 @@ class Configuration:
     def get_statistics_path(self) -> Path:
         return self.get_results_root() / "test_statistics.csv"
 
-
+    @staticmethod
+    def from_file(path: Path) -> Configuration:
+        return Configuration(**json.loads(path.read_text(encoding="utf-8")), mpmmine=None)
