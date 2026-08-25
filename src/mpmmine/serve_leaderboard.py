@@ -62,12 +62,12 @@ class Model:
     }
 
     def __init__(self):
-        self.data = Model.get_results_()
-        self.manifests = Model.get_algorithm_manifests_()
+        self.data = Model._get_results()
+        self.manifests = Model._get_algorithm_manifests()
 
     @st.cache_data
     @staticmethod
-    def get_results_() -> pd.DataFrame:
+    def _get_results() -> pd.DataFrame:
         logging.info("Loading results...")
         data = pd.read_csv(Model.data_path)
         data["results_path"] = "https://github.com/MPMMine/Leaderboard/tree/main/results/" + data["results_path"]
@@ -80,7 +80,7 @@ class Model:
 
     @st.cache_data
     @staticmethod
-    def get_algorithm_manifests_() -> dict[str, AlgorithmManifest]:
+    def _get_algorithm_manifests() -> dict[str, AlgorithmManifest]:
         out = {}
         for algorithm in Path("algorithms").iterdir():
             try:
@@ -113,10 +113,10 @@ class Model:
 
 
 class Statistics:
-    model_: Model
+    _model: Model
 
     def __init__(self, model: Model):
-        self.model_ = model
+        self._model = model
 
     def calculate_single_ranking(self,
                                  df: pd.DataFrame,
@@ -204,81 +204,81 @@ class Statistics:
 
 
 class View:
-    model_: Model
-    statistics_: Statistics
-    assets_base_url_ = "https://github.com/MPMMine/MPMMine/blob/main/"
-    artifact_types_: list[str] = []
-    algorithms_: list[str] = []
-    problems_: list[str] = []
-    problem_models_: list[str] = []
-    problem_instances_: list[str] = []
-    train_sizes_: list[int] = []
-    measures_: list[str] = []
+    _model: Model
+    _statistics: Statistics
+    _assets_base_url = "https://github.com/MPMMine/MPMMine/blob/main/"
+    _artifact_types: list[str] = []
+    _algorithms: list[str] = []
+    _problems: list[str] = []
+    _problem_models: list[str] = []
+    _problem_instances: list[str] = []
+    _train_sizes: list[int] = []
+    _measures: list[str] = []
     measures: MeasuresDescriptor
 
-    view_data_: pd.DataFrame
+    _view_data: pd.DataFrame
 
     def __init__(self, model: Model, statistics: Statistics):
-        self.model_ = model
-        self.statistics_ = statistics
+        self._model = model
+        self._statistics = statistics
 
     def render(self):
-        self.header_()
-        self.sidebar_()
-        self.view_data_ = self.get_view_data_()
-        # self.badges_()
-        self.global_ranking_()
-        self.per_problem_rankings_()
-        self.per_algorithm_rankings_()
-        self.raw_results_()
+        self._header()
+        self._sidebar()
+        self._view_data = self._get_view_data()
+        # self._badges()
+        self._global_ranking()
+        self._per_problem_rankings()
+        self._per_algorithm_rankings()
+        self._raw_results()
 
-    def get_mean_columns_(self, df: pd.DataFrame) -> list[str]:
-        all_mean_col = [m["mean"] for m in self.model_.measure_columns.values()]
+    def _get_mean_columns(self, df: pd.DataFrame) -> list[str]:
+        all_mean_col = [m["mean"] for m in self._model.measure_columns.values()]
         mean_cols = list(df.columns[df.columns.isin(all_mean_col)])
         mean_cols = [c for c in mean_cols if (~df[c].isna()).any()]
         return mean_cols
 
-    def get_bound_columns_(self, df: pd.DataFrame) -> list[str]:
+    def _get_bound_columns(self, df: pd.DataFrame) -> list[str]:
         return list(df.columns[df.columns.str.endswith("_lb") | df.columns.str.endswith("_ub")])
 
-    def get_problem_filter_type_(self) -> tuple[str, list]:
+    def _get_problem_filter_type(self) -> tuple[str, list]:
         match st.session_state.problem_filter_type:
             case "Problem":
-                return "problem", self.problems_
+                return "problem", self._problems
             case "Problem model":
-                return "problem_model", self.problem_models_
+                return "problem_model", self._problem_models
             case _:
-                return "problem_instance", self.problem_instances_
+                return "problem_instance", self._problem_instances
 
-    def get_view_data_(self) -> pd.DataFrame:
-        column, selection = self.get_problem_filter_type_()
-        data = self.model_.data[self.model_.data[column].isin(selection)]
+    def _get_view_data(self) -> pd.DataFrame:
+        column, selection = self._get_problem_filter_type()
+        data = self._model.data[self._model.data[column].isin(selection)]
 
         data = data[
-            data["algorithm"].isin(self.algorithms_) &
-            data["train_count"].ge(min(self.train_sizes_)) &
-            data["train_count"].le(max(self.train_sizes_))
+            data["algorithm"].isin(self._algorithms) &
+            data["train_count"].ge(min(self._train_sizes)) &
+            data["train_count"].le(max(self._train_sizes))
             ]
 
         drop_cols = [m
-                     for k, v in self.model_.measure_columns.items() if k not in self.measures_
+                     for k, v in self._model.measure_columns.items() if k not in self._measures
                      for m in v.values() if m in data.columns]
         data = data[data.columns.drop(drop_cols)]
 
         return data
 
-    def get_selected_measures_(self) -> dict[str, dict[str, str | float]]:
-        return {k: v for k, v in self.model_.measure_columns.items() if k in self.measures_}
+    def _get_selected_measures(self) -> dict[str, dict[str, str | float]]:
+        return {k: v for k, v in self._model.measure_columns.items() if k in self._measures}
 
-    def header_(self):
+    def _header(self):
         st.set_page_config(
             page_title="Mathematical Programming model mining leaderboard",
-            page_icon=f"{self.assets_base_url_}docs/assets/icon.png?raw=true",
+            page_icon=f"{self._assets_base_url}docs/assets/icon.png?raw=true",
             layout="wide",
         )
 
         st.logo(
-            image=f"{self.assets_base_url_}docs/assets/icon.png?raw=true",
+            image=f"{self._assets_base_url}docs/assets/icon.png?raw=true",
             link="https://github.com/MPMMine/",
             size="large",
         )
@@ -295,29 +295,29 @@ class View:
             """# Mathematical Programming model mining leaderboard
 A leaderboard of Mathematical Programming model discovery algorithms calculated based on the [MPMMine](https://github.com/MPMMine/MPMMine) benchmark suite.""")
 
-    def sidebar_(self):
+    def _sidebar(self):
         try:
             with st.sidebar:
-                self.badges_()
+                self._badges()
 
                 st.markdown("""## Filters""")
 
                 def tab_change():  # dummy callback just to listen for tab changes
                     pass
 
-                self.artifact_types_ = st.segmented_control(
+                self._artifact_types = st.segmented_control(
                     label="Input artifact type",
-                    options=(o := self.model_.get_artifact_types()),
+                    options=(o := self._model.get_artifact_types()),
                     default=o,
                     selection_mode="multi"
                 )
 
-                artifacts = frozenset(self.artifact_types_)
+                artifacts = frozenset(self._artifact_types)
                 algorithms = [algo
-                              for algo in self.model_.get_algorithms()
-                              if any(artifacts.intersection(self.model_.manifests[algo].artifacts))]
+                              for algo in self._model.get_algorithms()
+                              if any(artifacts.intersection(self._model.manifests[algo].artifacts))]
 
-                self.algorithms_ = st.multiselect(
+                self._algorithms = st.multiselect(
                     label="Algorithms",
                     options=algorithms,
                     default=algorithms,
@@ -329,43 +329,43 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                     key="problem_filter_type")
 
                 with problem_tab:
-                    self.problems_ = st.multiselect(
+                    self._problems = st.multiselect(
                         label="Problem",
                         label_visibility="collapsed",
-                        options=(o := self.model_.get_problems()),
+                        options=(o := self._model.get_problems()),
                         default=o
                     )
                 with problem_model_tab:
-                    self.problem_models_ = st.multiselect(
+                    self._problem_models = st.multiselect(
                         label="Problem model",
                         label_visibility="collapsed",
-                        options=(o := self.model_.get_problem_models()),
+                        options=(o := self._model.get_problem_models()),
                         default=o
                     )
 
                 with problem_instance_tab:
-                    self.problem_instances_ = st.multiselect(
+                    self._problem_instances = st.multiselect(
                         label="Problem instance",
                         label_visibility="collapsed",
-                        options=(o := self.model_.get_problem_instances()),
+                        options=(o := self._model.get_problem_instances()),
                         default=o
                     )
 
-                self.train_sizes_ = st.slider(
+                self._train_sizes = st.slider(
                     label="Training set size",
-                    min_value=(mi := min(self.model_.get_train_counts())),
-                    max_value=(ma := max(self.model_.get_train_counts())),
+                    min_value=(mi := min(self._model.get_train_counts())),
+                    max_value=(ma := max(self._model.get_train_counts())),
                     value=[mi, ma]
                 )
 
-                self.measures_ = st.pills(
+                self._measures = st.pills(
                     label="Measures",
-                    options=self.model_.measure_columns.keys(),
+                    options=self._model.measure_columns.keys(),
                     selection_mode="multi",
-                    default=self.model_.measure_columns.keys()
+                    default=self._model.measure_columns.keys()
                 )
 
-                self.measures = MeasuresDescriptor(self.get_selected_measures_())
+                self.measures = MeasuresDescriptor(self._get_selected_measures())
         except MPMMineException as e:
             st.error(e)
             logging.error(e)
@@ -373,33 +373,33 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
             st.exception(e)
             logging.error(e)
 
-    def badges_(self):
-        st.badge(label=f"Last update: {self.model_.get_last_updated().strftime("%Y-%m-%d %H:%M:%S")}")
+    def _badges(self):
+        st.badge(label=f"Last update: {self._model.get_last_updated().strftime("%Y-%m-%d %H:%M:%S")}")
         with st.container(horizontal=True):
             # st.metric(label="MPMMine version", value="1.0.20260601") # TODO
-            st.metric(label="Total data points", value=len(self.model_.data))
-            st.metric(label="Total problems", value=len(self.model_.get_problems()))
-            st.metric(label="Total problem models", value=len(self.model_.get_problem_models()))
-            st.metric(label="Total problem instances", value=len(self.model_.get_problem_instances()))
+            st.metric(label="Total data points", value=len(self._model.data))
+            st.metric(label="Total problems", value=len(self._model.get_problems()))
+            st.metric(label="Total problem models", value=len(self._model.get_problem_models()))
+            st.metric(label="Total problem instances", value=len(self._model.get_problem_instances()))
 
-    def global_ranking_(self):
+    def _global_ranking(self):
         with st.container():
             try:
                 """## Global ranking"""
-                ranking = self.statistics_.calculate_ranking(
-                    df=self.view_data_,
+                ranking = self._statistics.calculate_ranking(
+                    df=self._view_data,
                     groupby=["algorithm"],
                     measures=self.measures.selected
                 )
 
                 ranking_melt = ranking.melt(
-                    id_vars=["algorithm"] + self.get_bound_columns_(ranking),
-                    value_vars=self.get_mean_columns_(ranking),
+                    id_vars=["algorithm"] + self._get_bound_columns(ranking),
+                    value_vars=self._get_mean_columns(ranking),
                     var_name="measure",
                 )
 
-                self.show_chart_(ranking_melt, initializer=self.prepare_global_chart_, series_col="algorithm")
-                self.show_df_(ranking)
+                self._show_chart(ranking_melt, initializer=self._prepare_global_chart, series_col="algorithm")
+                self._show_df(ranking)
 
             except MPMMineException as e:
                 st.error(e)
@@ -408,16 +408,16 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 st.exception(e)
                 logging.error(e)
 
-    def per_problem_rankings_(self):
+    def _per_problem_rankings(self):
         with st.container():
             try:
                 """## Per-problem performance"""
 
-                problem_col, problem_sel = self.get_problem_filter_type_()
+                problem_col, problem_sel = self._get_problem_filter_type()
                 if len(problem_sel) == 0:
                     raise MPMMineException("No problems selected.")
 
-                if len(self.view_data_) == 0:
+                if len(self._view_data) == 0:
                     raise MPMMineException("Filters yield no data.")
 
                 # display legend
@@ -441,21 +441,21 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 )
 
                 with st.container(horizontal=True):
-                    for key, group in self.view_data_.groupby(problem_col):
-                        ranking = self.statistics_.calculate_ranking(
+                    for key, group in self._view_data.groupby(problem_col):
+                        ranking = self._statistics.calculate_ranking(
                             df=group,
                             groupby=["algorithm", problem_col, "train_count"],
                             measures=self.measures.selected
                         )
 
                         ranking_melt = ranking.melt(
-                            id_vars=["algorithm", problem_col, "train_count"] + self.get_bound_columns_(ranking),
-                            value_vars=self.get_mean_columns_(group),
+                            id_vars=["algorithm", problem_col, "train_count"] + self._get_bound_columns(ranking),
+                            value_vars=self._get_mean_columns(group),
                             var_name="measure"
                         )
 
-                        self.show_chart_(ranking_melt,
-                                         initializer=self.prepare_chart_,
+                        self._show_chart(ranking_melt,
+                                         initializer=self._prepare_chart,
                                          series_col="algorithm",
                                          title=str(key),
                                          width=350
@@ -467,16 +467,16 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 st.exception(e)
                 logging.error(e)
 
-    def per_algorithm_rankings_(self):
+    def _per_algorithm_rankings(self):
         with st.container():
             try:
                 """## Per-algorithm performance"""
 
-                problem_col, problem_sel = self.get_problem_filter_type_()
+                problem_col, problem_sel = self._get_problem_filter_type()
                 if len(problem_sel) == 0:
                     raise MPMMineException("No problems selected.")
 
-                if len(self.view_data_) == 0:
+                if len(self._view_data) == 0:
                     raise MPMMineException("Filters yield no data.")
 
                 # display legend
@@ -500,24 +500,24 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 )
 
                 with st.container(horizontal=True):
-                    view_data = self.view_data_.copy()
+                    view_data = self._view_data.copy()
                     view_data[problem_col] = view_data[problem_col].str[len("MPMMine-"):]
 
                     for key, group in view_data.groupby("algorithm"):
-                        ranking = self.statistics_.calculate_ranking(
+                        ranking = self._statistics.calculate_ranking(
                             df=group,
                             groupby=["algorithm", problem_col, "train_count"],
                             measures=self.measures.selected
                         )
 
                         ranking_melt = ranking.melt(
-                            id_vars=["algorithm", problem_col, "train_count"] + self.get_bound_columns_(ranking),
-                            value_vars=self.get_mean_columns_(group),
+                            id_vars=["algorithm", problem_col, "train_count"] + self._get_bound_columns(ranking),
+                            value_vars=self._get_mean_columns(group),
                             var_name="measure"
                         )
 
-                        self.show_chart_(ranking_melt,
-                                         initializer=self.prepare_chart_,
+                        self._show_chart(ranking_melt,
+                                         initializer=self._prepare_chart,
                                          series_col=problem_col,
                                          title=str(key),
                                          width=350,
@@ -530,15 +530,15 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 st.exception(e)
                 logging.error(e)
 
-    def filter_ranking_(self, ranking: pd.DataFrame, axis: str) -> pd.DataFrame:
+    def _filter_ranking(self, ranking: pd.DataFrame, axis: str) -> pd.DataFrame:
         ranking = ranking[
             ranking["measure"].isin([v["mean"] for v in self.measures.selected.values() if v["axis"] == axis])
         ]
 
         return ranking
 
-    def prepare_global_chart_(self, ranking: pd.DataFrame, axis: str, title: str) -> alt.Chart | None:
-        ranking = self.filter_ranking_(ranking, axis)
+    def _prepare_global_chart(self, ranking: pd.DataFrame, axis: str, title: str) -> alt.Chart | None:
+        ranking = self._filter_ranking(ranking, axis)
         if ranking.empty:
             return None
 
@@ -573,14 +573,14 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
 
         return chart
 
-    def prepare_chart_(self,
+    def _prepare_chart(self,
                        ranking: pd.DataFrame,
                        axis: Literal["left", "right"],
                        title: str,
                        x_axis="train_count",
                        series_axis="algorithm") -> alt.Chart | alt.LayerChart | None:
 
-        ranking = self.filter_ranking_(ranking, axis)
+        ranking = self._filter_ranking(ranking, axis)
 
         base = alt.Chart(ranking, title=title).encode(
             alt.Color("measure:N")
@@ -595,7 +595,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
             .axis(orient="left" if axis == "left" else "right",
                   labelPadding=(50 if axis == "right" else 2))
             .scale(zero=True)
-            .title("Value" if axis == "left" else "Time [s]"),
+            .title("Value" if axis == "left" else "Time [s]")
         )
 
         # draw confidence intervals
@@ -622,7 +622,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
         )
         return alt.layer(line_layer, circle_marker, text_marker)
 
-    def show_chart_(self,
+    def _show_chart(self,
                     ranking_melt: DataFrame,
                     initializer: Callable[
                         [pd.DataFrame, str, str, any], alt.Chart | alt.LayerChart | alt.FacetChart | None],
@@ -651,9 +651,9 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
         with st.container(width="stretch" if width is None else width):
             st.altair_chart(chart)
 
-    def show_df_(self, df: pd.DataFrame):
+    def _show_df(self, df: pd.DataFrame):
         st.dataframe(
-            df[df.columns.drop(self.get_bound_columns_(df))],
+            df[df.columns.drop(self._get_bound_columns(df))],
             column_config={
                 "results_path": st.column_config.LinkColumn(
                     label="Results",
@@ -663,25 +663,25 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
             }
         )
 
-    def raw_results_(self):
+    def _raw_results(self):
         with st.container():
             st.markdown("## Raw results")
-            self.show_df_(self.view_data_)
+            self._show_df(self._view_data)
 
 
 class Controller:
-    model_: Model
-    statistics_: Statistics
-    view_: View
+    _model: Model
+    _statistics: Statistics
+    _view: View
 
     def __init__(self):
         configure_logging()
-        self.model_ = Model()
-        self.statistics_ = Statistics(self.model_)
-        self.view_ = View(self.model_, self.statistics_)
+        self._model = Model()
+        self._statistics = Statistics(self._model)
+        self._view = View(self._model, self._statistics)
 
     def run(self):
-        self.view_.render()
+        self._view.render()
 
 
 class MeasuresDescriptor:
