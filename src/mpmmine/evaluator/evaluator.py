@@ -1,10 +1,8 @@
 import itertools
-import json
 import logging
 import textwrap
 import time
 import warnings
-from dataclasses import asdict, replace
 from functools import reduce
 from typing import Generator
 
@@ -42,13 +40,6 @@ class Evaluator:
 
     def run(self):
         cfg = self.configuration
-        cfg.get_results_root().mkdir(parents=True, exist_ok=True)
-
-        # save config
-        with (self.configuration.get_config_path()).open("wt") as f:
-            cfg_copy = asdict(replace(cfg, mpmmine=None))
-            cfg_copy.pop("mpmmine")
-            json.dump(cfg_copy, f, indent=2)
 
         statistics = pd.DataFrame()
         for (fold_id, data) in enumerate(self.cross_validation(), start=1):

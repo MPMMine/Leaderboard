@@ -1,4 +1,3 @@
-import json
 import logging
 from pathlib import Path
 from typing import Generator
@@ -107,7 +106,7 @@ class Leaderboard:
             try:
                 config_path = path / "config.json"
 
-                config = Configuration(**json.loads(config_path.read_text(encoding="utf-8")), mpmmine=None)
+                config = Configuration.from_file(config_path)
                 # noinspection PyTypeChecker
                 run_statistics: pd.DataFrame = pd.read_csv(
                     config.get_statistics_path(),
@@ -122,8 +121,6 @@ class Leaderboard:
 
                 instance_ids = [f"MPMMine-{config.problem_id}{config.model_id}{i}" for i in config.instance_ids]
                 run_statistics["problem_instance"] = ", ".join(instance_ids)
-                run_statistics["problem_instance_path"] = (
-                    ",".join(str(self.mpmmine[instance].path) for instance in instance_ids))
 
                 run_statistics["cv_folds"] = config.cv_folds
                 run_statistics["seed"] = config.seed
