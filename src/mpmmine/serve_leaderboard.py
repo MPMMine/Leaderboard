@@ -442,24 +442,28 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
 
                 with st.container(horizontal=True):
                     for key, group in self._view_data.groupby(problem_col):
-                        ranking = self._statistics.calculate_ranking(
-                            df=group,
-                            groupby=["algorithm", problem_col, "train_count"],
-                            measures=self.measures.selected
-                        )
+                        try:
+                            ranking = self._statistics.calculate_ranking(
+                                df=group,
+                                groupby=["algorithm", problem_col, "train_count"],
+                                measures=self.measures.selected
+                            )
 
-                        ranking_melt = ranking.melt(
-                            id_vars=["algorithm", problem_col, "train_count"] + self._get_bound_columns(ranking),
-                            value_vars=self._get_mean_columns(group),
-                            var_name="measure"
-                        )
+                            ranking_melt = ranking.melt(
+                                id_vars=["algorithm", problem_col, "train_count"] + self._get_bound_columns(ranking),
+                                value_vars=self._get_mean_columns(group),
+                                var_name="measure"
+                            )
 
-                        self._show_chart(ranking_melt,
-                                         initializer=self._prepare_chart,
-                                         series_col="algorithm",
-                                         title=str(key),
-                                         width=350
-                                         )
+                            self._show_chart(ranking_melt,
+                                             initializer=self._prepare_chart,
+                                             series_col="algorithm",
+                                             title=str(key),
+                                             width=350
+                                             )
+                        except MPMMineException as e:
+                            st.error(e, width=350)
+                            logging.error(e)
             except MPMMineException as e:
                 st.error(e)
                 logging.error(e)
@@ -504,24 +508,28 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                     view_data[problem_col] = view_data[problem_col].str[len("MPMMine-"):]
 
                     for key, group in view_data.groupby("algorithm"):
-                        ranking = self._statistics.calculate_ranking(
-                            df=group,
-                            groupby=["algorithm", problem_col, "train_count"],
-                            measures=self.measures.selected
-                        )
+                        try:
+                            ranking = self._statistics.calculate_ranking(
+                                df=group,
+                                groupby=["algorithm", problem_col, "train_count"],
+                                measures=self.measures.selected
+                            )
 
-                        ranking_melt = ranking.melt(
-                            id_vars=["algorithm", problem_col, "train_count"] + self._get_bound_columns(ranking),
-                            value_vars=self._get_mean_columns(group),
-                            var_name="measure"
-                        )
+                            ranking_melt = ranking.melt(
+                                id_vars=["algorithm", problem_col, "train_count"] + self._get_bound_columns(ranking),
+                                value_vars=self._get_mean_columns(group),
+                                var_name="measure"
+                            )
 
-                        self._show_chart(ranking_melt,
-                                         initializer=self._prepare_chart,
-                                         series_col=problem_col,
-                                         title=str(key),
-                                         width=350,
-                                         series_axis=f"{problem_col}:N")
+                            self._show_chart(ranking_melt,
+                                             initializer=self._prepare_chart,
+                                             series_col=problem_col,
+                                             title=str(key),
+                                             width=350,
+                                             series_axis=f"{problem_col}:N")
+                        except MPMMineException as e:
+                            st.error(e, width=350)
+                            logging.error(e)
 
             except MPMMineException as e:
                 st.error(e)
