@@ -49,7 +49,7 @@ To evaluate algorithms locally, first download the [MPMMine dataset](https://git
 preferably in the sqlite-zstd variant. Then, run the `run_benchmark.py` script providing the path to the dataset:
 
 ```shell
-PYTHONPATH=src python3 run_benchmark.py /path/to/MPMMine-zstd.sqlite
+PYTHONPATH=src python3 src/mpmmine/run_benchmark.py /path/to/MPMMine-zstd.sqlite
 ```
 
 Raw results will be stored in the `results` directory. The evaluator skips the setups for which the results already
@@ -59,7 +59,7 @@ benchmark.
 Raw results must be aggregated before feeding to the interactive dashboard. To aggregate results, run:
 
 ```shell
-PYTHONPATH=src python3 calculate_leaderboard.py /path/to/MPMMine-zstd.sqlite
+PYTHONPATH=src python3 src/mpmmine/calculate_leaderboard.py /path/to/MPMMine-zstd.sqlite
 ```
 
 This will create `leaderboard.csv` and `leaderboard_raw.csv` files. The former is actually required to run the
@@ -68,7 +68,7 @@ dashboard.
 To run dashboard locally, execute:
 
 ```shell
-PYTHONPATH=src python3 serve_leaderboard.py
+PYTHONPATH=src python3 src/mpmmine/serve_leaderboard.py
 ```
 
 This will serve the leaderboard at http://localhost:8501.
