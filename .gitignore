@@ -221,6 +221,7 @@ __marimo__/
 
 # Gurobi license
 /algorithms/*/gurobi/
+/algorithms/*/gurobi-*/
 
 # Temporary data files
 /algorithms/*/data/

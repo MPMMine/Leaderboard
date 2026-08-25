@@ -2,6 +2,7 @@ import logging
 import math
 import os
 import re
+import socket
 import sqlite3
 import textwrap
 from pathlib import Path
@@ -24,15 +25,12 @@ class Adapter(AbstractAdapter):
     def __init__(self, configuration: Configuration):
         super().__init__(configuration)
 
-        # raise error if Gurobi license is not provided
-        gurobi_path = (self.configuration.get_algorithm_root() / "gurobi").resolve()
-        if not (gurobi_path / "key").exists() and not (gurobi_path / "gurobi.lic").exists():
-            raise AdapterException(
-                f"Provide either the Gurobi license key in file {gurobi_path / 'key'} or Gurobi license file {gurobi_path / 'gurobi.lic'}.")
+        gurobi_path = self._find_gurobi_license()
 
         # make a directory for sharing input/output files with the container
         self.data_path = (self.configuration.get_algorithm_root() / "data").resolve()
         self.data_path.mkdir(parents=True, exist_ok=True)
+        self.data_path.chmod(0o777)
 
         logging.info(f"Starting {self.container_tag} docker container...")
         self.container = self.docker_client.containers.run(
@@ -61,6 +59,20 @@ class Adapter(AbstractAdapter):
             ipc_mode="none",
             detach=True
         )
+
+    def _find_gurobi_license(self):
+        hostname = socket.gethostname()
+        hostname_based_path = (self.configuration.get_algorithm_root() / f"gurobi-{hostname}").resolve()
+        if (hostname_based_path / "gurobi.lic").exists() or (hostname_based_path / "key").exists():
+            return hostname_based_path
+
+        generic_path = (self.configuration.get_algorithm_root() / "gurobi").resolve()
+        if (generic_path / "gurobi.lic").exists() or (generic_path / "key").exists():
+            return generic_path
+
+        # raise error if Gurobi license is not provided
+        raise AdapterException(
+            f"Provide the Gurobi license key in file {generic_path / 'key'} or {hostname_based_path / 'key'} or Gurobi license file {generic_path / 'gurobi.lic'} or {hostname_based_path / 'gurobi.lic'}.")
 
     @override
     def run(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
