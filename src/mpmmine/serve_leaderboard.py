@@ -581,6 +581,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                        series_axis="algorithm") -> alt.Chart | alt.LayerChart | None:
 
         ranking = self._filter_ranking(ranking, axis)
+        is_empty = ranking.empty
 
         base = alt.Chart(ranking, title=title).encode(
             alt.Color("measure:N")
@@ -593,9 +594,11 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
             alt.X(x_axis).title("Training set size"),
             alt.Y("value:Q")
             .axis(orient="left" if axis == "left" else "right",
-                  labelPadding=(50 if axis == "right" else 2))
+                  labelPadding=(50 if axis == "right" else 2),
+                  labels=not is_empty,
+                  ticks=not is_empty)
             .scale(zero=True)
-            .title("Value" if axis == "left" else "Time [s]")
+            .title(None if is_empty else ("Value" if axis == "left" else "Time [s]"))
         )
 
         # draw confidence intervals
