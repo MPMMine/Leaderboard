@@ -409,7 +409,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                     var_name="measure",
                 )
 
-                self._show_chart(ranking_melt, initializer=self._prepare_global_chart, series_col="algorithm")
+                self._show_chart(ranking_melt, _initializer=self._prepare_global_chart, series_col="algorithm")
                 self._show_df(ranking)
 
             except MPMMineException as e:
@@ -467,7 +467,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                             )
 
                             self._show_chart(ranking_melt,
-                                             initializer=self._prepare_chart,
+                                             _initializer=self._prepare_chart,
                                              series_col="algorithm",
                                              title=str(key),
                                              width=350
@@ -533,7 +533,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                             )
 
                             self._show_chart(ranking_melt,
-                                             initializer=self._prepare_chart,
+                                             _initializer=self._prepare_chart,
                                              series_col=problem_col,
                                              title=str(key),
                                              width=350,
@@ -644,9 +644,10 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
         )
         return alt.layer(line_layer, circle_marker, text_marker)
 
-    def _show_chart(self,
+    @st.cache_data(show_spinner="Preparing chart...")
+    def _show_chart(_self,
                     ranking_melt: DataFrame,
-                    initializer: Callable[
+                    _initializer: Callable[
                         [pd.DataFrame, str, str, any], alt.Chart | alt.LayerChart | alt.FacetChart | None],
                     series_col: str,
                     title: str = "",
@@ -656,8 +657,8 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
         charts = []
 
         for key, ranking in ranking_melt.groupby(series_col):
-            left_chart = initializer(ranking, "left", title, **kwargs)
-            right_chart = initializer(ranking, "right", title, **kwargs)
+            left_chart = _initializer(ranking, "left", title, **kwargs)
+            right_chart = _initializer(ranking, "right", title, **kwargs)
 
             if left_chart is not None and right_chart is not None:
                 chart = alt.layer(left_chart, right_chart).resolve_scale(y="independent")
