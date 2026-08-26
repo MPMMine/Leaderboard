@@ -267,7 +267,7 @@ class SlurmExecutor(AbstractExecutor):
             script.write(
                 f"#SBATCH --job-name={cfg.algorithm}_{cfg.problem_id}{cfg.model_id}{"".join(cfg.instance_ids)}_{cfg.train_sol_limit + cfg.train_non_sol_limit}\n")
             script.write("#SBATCH -n1 -c1 --mem=4096\n")
-            script.write("#SBATCH -t 15:00:00\n")
+            script.write("#SBATCH -t 36:00:00\n")
             if self.args.partition is not None and len(self.args.partition) > 0:
                 script.write(f"#SBATCH -p {self.args.partition}\n")
             script.write("export LD_LIBRARY_PATH=~/gurobi1302/linux64/lib/\n")
