@@ -31,7 +31,8 @@ dependencies = [
     "lark",
     "colorlog",
     "streamlit",
-    "mpmmine>=0.1.2"
+    "mpmmine>=0.2.0",
+    "py-cpuinfo2"
 ]
 
 [project.optional-dependencies]

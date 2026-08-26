@@ -1,11 +1,13 @@
 import itertools
 import logging
+import socket
 import textwrap
 import time
 import warnings
 from functools import reduce
 from typing import Generator
 
+import cpuinfo
 import minizinc
 import pandas as pd
 from minizinc import Instance, Model, Solver
@@ -81,6 +83,10 @@ class Evaluator:
             fold_statistics["fold"] = fold_id
             fold_statistics["train_solutions"] = len(train[train["actual_class"].astype(bool)])
             fold_statistics["train_non_solutions"] = len(train[~train["actual_class"].astype(bool)])
+            fold_statistics["hostname"] = socket.gethostname()
+            fold_statistics["cpu"] = cpuinfo.get_cpu_info()["brand_raw"]
+            fold_statistics["mpmmine_dataset_version"] = cfg.mpmmine.dataset_version
+            fold_statistics["mpmmine_library_version"] = cfg.mpmmine.library_version
             fold_statistics["minizinc_version"] = minizinc.default_driver.minizinc_version
             fold_statistics["solver"] = self.solver.name
             fold_statistics["solver_version"] = self.solver.version

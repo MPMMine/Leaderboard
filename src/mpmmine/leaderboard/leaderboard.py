@@ -55,6 +55,10 @@ class Leaderboard:
             discovery_time=pd.NamedAgg(column="discovery_time", aggfunc="mean"),
             test_time=pd.NamedAgg(column="test_time", aggfunc="sum"),  # total test time
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
+            hostname=pd.NamedAgg(column="hostname", aggfunc=Leaderboard.keep_unique_str),
+            cpu=pd.NamedAgg(column="cpu", aggfunc=Leaderboard.keep_unique_str),
+            mpmmine_dataset_version=pd.NamedAgg(column="mpmmine_dataset_version", aggfunc=Leaderboard.keep_unique_str),
+            mpmmine_library_version=pd.NamedAgg(column="mpmmine_library_version", aggfunc=Leaderboard.keep_unique_str),
         )
         return cv_aggregates
 
@@ -91,7 +95,11 @@ class Leaderboard:
             test_time_mean=pd.NamedAgg(column="test_time", aggfunc="mean"),
             test_time_095ci=pd.NamedAgg(column="test_time", aggfunc=ci),
             input_path=pd.NamedAgg(column="problem_instance", aggfunc=Leaderboard.keep_unique_str),
-            results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str)
+            results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
+            hostname=pd.NamedAgg(column="hostname", aggfunc=Leaderboard.keep_unique_str),
+            cpu=pd.NamedAgg(column="cpu", aggfunc=Leaderboard.keep_unique_str),
+            mpmmine_dataset_version=pd.NamedAgg(column="mpmmine_dataset_version", aggfunc=Leaderboard.keep_unique_str),
+            mpmmine_library_version=pd.NamedAgg(column="mpmmine_library_version", aggfunc=Leaderboard.keep_unique_str),
         )
         return report
 

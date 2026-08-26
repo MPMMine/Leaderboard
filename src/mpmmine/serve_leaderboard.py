@@ -33,6 +33,7 @@ class Model:
     data: pd.DataFrame
     manifests: dict[str, AlgorithmManifest]
     data_path = Path("leaderboard.csv")
+    dataset_version: str
 
     measure_columns = {
         "Accuracy": {
@@ -63,6 +64,7 @@ class Model:
 
     def __init__(self):
         self.data = Model._get_results()
+        self.dataset_version = self._get_dataset_version()
         self.manifests = Model._get_algorithm_manifests()
 
     @st.cache_data
@@ -73,6 +75,14 @@ class Model:
         data["results_path"] = "https://github.com/MPMMine/Leaderboard/tree/main/results/" + data["results_path"]
         data.index += 1  # make it 1-based indexed
         return data
+
+    def _get_dataset_version(self) -> str:
+        if "mpmmine_dataset_version" in self.data.columns:
+            versions = self.data["mpmmine_dataset_version"].unique()
+            versions.sort()
+            return ", ".join(versions)
+        else:
+            return "0.0.0.00000000"
 
     @staticmethod
     def get_last_updated():
@@ -376,7 +386,8 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
     def _badges(self):
         st.badge(label=f"Last update: {self._model.get_last_updated().strftime("%Y-%m-%d %H:%M:%S")}")
         with st.container(horizontal=True):
-            # st.metric(label="MPMMine version", value="1.0.20260601") # TODO
+            st.metric(label="MPMMine version", value=self._model.dataset_version,
+                      help="The version(s) of the MPMMine dataset used to calculate the statistics.")
             st.metric(label="Total data points", value=len(self._model.data))
             st.metric(label="Total problems", value=len(self._model.get_problems()))
             st.metric(label="Total problem models", value=len(self._model.get_problem_models()))
