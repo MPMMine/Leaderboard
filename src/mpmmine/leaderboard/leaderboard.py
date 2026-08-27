@@ -6,6 +6,7 @@ import pandas as pd
 import scipy.stats
 from mpmmine.dataset import MPMMine
 from pandas import DataFrame
+from sklearn.metrics import precision_score, recall_score, f1_score
 
 from mpmmine.evaluator.configuration import Configuration
 
@@ -40,7 +41,8 @@ class Leaderboard:
         statistics["has_evaluation_error"] = ~statistics["evaluation_error"].isna()
         statistics["is_correct"] = (~statistics["has_algorithm_error"] &
                                     ~statistics["has_evaluation_error"] &
-                                    statistics["actual_class"] == statistics["predicted_class"])
+                                    (statistics["actual_class"] == statistics["predicted_class"]))
+
         cv_aggregates = statistics.groupby(
             ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
              "train_non_solutions", "fold"]
@@ -56,6 +58,24 @@ class Leaderboard:
             test_time=pd.NamedAgg(column="test_time", aggfunc="sum"),  # total test time
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
         )
+
+        precision_values = statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions", "fold"]
+        ).apply(Leaderboard.compute_precision, include_groups=False)
+        recall_values = statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions", "fold"]
+        ).apply(Leaderboard.compute_recall, include_groups=False)
+        f1_values = statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions", "fold"]
+        ).apply(Leaderboard.compute_f1, include_groups=False)
+
+        cv_aggregates["precision"] = precision_values
+        cv_aggregates["recall"] = recall_values
+        cv_aggregates["f1"] = f1_values
+
         return cv_aggregates
 
     def calculate_cv_statistics(self, cv_aggregates: DataFrame) -> DataFrame:
@@ -77,6 +97,12 @@ class Leaderboard:
             folds=pd.NamedAgg(column="fold", aggfunc="max"),
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
+            precision_mean=pd.NamedAgg(column="precision", aggfunc="mean"),
+            precision_095ci=pd.NamedAgg(column="precision", aggfunc=ci),
+            recall_mean=pd.NamedAgg(column="recall", aggfunc="mean"),
+            recall_095ci=pd.NamedAgg(column="recall", aggfunc=ci),
+            f1_mean=pd.NamedAgg(column="f1", aggfunc="mean"),
+            f1_095ci=pd.NamedAgg(column="f1", aggfunc=ci),
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
             test_count_total=pd.NamedAgg(column="test_count", aggfunc="sum"),
@@ -94,6 +120,27 @@ class Leaderboard:
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str)
         )
         return report
+
+    @staticmethod
+    def compute_precision(group: pd.DataFrame) -> float:
+        valid = group.dropna(subset=['actual_class', 'predicted_class'])
+        if valid.empty:
+            return float("nan")
+        return float(precision_score(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
+
+    @staticmethod
+    def compute_recall(group: pd.DataFrame) -> float:
+        valid = group.dropna(subset=['actual_class', 'predicted_class'])
+        if valid.empty:
+            return float("nan")
+        return float(recall_score(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
+
+    @staticmethod
+    def compute_f1(group: pd.DataFrame) -> float:
+        valid = group.dropna(subset=['actual_class', 'predicted_class'])
+        if valid.empty:
+            return float("nan")
+        return float(f1_score(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
 
     @staticmethod
     def keep_unique_str(x):
