@@ -1,3 +1,4 @@
+import json
 import logging
 from pathlib import Path
 from typing import Generator
@@ -92,6 +93,8 @@ class Leaderboard:
              "train_non_solutions", "fold"]
         ).apply(Leaderboard.compute_mcc, include_groups=False)
 
+        cv_aggregates["mcc"] = mcc_values  # calculated values added as a new column
+
         return cv_aggregates
 
     def calculate_cv_statistics(self, cv_aggregates: DataFrame, raw_statistics: pd.DataFrame) -> DataFrame:
@@ -115,6 +118,8 @@ class Leaderboard:
             # fitness
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
+            mcc_mean=pd.NamedAgg(column="mcc", aggfunc="mean"),
+            mcc_095ci=pd.NamedAgg(column="mcc", aggfunc=ci),
             # test count
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
