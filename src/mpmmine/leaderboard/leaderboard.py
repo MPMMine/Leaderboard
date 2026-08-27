@@ -63,6 +63,9 @@ class Leaderboard:
             ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
              "train_non_solutions", "fold"]
         ).apply(Leaderboard.compute_mcc, include_groups=False)
+
+        cv_aggregates["mcc"] = mcc_values  # calculated values added as a new column
+
         return cv_aggregates
 
     def calculate_cv_statistics(self, cv_aggregates: DataFrame) -> DataFrame:
@@ -84,6 +87,8 @@ class Leaderboard:
             folds=pd.NamedAgg(column="fold", aggfunc="max"),
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
+            mcc_mean=pd.NamedAgg(column="mcc", aggfunc="mean"),
+            mcc_095ci=pd.NamedAgg(column="mcc", aggfunc=ci),
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
             test_count_total=pd.NamedAgg(column="test_count", aggfunc="sum"),
