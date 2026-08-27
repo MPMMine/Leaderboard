@@ -7,6 +7,7 @@ import pandas as pd
 import scipy.stats
 from mpmmine.dataset import MPMMine
 from pandas import DataFrame
+from sklearn.metrics import matthews_corrcoef
 
 from mpmmine.evaluator.configuration import Configuration
 
@@ -57,6 +58,11 @@ class Leaderboard:
             test_time=pd.NamedAgg(column="test_time", aggfunc="sum"),  # total test time
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
         )
+
+        mcc_values = statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions", "fold"]
+        ).apply(Leaderboard.compute_mcc, include_groups=False)
         return cv_aggregates
 
     def calculate_cv_statistics(self, cv_aggregates: DataFrame) -> DataFrame:
@@ -95,6 +101,13 @@ class Leaderboard:
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str)
         )
         return report
+
+    @staticmethod
+    def compute_mcc(group: pd.DataFrame) -> float:
+        valid = group.dropna(subset=['actual_class', 'predicted_class'])
+        if valid.empty:
+            return float('nan')
+        return float(matthews_corrcoef(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
 
     @staticmethod
     def keep_unique_str(x):
