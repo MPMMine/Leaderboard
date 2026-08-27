@@ -6,6 +6,7 @@ import pandas as pd
 import scipy.stats
 from mpmmine.dataset import MPMMine
 from pandas import DataFrame
+from sklearn.metrics import matthews_corrcoef
 
 from mpmmine.evaluator.configuration import Configuration
 
@@ -40,7 +41,7 @@ class Leaderboard:
         statistics["has_evaluation_error"] = ~statistics["evaluation_error"].isna()
         statistics["is_correct"] = (~statistics["has_algorithm_error"] &
                                     ~statistics["has_evaluation_error"] &
-                                    statistics["actual_class"] == statistics["predicted_class"])
+                                    (statistics["actual_class"] == statistics["predicted_class"]))  # fixed: parenthesis to fix operators order
         cv_aggregates = statistics.groupby(
             ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
              "train_non_solutions", "fold"]
@@ -56,6 +57,14 @@ class Leaderboard:
             test_time=pd.NamedAgg(column="test_time", aggfunc="sum"),  # total test time
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
         )
+
+        mcc_values = statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions", "fold"]
+        ).apply(Leaderboard.compute_mcc, include_groups=False)
+
+        cv_aggregates["mcc"] = mcc_values  # calculated values added as a new column
+
         return cv_aggregates
 
     def calculate_cv_statistics(self, cv_aggregates: DataFrame) -> DataFrame:
@@ -77,6 +86,8 @@ class Leaderboard:
             folds=pd.NamedAgg(column="fold", aggfunc="max"),
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
+            mcc_mean=pd.NamedAgg(column="mcc", aggfunc="mean"),
+            mcc_095ci=pd.NamedAgg(column="mcc", aggfunc=ci),
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
             test_count_total=pd.NamedAgg(column="test_count", aggfunc="sum"),
@@ -94,6 +105,13 @@ class Leaderboard:
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str)
         )
         return report
+
+    @staticmethod
+    def compute_mcc(group: pd.DataFrame) -> float:
+        valid = group.dropna(subset=['actual_class', 'predicted_class'])
+        if valid.empty:
+            return float('nan')
+        return float(matthews_corrcoef(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
 
     @staticmethod
     def keep_unique_str(x):
