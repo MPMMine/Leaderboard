@@ -41,7 +41,7 @@ class Leaderboard:
         statistics["has_evaluation_error"] = ~statistics["evaluation_error"].isna()
         statistics["is_correct"] = (~statistics["has_algorithm_error"] &
                                     ~statistics["has_evaluation_error"] &
-                                    statistics["actual_class"] == statistics["predicted_class"])
+                                    (statistics["actual_class"] == statistics["predicted_class"]))  # fixed: parenthesis to fix operators order
         cv_aggregates = statistics.groupby(
             ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
              "train_non_solutions", "fold"]
