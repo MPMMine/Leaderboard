@@ -15,7 +15,7 @@ from sklearn.model_selection import StratifiedShuffleSplit
 
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar
 from mpmmine.evaluator.configuration import Configuration
-from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, JaccardIndex
 from mpmmine.util import load_class, format_error
 
 
@@ -24,7 +24,8 @@ class Evaluator:
     solver = Solver.lookup("gurobi")
     adapter: AbstractAdapter
     measures: list[AbstractMeasure] = [
-        ConfusionMatrix()
+        ConfusionMatrix(),
+        JaccardIndex()
     ]
 
     def __init__(self, configuration: Configuration):
