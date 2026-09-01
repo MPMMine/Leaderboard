@@ -20,7 +20,7 @@ from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar,
 from mpmmine.evaluator.configuration import Configuration
 from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, CompressionRatio
 from mpmmine.evaluator.dzn import parse_dzn
-from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size, FeasibleRegionVolume
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size, JaccardIndex, FeasibleRegionVolume
 from mpmmine.util import load_class, format_error
 
 
@@ -32,6 +32,7 @@ class Evaluator:
         ConfusionMatrix(),
         CompressionRatio(),
         Size(),
+        JaccardIndex(),
         FeasibleRegionVolume(),
     ]
 
