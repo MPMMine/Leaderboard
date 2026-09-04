@@ -21,7 +21,7 @@ from mpmmine.evaluator.configuration import Configuration
 class Adapter(AbstractAdapter):
     container: docker.models.containers.Container
     data_path: Path
-    var_regex = re.compile(r"([a-zA-Zー][a-zA-Z0-9ー]*)((?:ᐨ\d+)+)?")
+    var_regex = re.compile(r"((?:[a-df-zA-Zー]|(?<!\d)e(?![+-]))[a-zA-Z0-9ー]*)((?:ᐨ\d+)+)?")
 
     @override
     def __init__(self, configuration: Configuration):
