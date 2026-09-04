@@ -61,19 +61,14 @@ class Adapter(AbstractAdapter):
             detach=True
         )
 
-    def _find_gurobi_license(self):
-        hostname = socket.gethostname()
-        hostname_based_path = (self.configuration.get_algorithm_root() / f"gurobi-{hostname}").resolve()
-        if (hostname_based_path / "gurobi.lic").exists() or (hostname_based_path / "key").exists():
-            return hostname_based_path
-
-        generic_path = (self.configuration.get_algorithm_root() / "gurobi").resolve()
-        if (generic_path / "gurobi.lic").exists() or (generic_path / "key").exists():
-            return generic_path
-
-        # raise error if Gurobi license is not provided
-        raise AdapterException(
-            f"Provide the Gurobi license key in file {generic_path / 'key'} or {hostname_based_path / 'key'} or Gurobi license file {generic_path / 'gurobi.lic'} or {hostname_based_path / 'gurobi.lic'}.")
+        gurobi_license_tries = 60
+        while True:
+            if (gurobi_path / "gurobi.lic").exists():
+                break
+            sleep(1.0)
+            gurobi_license_tries -= 1
+            if gurobi_license_tries <= 0:
+                raise AdapterException("Timeout waiting for Gurobi license to install.")
 
     @override
     def run(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
