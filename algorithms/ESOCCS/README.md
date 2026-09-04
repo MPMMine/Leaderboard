@@ -30,6 +30,12 @@ server will reject the activation request.
 If you are given with a *license file*, put it into the file `gurobi/gurobi.lic`. This file will be shared among all
 containers based on the Modeling.MP image.
 
+### Distributed environment
+
+If you run this code on multiple hosts at the same, you are required to either provide the WSL Gurobi license or
+separate licenses for each host. This can be done by putting either `key` or `gurobi.lic` to hostname-specific
+directory `gurobi-<hostname>` or host-id specific directory `gurobi-<host_id>`. To obtain Gurobi host-id run `grbprobe`.
+
 ## Translation of the input MiniZinc data file `.dzn` to the Modeling.MP input
 
 Modeling.MP assumes that all variables are scalars. It does not support arrays, sets, or other structures. It also

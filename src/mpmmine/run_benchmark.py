@@ -1,6 +1,9 @@
 import json
 import logging
 import os
+import sqlite3
+import subprocess
+import sys
 import threading
 from argparse import ArgumentParser, Namespace
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, Executor
@@ -12,6 +15,7 @@ from subprocess import Popen
 from typing import Generator, override, Optional
 
 from mpmmine.dataset import MPMMine, Instance
+from mpmmine.sqlite_backend import SQLiteBackend
 
 from mpmmine.evaluator.configuration import Configuration
 from mpmmine.evaluator.evaluator import Evaluator
@@ -270,8 +274,8 @@ class SlurmExecutor(AbstractExecutor):
             script.write("#SBATCH -t 36:00:00\n")
             if self.args.partition is not None and len(self.args.partition) > 0:
                 script.write(f"#SBATCH -p {self.args.partition}\n")
-            script.write("export LD_LIBRARY_PATH=~/gurobi1302/linux64/lib/\n")
-            script.write("export GRB_LICENSE_FILE=~/gurobi-$(hostname).lic\n")
+            script.write("export LD_LIBRARY_PATH=~/.local/gurobi/linux64/lib/\n")
+            script.write("export GRB_LICENSE_FILE=~/gurobi-$(grbprobe | grep HOSTID | sed s/HOSTID=//).lic\n")
             script.write("export PYTHONPATH=src\n")
             script.write("umask 000\n")  # to workaround uid/gid mismatch between container and host
             script.write("date\n")

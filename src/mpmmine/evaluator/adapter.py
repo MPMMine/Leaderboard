@@ -1,6 +1,8 @@
 import logging
 import os
 import platform
+import socket
+import subprocess
 from dataclasses import dataclass
 from typing import Literal
 
@@ -59,6 +61,48 @@ class AbstractAdapter:
         if arch in ['arm64', 'aarch64']:
             return "linux/arm64"
         return "linux/amd64"  # Default fallback for x86_64/AMD64
+
+    def find_gurobi_license(self):
+        """
+        Finds a valid path to Gurobi license for containers.
+        :return:
+        """
+        path = self._find_gurobi_license()
+        path.chmod(0o777)  # workaround uid/gid mismatch between host and container to allow writing license file
+        return path
+
+    def _find_gurobi_license(self):
+        """
+        Use find_gurobi_license() instead.
+        :return:
+        """
+        # try Gurobi HostID-specific path first
+        try:
+            output = subprocess.check_output(["grbprobe"], text=True)
+            host_id = next(
+                (line.split("HOSTID=")[1].strip() for line in output.splitlines() if "HOSTID=" in line),
+                None
+            )
+            host_id_based_path = (self.configuration.get_algorithm_root() / f"gurobi-{host_id}").resolve()
+            if (host_id_based_path / "gurobi.lic").exists() or (host_id_based_path / "key").exists():
+                return host_id_based_path
+        except subprocess.CalledProcessError as e:
+            logging.error(e)
+
+        # try hostname-specific path
+        hostname = socket.gethostname()
+        hostname_based_path = (self.configuration.get_algorithm_root() / f"gurobi-{hostname}").resolve()
+        if (hostname_based_path / "gurobi.lic").exists() or (hostname_based_path / "key").exists():
+            return hostname_based_path
+
+        # try generic path
+        generic_path = (self.configuration.get_algorithm_root() / "gurobi").resolve()
+        if (generic_path / "gurobi.lic").exists() or (generic_path / "key").exists():
+            return generic_path
+
+        # raise error if Gurobi license is not provided
+        raise AdapterException(
+            f"Provide the Gurobi license key in file {generic_path / 'key'} or {hostname_based_path / 'key'} or {host_id_based_path / 'key'} or Gurobi license file {generic_path / 'gurobi.lic'} or {hostname_based_path / 'gurobi.lic'} or {host_id_based_path / 'gurobi.lic'}.")
 
     def run(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
         """

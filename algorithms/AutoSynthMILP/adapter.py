@@ -2,10 +2,12 @@ import logging
 import math
 import os
 import re
-import socket
+import shutil
 import sqlite3
+import tempfile
 import textwrap
 from pathlib import Path
+from time import sleep
 from typing import override
 
 import docker
@@ -25,11 +27,10 @@ class Adapter(AbstractAdapter):
     def __init__(self, configuration: Configuration):
         super().__init__(configuration)
 
-        gurobi_path = self._find_gurobi_license()
+        gurobi_path = self.find_gurobi_license()
 
         # make a directory for sharing input/output files with the container
-        self.data_path = (self.configuration.get_algorithm_root() / "data").resolve()
-        self.data_path.mkdir(parents=True, exist_ok=True)
+        self.data_path = Path(tempfile.mkdtemp(prefix="mpmmine_data", suffix=self.configuration.algorithm))
         self.data_path.chmod(0o777)
 
         logging.info(f"Starting {self.container_tag} docker container...")
@@ -277,3 +278,5 @@ class Adapter(AbstractAdapter):
             self.container.remove()
         except docker.errors.NotFound:
             pass
+
+        shutil.rmtree(self.data_path, ignore_errors=True)
