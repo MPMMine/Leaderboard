@@ -300,11 +300,40 @@ class SlurmExecutor(AbstractExecutor):
 
         try:
             cfg = Configuration.from_file(args.configuration_path)
-            cfg_with_mpmmine = replace(cfg, mpmmine=MPMMine(args.mpmmine_path))
+
+            # Since Lustre file system suffers from a severe performance hit when multiple processes lock the same file,
+            # we use immutable SQLite mode on Lustre FS.
+            mpmmine_path_or_backend = args.mpmmine_path
+            if mpmmine_path_or_backend.suffix == ".sqlite" and SlurmExecutor._is_lustre(mpmmine_path_or_backend):
+                # ?immutable=1 disables locks at the risk of file corruption if parallel writes occur
+                # see https://sqlite.org/uri.html#recognized_query_parameters
+                conn = sqlite3.connect(f"file:{str(mpmmine_path_or_backend)}?immutable=1", uri=True)
+                conn.execute("PRAGMA foreign_keys = 1")
+                conn.execute("PRAGMA temp_store = MEMORY")
+                conn.autocommit = False
+                mpmmine_path_or_backend = SQLiteBackend(conn)
+
+            cfg_with_mpmmine = replace(cfg, mpmmine=MPMMine(mpmmine_path_or_backend))
             Evaluator(cfg_with_mpmmine).run()
         except BaseException as e:
             logging.critical(e, exc_info=True)
             exit(-1)
+
+    @staticmethod
+    def _is_lustre(path: Path | str) -> bool:
+        # Lustre client is only available on Linux
+        if not sys.platform.startswith("linux"):
+            return False
+
+        try:
+            fstype = subprocess.check_output(
+                ['stat', '-f', '-c', '%T', str(path)],
+                text=True,
+                stderr=subprocess.DEVNULL
+            ).strip()
+            return fstype.lower() == 'lustre'
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            return False
 
     @override
     def wait(self):
