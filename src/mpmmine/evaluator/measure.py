@@ -107,9 +107,9 @@ class JaccardIndex(AbstractMeasure):
         if "predicted_class" not in test_set.columns or "actual_class" not in test_set.columns:
             raise ValueError("The test set must have columns `predicted_class` and `actual_class`")
 
-        # Use calculations from ConfusionMatrix
-        y_true = test_set["actual_class"].fillna(False)
-        y_pred = test_set["predicted_class"].fillna(False)
+        # Use calculations from ConfusionMatrix; fix: added casting
+        y_true = test_set["actual_class"].fillna(False).astype(bool)
+        y_pred = test_set["predicted_class"].fillna(False).astype(bool)
 
         if len(y_true) < 1:
             return float('nan')
