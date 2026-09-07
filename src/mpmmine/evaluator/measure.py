@@ -5,6 +5,7 @@ import pandas as pd
 from minizinc import Model, Instance, Status
 from minizinc.dzn import parse_dzn
 from minizinc.error import MiniZincError
+from sklearn.metrics import jaccard_score
 
 from mpmmine.util import format_error
 
@@ -98,3 +99,19 @@ class ConfusionMatrix(AbstractMeasure):
 
         results = test_set.apply(actual_test, axis=1)
         return results
+
+
+class JaccardIndex(AbstractMeasure):
+    @override
+    def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> float:
+        if "predicted_class" not in test_set.columns or "actual_class" not in test_set.columns:
+            raise ValueError("The test set must have columns `predicted_class` and `actual_class`")
+
+        # Use calculations from ConfusionMatrix; fix: added casting
+        y_true = test_set["actual_class"].fillna(False).astype(bool)
+        y_pred = test_set["predicted_class"].fillna(False).astype(bool)
+
+        if len(y_true) < 1:
+            return float('nan')
+
+        return float(jaccard_score(y_pred=y_pred, y_true=y_true))
