@@ -61,6 +61,7 @@ class Leaderboard:
         ).agg(
             # quality
             accuracy=pd.NamedAgg(column="is_correct", aggfunc="mean"),
+            compression_ratio=pd.NamedAgg(column="CompressionRatio", aggfunc="mean"),
             test_count=pd.NamedAgg(column="actual_class", aggfunc="count"),
             # error probabilities
             algorithm_error_prob=pd.NamedAgg(column="has_algorithm_error", aggfunc="mean"),
@@ -111,6 +112,8 @@ class Leaderboard:
             # fitness
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
+            compression_ratio_mean=pd.NamedAgg(column="compression_ratio", aggfunc="mean"),
+            compression_ratio_095ci=pd.NamedAgg(column="compression_ratio", aggfunc=ci),
             # test count
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
