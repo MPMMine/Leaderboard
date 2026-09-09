@@ -1,3 +1,11 @@
+from __future__ import annotations
+
+import logging
+import os
+import re
+import tempfile
+import subprocess
+
 from datetime import timedelta
 from typing import override
 
@@ -98,3 +106,78 @@ class ConfusionMatrix(AbstractMeasure):
 
         results = test_set.apply(actual_test, axis=1)
         return results
+
+
+class CompressionRatio(AbstractMeasure):
+    @override
+    def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.Series:
+        # Need to access protected variable to get path
+        # noinspection PyTypeChecker
+        mzn_path: str = str(model._includes[0]) if getattr(model, "_includes", None) else None
+        if mzn_path is None:
+            raise ValueError("No mzn_path provided.")
+
+        with open(file=mzn_path, mode="r") as mzn_file:
+            original_code = mzn_file.read()
+
+        # Getting rid of comments
+        modified_code = re.sub(r'/\*.*?\*/', '', original_code, flags=re.DOTALL)  # block comments
+        modified_code = re.sub(r'%.*', '', modified_code)                         # line comments
+        code_size = len(modified_code)
+
+        temp_dict = {}
+        def actual_test(row) -> float:
+            if code_size == 0:
+                return float('nan')
+
+            instance_data = row["instance"]
+
+            if instance_data in temp_dict:
+                return temp_dict[instance_data]
+
+            # Creating temporary file with data
+            fd_data, dzn_path = tempfile.mkstemp(suffix=".dzn", text=True)
+            fd_flat, fzn_path = tempfile.mkstemp(suffix=".fzn", text=True)
+            os.close(fd_flat)  # Close descriptor, so the file can be accessed with minizinc subprocess
+            with os.fdopen(fd_data, "w") as dzn_file:
+                dzn_file.write(instance_data)  # Saving data
+
+            try:
+                res = subprocess.run(
+                    [
+                        "minizinc",
+                        "-c",
+                        "-O0",   # Optimisation turned off
+                        "--solver", instance._solver.id,
+                        mzn_path,
+                        dzn_path,
+                        "--fzn",
+                        fzn_path
+                    ],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True
+                )
+
+                if res.returncode == 0:
+                    with open(fzn_path, "r") as fzn_file:
+                        flattened_code_size = len(fzn_file.read().strip())
+                    if flattened_code_size > 0:
+                        ratio = float(code_size) / flattened_code_size
+                        temp_dict[instance_data] = ratio
+                        return ratio
+                else:
+                    logging.warning(f"Compression ratio failed (code: {res.returncode}): {res.stderr}")
+                temp_dict[instance_data] = float('nan')
+                return float('nan')
+            except Exception as e:
+                logging.warning(f"Exception in CompressionRatio: {e}")
+                temp_dict[instance_data] = float('nan')
+                return float('nan')
+            finally:
+                if os.path.exists(dzn_path):
+                    os.remove(dzn_path)
+                if os.path.exists(fzn_path):
+                    os.remove(fzn_path)
+
+        return test_set.apply(actual_test, axis=1)
