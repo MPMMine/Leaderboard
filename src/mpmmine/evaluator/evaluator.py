@@ -18,6 +18,7 @@ from sklearn.model_selection import StratifiedShuffleSplit
 
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar, Domain, Collection
 from mpmmine.evaluator.configuration import Configuration
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, CompressionRatio
 from mpmmine.evaluator.dzn import parse_dzn
 from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size
 from mpmmine.util import load_class, format_error
@@ -29,6 +30,7 @@ class Evaluator:
     adapter: AbstractAdapter
     measures: list[AbstractMeasure] = [
         ConfusionMatrix(),
+        CompressionRatio(),
         Size(),
     ]
 
