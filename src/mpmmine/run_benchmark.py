@@ -237,7 +237,7 @@ class ThreadExecutor(ProcessExecutor):
         self._executor = ThreadPoolExecutor(
             max_workers=1,
             initializer=ProcessExecutor._initializer,
-            initargs=(args.mpmmine_path,)
+            initargs=(args.mpmmine_path.expanduser(),)
         )
 
 
