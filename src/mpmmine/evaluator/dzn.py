@@ -3,14 +3,19 @@
 #  License, v. 2.0. If a copy of the MPL was not distributed with this
 #  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 import enum
+from contextlib import suppress
 from dataclasses import dataclass
+from functools import lru_cache
 from itertools import batched
 from pathlib import Path
 from typing import Union, override
 
 import minizinc
-from lark import Lark
+from lark import Lark, Tree
+from lark.visitors import _Leaf_T, _Return_T
 from minizinc.dzn import TreeToDZN, arg1_construct
+
+from mpmmine.util import merge_ordered_lists
 
 dzn_grammar = r"""
     items: [item (";" item)* ";"?]
@@ -77,27 +82,63 @@ class EnumValue:
 
 
 class TreeToDZN(minizinc.dzn.TreeToDZN):
-    @staticmethod
-    def items(s: list):
+    # Since DZN does not contain enum declarations, we have no means to detect for sure that two enum values belong to
+    # the same enum type. Instead, we use duck typing: if values of two enum types intersect, then we merge them to the
+    # same type.
+    # The below dictionary holds a map from all enum values encountered so far to the corresponding enum types. This
+    # is many-to-one mapping, enum types typically have more than one value. Once a new value of an enum type appear,
+    # all mappings must be updated with a new class reference.
+    # key: enum value
+    # value: enum class
+    _enums: dict[str, enum.EnumType]
+
+    def __init__(self):
+        super().__init__()
+        self._enums = dict()
+
+    def _get_enum(self, values: list, order_important: bool = False) -> enum.EnumType:
+        existing = {e for v in values if (e := self._enums.get(v)) is not None}
+        first = next(existing.__iter__(), None)
+        if len(existing) == 1 and first == set(values):
+            return first  # fast path: we have found matching enum
+
+        # create new enum
+        if order_important:
+            new_values = values
+        else:
+            new_values = list(values)
+            for ex in existing:
+                for v in ex:
+                    with suppress(ValueError):
+                        new_values.remove(v.name)
+
+        all_values = merge_ordered_lists([list(e.__members__) for e in existing] + [new_values])
+        _enum = enum.Enum(f"enum_{"_".join(all_values)}", all_values)
+        # update value -> enum mapping
+        for v in all_values:
+            self._enums[v] = _enum
+
+        return _enum
+
+    def items(self, s: list):
         # aggregate all "loose" enum values into a single enum type
         unique_enum_values = {v for (k, v) in s if isinstance(v, EnumValue)}
         if len(unique_enum_values) > 0:
-            e = enum.Enum(f"enum_value", list(v.value for v in unique_enum_values))
+            e = self._get_enum(unique_enum_values, order_important=False)
 
         return dict((k, v) if not isinstance(v, EnumValue) else (k, e[v.value]) for (k, v) in s)
 
     collection = arg1_construct(lambda s: s)
     scalar = arg1_construct(lambda s: s)
 
-    @staticmethod
-    def postprocess_array(array: dict):
-        indices: dict[int, set] = dict()  # key: nesting_level, value: set of indices
+    def _postprocess_array(self, array: dict):
+        indices: dict[int, dict] = dict()  # key: nesting_level, value: set of indices
         unique_values: set[int | float | str] = set()  # unique values
 
         def collect(a: dict, level):
             if level not in indices:
-                indices[level] = set()
-            indices[level].update(a.keys())
+                indices[level] = dict.fromkeys([])
+            indices[level].update(dict.fromkeys(a.keys()))
             for v in a.values():
                 if isinstance(v, dict):
                     collect(v, level + 1)
@@ -106,11 +147,11 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
 
         collect(array, 0)
 
-        # build enums for string indices
-        _enums: dict[int, enum.Enum] = dict()  # key: nesting_level, value: enum
+        # build enums for indices
+        _enums: dict[int, enum.EnumType] = dict()  # key: nesting_level, value: enum
         for nesting_level, values in indices.items():
             if any(isinstance(v, EnumValue) for v in values):
-                _enums[nesting_level] = enum.Enum(f"enum_{nesting_level}", list(str(v) for v in values))
+                _enums[nesting_level] = self._get_enum(list(str(v) for v in values))
 
         # replace keys in array with enums
         def replace_keys(out: dict, nesting_level):
@@ -134,13 +175,18 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
                     replace_values(v, e)
 
         if any(isinstance(v, EnumValue) for v in unique_values):
-            e = enum.Enum(f"enum_value", list(v.value for v in unique_values))
+            e = self._get_enum([v.value for v in unique_values], order_important=False)
             replace_values(array, e)
 
         return array
 
-    @staticmethod
-    def indexed_array(s):
+    def array(self, s):
+        if any(isinstance(v, EnumValue) for v in s[0]):
+            e = self._get_enum(list(dict.fromkeys([v.value for v in s[0]]).keys()), order_important=False)
+            return [e[v.value] for v in s[0]]
+        return s[0]
+
+    def indexed_array(self, s):
         output: dict[int | str | enum.Enum, int | float | str | dict] = dict()  # key: index
         for index, value in batched(s, 2, strict=True):
             out = output
@@ -153,14 +199,12 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
                 else:
                     out[index_dimension] = value
 
-        return TreeToDZN.postprocess_array(output)
+        return self._postprocess_array(output)
 
-    @staticmethod
-    def indexed_array2d(s):
-        return TreeToDZN.postprocess_array(s[0])
+    def indexed_array2d(self, s):
+        return self._postprocess_array(s[0])
 
-    @staticmethod
-    def indexed_array2d_cols(s):
+    def indexed_array2d_cols(self, s):
         output: dict[int, dict] = dict()
         col_indices: list = s[0]
 
@@ -169,8 +213,7 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
 
         return output
 
-    @staticmethod
-    def indexed_array2d_rows(s):
+    def indexed_array2d_rows(self, s):
         output: dict[int, dict] = dict()
         row_indices: list = list()
 
@@ -180,8 +223,7 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
 
         return output
 
-    @staticmethod
-    def indexed_array2d_both(s):
+    def indexed_array2d_both(self, s):
         output: dict[int, dict] = dict()
         row_indices: list = list()
         col_indices: list = s[0]
@@ -192,8 +234,7 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
 
         return output
 
-    @staticmethod
-    def array_func(s):
+    def array_func(self, s):
         n_dims = int(s[0])
         dims = s[1:n_dims + 1]
         array = s[n_dims + 1]
@@ -215,31 +256,54 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
         n_read = fill(0, output, array)
         assert n_read == len(array)
 
-        return TreeToDZN.postprocess_array(output)
+        return self._postprocess_array(output)
 
-    @staticmethod
-    def index(s):
+    def index(self, s):
         return s
 
-    @staticmethod
-    def index_list(s):
+    def index_list(self, s):
         return s
 
     simple_index = arg1_construct(lambda s: s)
 
-    @staticmethod
-    def set(s):
+    def set(self, s):
         if len(s) == 1:
             if any(isinstance(v, EnumValue) for v in s[0]):
-                e = enum.Enum(f"enum_set", list(str(v) for v in s[0]))
+                e = self._get_enum(list(str(v) for v in s[0]), order_important=False)
                 return set(e)
             return set(s[0])
         else:
             return range(s[0], s[1] + 1)
 
-    @staticmethod
-    def enum(s):
+    def enum(self, s):
+        self._get_enum(s)  # just register value
         return EnumValue(s[0])
+
+    @override
+    def transform(self, tree: Tree[_Leaf_T]) -> _Return_T:
+        transformed = super().transform(tree)
+
+        # Enums in the transformed tree may not reflect the _enums field, as enums in _enums are dynamically updated and
+        # replaced if new values are spot during parsing. Here, we replace all stale enums with the corresponding
+        # objects from _enum.
+        def replace_enums(obj):
+            obj_type = type(obj)
+            if isinstance(obj, enum.Enum):
+                return self._enums[obj.name][obj.name]
+            elif obj_type is list:
+                for i, elem in enumerate(obj):
+                    obj[i] = replace_enums(elem)
+            elif obj_type is set:
+                replacement = {replace_enums(v) for v in obj}
+                obj.clear()
+                obj.update(replacement)
+            elif obj_type is dict:
+                replacement = {replace_enums(k): replace_enums(v) for k, v in obj.items()}
+                obj.clear()
+                obj.update(replacement)
+            return obj
+
+        return replace_enums(transformed)
 
 
 dzn_parser = Lark(dzn_grammar, start="items", parser="earley")
@@ -252,6 +316,7 @@ def drop_array_indices(data: dict):
             data[k] = list(v.values())
 
 
+@lru_cache(maxsize=2048, typed=False)
 def parse_dzn(dzn: Union[Path, str], ignore_indices: bool = True):
     """
         Parses a .dzn file or DZN string.

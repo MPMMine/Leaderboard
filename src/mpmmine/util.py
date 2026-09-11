@@ -2,8 +2,9 @@ import importlib.util
 import logging
 import sys
 import threading
+from collections import defaultdict, deque
 from pathlib import Path
-from typing import Any
+from typing import Any, List
 
 import colorlog
 
@@ -66,3 +67,42 @@ def format_error(err: str | None) -> str | None:
         return err
     else:
         return f"{err[:750]}...{err[-750:]}"
+
+
+def merge_ordered_lists(lists: List[List[Any]]) -> List[Any]:
+    graph = defaultdict(set)
+    in_degree = defaultdict(int)
+    nodes = set()
+
+    # Build the graph and calculate in-degrees
+    for lst in lists:
+        for item in lst:
+            nodes.add(item)
+            if item not in in_degree:
+                in_degree[item] = 0  # Ensure all nodes are tracked
+
+        for i in range(len(lst) - 1):
+            u, v = lst[i], lst[i + 1]
+            if v not in graph[u]:
+                graph[u].add(v)
+                in_degree[v] += 1
+
+    # Initialize queue with nodes having 0 in-degree
+    queue = deque([node for node in nodes if in_degree[node] == 0])
+    result = []
+
+    # Process the graph
+    while queue:
+        node = queue.popleft()
+        result.append(node)
+
+        for neighbor in graph[node]:
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+
+    # If the result length doesn't match the unique nodes, a cycle exists
+    if len(result) != len(nodes):
+        raise ValueError("The provided lists are inconsistent (cycle detected).")
+
+    return result

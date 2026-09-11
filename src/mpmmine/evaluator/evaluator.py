@@ -4,19 +4,21 @@ import socket
 import textwrap
 import time
 import warnings
+from enum import Enum
 from functools import reduce
+from pathlib import Path
 from typing import Generator
 
 import cpuinfo
 import minizinc
 import pandas as pd
 from minizinc import Instance, Model, Solver
-from minizinc.dzn import parse_dzn
 from minizinc.error import MiniZincWarning
 from sklearn.model_selection import StratifiedShuffleSplit
 
-from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar
+from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar, Domain, Collection
 from mpmmine.evaluator.configuration import Configuration
+from mpmmine.evaluator.dzn import parse_dzn
 from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix
 from mpmmine.util import load_class, format_error
 
@@ -107,7 +109,7 @@ class Evaluator:
     def _parse_dzn_and_extract_symbols(self, data: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, MznVar]]:
         symbols: dict[str, MznVar] = dict()
 
-        # pass 1: get symbols and calculate their domains
+        # get symbols and calculate their domains
         def parse(row) -> pd.Series:
             nonlocal symbols
 
@@ -132,14 +134,35 @@ class Evaluator:
         # noinspection PyTypeChecker
         return pd.concat([data, data.apply(parse, axis=1)], axis=1), symbols
 
-    def _to_MznVar(self, name: str, value: int | float | set | list, is_var: bool) -> MznVar:
+    def _to_MznVar(self, name: str, value: int | float | set | list | Enum, is_var: bool) -> MznVar:
         value_type = type(value)
         if value_type is int or value_type is float:
-            return MznVar(name, value_type.__name__, None, [], value, value, is_var)
+            return MznVar(name=name,
+                          domain=Domain[value_type.__name__],
+                          collection=None,
+                          indices=[],
+                          min=value,
+                          max=value,
+                          var=is_var,
+                          enum=None)
+        elif issubclass(value_type, Enum):
+            return MznVar(name=name,
+                          domain=Domain.enum,
+                          collection=None,
+                          indices=[],
+                          min=None,
+                          max=None,
+                          var=is_var,
+                          enum=value_type)
         elif value_type is set or value_type is range or value_type is list:
             sub_var = reduce(MznVar.merge_inplace, (self._to_MznVar(name, v, is_var) for v in value))
-            col_type = "array" if value_type is list else "set"
-            indices = [set(value)] if value_type is not list else [{1, len(value)}]
+            col_type = Collection.array if value_type is list else Collection.set
+            if value_type is list:
+                indices = [{1, len(value)}]
+            elif issubclass(value_type, Enum):
+                indices = [set(value_type)]
+            else:
+                indices = [set(value)]
             # noinspection PyTypeChecker
             return MznVar(name=name,
                           domain=sub_var.domain,
@@ -147,7 +170,8 @@ class Evaluator:
                           indices=indices + sub_var.indices,
                           min=sub_var.min,
                           max=sub_var.max,
-                          var=is_var)
+                          var=is_var,
+                          enum=sub_var.enum)
         raise ValueError(f"Unknown value type: {value}: {value_type}")
 
     def cross_validation(self) -> Generator[tuple[pd.DataFrame, pd.DataFrame], None, None]:
@@ -217,20 +241,28 @@ class Evaluator:
         """
         with (warnings.catch_warnings(record=True, category=MiniZincWarning) as caught_warnings):
             warnings.simplefilter("always", category=MiniZincWarning)
-            model = Model(mzn_path)
-            instance = Instance(self.solver, model)
 
-            for measure in self.measures:
-                value = measure.calculate(model, instance, test_set)
+            try:
+                model = Model(mzn_path)
+                instance = Instance(self.solver, model)
 
-                if isinstance(value, float) or isinstance(value, int) or isinstance(value, bool) or \
-                        isinstance(value, pd.Series):
-                    name = type(measure).__name__
-                    test_set[name] = value  # broadcasts automatically for primitive types
-                elif isinstance(value, pd.DataFrame):
-                    test_set[value.columns] = value
-                else:
-                    raise ValueError(f"Unsupported value: {type(value)}")
+                for measure in self.measures:
+                    value = measure.calculate(model, instance, test_set)
+
+                    if isinstance(value, float) or isinstance(value, int) or isinstance(value, bool) or \
+                            isinstance(value, pd.Series):
+                        name = type(measure).__name__
+                        test_set[name] = value  # broadcasts automatically for primitive types
+                    elif isinstance(value, pd.DataFrame):
+                        test_set[value.columns] = value
+                    else:
+                        raise ValueError(f"Unsupported value: {type(value)}")
+            except minizinc.error.TypeError as e:
+                error = format_error(
+                    f"{str(e)} in {Path(e.location.file).name}:{e.location.lines}:{e.location.columns}")
+                test_set["evaluation_error"] = error
+                with open(mzn_path, "at") as mzn:
+                    mzn.write(textwrap.indent(error, "% "))
 
         if caught_warnings and len(caught_warnings) > 0:
             with open(mzn_path, "at") as mzn:
@@ -241,4 +273,3 @@ class Evaluator:
     def __del__(self):
         if self.adapter is not None:
             del self.adapter
-

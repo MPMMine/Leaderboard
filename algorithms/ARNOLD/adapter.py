@@ -1,10 +1,12 @@
 import logging
+import re
+from enum import Enum
 from typing import override, Any
 
 import docker
 import pandas as pd
 
-from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar
+from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar, Domain, Collection
 from mpmmine.evaluator.configuration import Configuration
 
 
@@ -46,7 +48,7 @@ class Adapter(AbstractAdapter):
             translate_value = Adapter.translate_value  # optimize attribute lookup
             return ("--example " +
                     " ".join(
-                        [f"{n}{"_" if (s := symbols[n]).collection == "set" else ""}={translate_value(v, s)}"
+                        [f"{n}{"_" if (s := symbols[n]).collection == Collection.set else ""}={translate_value(v, s)}"
                          for n, v in (instance | example).items()]
                     ))
 
@@ -56,7 +58,7 @@ class Adapter(AbstractAdapter):
         # In postprocessing of the resulting model add an original variable and an auxiliary constraint that map the
         # original symbol into this with suffix.
         def replace_sets(s: set):
-            for set_ in [p for p in s if symbols[p].collection == "set"]:
+            for set_ in [p for p in s if symbols[p].collection == Collection.set]:
                 s.remove(set_)
                 s.add(set_ + "_")
 
@@ -71,13 +73,28 @@ class Adapter(AbstractAdapter):
         if value_type is bool or value_type is int or value_type is float:
             return str(value)
         if value_type is str:
-            return value
+            return f"'value'"  # strings are probably unsupported by ARNOLD, but we do not have data of this type
+        if isinstance(value, Enum):
+            # lookup integer value in the symbol.enum rather than rely on value.value, as the latter may come from
+            # parsing DZN with incomplete enum definition, and the former contains all enum values spot in all data
+            return str(symbol.enum[value.name].value)
         if value_type is list:
             translate_value = Adapter.translate_value  # optimize attribute lookup
             return f"[{",".join([translate_value(v, symbol) for v in value])}]"
         if value_type is range or value_type is set:
+            assert symbol.collection == Collection.set
+            assert len(symbol.indices) == 1
+            if any(isinstance(i, Enum) for i in symbol.indices[0]):
+                if symbol.var:
+                    # var set of enum is a variable set
+                    indices = symbol.indices[0]
+                else:
+                    # set of enum is simply enum declaration - encode using ints
+                    indices = symbol.enum
+            else:
+                indices = range(min(symbol.indices[0]), max(symbol.indices[0]) + 1)
             # 1 if element is included in set, 0 otherwise:
-            return f"[{",".join(str(int(i in value)) for i in range(min(symbol.indices[0]), max(symbol.indices[0]) + 1))}]"
+            return f"[{",".join(str(int(i in value)) for i in indices)}]"
 
         raise TypeError(f"Unknown type {type(value)}")
 
@@ -89,11 +106,28 @@ class Adapter(AbstractAdapter):
             f"Failed to run:\n\t{cmd}\n\tin container {self.container.name}:\n\texit code: {str(c := result.exit_code) + (" (TIMEOUT)" if c == 124 else "")}\n\terror: {result.output.decode("utf-8")}")
 
     def translate_output(self, mzn: str, symbols: dict[str, MznVar]) -> str:
-        first = True
+        # FIXME: It seems that minizinc 2.10 applies implicit coercion from enum to int even without emitting a warning,
+        #  when DZN contains enum values and model expects integers in the corresponding locations. For now, we do not
+        #  apply explicit coercion, as it would require either creating an MZN parser or doubling the parts of the model
+        #  that use enums on the DZN side.
+        # However, we still have to convert arrays to enum declarations where applicable
+        first_set = True
         for s in symbols.values():
-            if s.collection == "set":
-                if first:
-                    first = False
+            if s.domain == Domain.enum and not s.var:
+                mzn = re.sub(
+                    pattern=rf"(array\[\d+\.\.\d+] of int):{s.name};",
+                    repl=lambda m: \
+                        f"% Replaced in postprocessing to handle enum declaration:\n% {m.group(1)}:{s.name};\nenum {s.name};",
+                    string=mzn)
+            elif s.domain == Domain.float:
+                mzn = re.sub(
+                    pattern=rf"{"var " if s.var else ""}int:\s?{s.name};",
+                    repl=lambda m: \
+                        f"{"var " if s.var else ""}float: {s.name}; % Replaced in postprocessing to handle floats",
+                    string=mzn)
+            elif s.collection == Collection.set:
+                if first_set:
+                    first_set = False
                     mzn += "\n% Added in postprocessing to handle set variables/parameters:\ninclude \"globals.mzn\";\n"
                 mzn += str(s) + "\n"
                 mzn += f"constraint link_set_to_booleans({s.name}, [b == 1 | b in {s.name}_]);\n"

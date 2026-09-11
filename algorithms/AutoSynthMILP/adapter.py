@@ -6,6 +6,7 @@ import shutil
 import sqlite3
 import tempfile
 import textwrap
+from enum import Enum
 from pathlib import Path
 from time import sleep
 from typing import override
@@ -14,7 +15,7 @@ import docker
 import pandas as pd
 from docker.types import Mount
 
-from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar
+from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar, Domain, Collection
 from mpmmine.evaluator.configuration import Configuration
 
 
@@ -151,13 +152,31 @@ class Adapter(AbstractAdapter):
         if value_type is int or value_type is float:
             # noinspection PyTypeChecker
             return {name_prefix: value}
+        elif isinstance(value, Enum):
+            # lookup integer value in the symbol.enum rather than rely on value.value, as the latter may come from
+            # parsing DZN with incomplete enum definition, and the former contains all enum values spot in all data
+            return {name_prefix: symbol.enum[value.name].value}
         elif value_type is set or value_type is range:
-            assert symbol.collection == "set"
+            assert symbol.collection == Collection.set
             assert len(symbol.indices) == 1
+            if any(isinstance(i, Enum) for i in symbol.indices[0]):
+                if symbol.var:
+                    # var set of enum is a variable set
+                    indices = symbol.indices[0]
+                else:
+                    # set of enum is simply enum declaration - encode using ints
+                    indices = symbol.enum
+            else:
+                indices = range(min(symbol.indices[0]), max(symbol.indices[0]) + 1)
             output = {}
-            for i in range(min(symbol.indices[0]), max(symbol.indices[0]) + 1):
-                assert type(i) is int, f"Indices must be integer: {i}"
-                output.update(self.flatten_value(f"{name_prefix}ᐨ{i}", int(i in value), symbol))
+            for i in indices:
+                if type(i) is int:
+                    i_print = i
+                elif isinstance(i, Enum):
+                    i_print = i.name
+                else:
+                    raise ValueError(f"Indices must be integer or enum: {i}")
+                output.update(self.flatten_value(f"{name_prefix}ᐨ{i_print}", int(i in value), symbol))
             return output
         elif value_type is list:
             output = {}
@@ -181,28 +200,29 @@ class Adapter(AbstractAdapter):
 
             domain = ""
             match symbol.domain:
-                case "float":
+                case Domain.float:
                     domain = "Real"
-                case "int":
+                case Domain.int | Domain.enum:
                     domain = "Integer"
-                case "bool":
+                case Domain.bool:
                     domain = "Binary"
                 case _:
                     raise ValueError(f"Unknown domain: {symbol.domain}")
 
             if domain != "":
-                if symbol.collection == "set":
+                if symbol.collection == Collection.set:
                     col2type_spec[column] = f"{name}[Binary|0|1]"
-                elif math.isfinite(symbol.min) and math.isfinite(symbol.max):
+                elif symbol.min is not None and math.isfinite(symbol.min) and \
+                        symbol.max is not None and math.isfinite(symbol.max):
                     col2type_spec[column] = f"{name}[{domain}|{symbol.min}|{symbol.max}]"
                 else:
-                    col2type_spec[column] = f"{name}[{domain}|{symbol.min}]"
+                    col2type_spec[column] = f"{name}[{domain}]"
 
         return col2type_spec
 
     def create_cmd(self, input_csv: Path, output_sqlite: Path) -> str:
         cfg = self.configuration
-        return f"timeout {self.configuration.run_timeout} bash -c 'umask 000 && mono /app/Modeling.MP.exe -seed={cfg.seed} problem=/app/data/{input_csv.name} output=/app/data/{output_sqlite.name}'"
+        return f"timeout {cfg.run_timeout} bash -c 'umask 000 && mono /app/Modeling.MP.exe -seed={cfg.seed} problem=/app/data/{input_csv.name} output=/app/data/{output_sqlite.name}'"
 
     def run_in_container(self, cmd: str) -> str:
         result = self.container.exec_run(
@@ -229,15 +249,15 @@ class Adapter(AbstractAdapter):
                     f"The support for more than one model is not implemented, {len(experiment)} models found.")
             exp_id = experiment[0][0]
 
-            variables = (cursor
-                         .execute("SELECT v.id, v.name, v.domain, v.min, v.max FROM variables v WHERE v.parent=:exp_id",
-                                  {"exp_id": exp_id})
-                         .fetchall())
+            variables = cursor.execute(
+                "SELECT v.id, v.name, v.domain, v.min, v.max FROM variables v WHERE v.parent=:exp_id",
+                {"exp_id": exp_id}) \
+                .fetchall()
 
-            constraints = (cursor
-                           .execute("SELECT c.id, c.formula FROM constraints c WHERE c.parent=:exp_id",
-                                    {"exp_id": exp_id})
-                           .fetchall())
+            constraints = cursor.execute(
+                "SELECT c.id, c.formula FROM constraints c WHERE c.parent=:exp_id",
+                {"exp_id": exp_id}) \
+                .fetchall()
 
             log = textwrap.indent(log, "% ")
             var_str = self.translate_variables_back(variables, symbols)
@@ -249,7 +269,7 @@ class Adapter(AbstractAdapter):
                                  variables: list[tuple[int, str, str, float | int, float | int]],
                                  symbols: dict[str, MznVar],
                                  ) -> str:
-        return "\n".join(str(v) for v in sorted(symbols.values(), key=lambda s: s.var))
+        return "\n".join(v.to_str(symbols) for v in sorted(symbols.values(), key=lambda s: s.var))
 
     def translate_constraints(self, constraints: list[tuple[int, str]], symbols: dict[str, MznVar]) -> str:
         def translate_var(match: re.Match) -> str:
@@ -257,11 +277,18 @@ class Adapter(AbstractAdapter):
             indices = match.group(2)
             if indices is not None:
                 indices = indices[1:].replace("ᐨ", ", ")
-            if symbol.collection == "set":
+            if symbol.collection == Collection.set:
                 return f"bool2int(({indices}) in {symbol.name})"
+
+            out = ""
+            if symbol.domain == Domain.enum:
+                out += "enum2int("
+            out += symbol.name
             if indices is not None:
-                return f"{symbol.name}[{indices}]"
-            return symbol.name
+                out += f"[{indices}]"
+            if symbol.domain == Domain.enum:
+                out += f")"
+            return out
 
         return "\n".join(f"constraint {self.var_regex.sub(translate_var, expr)};" for id, expr in constraints)
 

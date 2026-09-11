@@ -1,10 +1,11 @@
+import enum
 import logging
 import os
 import platform
 import socket
 import subprocess
 from dataclasses import dataclass
-from typing import Literal
+from enum import Enum
 
 import docker
 import pandas as pd
@@ -12,6 +13,7 @@ from docker import DockerClient
 from filelock import FileLock
 
 from mpmmine.evaluator.configuration import Configuration
+from mpmmine.util import merge_ordered_lists
 
 
 class AbstractAdapter:
@@ -131,43 +133,102 @@ class AdapterException(Exception):
 @dataclass
 class MznVar:
     name: str
-    domain: str
-    collection: Literal["array", "set"] | None
+    domain: Domain
+    collection: Collection | None
     indices: list[set[int]]
-    min: float | int
-    max: float | int
+    min: float | int | None
+    max: float | int | None
     var: bool
+    enum: Enum | None  # enum type
 
     def merge_inplace(self, other: MznVar) -> MznVar:
         assert (self.name == other.name)
         assert (self.collection == other.collection)
 
-        if self.domain == "float" or other.domain == "float":
-            self.domain = "float"
-        elif self.domain == "int" or other.domain == "int":
-            self.domain = "int"
-        elif self.domain == "bool" or other.domain == "bool":
-            self.domain = "bool"
+        if self.domain == Domain.float or other.domain == Domain.float:
+            self.domain = Domain.float
+        elif self.domain == Domain.int or other.domain == Domain.int:
+            self.domain = Domain.int
+        elif self.domain == Domain.bool or other.domain == Domain.bool:
+            self.domain = Domain.bool
+        elif self.domain == Domain.enum or other.domain == Domain.enum:
+            self.domain = Domain.enum
+            self.enum = self._merge_enums([self.enum, other.enum])
         else:
             raise AdapterException(f"Unknown domain: {self.domain}")
 
         self.indices = [a | b for a, b in zip(self.indices, other.indices)]
-        self.min = min(self.min, other.min)
-        self.max = max(self.max, other.max)
+        if self.domain != Domain.enum:
+            self.min = min(self.min, other.min)
+            self.max = max(self.max, other.max)
         self.var = max(self.var, other.var)
 
         return self
 
-    def __str__(self) -> str:
+    def _merge_enums(self, enums: list[enum.EnumType]) -> enum.EnumType:
+        # The DZN parser parses enums in duck typing mode due to the lack of type definitions, hence it may
+        # happen that different DZN files (e.g. different examples) use different values of the same enum.
+        # Here, we attempt to unify inconsistent enums the same way as the parser does for values (i.e., the
+        # order of values is not important).
+
+        if len(enums) == 1 or all(enums[0] == e for e in enums[1:]):
+            # enums equal, return just the first one
+            return enums[0]
+
+        # find a super-enum
+        super_enum = max(enums, key=lambda e: len(e))
+        super_enum_names = set(e.name for e in super_enum)
+        if all(super_enum_names.issuperset(e.name for e in en) for en in enums):
+            return super_enum
+
+        # otherwise merge enums
+        values: list = list(list(v.name for v in en) for en in enums)
+
+        all_values = merge_ordered_lists(values)
+        _enum = enum.Enum(f"enum_{"_".join(all_values)}", all_values)
+
+        return _enum
+
+    def to_str(self, symbols: dict[str, MznVar]) -> str:
         out = ""
-        if self.collection == "array":
+        if self.collection == Collection.array:
             out += f"array[{", ".join(f"{min(i)}..{max(i)}" for i in self.indices)}] of "
         if self.var:
             out += "var "
-        if self.collection == "set":
-            assert len(self.indices) > 0
-            out += f"set of {min(self.indices[0])}..{max(self.indices[0])}"
+        if self.collection == Collection.set:
+            if self.domain == Domain.enum:
+                if not self.var:
+                    # enum type declaration
+                    return f"enum {self.name};"
+                else:
+                    out += f"set of {self.name}"
+            else:
+                assert len(self.indices) > 0
+                out += f"set of {min(self.indices[0])}..{max(self.indices[0])}"
+        elif self.domain == Domain.enum:
+            enum_decl = self._get_enum_decl(self.enum, symbols)
+            out += enum_decl.name
         else:
             out += f"{self.min}..{self.max}"
         out += f": {self.name};"
         return out
+
+    def _get_enum_decl(self, enum: Enum, symbols: dict[str, MznVar]) -> MznVar:
+        values = set(e.name for e in enum)
+        return next(s for s in symbols.values() \
+                    if s.collection == Collection.set and \
+                    s.domain == Domain.enum and \
+                    not s.var and \
+                    set(e.name for e in s.enum).issuperset(values))
+
+
+class Domain(Enum):
+    float = "float"
+    int = "int"
+    bool = "bool"
+    enum = "enum"
+
+
+class Collection(Enum):
+    array = "array"
+    set = "set"

@@ -3,9 +3,9 @@ from typing import override
 
 import pandas as pd
 from minizinc import Model, Instance, Status
-from minizinc.dzn import parse_dzn
 from minizinc.error import MiniZincError
 
+from mpmmine.evaluator.dzn import parse_dzn
 from mpmmine.util import format_error
 
 

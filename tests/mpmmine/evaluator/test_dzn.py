@@ -163,3 +163,48 @@ def test_parse_dzn_set_of_enum():
     parsed = parse_dzn("DEPT = { A, B, C };")
     set__eq__(parsed)
     assert parsed == {"DEPT": {DEPT.A, DEPT.B, DEPT.C}}
+
+
+def test_parse_dzn_consistent_enum_values():
+    parsed = parse_dzn("x = { A, B, C }; y = { B, D };")
+    xB = next(v for v in parsed["x"] if v.name == "B")
+    yB = next(v for v in parsed["y"] if v.name == "B")
+    assert xB.name == "B"
+    assert yB.name == "B"
+    assert xB.value == yB.value
+
+
+def test_parse_dzn_consistent_enum_indices():
+    dzn = """x = 
+    [|      B: C: 
+     | A: 825, 0
+     | B: 611, 0
+     |];
+     y = [C, A, B];"""
+    parsed = parse_dzn(dzn, ignore_indices=False)
+    x2B = next(k2 for k, v in parsed["x"].items() if k.name == "A" for k2 in v.keys() if k2.name == "B")
+    x1B = next(k for k in parsed["x"].keys() if k.name == "B")
+    yB = next(v for v in parsed["y"] if v.name == "B")
+    assert x1B.name == "B"
+    assert x2B.name == "B"
+    assert yB.name == "B"
+    assert x1B.value == x2B.value
+    assert x1B.value == yB.value
+
+
+def test_parse_dzn_consistent_enum_indices_reversed():
+    dzn = """y = [C, A, B];
+     x = 
+    [|      B: C: 
+     | A: 825, 0
+     | B: 611, 0
+     |];"""
+    parsed = parse_dzn(dzn, ignore_indices=False)
+    x2B = next(k2 for k, v in parsed["x"].items() if k.name == "A" for k2 in v.keys() if k2.name == "B")
+    x1B = next(k for k in parsed["x"].keys() if k.name == "B")
+    yB = next(v for v in parsed["y"] if v.name == "B")
+    assert x1B.name == "B"
+    assert x2B.name == "B"
+    assert yB.name == "B"
+    assert x1B.value == x2B.value
+    assert x1B.value == yB.value
