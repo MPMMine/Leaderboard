@@ -129,7 +129,7 @@ class Adapter(AbstractAdapter):
                 if first_set:
                     first_set = False
                     mzn += "\n% Added in postprocessing to handle set variables/parameters:\ninclude \"globals.mzn\";\n"
-                mzn += str(s) + "\n"
+                mzn += s.to_str(symbols) + "\n"
                 mzn += f"constraint link_set_to_booleans({s.name}, [b == 1 | b in {s.name}_]);\n"
         return mzn
 
