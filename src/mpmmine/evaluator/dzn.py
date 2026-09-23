@@ -19,12 +19,12 @@ from mpmmine.util import merge_ordered_lists
 
 dzn_grammar = r"""
     items: [item (";" item)* ";"?]
-    item: ident "=" value | ident "=" unknown
+    item: ident "=" _value | ident "=" unknown
     ident: /([A-Za-z][A-Za-z0-9_]*)|(\'[^\']*\')/
-    value: collection
+    _value: _collection
          | scalar
          
-    collection: array
+    _collection: array
               | indexed_array
               | array2d
               | indexed_array2d
@@ -39,21 +39,24 @@ dzn_grammar = r"""
           | enum
          
     list: [scalar ("," scalar)* ","?]
-    array: "[" list "]"
-    indexed_array: "[" index ":" scalar ("," index ":"  scalar)* "]"
+    list_nonempty: scalar ("," scalar)* ","?
+    list_of_set: set ("," set)* ","?
+    array: "[" (list_nonempty | list_of_set)? "]"
+    indexed_array: "[" index ":" scalar ("," index ":" scalar)* "]"
     index: simple_index
          | "(" simple_index ("," simple_index)* ")"
     simple_index: int
                 | enum
-    array2d: "[" "|" [ list ("|" list)*] "|" "]"
+    array2d: "[" "|" list ("|" list_nonempty)* "|" "]"
     indexed_array2d: indexed_array2d_cols
                    | indexed_array2d_rows
                    | indexed_array2d_both
-    indexed_array2d_cols: "[" "|" index_list "|" list ("|" list)*  "|" "]"
-    indexed_array2d_rows: "[" "|" simple_index ":" list ("|" simple_index ":" list)* "|" "]"
-    indexed_array2d_both: "[" "|" index_list "|" simple_index ":" list ("|" simple_index ":" list)* "|" "]"
+    indexed_array2d_cols: "[" "|" index_list ("|" list_nonempty)+  "|" "]"
+    indexed_array2d_rows: "[" ("|" simple_index ":" list_nonempty)+ "|" "]"
+    indexed_array2d_both: "[" "|" index_list ("|" simple_index ":" list_nonempty)+ "|" "]"
     index_list: simple_index ":" (simple_index ":")*
-    array_func: "array" int "d" "(" set ("," set)* "," array ")"
+    _ARRAY_FUNC_START.1: /array(?=[1-6]d\()/
+    array_func: _ARRAY_FUNC_START /[1-6]/ "d" "(" set ("," set)* "," array ")"
     set: "{" list "}"
        | int ".." int
 
@@ -128,8 +131,9 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
 
         return dict((k, v) if not isinstance(v, EnumValue) else (k, e[v.value]) for (k, v) in s)
 
-    collection = arg1_construct(lambda s: s)
     scalar = arg1_construct(lambda s: s)
+    list_nonempty = list
+    list_of_set = list
 
     def _postprocess_array(self, array: dict):
         indices: dict[int, dict] = dict()  # key: nesting_level, value: set of indices
@@ -258,12 +262,8 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
 
         return self._postprocess_array(output)
 
-    def index(self, s):
-        return s
-
-    def index_list(self, s):
-        return s
-
+    index = list
+    index_list = list
     simple_index = arg1_construct(lambda s: s)
 
     def set(self, s):
@@ -283,9 +283,6 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
     def transform(self, tree: Tree[_Leaf_T]) -> _Return_T:
         transformed = super().transform(tree)
 
-        # Enums in the transformed tree may not reflect the _enums field, as enums in _enums are dynamically updated and
-        # replaced if new values are spot during parsing. Here, we replace all stale enums with the corresponding
-        # objects from _enum.
         def replace_enums(obj):
             obj_type = type(obj)
             if isinstance(obj, enum.Enum):
@@ -306,7 +303,8 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
         return replace_enums(transformed)
 
 
-dzn_parser = Lark(dzn_grammar, start="items", parser="earley")
+dzn_transformer = TreeToDZN()
+dzn_parser = Lark(dzn_grammar, start="items", parser="lalr", transformer=dzn_transformer)
 
 
 def drop_array_indices(data: dict):
@@ -327,8 +325,39 @@ def parse_dzn(dzn: Union[Path, str], ignore_indices: bool = True):
     """
     if isinstance(dzn, Path):
         dzn = dzn.read_text()
-    tree = dzn_parser.parse(dzn)
-    dzn_dict = TreeToDZN().transform(tree)
+    dzn_transformer._enums.clear()
+    dzn_dict = dzn_parser.parse(dzn)
+    replace_enums(dzn_dict, dzn_transformer._enums)
+    # dzn_dict = TreeToDZN().transform(tree)
     if ignore_indices:
         drop_array_indices(dzn_dict)
     return dzn_dict
+
+
+def replace_enums(obj, enums):
+    # Enums in the transformed tree may not reflect the dzn_transformer._enums field, as enums in _enums are dynamically
+    # updated and replaced if new values are spot during parsing. Here, we replace all stale enums with the
+    # corresponding objects from _enum.
+    obj_type = type(obj)
+
+    if isinstance(obj, enum.Enum):
+        return enums[obj.name][obj.name]
+
+    if obj_type is list:
+        for i, elem in enumerate(obj):
+            obj[i] = replace_enums(elem, enums)
+
+    elif obj_type is set:
+        replacement = {replace_enums(v, enums) for v in obj}
+        obj.clear()
+        obj.update(replacement)
+
+    elif obj_type is dict:
+        replacement = {
+            replace_enums(k, enums): replace_enums(v, enums)
+            for k, v in obj.items()
+        }
+        obj.clear()
+        obj.update(replacement)
+
+    return obj

@@ -208,3 +208,15 @@ def test_parse_dzn_consistent_enum_indices_reversed():
     assert yB.name == "B"
     assert x1B.value == x2B.value
     assert x1B.value == yB.value
+
+
+def test_parse_dzn_array_of_sets():
+    dzn = """
+shifts =
+[
+{0,1,2,3,4,124},
+{0,1,2,3,4,156}
+];"""
+    parsed = parse_dzn(dzn)
+    expected = {"shifts": [{0, 1, 2, 3, 4, 124}, {0, 1, 2, 3, 4, 156}]}
+    assert parsed == expected
