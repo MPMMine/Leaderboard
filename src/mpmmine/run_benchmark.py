@@ -307,13 +307,15 @@ class SlurmExecutor(AbstractExecutor):
         cmd = f"python3 -c 'from mpmmine.run_benchmark import SlurmExecutor; SlurmExecutor._run_evaluation()' '{cfg.get_config_path()}' '{self.args.mpmmine_path.expanduser()}'"
 
         with open(script_path, "wt") as script:
-            script.write("#!/bin/bash\n")
+            script.write("#!/bin/bash -l\n")
             script.write(
                 f"#SBATCH --job-name={cfg.algorithm}_{cfg.problem_id}{cfg.model_id}{"".join(cfg.instance_ids)}_{cfg.train_sol_limit + cfg.train_non_sol_limit}\n")
             script.write("#SBATCH -n1 -c1 --mem=4096\n")
             script.write("#SBATCH -t 36:00:00\n")
             if self.args.partition is not None and len(self.args.partition) > 0:
                 script.write(f"#SBATCH -p {self.args.partition}\n")
+            script.write("set -euxo pipefail\n")
+            script.write("echo $PATH\n")
             script.write("export LD_LIBRARY_PATH=~/.local/gurobi/linux64/lib/\n")
             script.write("export GRB_LICENSE_FILE=~/gurobi-$(grbprobe | grep HOSTID | sed s/HOSTID=//).lic\n")
             script.write("export PYTHONPATH=src\n")
@@ -321,11 +323,7 @@ class SlurmExecutor(AbstractExecutor):
             script.write("date\n")
             script.write("hostname\n")
             script.write("pwd\n")
-            script.write("echo LD_LIBRARY_PATH=$LD_LIBRARY_PATH\n")
-            script.write("echo GRB_LICENSE_FILE=$GRB_LICENSE_FILE\n")
-            script.write("echo PYTHONPATH=$PYTHONPATH\n")
             script.write("source .venv/bin/activate\n")
-            script.write(f"echo \"{cmd}\"\n")
             script.write(f"srun {cmd} && srun rm \'{script_path.expanduser()}\'\n")
             script.write("echo Done\n")
 
