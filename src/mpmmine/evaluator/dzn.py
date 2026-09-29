@@ -59,6 +59,7 @@ dzn_grammar = r"""
     array_func: _ARRAY_FUNC_START /[1-6]/ "d" "(" set ("," set)* "," array ")"
     set: "{" list "}"
        | int ".." int
+       | enum ".." enum
 
     int: /-?((0o[0-7]+)|(0x[0-9A-Fa-f]+)|(\d+))/
     float: /-?((\d+\.\d+[Ee][-+]?\d+)|(\d+[Ee][-+]?\d+)|(\d+\.\d+))/
@@ -100,8 +101,8 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
         self._enums = dict()
 
     def _get_enum(self, values: list, order_important: bool = False) -> enum.EnumType:
-        existing = {e for v in values if (e := self._enums.get(v)) is not None}
-        first = next(existing.__iter__(), None)
+        existing = dict.fromkeys(e for v in values if (e := self._enums.get(v)) is not None)
+        first = next(existing.keys().__iter__(), None)
         if len(existing) == 1 and first == set(values):
             return first  # fast path: we have found matching enum
 
@@ -110,12 +111,12 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
             new_values = values
         else:
             new_values = list(values)
-            for ex in existing:
+            for ex in existing.keys():
                 for v in ex:
                     with suppress(ValueError):
                         new_values.remove(v.name)
 
-        all_values = merge_ordered_lists([list(e.__members__) for e in existing] + [new_values])
+        all_values = merge_ordered_lists([list(e.__members__) for e in existing.keys()] + [new_values])
         _enum = enum.Enum(f"enum_{"_".join(all_values)}", all_values)
         # update value -> enum mapping
         for v in all_values:
@@ -273,7 +274,10 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
                 return set(e)
             return set(s[0])
         else:
-            return range(s[0], s[1] + 1)
+            if type(s[0]) is int and type(s[1]) is int:
+                return range(s[0], s[1] + 1)
+            else:
+                return self._get_enum([str(e) for e in s])
 
     def enum(self, s):
         self._get_enum(s)  # just register value

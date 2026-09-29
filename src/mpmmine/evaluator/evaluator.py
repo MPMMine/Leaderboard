@@ -119,13 +119,13 @@ class Evaluator:
             for k, v in params.items():
                 param = self._to_MznVar(k, v, False)
                 if k in symbols:
-                    symbols[k] = symbols[k].merge_inplace(param)
+                    symbols[k] = symbols[k].merge_inplace(param, symbols)
                 else:
                     symbols[k] = param
             for k, v in vars.items():
                 var = self._to_MznVar(k, v, True)
                 if k in symbols:
-                    symbols[k] = symbols[k].merge_inplace(var)
+                    symbols[k] = symbols[k].merge_inplace(var, symbols)
                 else:
                     symbols[k] = var
 
@@ -139,7 +139,7 @@ class Evaluator:
         if value_type is int or value_type is float:
             return MznVar(name=name,
                           domain=Domain[value_type.__name__],
-                          collection=None,
+                          collection=[],
                           indices=[],
                           min=value,
                           max=value,
@@ -148,7 +148,7 @@ class Evaluator:
         elif issubclass(value_type, Enum):
             return MznVar(name=name,
                           domain=Domain.enum,
-                          collection=None,
+                          collection=[],
                           indices=[],
                           min=None,
                           max=None,
@@ -156,7 +156,7 @@ class Evaluator:
                           enum=value_type)
         elif value_type is set or value_type is range or value_type is list:
             sub_var = reduce(MznVar.merge_inplace, (self._to_MznVar(name, v, is_var) for v in value))
-            col_type = Collection.array if value_type is list else Collection.set
+            col_type = [Collection.array if value_type is list else Collection.set]
             if value_type is list:
                 indices = [{1, len(value)}]
             elif issubclass(value_type, Enum):
@@ -166,7 +166,7 @@ class Evaluator:
             # noinspection PyTypeChecker
             return MznVar(name=name,
                           domain=sub_var.domain,
-                          collection=col_type,
+                          collection=col_type + sub_var.collection,
                           indices=indices + sub_var.indices,
                           min=sub_var.min,
                           max=sub_var.max,
@@ -257,7 +257,7 @@ class Evaluator:
                         test_set[value.columns] = value
                     else:
                         raise ValueError(f"Unsupported value: {type(value)}")
-            except minizinc.error.TypeError as e:
+            except (minizinc.error.TypeError, minizinc.error.SyntaxError) as e:
                 error = format_error(
                     f"{str(e)} in {Path(e.location.file).name}:{e.location.lines}:{e.location.columns}")
                 test_set["evaluation_error"] = error

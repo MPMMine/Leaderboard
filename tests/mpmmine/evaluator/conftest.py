@@ -4,7 +4,7 @@ import pytest
 from mpmmine.dataset import MPMMine
 
 # Define the backend path based on the requirement
-MPMMINE_PATH = Path("~/Projects/MPMMine/MPMMine/MPMMine-zstd-v0.2.0.20260826.sqlite").expanduser()
+MPMMINE_PATH = Path("~/Projects/MPMMine/MPMMine/").expanduser()
 
 
 @pytest.fixture(scope="package")

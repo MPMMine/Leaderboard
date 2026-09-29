@@ -220,3 +220,106 @@ shifts =
     parsed = parse_dzn(dzn)
     expected = {"shifts": [{0, 1, 2, 3, 4, 124}, {0, 1, 2, 3, 4, 156}]}
     assert parsed == expected
+
+
+def test_parse_dzn_enum_declaration_order():
+    dzn = "CITY = { C01, C02, C03, C04, C05 };"
+    parsed = list(parse_dzn(dzn)["CITY"])
+    parsed_enum = type(parsed[0])
+
+    for i in range(5):
+        assert type(parsed[i]) == parsed_enum
+
+    for i, ev in enumerate(parsed_enum, start=1):
+        assert ev.name == f"C0{i}"
+        assert ev.value == i
+
+
+def test_parse_dzn_array_func_contextual_enum_indices():
+    dzn = """Skill = { UNSKILLED, SEMI_SKILLED, SKILLED }; 
+    transfer = array3d(1..3, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 210, 0, 620, 0, 100, 0, 1, 0, 0, 220, 0, 0, 0, 79, 0, 0, 0, 0, 284, 0, 0, 0, 160, 0, 2, 0]);"""
+    parsed = parse_dzn(dzn, ignore_indices=False)
+    set__eq__(parsed)
+
+    skill = enum.Enum("enum_UNSKILLED_SEMI_SKILLED_SKILLED", ["UNSKILLED", "SEMI_SKILLED", "SKILLED"])
+    skill.__eq__ = eq
+
+    assert parsed == {
+        "Skill": {skill.UNSKILLED, skill.SEMI_SKILLED, skill.SKILLED},
+        "transfer": {
+            1: {
+                skill.UNSKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 210,
+                    skill.SKILLED: 0
+                },
+                skill.SEMI_SKILLED: {
+                    skill.UNSKILLED: 620,
+                    skill.SEMI_SKILLED: 0,
+                    skill.SKILLED: 100
+                },
+                skill.SKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 1,
+                    skill.SKILLED: 0
+                }
+            },
+            2: {
+                skill.UNSKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 220,
+                    skill.SKILLED: 0},
+                skill.SEMI_SKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 0,
+                    skill.SKILLED: 79},
+                skill.SKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 0,
+                    skill.SKILLED: 0}
+            },
+            3: {
+                skill.UNSKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 284,
+                    skill.SKILLED: 0},
+                skill.SEMI_SKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 0,
+                    skill.SKILLED: 160},
+                skill.SKILLED: {
+                    skill.UNSKILLED: 0,
+                    skill.SEMI_SKILLED: 2,
+                    skill.SKILLED: 0}
+            }
+        }}
+
+
+def test_parse_dzn_array_func_contextual_enum_indices_ignore_indices():
+    dzn = """Skill = { UNSKILLED, SEMI_SKILLED, SKILLED }; 
+    transfer = array3d(1..3, UNSKILLED..SKILLED, UNSKILLED..SKILLED, [0, 210, 0, 620, 0, 100, 0, 1, 0, 0, 220, 0, 0, 0, 79, 0, 0, 0, 0, 284, 0, 0, 0, 160, 0, 2, 0]);"""
+    parsed = parse_dzn(dzn, ignore_indices=True)
+    set__eq__(parsed)
+
+    skill = enum.Enum("enum_UNSKILLED_SEMI_SKILLED_SKILLED", ["UNSKILLED", "SEMI_SKILLED", "SKILLED"])
+    skill.__eq__ = eq
+
+    assert parsed == {
+        "Skill": {skill.UNSKILLED, skill.SEMI_SKILLED, skill.SKILLED},
+        "transfer": [
+            [
+                [0, 210, 0],
+                [620, 0, 100],
+                [0, 1, 0]
+            ],
+            [
+                [0, 220, 0],
+                [0, 0, 79],
+                [0, 0, 0]
+            ],
+            [
+                [0, 284, 0],
+                [0, 0, 160],
+                [0, 2, 0]
+            ]
+        ]}

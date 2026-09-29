@@ -134,14 +134,14 @@ class AdapterException(Exception):
 class MznVar:
     name: str
     domain: Domain
-    collection: Collection | None
+    collection: list[Collection]
     indices: list[set[int]]
     min: float | int | None
     max: float | int | None
     var: bool
     enum: Enum | None  # enum type
 
-    def merge_inplace(self, other: MznVar) -> MznVar:
+    def merge_inplace(self, other: MznVar, symbols: dict[str, MznVar] | None = None) -> MznVar:
         assert (self.name == other.name)
         assert (self.collection == other.collection)
 
@@ -153,7 +153,8 @@ class MznVar:
             self.domain = Domain.bool
         elif self.domain == Domain.enum or other.domain == Domain.enum:
             self.domain = Domain.enum
-            self.enum = self._merge_enums([self.enum, other.enum])
+            symbols = symbols or {}
+            self.enum = self._merge_enums([self.enum, other.enum], symbols)
         else:
             raise AdapterException(f"Unknown domain: {self.domain}")
 
@@ -165,7 +166,7 @@ class MznVar:
 
         return self
 
-    def _merge_enums(self, enums: list[enum.EnumType]) -> enum.EnumType:
+    def _merge_enums(self, enums: list[enum.EnumType], symbols: dict[str, MznVar]) -> enum.EnumType:
         # The DZN parser parses enums in duck typing mode due to the lack of type definitions, hence it may
         # happen that different DZN files (e.g. different examples) use different values of the same enum.
         # Here, we attempt to unify inconsistent enums the same way as the parser does for values (i.e., the
@@ -176,6 +177,10 @@ class MznVar:
             return enums[0]
 
         # find a super-enum
+        global_enum_candidates = [s.enum for s in symbols.values()
+                                  if s.enum is not None and (names := set(e.name for e in s.enum)) and all(
+                not names.isdisjoint(e.name for e in en) for en in enums)]
+        enums += global_enum_candidates
         super_enum = max(enums, key=lambda e: len(e))
         super_enum_names = set(e.name for e in super_enum)
         if all(super_enum_names.issuperset(e.name for e in en) for en in enums):
@@ -184,18 +189,18 @@ class MznVar:
         # otherwise merge enums
         values: list = list(list(v.name for v in en) for en in enums)
 
-        all_values = merge_ordered_lists(values)
+        all_values = merge_ordered_lists(values, allow_minimal_violation=False)
         _enum = enum.Enum(f"enum_{"_".join(all_values)}", all_values)
 
         return _enum
 
     def to_str(self, symbols: dict[str, MznVar]) -> str:
         out = ""
-        if self.collection == Collection.array:
-            out += f"array[{", ".join(f"{min(i)}..{max(i)}" for i in self.indices)}] of "
+        if Collection.array in self.collection:
+            out += f"array[{", ".join(f"{min(i)}..{max(i)}" for i, c in zip(self.indices, self.collection) if c == Collection.array)}] of "
         if self.var:
             out += "var "
-        if self.collection == Collection.set:
+        if Collection.set in self.collection:
             if self.domain == Domain.enum:
                 if not self.var:
                     # enum type declaration
@@ -204,7 +209,8 @@ class MznVar:
                     out += f"set of {self.name}"
             else:
                 assert len(self.indices) > 0
-                out += f"set of {min(self.indices[0])}..{max(self.indices[0])}"
+                assert self.collection[-1] == Collection.set
+                out += f"set of {min(self.indices[-1])}..{max(self.indices[-1])}"
         elif self.domain == Domain.enum:
             enum_decl = self._get_enum_decl(self.enum, symbols)
             out += enum_decl.name
@@ -216,7 +222,7 @@ class MznVar:
     def _get_enum_decl(self, enum: Enum, symbols: dict[str, MznVar]) -> MznVar:
         values = set(e.name for e in enum)
         return next(s for s in symbols.values() \
-                    if s.collection == Collection.set and \
+                    if Collection.set in s.collection and \
                     s.domain == Domain.enum and \
                     not s.var and \
                     set(e.name for e in s.enum).issuperset(values))
