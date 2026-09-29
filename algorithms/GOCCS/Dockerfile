@@ -13,7 +13,7 @@ WORKDIR /app
 
 # Clone the repository
 RUN git clone --depth 1 https://github.com/MPMMine/GOCCS.git /tmp/repo \
-    && cp -r /tmp/repo/src/* /app/ \
+    && mv /tmp/repo/src/* /app/ \
     && rm -rf /tmp/repo
 
 RUN nuget restore Modeling.sln
