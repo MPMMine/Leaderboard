@@ -236,7 +236,7 @@ class Adapter(AbstractAdapter):
 
     def create_cmd(self, csv: pd.DataFrame, input_csv: Path, output_sqlite: Path) -> str:
         cfg = self.configuration
-        return f"timeout {cfg.run_timeout} bash -c 'umask 000 && mono /app/Modeling.MP.exe -seed={cfg.seed} synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters={max(1, min(len(csv), (len(csv.columns) - 1) // 2))} PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True problem=/app/data/{input_csv.name} output=/app/data/{output_sqlite.name}'"
+        return f"timeout {cfg.run_timeout} bash -c 'umask 000 && mono /app/Modeling.MP.exe seed={cfg.seed} synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters={max(1, min(len(csv), (len(csv.columns) - 1) // 2))} PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/{input_csv.name} output=/app/data/{output_sqlite.name}'"
 
     def run_in_container(self, cmd: str) -> str:
         result = self.container.exec_run(

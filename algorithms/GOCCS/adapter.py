@@ -236,7 +236,7 @@ class Adapter(AbstractAdapter):
 
     def create_cmd(self, input_csv: Path, output_sqlite: Path) -> str:
         cfg = self.configuration
-        return f"timeout {cfg.run_timeout} bash -c 'umask 000 && mono /app/Modeling.MP.exe -seed={cfg.seed} synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/{input_csv.name} output=/app/data/{output_sqlite.name}'"
+        return f"timeout {cfg.run_timeout} bash -c 'umask 000 && mono /app/Modeling.MP.exe seed={cfg.seed} synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/{input_csv.name} output=/app/data/{output_sqlite.name}'"
 
     def run_in_container(self, cmd: str) -> str:
         result = self.container.exec_run(
