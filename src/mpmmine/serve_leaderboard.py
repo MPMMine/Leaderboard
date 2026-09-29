@@ -79,8 +79,7 @@ class Model:
     def _get_dataset_version(self) -> str:
         if "mpmmine_dataset_version" in self.data.columns:
             versions = self.data["mpmmine_dataset_version"].unique()
-            versions.sort()
-            return ", ".join(versions)
+            return ", ".join(sorted(versions))
         else:
             return "0.0.0.00000000"
 
