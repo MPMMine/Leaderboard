@@ -1,3 +1,4 @@
+import dataclasses
 import logging
 import math
 import os
@@ -110,7 +111,7 @@ class Adapter(AbstractAdapter):
             params_flat = self.flatten(row["instance_obj"], symbols)
             vars_flat = self.flatten(row["example_obj"], symbols)
 
-            # The cross product below turns out to be very computationally expensive to handle by the GOCCS
+            # The cross product below turns out to be very computationally expensive to handle by the Modeling.MP
             # implementation. Instead, we just provide it with all parameters and variables, preventing so
             # parameter * variable products.
             # terms: dict[str, int | float | str] = \
@@ -162,7 +163,7 @@ class Adapter(AbstractAdapter):
             # parsing DZN with incomplete enum definition, and the former contains all enum values spot in all data
             return {name_prefix: symbol.enum[value.name].value}
         elif value_type is set or value_type is range:
-            assert symbol.collection == Collection.set
+            assert symbol.collection[0] == Collection.set
             assert len(symbol.indices) == 1
             if any(isinstance(i, Enum) for i in symbol.indices[0]):
                 if symbol.var:
@@ -186,10 +187,13 @@ class Adapter(AbstractAdapter):
         elif value_type is list:
             output = {}
             for i, value in enumerate(value, start=1):
-                # Note that underscore (_) is not supported in variable name in GOCCS implementation
+                sub_symbol = dataclasses.replace(symbol,
+                                                 indices=symbol.indices[1:],
+                                                 collection=symbol.collection[1:])
+                # Note that underscore (_) is not supported in variable name in Modeling.MP implementation
                 # Using U+1428 Canadian Syllabics Final Short Horizontal Stroke instead (as it belongs to the
                 # Other Letter (Lo) Unicode class, which is allowed)
-                output.update(self.flatten_value(f"{name_prefix}ᐨ{i}", value, symbol))
+                output.update(self.flatten_value(f"{name_prefix}ᐨ{i}", value, sub_symbol))
             return output
         raise TypeError(f"Unknown value type: {value}: {value_type}")
 
@@ -215,11 +219,16 @@ class Adapter(AbstractAdapter):
                     raise ValueError(f"Unknown domain: {symbol.domain}")
 
             if domain != "":
-                if symbol.collection == Collection.set:
+                if Collection.set in symbol.collection:
                     col2type_spec[column] = f"{name}[Binary|0|1]"
                 elif symbol.min is not None and math.isfinite(symbol.min) and \
                         symbol.max is not None and math.isfinite(symbol.max):
                     col2type_spec[column] = f"{name}[{domain}|{symbol.min}|{symbol.max}]"
+                elif symbol.enum is not None:
+                    _min = min(symbol.enum, key=lambda x: x.value).value
+                    _max = max(symbol.enum, key=lambda x: x.value).value
+
+                    col2type_spec[column] = f"{name}[{domain}|{_min}|{_max}]"
                 else:
                     col2type_spec[column] = f"{name}[{domain}]"
 
@@ -282,7 +291,7 @@ class Adapter(AbstractAdapter):
             indices = match.group(2)
             if indices is not None:
                 indices = indices[1:].replace("ᐨ", ", ")
-            if symbol.collection == Collection.set:
+            if Collection.set in symbol.collection:
                 return f"bool2int(({indices}) in {symbol.name})"
 
             out = ""

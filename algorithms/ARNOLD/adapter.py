@@ -1,3 +1,4 @@
+import dataclasses
 import logging
 import re
 from enum import Enum
@@ -37,6 +38,10 @@ class Adapter(AbstractAdapter):
         params: set[str] = set()  # set of all parameters
         variables: set[str] = set()  # set of all variables
 
+        def is_set(name: str) -> bool:
+            s = symbols[name]
+            return s.enum is None and Collection.set in s.collection
+
         def format_example(row) -> str:
             nonlocal params, variables
             instance = row["instance_obj"]
@@ -48,7 +53,7 @@ class Adapter(AbstractAdapter):
             translate_value = Adapter.translate_value  # optimize attribute lookup
             return ("--example " +
                     " ".join(
-                        [f"{n}{"_" if (s := symbols[n]).collection == Collection.set else ""}={translate_value(v, s)}"
+                        [f"{n}{"_" if is_set(n) else ""}={translate_value(v, symbols[n])}"
                          for n, v in (instance | example).items()]
                     ))
 
@@ -58,7 +63,7 @@ class Adapter(AbstractAdapter):
         # In postprocessing of the resulting model add an original variable and an auxiliary constraint that map the
         # original symbol into this with suffix.
         def replace_sets(s: set):
-            for set_ in [p for p in s if symbols[p].collection == Collection.set]:
+            for set_ in [p for p in s if is_set(p)]:
                 s.remove(set_)
                 s.add(set_ + "_")
 
@@ -79,10 +84,13 @@ class Adapter(AbstractAdapter):
             # parsing DZN with incomplete enum definition, and the former contains all enum values spot in all data
             return str(symbol.enum[value.name].value)
         if value_type is list:
+            sub_symbol = dataclasses.replace(symbol,
+                                             indices=symbol.indices[1:],
+                                             collection=symbol.collection[1:])
             translate_value = Adapter.translate_value  # optimize attribute lookup
-            return f"[{",".join([translate_value(v, symbol) for v in value])}]"
+            return f"[{",".join([translate_value(v, sub_symbol) for v in value])}]"
         if value_type is range or value_type is set:
-            assert symbol.collection == Collection.set
+            assert symbol.collection[0] == Collection.set
             assert len(symbol.indices) == 1
             if any(isinstance(i, Enum) for i in symbol.indices[0]):
                 if symbol.var:
@@ -119,18 +127,32 @@ class Adapter(AbstractAdapter):
                     repl=lambda m: \
                         f"% Replaced in postprocessing to handle enum declaration:\n% {m.group(1)}:{s.name};\nenum {s.name};",
                     string=mzn)
+                mzn = re.sub(
+                    pattern=rf"{s.name}\[\w+\]",
+                    repl=r"enum2int(\g<0>)",
+                    string=mzn
+                )
             elif s.domain == Domain.float:
                 mzn = re.sub(
                     pattern=rf"{"var " if s.var else ""}int:\s?{s.name};",
                     repl=lambda m: \
                         f"{"var " if s.var else ""}float: {s.name}; % Replaced in postprocessing to handle floats",
                     string=mzn)
-            elif s.collection == Collection.set:
+            elif Collection.set in s.collection:
                 if first_set:
                     first_set = False
                     mzn += "\n% Added in postprocessing to handle set variables/parameters:\ninclude \"globals.mzn\";\n"
+                mzn = re.sub(
+                    pattern=rf"(var )?int:{s.name}_;",
+                    repl=lambda m: \
+                        f"var 0..1: {s.name}_; % Changed domain to var 0..1 in postprocessing to handle set variable/parameter declaration",
+                    string=mzn
+                )
                 mzn += s.to_str(symbols) + "\n"
-                mzn += f"constraint link_set_to_booleans({s.name}, [b == 1 | b in {s.name}_]);\n"
+                if Collection.array in s.collection:
+                    mzn += f"""constraint forall(_i in index_set({s.name}))(\n\tlink_set_to_booleans({s.name}[_i], array1d({min(s.indices[-1])}..{max(s.indices[-1])}, [b == 1 | b in {s.name}_[_i, ..]]))\n);"""
+                else:
+                    mzn += f"constraint link_set_to_booleans({s.name}, array1d({min(s.indices[-1])}..{max(s.indices[-1])}, [b == 1 | b in {s.name}_]));\n"
         return mzn
 
     @override
