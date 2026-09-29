@@ -12,7 +12,6 @@ from typing import Union, override
 
 import minizinc
 from lark import Lark, Tree
-from lark.visitors import _Leaf_T, _Return_T
 from minizinc.dzn import TreeToDZN, arg1_construct
 
 from mpmmine.util import merge_ordered_lists
@@ -284,7 +283,7 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
         return EnumValue(s[0])
 
     @override
-    def transform(self, tree: Tree[_Leaf_T]) -> _Return_T:
+    def transform(self, tree: Tree):
         transformed = super().transform(tree)
 
         def replace_enums(obj):
