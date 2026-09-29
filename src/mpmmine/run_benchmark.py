@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import re
 import sqlite3
 import subprocess
 import sys
@@ -34,23 +35,62 @@ def main():
         "slurm": SlurmExecutor,
     }
 
+    algorithms_list = get_algorithms()
+
     parser = ArgumentParser()
     parser.add_argument("--executor", "-e",
                         choices=EXECUTORS.keys(),
                         default="process",
                         help="The executor to use: 'process' runs individual tasks in parallel processes; 'thread' runs all tasks in a single thread; 'slurm' creates slurm start script and runs it.")
     parser.add_argument("--partition", "-p", type=str, help="Slurm partition to use.", default="")
+    parser.add_argument("--algorithms", "--algorithm", "-a",
+                        nargs="*",
+                        type=str,
+                        choices=algorithms_list,
+                        default=algorithms_list,
+                        help="List of algorithms to benchmark. Terminate the list with --")
+    parser.add_argument("--instances", "--instance", "-i",
+                        nargs="*",
+                        type=str,
+                        default=[],
+                        help="List of MPMMine identifiers of problems/models/instances to use. Patterns are supported, where . stands for any character and * stands for any non-empty string. Terminate the list with --")
+    parser.add_argument("--training_sizes", "--training_size", "--train", "-t",
+                        nargs="*",
+                        type=lambda x: v if (v := int(x)) > 0 else int("invalid positive int"),
+                        default=[5, 10, 30, 50, 75, 100],
+                        help="List of training sizes to use. Terminate the list with --"
+                        )
     parser.add_argument("mpmmine_path", type=Path, help="Path to the MPMMine dataset")
     args = parser.parse_args()
 
     mpmmine_path = args.mpmmine_path.expanduser()
     mpmmine = MPMMine(mpmmine_path)
 
+    all_instances = list(get_instances(mpmmine))
+    if any(args.instances):
+        instances = set()
+        for pattern in args.instances:
+            if not pattern.startswith("MPMMine-"):
+                pattern = "MPMMine-" + pattern
+            regex = re.compile(fr"^{re.escape(pattern).replace(r"\.", ".").replace(r"\*", ".+")}")
+
+            matched = [inst.full_id for inst in all_instances if regex.match(inst.full_id)]
+            if not matched:
+                parser.error(
+                    f"Argument --instances: Pattern or identifier '{pattern}' did not match any valid instances."
+                )
+
+            instances.update(matched)
+        instances = [mpmmine[i] for i in instances]
+    else:
+        instances = all_instances
+
     with EXECUTORS[args.executor](args=args) as executor:
-        for algorithm_path in get_algorithms():
+        for algorithm_name in args.algorithms:
+            algorithm_path = get_algorithm_path(algorithm_name)
             algorithm = get_algorithm_manifest(algorithm_path)
-            for instance in get_instances(mpmmine):
-                for train_size in get_training_sizes():
+            for instance in instances:
+                for train_size in args.training_sizes:
                     try:
                         train_sol_limit, train_non_sol_limit = get_training_limits(algorithm, instance, train_size)
 
@@ -125,32 +165,32 @@ def get_training_limits(algorithm: AlgorithmManifest, instance: Instance, train_
     return train_sol_limit, train_non_sol_limit
 
 
-def get_algorithms() -> Generator[Path, None, None]:
+def get_algorithms() -> list[str]:
+    out = []
     all_algorithms = Path(__file__).parent.parent.parent / "algorithms"
     for algorithm in all_algorithms.iterdir():
-        if algorithm.is_dir() and not algorithm.name.startswith('.'):
-            if algorithm.name not in {
-                "ARNOLD", "AutoSynthMILP", "ESOCCS", "GOCCS"}:  # FIXME: temporary condition, for tests
+        if algorithm.is_dir() and not algorithm.name.startswith('.') and (algorithm / "manifest.json").exists():
+            if algorithm.name not in \
+                    {"ARNOLD", "AutoSynthMILP", "ESOCCS", "GOCCS"}:  # FIXME: temporary condition, for tests
                 continue
-            yield algorithm
+            out.append(algorithm.name)
+    return out
+
+
+def get_algorithm_path(name: str) -> Path:
+    path = (Path(__file__).parent.parent.parent / "algorithms" / name).resolve()
+    if not path.exists():
+        raise FileNotFoundError(f"Algorithm {name} is not found.")
+    return path
 
 
 def get_instances(mpmmine: MPMMine) -> Generator[Instance, None, None]:
     for problem in mpmmine.problems:
-        # if problem.id >= "P002":
-        #    continue
         for model in problem.models:
-            # if model.id != "M001":
-            #    continue
             for instance in model.instances:
                 if not any(instance.solutions) and not any(instance.non_solutions):
-                    logging.warning(f"No examples for {instance.full_id}, skipping...")
                     continue
                 yield instance
-
-
-def get_training_sizes() -> list[int]:
-    return [2, 10, 30, 50, 75, 100]
 
 
 def get_algorithm_manifest(algorithm: Path) -> AlgorithmManifest:
