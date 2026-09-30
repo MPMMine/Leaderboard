@@ -23,21 +23,26 @@ classifiers = [
 license = "Apache-2.0"
 license-files = ["LICEN[CS]E*"]
 dependencies = [
-    "scikit-learn",
-    "pandas",
-    "docker",
-    "minizinc[dzn]",
-    "dist-util",
-    "lark",
-    "colorlog",
-    "streamlit",
-    "mpmmine>=0.2.0",
-    "py-cpuinfo2"
+    "colorlog>=6.12",
+    "docker>=7.2",
+    "filelock>=4",
+    "lark>=1.3",
+    "minizinc>=0.10",
+    "mpmmine>=0.2",
+    "pandas>=3",
+    "py-cpuinfo2>=10.1",
+    "scikit-learn>=1.9",
+    "streamlit>=1.64",
 ]
 
 [project.optional-dependencies]
 test = [
     "pytest>=8.0.0",
+]
+
+[tool.uv]
+override-dependencies = [
+    "lark-parser ; python_version < '0'",
 ]
 
 [project.urls]
