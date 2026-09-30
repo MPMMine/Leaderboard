@@ -19,7 +19,7 @@ from sklearn.model_selection import StratifiedShuffleSplit
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar, Domain, Collection
 from mpmmine.evaluator.configuration import Configuration
 from mpmmine.evaluator.dzn import parse_dzn
-from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size
 from mpmmine.util import load_class, format_error
 
 
@@ -28,7 +28,8 @@ class Evaluator:
     solver = Solver.lookup("gurobi")
     adapter: AbstractAdapter
     measures: list[AbstractMeasure] = [
-        ConfusionMatrix()
+        ConfusionMatrix(),
+        Size(),
     ]
 
     def __init__(self, configuration: Configuration):
@@ -53,6 +54,7 @@ class Evaluator:
             )
 
             fold_statistics = pd.DataFrame(test)
+            fold_statistics["algorithm_error"] = None
             discovery_time = 0.0
             test_time = 0.0
 
@@ -249,10 +251,11 @@ class Evaluator:
                 for measure in self.measures:
                     value = measure.calculate(model, instance, test_set)
 
-                    if isinstance(value, float) or isinstance(value, int) or isinstance(value, bool) or \
-                            isinstance(value, pd.Series):
+                    if isinstance(value, float) or isinstance(value, int) or isinstance(value, bool):
                         name = type(measure).__name__
                         test_set[name] = value  # broadcasts automatically for primitive types
+                    elif isinstance(value, pd.Series):
+                        test_set[value.index] = value.tolist()
                     elif isinstance(value, pd.DataFrame):
                         test_set[value.columns] = value
                     else:

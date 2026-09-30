@@ -36,6 +36,14 @@ class Leaderboard:
         """
         logging.info("Calculates per-fold statistics...")
 
+        error_cols = [
+            "algorithm_error",
+            "evaluation_error",
+        ]
+        for col in error_cols:
+            if col not in statistics.columns:
+                statistics[col] = None
+
         statistics["has_algorithm_error"] = ~statistics["algorithm_error"].isna()
         statistics["has_evaluation_error"] = ~statistics["evaluation_error"].isna()
         statistics["is_correct"] = (~statistics["has_algorithm_error"] &
@@ -45,15 +53,28 @@ class Leaderboard:
             ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
              "train_non_solutions", "fold"]
         ).agg(
+            # quality
             accuracy=pd.NamedAgg(column="is_correct", aggfunc="mean"),
             test_count=pd.NamedAgg(column="actual_class", aggfunc="count"),
+            # error probabilities
             algorithm_error_prob=pd.NamedAgg(column="has_algorithm_error", aggfunc="mean"),
-            algorithm_error=pd.NamedAgg(column="algorithm_error", aggfunc=Leaderboard.keep_unique_str),
+            algorithm_error=pd.NamedAgg(column="algorithm_error", aggfunc=Leaderboard.keep_unique_str) \
+                if "algorithm_error" in statistics.columns else None,
             evaluation_error_prob=pd.NamedAgg(column="has_evaluation_error", aggfunc="mean"),
-            evaluation_error=pd.NamedAgg(column="evaluation_error", aggfunc=Leaderboard.keep_unique_str),
+            evaluation_error=pd.NamedAgg(column="evaluation_error", aggfunc=Leaderboard.keep_unique_str) \
+                if "evaluation_error" in statistics.columns else None,
             # all rows should have the same discovery time as training is done only once
             discovery_time=pd.NamedAgg(column="discovery_time", aggfunc="mean"),
             test_time=pd.NamedAgg(column="test_time", aggfunc="sum"),  # total test time
+            # all rows should have the same size statistics as training is done only once
+            parameter_count=pd.NamedAgg(column="parameter_count", aggfunc="mean"),  # number of parameters in model
+            variable_count=pd.NamedAgg(column="variable_count", aggfunc="mean"),  # number of variables in model
+            normalized_constraint_count=pd.NamedAgg(column="normalized_constraint_count", aggfunc="mean"),
+            # number of constraints
+            normalized_constraint_size=pd.NamedAgg(column="normalized_constraint_size", aggfunc="mean"),
+            # text length of constraints
+            objective_count=pd.NamedAgg(column="objective_count", aggfunc="mean"),  # number of objective functions
+            # other
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
             hostname=pd.NamedAgg(column="hostname", aggfunc=Leaderboard.keep_unique_str),
             cpu=pd.NamedAgg(column="cpu", aggfunc=Leaderboard.keep_unique_str),
@@ -79,21 +100,37 @@ class Leaderboard:
              "train_non_solutions"]
         ).agg(
             folds=pd.NamedAgg(column="fold", aggfunc="max"),
+            # fitness
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
+            # test count
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
             test_count_total=pd.NamedAgg(column="test_count", aggfunc="sum"),
+            # error probabilities
             algorithm_error_prob_mean=pd.NamedAgg(column="algorithm_error_prob", aggfunc="mean"),
             algorithm_error_prob_095ci=pd.NamedAgg(column="algorithm_error_prob", aggfunc=ci),
             algorithm_error=pd.NamedAgg(column="algorithm_error", aggfunc=Leaderboard.keep_unique_str),
             evaluation_error_prob_mean=pd.NamedAgg(column="evaluation_error_prob", aggfunc="mean"),
             evaluation_error_prob_095ci=pd.NamedAgg(column="evaluation_error_prob", aggfunc=ci),
             evaluation_error=pd.NamedAgg(column="evaluation_error", aggfunc=Leaderboard.keep_unique_str),
+            # times
             discovery_time_mean=pd.NamedAgg(column="discovery_time", aggfunc="mean"),
             discovery_time_095ci=pd.NamedAgg(column="discovery_time", aggfunc=ci),
             test_time_mean=pd.NamedAgg(column="test_time", aggfunc="mean"),
             test_time_095ci=pd.NamedAgg(column="test_time", aggfunc=ci),
+            # size
+            parameter_count_mean=pd.NamedAgg(column="parameter_count", aggfunc="mean"),
+            parameter_count_095ci=pd.NamedAgg(column="parameter_count", aggfunc=ci),
+            variable_count_mean=pd.NamedAgg(column="variable_count", aggfunc="mean"),
+            variable_count_095ci=pd.NamedAgg(column="variable_count", aggfunc=ci),
+            normalized_constraint_count_mean=pd.NamedAgg(column="normalized_constraint_count", aggfunc="mean"),
+            normalized_constraint_count_095ci=pd.NamedAgg(column="normalized_constraint_count", aggfunc=ci),
+            normalized_constraint_size_mean=pd.NamedAgg(column="normalized_constraint_size", aggfunc="mean"),
+            normalized_constraint_size_095ci=pd.NamedAgg(column="normalized_constraint_size", aggfunc=ci),
+            objective_mean=pd.NamedAgg(column="objective_count", aggfunc="mean"),
+            objective_095ci=pd.NamedAgg(column="objective_count", aggfunc=ci),
+            # other
             input_path=pd.NamedAgg(column="problem_instance", aggfunc=Leaderboard.keep_unique_str),
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
             hostname=pd.NamedAgg(column="hostname", aggfunc=Leaderboard.keep_unique_str),

@@ -42,15 +42,17 @@ class Model:
             "fill_na": 0.0,
             "color": "blue",
             "ci_color": "lightblue",
-            "axis": "left"
+            "axis": "left",
+            "default": True
         },
         "Algorithm error probability": {
             "mean": "algorithm_error_prob_mean",
             "ci": "algorithm_error_prob_095ci",
-            "fill_na": 0.0,
+            "fill_na": False,
             "color": "red",
             "ci_color": "pink",
-            "axis": "left"
+            "axis": "left",
+            "default": False
         },
         "Discovery time": {
             "mean": "discovery_time_mean",
@@ -58,7 +60,26 @@ class Model:
             "fill_na": False,
             "color": "green",
             "ci_color": "lightgreen",
-            "axis": "right"
+            "axis": "right",
+            "default": True
+        },
+        "Constraint count": {
+            "mean": "normalized_constraint_count_mean",
+            "ci": "normalized_constraint_count_095ci",
+            "fill_na": False,
+            "color": "blueviolet",
+            "ci_color": "mediumpurple",
+            "axis": "right",
+            "default": True
+        },
+        "Constraint size": {
+            "mean": "normalized_constraint_size_mean",
+            "ci": "normalized_constraint_size_095ci",
+            "fill_na": False,
+            "color": "darkslateblue",
+            "ci_color": "slateblue",
+            "axis": "right",
+            "default": False
         }
     }
 
@@ -105,7 +126,7 @@ class Model:
 
     def get_artifact_types(self) -> list[str]:
         return sorted({t
-                for algo in self.get_algorithms()
+                       for algo in self.get_algorithms()
                        for t in self.manifests[algo].artifacts.keys()})
 
     def get_problems(self) -> list[str]:
@@ -363,7 +384,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 self._train_sizes = st.slider(
                     label="Training set size",
                     min_value=(mi := min(self._model.get_train_counts())),
-                    max_value=(ma := max(self._model.get_train_counts())),
+                    max_value=(ma := max(max(self._model.get_train_counts()), mi + 1)),
                     value=[mi, ma]
                 )
 
@@ -371,7 +392,25 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                     label="Measures",
                     options=self._model.measure_columns.keys(),
                     selection_mode="multi",
-                    default=self._model.measure_columns.keys()
+                    default=[k for k, v in self._model.measure_columns.items() if v["default"]],
+                )
+
+                pill_styles = [
+                    f"""button[data-variant=pills][aria-pressed=true]:nth-child({i}) {{
+                            border-color: {m["color"]} !important;
+                            background-color: {m["ci_color"]} !important;
+                            color: rgb(49,51,63) !important;
+                        }}"""
+                    for i, m in enumerate(self._model.measure_columns.values(), start=1)
+                ]
+
+                st.markdown(
+                    f"""
+                    <style>
+                        {"\n".join(pill_styles)}
+                    </style>
+                    """,
+                    unsafe_allow_html=True
                 )
 
                 self.measures = MeasuresDescriptor(self._get_selected_measures())
@@ -408,7 +447,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                     var_name="measure",
                 )
 
-                self._show_chart(ranking_melt, _initializer=self._prepare_global_chart, series_col="algorithm")
+                self._show_chart(ranking_melt, _initializer=self._prepare_global_chart, series_col=None)
                 self._show_df(ranking)
 
             except MPMMineException as e:
@@ -560,34 +599,38 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
         if ranking.empty:
             return None
 
-        chart = (
-            alt.Chart(ranking, title=title)
-            .mark_point(filled=True, opacity=0.9)
+        base = alt.Chart(ranking, title=title)
+        main = base.mark_bar(filled=True, opacity=0.9, bandSize=0.1, width={"band": 1.0}) \
             .encode(
-                alt.X("algorithm:N").title(None),
-                alt.XOffset("measure:N", scale=alt.Scale(paddingOuter=1.0)),
-                alt.Y("value:Q")
-                .axis(orient="left" if axis == "left" else "right")
-                .scale(zero=True)
-                .title("Value" if axis == "left" else "Time [s]"),
-                alt.Color("measure:N")
-                .scale(domain=self.measures.domain, range=self.measures.color)
-                .legend(title="Measures",
-                        labelExpr=f"{self.measures.name_rev_map}[datum.value] || datum.value",
-                        labelLimit=0),
-            )
+            alt.X("algorithm:N").title(None),
+            alt.XOffset("measure:N", scale=alt.Scale(paddingOuter=0.0)),
+            alt.Y("value:Q")
+            .axis(orient="left" if axis == "left" else "right")
+            .scale(zero=(axis == "left"), type="symlog" if axis == "right" else "linear")
+            .title("Value" if axis == "left" else "Time [s] / Count / Size"),
+            alt.Color("measure:N")
+            .scale(domain=self.measures.domain, range=self.measures.color)
+            .legend(title="Measures",
+                    labelExpr=f"{self.measures.name_rev_map}[datum.value] || datum.value",
+                    labelLimit=0),
         )
 
+        error_charts = []
         for measure_name, measure_desc in self.measures.selected.items():
             if measure_desc["axis"] != axis:
                 continue
-            chart = ((alt.Chart(ranking[ranking["measure"] == measure_desc["mean"]])
-            .mark_errorbar(color=measure_desc["ci_color"]).encode(
+            error_charts.append(base
+            .transform_filter(measure=measure_desc["mean"])
+            .mark_errorbar(color=measure_desc["ci_color"], ticks=True, thickness=3, size=20).encode(
                 alt.X("algorithm:N"),
-                alt.XOffset("measure:N", scale=alt.Scale(paddingOuter=1.0)),
-                alt.Y(f"{measure_desc["mean"]}_lb:Q").title(""),
+                alt.XOffset("measure:N", scale=alt.Scale(paddingOuter=0.0)),
+                alt.Y(f"{measure_desc["mean"]}_lb:Q")
+                .scale(zero=(axis == "left"), type="symlog" if axis == "right" else "linear")
+                .title(""),
                 alt.Y2(f"{measure_desc["mean"]}_ub:Q")
-            )) + chart)
+            ))
+
+        chart = alt.layer(main, *error_charts)
 
         return chart
 
@@ -615,8 +658,8 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                   labelPadding=(50 if axis == "right" else 2),
                   labels=not is_empty,
                   ticks=not is_empty)
-            .scale(zero=True)
-            .title(None if is_empty else ("Value" if axis == "left" else "Time [s]"))
+            .scale(zero=(axis == "left"), type="symlog" if axis == "right" else "linear")
+            .title(None if is_empty else ("Probability / Fraction" if axis == "left" else "Time [s] / Count / Size"))
         )
 
         # draw confidence intervals
@@ -653,22 +696,36 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                     width: Literal["stretch", "content"] | int | None = None,
                     **kwargs):
 
-        charts = []
+        left_charts = []
+        right_charts = []
 
-        for key, ranking in ranking_melt.groupby(series_col):
+        grouped = ranking_melt.groupby(series_col) if series_col is not None else [(None, ranking_melt)]
+        for key, ranking in grouped:
             left_chart = _initializer(ranking, "left", title, **kwargs)
             right_chart = _initializer(ranking, "right", title, **kwargs)
 
-            if left_chart is not None and right_chart is not None:
-                chart = alt.layer(left_chart, right_chart).resolve_scale(y="independent")
-            elif left_chart is not None:
-                chart = left_chart
-            else:
-                chart = right_chart
+            if left_chart is not None:
+                left_charts.append(left_chart)
+            if right_chart is not None:
+                right_charts.append(right_chart)
 
-            charts.append(chart)
+        match len(left_charts):
+            case 0:
+                left_chart = []
+            case 1:
+                left_chart = [left_charts[0]]
+            case _:
+                left_chart = [alt.layer(*left_charts).resolve_scale(y="shared")]
 
-        chart = alt.layer(*charts) if len(charts) > 1 else charts[0]
+        match len(right_charts):
+            case 0:
+                right_chart = []
+            case 1:
+                right_chart = [right_charts[0]]
+            case _:
+                right_chart = [alt.layer(*right_charts).resolve_scale(y="shared")]
+
+        chart = alt.layer(*left_chart, *right_chart, data=ranking_melt).resolve_scale(y="independent")
 
         with st.container(width="stretch" if width is None else width):
             st.altair_chart(chart)

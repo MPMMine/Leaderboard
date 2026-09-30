@@ -1,8 +1,12 @@
+import subprocess
+import types
 from datetime import timedelta
-from typing import override
+from pathlib import Path
+from typing import override, List, Union
 
 import pandas as pd
-from minizinc import Model, Instance, Status
+from minizinc import Model, Instance, Status, Method
+from minizinc.analyse import MznAnalyse
 from minizinc.error import MiniZincError
 
 from mpmmine.evaluator.dzn import parse_dzn
@@ -28,7 +32,8 @@ class AbstractMeasure:
         :param model: The MiniZinc model to assess.
         :param instance: The instantiation of the MiniZinc model with parameters set to specific values and solver.
         :param test_set: The test set of examples to calculate statistics for.
-        :return: Either a single measure value or a pandas Series representing the individual measure values for each
+        :return: Either a single measure value or a pandas Series including multiple measures or a pandas DataFrame
+        representing the individual measure values for each
         example.
         """
         raise NotImplementedError
@@ -98,3 +103,38 @@ class ConfusionMatrix(AbstractMeasure):
 
         results = test_set.apply(actual_test, axis=1)
         return results
+
+
+class Size(AbstractMeasure):
+    @override
+    def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.Series:
+
+        def get_constraints(self):
+            tool_run_cmd: List[Union[str, Path]] = [
+                str(self._executable),
+                "filter-items:constraint",
+            ]
+
+            with instance.files() as files:
+                for f in files:
+                    tool_run_cmd.append(str(f))
+
+            proc = subprocess.run(
+                tool_run_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE
+            )
+            if proc.returncode != 0:
+                raise MiniZincError(message=str(proc.stderr))
+            return proc.stdout.decode("utf-8")
+
+        mznAnalyse = MznAnalyse.find()
+        mznAnalyse.get_constraints = types.MethodType(get_constraints, mznAnalyse)
+
+        normalized_constraints = mznAnalyse.get_constraints()
+
+        return pd.Series({
+            "parameter_count": len(instance.input),
+            "variable_count": len(list(k for k in instance.output.keys() if k != "_checker" and k != "_output_item")),
+            "normalized_constraint_count": len(normalized_constraints.splitlines()),
+            "normalized_constraint_size": len(normalized_constraints),
+            "objective_count": 0 if instance.method == Method.SATISFY else 1,
+        })
