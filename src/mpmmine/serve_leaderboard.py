@@ -1,6 +1,8 @@
 import sys
 from pathlib import Path
 
+from streamlit.runtime.uploaded_file_manager import UploadedFile
+
 # Resolve the absolute path to the repository root or target directory
 repo_root = Path(__file__).resolve().parent.parent
 
@@ -21,7 +23,7 @@ import scipy
 import streamlit as st
 from pandas import DataFrame
 
-from mpmmine.evaluator.manifest import AlgorithmManifest
+from mpmmine.evaluator.manifest import AlgorithmManifest, Objective, Constraints, Variables, Language
 from mpmmine.util import configure_logging
 
 
@@ -34,8 +36,9 @@ class Model:
     manifests: dict[str, AlgorithmManifest]
     data_path = Path("leaderboard.csv")
     dataset_version: str
+    measure_columns: dict[str, dict] = dict()
 
-    measure_columns = {
+    _measure_definitions = {
         "Accuracy": {
             "mean": "accuracy_mean",
             "ci": "accuracy_095ci",
@@ -84,16 +87,43 @@ class Model:
     }
 
     def __init__(self):
-        self.data = Model._get_results()
-        self.dataset_version = self._get_dataset_version()
-        self.manifests = Model._get_algorithm_manifests()
+        custom_file = st.session_state.get("custom_file")
+        if custom_file is not None:
+            self.load_data(custom_file)
+        else:
+            self.load_data(Model.data_path)
 
-    @st.cache_data
+    def load_data(self, path_or_file: Path | UploadedFile):
+        self.data = Model._get_results(path_or_file)
+        self.dataset_version = self._get_dataset_version()
+        # reset manifests (this method is cached)
+        self.manifests = Model._get_algorithm_manifests()
+        # add dummy manifest if missing when loading custom data file
+        for algo in self.get_algorithms():
+            if algo not in self.manifests:
+                self.manifests[algo] = AlgorithmManifest(
+                    name=algo,
+                    description="This is dummy manifest created for an unknown algorithm.",
+                    objective=Objective(True, True),
+                    constraints=Constraints(True, True, True),
+                    variables=Variables(True, True, True),
+                    language=Language("", ""),
+                    artifacts={
+                        "examples": dict()
+                    },
+                    references=dict(),
+                    links=dict(),
+                )
+        # filter out unavailable measures
+        self.measure_columns = {k: v for k, v in self._measure_definitions.items() if v["mean"] in self.data.columns}
+
     @staticmethod
-    def _get_results() -> pd.DataFrame:
-        logging.info("Loading results...")
-        data = pd.read_csv(Model.data_path)
-        data["results_path"] = "https://github.com/MPMMine/Leaderboard/tree/main/results/" + data["results_path"]
+    @st.cache_data(show_spinner="Loading data...", ttl="1D", max_entries=1024)
+    def _get_results(path_or_file: Path | UploadedFile) -> pd.DataFrame:
+        logging.info(f"Loading results from {path_or_file}...")
+        data = pd.read_csv(path_or_file)
+        if path_or_file == Model.data_path:
+            data["results_path"] = "https://github.com/MPMMine/Leaderboard/tree/main/results/" + data["results_path"]
         data.index += 1  # make it 1-based indexed
         return data
 
@@ -104,12 +134,11 @@ class Model:
         else:
             return "0.0.0.00000000"
 
-    @staticmethod
-    def get_last_updated():
-        return datetime.datetime.fromtimestamp(Model.data_path.stat().st_mtime)
+    def get_last_updated(self):
+        return datetime.datetime.fromtimestamp(self.data_path.stat().st_mtime)
 
-    @st.cache_data
     @staticmethod
+    @st.cache_data
     def _get_algorithm_manifests() -> dict[str, AlgorithmManifest]:
         out = {}
         for algorithm in Path("algorithms").iterdir():
@@ -422,10 +451,27 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
             logging.error(e)
 
     def _badges(self):
-        st.badge(label=f"Last update: {self._model.get_last_updated().strftime("%Y-%m-%d %H:%M:%S")}")
+
+        st.metric(label="MPMMine version", value=self._model.dataset_version,
+                  help="The version(s) of the MPMMine dataset used to calculate the statistics.",
+                  delta=f"Last update: {self._model.get_last_updated().strftime("%Y-%m-%d %H:%M:%S")}" \
+                      if "custom_file" not in st.session_state or st.session_state["custom_file"] is None else None,
+                  delta_arrow="off")
+        st.file_uploader("Upload custom leaderboard data",
+                         type="csv",
+                         key="custom_file",
+                         help="Upload leaderboard.csv generated using calculate_leaderboard.py")
+
+        st.markdown("""
+        <style>
+            section[data-testid="stFileUploaderDropzone"] {
+                flex-direction: row !important;
+            }
+        </style>
+        """,
+                    unsafe_allow_html=True)
+
         with st.container(horizontal=True):
-            st.metric(label="MPMMine version", value=self._model.dataset_version,
-                      help="The version(s) of the MPMMine dataset used to calculate the statistics.")
             st.metric(label="Total data points", value=len(self._model.data))
             st.metric(label="Total problems", value=len(self._model.get_problems()))
             st.metric(label="Total problem models", value=len(self._model.get_problem_models()))
@@ -686,7 +732,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
         )
         return alt.layer(line_layer, circle_marker, text_marker)
 
-    @st.cache_data(show_spinner="Preparing chart...")
+    @st.cache_data(show_spinner="Preparing chart...", ttl="1D", max_entries=16384)
     def _show_chart(_self,
                     ranking_melt: DataFrame,
                     _initializer: Callable[
