@@ -1,0 +1,1501 @@
+id,actual_class,algorithm_error,predicted_class,true_positive,false_positive,true_negative,false_negative,evaluation_error,used_params,unused_params,used_vars,unused_vars,parameter_count,variable_count,normalized_constraint_count,normalized_constraint_size,objective_count,fold,train_solutions,train_non_solutions,hostname,cpu,mpmmine_dataset_version,mpmmine_library_version,minizinc_version,solver,solver_version,discovery_time,test_time
+MPMMine-P004M002I012S07995,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04290,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05084,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S08339,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05491,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05125,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S08862,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S08411,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07630,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00203,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02807,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02798,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01735,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06784,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06270,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04737,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02050,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02420,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04143,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02001,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00099,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05292,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02713,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03463,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06480,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06944,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03224,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07870,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03914,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07351,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03604,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01078,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05780,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07103,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00503,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05343,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00346,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S08537,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03082,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09237,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S08226,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04888,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02864,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00631,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04977,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02569,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04805,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05162,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07386,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09998,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07219,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09708,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03749,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09349,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06025,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03767,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09474,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05294,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04761,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00396,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04244,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09422,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09989,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06017,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S08476,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04469,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05878,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07618,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02746,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01064,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07565,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01309,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05123,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04189,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07420,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06531,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S04612,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06525,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00540,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01313,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05127,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09867,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07893,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01275,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S08051,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S07588,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09312,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03073,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02741,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00363,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S03819,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S06236,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01811,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02735,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01168,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S01266,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S09816,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S00207,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05576,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S05963,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,141,0,1,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,31.914832597016357,642.9546687940601
+MPMMine-P004M002I012S02473,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00142,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07750,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07953,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S04408,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08779,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09040,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09894,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08407,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05102,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06976,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00561,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01585,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02054,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03795,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09155,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08881,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06793,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S04567,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05583,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01099,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03239,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06600,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08730,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09421,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02525,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00482,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08846,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07257,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05933,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00124,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09328,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08060,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08660,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07659,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02117,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05653,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00787,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07718,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01524,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02402,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09435,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09538,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09889,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06840,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S04517,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09251,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07656,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S04070,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05332,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03166,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05038,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01903,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06086,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02160,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09083,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09714,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00278,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00032,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06616,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01277,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00815,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08759,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03009,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08999,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09123,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03697,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05089,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08978,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05325,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08406,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01404,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03341,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01294,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07787,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05636,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06332,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08255,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08789,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01438,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09598,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02599,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06953,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05141,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09365,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S01710,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S05503,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09878,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S00848,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08612,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S04661,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06414,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S07272,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S09603,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S08954,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02350,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S04653,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03604,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S06601,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S02701,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,203,0,2,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.45789017691277,664.3292076389771
+MPMMine-P004M002I012S03098,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01097,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S07236,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01526,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S07779,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00734,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00208,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08945,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04833,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00932,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04439,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03845,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02004,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04084,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09319,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08525,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01710,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06593,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04991,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06217,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09137,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06678,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00227,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03101,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00054,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09664,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00447,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S07821,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02891,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S07493,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S05885,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09567,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09565,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01056,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01985,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S05629,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08061,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09802,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02416,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01832,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09746,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02587,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00974,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04805,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03321,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02508,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08927,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S05332,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00143,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S07247,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S07463,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09487,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01502,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03765,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09431,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09542,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06150,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06405,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08764,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00018,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01189,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01117,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08400,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06275,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08569,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08592,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04646,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09725,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08177,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01285,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04195,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09402,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01211,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02696,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06364,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00866,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06254,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02238,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09547,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06460,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04233,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09879,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02137,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S02118,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04045,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S08527,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S07302,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S05953,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00556,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S06082,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03644,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S09894,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03617,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S00939,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04644,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03371,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01875,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S04217,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S05497,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S03690,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,3,218,0,3,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,34.11669523490127,632.8213244909421
+MPMMine-P004M002I012S01154,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02465,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06512,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02100,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05823,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04853,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04969,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08440,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02935,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03155,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03888,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03790,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05052,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09349,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06661,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06800,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09956,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02424,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01108,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09429,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05684,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S07390,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S00901,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05852,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03707,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S07301,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01479,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01109,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09471,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05768,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S00113,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02661,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09899,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S07141,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08313,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06446,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S07831,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S00370,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09547,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05391,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S00578,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03984,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09960,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08169,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02941,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09156,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06860,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03248,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04886,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08206,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S00635,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06729,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04177,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01353,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05819,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01634,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05796,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01776,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05779,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02817,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08581,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09344,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S05329,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03472,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01265,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03720,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03073,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03015,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09146,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03191,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04787,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08151,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04159,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02293,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04299,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09567,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01297,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06685,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01237,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S07044,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S00655,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03272,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09573,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03167,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01144,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08621,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02381,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04475,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S01050,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08353,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03970,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02454,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06727,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S02723,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S03640,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06667,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S09119,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S07464,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S06802,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S04098,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,109,0,4,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,33.99613527802285,658.7982279300923
+MPMMine-P004M002I012S08877,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06757,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09652,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00599,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01140,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01924,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S04251,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01769,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03202,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09677,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S04126,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09639,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07580,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00916,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09597,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S04628,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01909,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06920,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09960,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01438,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08230,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06146,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03387,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06704,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07654,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08919,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08492,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00526,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S02202,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05992,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07500,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03807,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00840,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06931,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05342,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S02830,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06464,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09702,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09681,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00816,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00862,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06024,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03939,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00295,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03264,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00855,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07256,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05115,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07640,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00678,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01569,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03574,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00673,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05842,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08487,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06702,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09781,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S04680,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00577,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S04641,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09050,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08453,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07912,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08702,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08447,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09304,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03289,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06473,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05472,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08673,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08528,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08618,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S02872,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07646,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07867,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09268,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00100,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06286,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01231,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S08457,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09727,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07328,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07143,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03208,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05970,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01810,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S09110,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S04961,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05480,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S00150,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S02229,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06846,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S05375,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S02819,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S03346,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S07677,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06443,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06102,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S01910,True,,False,False,False,False,True,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617
+MPMMine-P004M002I012S06107,True,,True,True,False,False,False,,['n'],[],['S'],[],1,1,2,196,0,5,10,0,obl1,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,30.90731657098513,643.7364015319617

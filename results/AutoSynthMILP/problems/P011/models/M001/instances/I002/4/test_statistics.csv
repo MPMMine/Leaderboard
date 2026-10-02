@@ -1,0 +1,226 @@
+id,actual_class,algorithm_error,predicted_class,true_positive,false_positive,true_negative,false_negative,evaluation_error,used_params,unused_params,used_vars,unused_vars,parameter_count,variable_count,normalized_constraint_count,normalized_constraint_size,objective_count,fold,train_solutions,train_non_solutions,hostname,cpu,mpmmine_dataset_version,mpmmine_library_version,minizinc_version,solver,solver_version,discovery_time,test_time
+MPMMine-P011M001I002S00018,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002S00004,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002S00025,True,,,,,,,"parameter out of range: declared domain of `k' is 2..4, but assigned value is 1",['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002S00009,True,,,,,,,"parameter out of range: declared domain of `k' is 2..4, but assigned value is 1",['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002S00014,True,,,,,,,"parameter out of range: declared domain of `k' is 2..4, but assigned value is 1",['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00011,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00046,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00043,False,,,,,,,"parameter out of range: declared domain of `k' is 2..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00015,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00021,False,,,,,,,"parameter out of range: declared domain of `k' is 2..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00029,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00019,False,,,,,,,"parameter out of range: declared domain of `k' is 2..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00008,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00039,False,,,,,,,"parameter out of range: declared domain of `k' is 2..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002N00023,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,24,0,1,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,1.3936485879821703,63.728510804940015
+MPMMine-P011M001I002S00012,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002S00024,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002S00015,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002S00009,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002S00022,True,,False,False,False,False,True,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00043,False,,,,,,,"parameter out of range: declared domain of `k' is 1..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00037,False,,,,,,,"parameter out of range: declared domain of `k' is 1..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00030,False,,,,,,,"parameter out of range: declared domain of `k' is 1..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00013,False,,,,,,,"parameter out of range: declared domain of `k' is 1..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00032,False,,,,,,,"parameter out of range: declared domain of `k' is 1..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00004,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00023,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00026,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00039,False,,,,,,,"parameter out of range: declared domain of `k' is 1..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002N00042,False,,,,,,,"parameter out of range: declared domain of `k' is 1..4, but assigned value is 5",['n'],[],"['k', 'x']",[],1,2,1,17,0,2,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.751880408031866,60.46252238191664
+MPMMine-P011M001I002S00024,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002S00001,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002S00021,True,,False,False,False,False,True,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002S00015,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002S00002,True,,False,False,False,False,True,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00033,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00038,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00035,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00011,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00025,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00024,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00036,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00008,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00020,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002N00040,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,17,0,3,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.6738111530430615,57.52414128300734
+MPMMine-P011M001I002S00005,True,,False,False,False,False,True,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002S00019,True,,False,False,False,False,True,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002S00016,True,,False,False,False,False,True,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002S00026,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002S00022,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00005,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00039,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00004,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00032,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00006,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00035,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00044,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00030,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00045,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002N00008,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,4,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5159234310267493,60.185828846064396
+MPMMine-P011M001I002S00013,True,,,,,,,"parameter out of range: declared domain of `k' is 3..5, but assigned value is 1",['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002S00021,True,,True,True,False,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002S00016,True,,False,False,False,False,True,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002S00023,True,,,,,,,"parameter out of range: declared domain of `k' is 3..5, but assigned value is 1",['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002S00007,True,,,,,,,"parameter out of range: declared domain of `k' is 3..5, but assigned value is 1",['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00045,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00009,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00036,False,,,,,,,"parameter out of range: declared domain of `k' is 3..5, but assigned value is 2",['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00035,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00023,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00039,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00024,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00032,False,,True,False,True,False,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00044,False,,,,,,,"parameter out of range: declared domain of `k' is 3..5, but assigned value is 2",['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923
+MPMMine-P011M001I002N00018,False,,False,False,False,True,False,,['n'],[],"['k', 'x']",[],1,2,1,20,0,5,2,2,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,0.5445398999145254,64.98032593505923

@@ -1,0 +1,1616 @@
+id,actual_class,algorithm_error,fold,train_solutions,train_non_solutions,hostname,cpu,mpmmine_dataset_version,mpmmine_library_version,minizinc_version,solver,solver_version,discovery_time,test_time
+MPMMine-P011M002I022S00064,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00002,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00033,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00066,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00044,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00003,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00024,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00030,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00038,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00012,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00021,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00053,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00022,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022N00004,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022N00013,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022N00007,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_1_91717.csv output=/app/data/output_P011M002I022_30_1_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_1_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+",1,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,890979.023187672,0.0
+MPMMine-P011M002I022S00039,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00003,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00013,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00063,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00066,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00052,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00041,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00001,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00027,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00064,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00057,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00008,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00006,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022N00011,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022N00003,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022N00007,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_2_91717.csv output=/app/data/output_P011M002I022_30_2_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_2_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",2,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,892179.675367909,0.0
+MPMMine-P011M002I022S00028,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00024,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00046,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00037,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00006,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00035,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00041,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00030,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00029,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00053,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00049,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00017,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00044,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022N00015,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022N00011,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022N00002,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_3_91717.csv output=/app/data/output_P011M002I022_30_3_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_3_91717
+﻿  1 Setting up...
+﻿Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0008 
+﻿",3,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,893380.25150768,0.0
+MPMMine-P011M002I022S00035,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00037,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00043,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00012,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00003,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00001,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00050,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00024,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00032,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00033,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00060,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00051,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00061,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00064,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022N00004,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022N00005,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022N00006,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_4_91717.csv output=/app/data/output_P011M002I022_30_4_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_4_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+﻿",4,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,894580.823644469,0.0
+MPMMine-P011M002I022S00053,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00032,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00025,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00056,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00060,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00055,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00038,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00045,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00063,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00044,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00033,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00006,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022S00049,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022N00007,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022N00014,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0
+MPMMine-P011M002I022N00003,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=2 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P011M002I022_30_5_91717.csv output=/app/data/output_P011M002I022_30_5_91717.sqlite'
+	in container ESOCCS_MPMMine-P011M002_91717:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I022_30_5_91717
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Executing...
+﻿﻿  1 Gen=  1 Pop.bestConstrFit=  0.0000 Pop.avgConstrFit=       0 BestModel=  0.0007 
+",5,30,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,895781.461712527,0.0

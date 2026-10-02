@@ -1,0 +1,15 @@
+{
+  "algorithm": "GOCCS",
+  "problem_id": "P005",
+  "model_id": "M001",
+  "instance_ids": [
+    "I003"
+  ],
+  "train_sol_limit": 50,
+  "train_non_sol_limit": 0,
+  "test_sol_limit": 100,
+  "test_non_sol_limit": 100,
+  "cv_folds": 5,
+  "seed": 42,
+  "run_timeout": 1200
+}

@@ -1,0 +1,163 @@
+id,actual_class,algorithm_error,predicted_class,true_positive,false_positive,true_negative,false_negative,evaluation_error,used_params,unused_params,used_vars,unused_vars,parameter_count,variable_count,normalized_constraint_count,normalized_constraint_size,objective_count,fold,train_solutions,train_non_solutions,hostname,cpu,mpmmine_dataset_version,mpmmine_library_version,minizinc_version,solver,solver_version,discovery_time,test_time
+MPMMine-P011M002I021S00021,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,1.0,38.0,0.0,1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,29.415418948978186,44.555960292113014
+MPMMine-P011M002I021S00008,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,1.0,38.0,0.0,1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,29.415418948978186,44.555960292113014
+MPMMine-P011M002I021S00007,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,1.0,38.0,0.0,1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,29.415418948978186,44.555960292113014
+MPMMine-P011M002I021S00011,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,1.0,38.0,0.0,1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,29.415418948978186,44.555960292113014
+MPMMine-P011M002I021S00015,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,1.0,38.0,0.0,1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,29.415418948978186,44.555960292113014
+MPMMine-P011M002I021N00003,False,,True,False,True,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,1.0,38.0,0.0,1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,29.415418948978186,44.555960292113014
+MPMMine-P011M002I021S00015,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,2.0,139.0,0.0,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.107439114013687,47.20980372594204
+MPMMine-P011M002I021S00020,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,2.0,139.0,0.0,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.107439114013687,47.20980372594204
+MPMMine-P011M002I021S00002,True,,False,False,False,False,True,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,2.0,139.0,0.0,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.107439114013687,47.20980372594204
+MPMMine-P011M002I021S00007,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,2.0,139.0,0.0,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.107439114013687,47.20980372594204
+MPMMine-P011M002I021S00021,True,,False,False,False,False,True,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,2.0,139.0,0.0,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.107439114013687,47.20980372594204
+MPMMine-P011M002I021N00002,False,,True,False,True,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,2.0,139.0,0.0,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.107439114013687,47.20980372594204
+MPMMine-P011M002I021S00009,True,,False,False,False,False,True,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,3.0,154.0,0.0,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.175863952026702,44.4631505520083
+MPMMine-P011M002I021S00023,True,,False,False,False,False,True,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,3.0,154.0,0.0,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.175863952026702,44.4631505520083
+MPMMine-P011M002I021S00007,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,3.0,154.0,0.0,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.175863952026702,44.4631505520083
+MPMMine-P011M002I021S00001,True,,False,False,False,False,True,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,3.0,154.0,0.0,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.175863952026702,44.4631505520083
+MPMMine-P011M002I021S00013,True,,True,True,False,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,3.0,154.0,0.0,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.175863952026702,44.4631505520083
+MPMMine-P011M002I021N00001,False,,True,False,True,False,False,,"['boxes', 'balls']",[],['box'],[],2.0,1.0,3.0,154.0,0.0,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,27.175863952026702,44.4631505520083
+MPMMine-P011M002I021S00007,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_4_511477.csv output=/app/data/output_P011M002I021_5_4_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_4_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,844546.649747274,0.0
+MPMMine-P011M002I021S00004,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_4_511477.csv output=/app/data/output_P011M002I021_5_4_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_4_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,844546.649747274,0.0
+MPMMine-P011M002I021S00017,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_4_511477.csv output=/app/data/output_P011M002I021_5_4_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_4_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,844546.649747274,0.0
+MPMMine-P011M002I021S00020,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_4_511477.csv output=/app/data/output_P011M002I021_5_4_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_4_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,844546.649747274,0.0
+MPMMine-P011M002I021S00005,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_4_511477.csv output=/app/data/output_P011M002I021_5_4_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_4_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,844546.649747274,0.0
+MPMMine-P011M002I021N00003,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_4_511477.csv output=/app/data/output_P011M002I021_5_4_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_4_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,844546.649747274,0.0
+MPMMine-P011M002I021S00009,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_5_511477.csv output=/app/data/output_P011M002I021_5_5_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_5_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,845747.522974157,0.0
+MPMMine-P011M002I021S00020,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_5_511477.csv output=/app/data/output_P011M002I021_5_5_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_5_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,845747.522974157,0.0
+MPMMine-P011M002I021S00021,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_5_511477.csv output=/app/data/output_P011M002I021_5_5_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_5_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,845747.522974157,0.0
+MPMMine-P011M002I021S00024,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_5_511477.csv output=/app/data/output_P011M002I021_5_5_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_5_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,845747.522974157,0.0
+MPMMine-P011M002I021S00017,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_5_511477.csv output=/app/data/output_P011M002I021_5_5_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_5_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,845747.522974157,0.0
+MPMMine-P011M002I021N00002,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.GP.OneClassGPNSGA2Synthesizer CSM=0.1 CSX=0.6 CTM=0.1 CTX=0.1 GCM=0.1 RemoveRedundantConstraints=True linear=True MaxGenerations=50 PopulationSize=2000 MinConstraints=1 MaxConstraints=20 MaxHeight=3 problem=/app/data/input_P011M002I021_5_5_511477.csv output=/app/data/output_P011M002I021_5_5_511477.sqlite'
+	in container GOCCS_MPMMine-P011M002_511477:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P011M002I021_5_5_511477
+﻿﻿  1 Setting up...
+",,,,,,,,,,,,,,,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,845747.522974157,0.0

@@ -1,0 +1,1871 @@
+id,actual_class,algorithm_error,fold,train_solutions,train_non_solutions,hostname,cpu,mpmmine_dataset_version,mpmmine_library_version,minizinc_version,solver,solver_version,discovery_time,test_time
+MPMMine-P011M002I022S00064,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00002,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00033,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00066,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00044,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00003,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00024,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00030,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00038,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00012,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00021,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00053,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00022,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022N00004,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022N00013,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022N00007,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_1_579506.csv output=/app/data/output_P011M002I022_27_1_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_1_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",1,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991362.074047786,0.0
+MPMMine-P011M002I022S00039,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00003,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00013,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00063,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00066,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00052,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00041,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00001,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00027,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00064,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00057,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00008,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00006,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022N00011,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022N00003,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022N00007,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_2_579506.csv output=/app/data/output_P011M002I022_27_2_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_2_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",2,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991366.064871434,0.0
+MPMMine-P011M002I022S00028,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00024,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00046,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00037,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00006,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00035,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00041,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00030,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00029,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00053,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00049,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00017,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00044,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022N00015,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022N00011,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022N00002,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_3_579506.csv output=/app/data/output_P011M002I022_27_3_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_3_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",3,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991369.708910159,0.0
+MPMMine-P011M002I022S00035,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00037,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00043,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00012,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00003,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00001,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00050,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00024,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00032,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00033,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00060,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00051,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00061,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00064,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022N00004,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022N00005,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022N00006,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_4_579506.csv output=/app/data/output_P011M002I022_27_4_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_4_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",4,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991374.267097008,0.0
+MPMMine-P011M002I022S00053,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00032,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00025,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00056,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00060,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00062,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00055,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00038,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00045,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00063,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00044,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00033,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00006,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022S00049,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022N00007,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022N00014,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0
+MPMMine-P011M002I022N00003,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 problem=/app/data/input_P011M002I022_27_5_579506.csv output=/app/data/output_P011M002I022_27_5_579506.sqlite'
+	in container AutoSynthMILP_MPMMine-P011M002_579506:
+	exit code: 1
+	error: Solving problem input_P011M002I022_27_5_579506
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter Presolve to value 2
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 600
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - ""Debian G...D EXCEPTION: System.ArgumentException: Given model is infeasible
+  at Modeling.MP.Solvers.GurobiSolver.Solve (Modeling.Common.LP.LPModel model) [0x00140] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, Modeling.MP.Solvers.Solution& solverSolution) [0x00030] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.LP.LPSynthesizer.Synthesize (Modeling.Common.InputProblem inputProblem, Modeling.MP.InstructionClass instructions, ExperimentDatabase.DataSet statistics) [0x00000] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+  at Modeling.MP.Program.Main (System.String[] args) [0x0032f] in <9190c40b0b264bdebdbce8ff5d887c36>:0 
+",5,15,12,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,991379.396771421,0.0

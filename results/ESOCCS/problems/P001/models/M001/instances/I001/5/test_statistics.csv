@@ -1,0 +1,621 @@
+id,actual_class,algorithm_error,fold,train_solutions,train_non_solutions,hostname,cpu,mpmmine_dataset_version,mpmmine_library_version,minizinc_version,solver,solver_version,discovery_time,test_time,predicted_class,true_positive,false_positive,true_negative,false_negative,evaluation_error,used_params,unused_params,used_vars,unused_vars,parameter_count,variable_count,normalized_constraint_count,normalized_constraint_size,objective_count
+MPMMine-P001M001I001S00007,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00028,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00009,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00008,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00020,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00014,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00035,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00026,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00002,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00044,True,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00011,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00015,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00043,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00008,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00039,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00021,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00029,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00023,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00019,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001N00050,False,"Failed to run:
+	timeout 1200 bash -c 'umask 000 && mono /app/Modeling.MP.exe seed=42 synthesizer=Modeling.MP.ES.EsoccsMultiUseSynthesizer InitializationPipeline=Modeling.GP.ES.MP.GIBBox UnlabelledRatio=2 MaxUseTimes=3 Clusters=5 PopulationSize=400 MaxGenerations=50 LambdaMuRatio=3 StandardizeData=True TimeLimit=10 problem=/app/data/input_P001M001I001_5_1_3370911.csv output=/app/data/output_P001M001I001_5_1_3370911.sqlite'
+	in container ESOCCS_MPMMine-P001M001_3370911:
+	exit code: 124 (TIMEOUT)
+	error: Solving problem input_P001M001I001_5_1_3370911
+﻿﻿  1 Setting up...
+Set parameter Username
+Academic license - for non-commercial use only - expires 2027-08-28
+Set parameter IterationLimit to value 1500000
+Set parameter NodeLimit to value 60000
+Set parameter TimeLimit to value 10
+Set parameter Threads to value 1
+Set parameter FeasibilityTol to value 1e-08
+Set parameter IntFeasTol to value 1e-09
+﻿﻿  1 Calculating fallback distribution...
+﻿  1 Executing...
+﻿",1,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,864760.842337722,0.0,,,,,,,,,,,,,,,
+MPMMine-P001M001I001S00002,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00007,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00030,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00042,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00026,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00035,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00001,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00016,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00005,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00012,True,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00001,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00028,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00019,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00033,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00026,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00032,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00037,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00050,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00002,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001N00023,False,,2,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,117.62236053799279,111.23973551800009,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,285.0,0.0
+MPMMine-P001M001I001S00005,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00030,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00028,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00043,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00022,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00037,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00029,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00026,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00014,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00016,True,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00022,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00015,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00008,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00042,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00043,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00050,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00006,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00037,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00005,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001N00033,False,,3,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.28190241905395,106.56598200299777,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,2.0,176.0,0.0
+MPMMine-P001M001I001S00016,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00049,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,False,False,False,False,True,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00038,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00021,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00025,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00006,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00033,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00032,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00044,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00043,True,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00005,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00009,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00007,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00038,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00040,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00046,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00027,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00013,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00002,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001N00042,False,,4,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,97.77486985595897,91.92827340995427,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,5.0,149.0,0.0
+MPMMine-P001M001I001S00021,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00047,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00019,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00042,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00022,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00005,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00032,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00029,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00028,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001S00018,True,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,True,False,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00033,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00050,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00015,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00038,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,False,False,False,True,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00034,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00018,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00027,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00048,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00049,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0
+MPMMine-P001M001I001N00030,False,,5,5,0,obl2,AMD EPYC 7702 64-Core Processor,0.2.0.20260925,0.2.0.20260826,"MiniZinc to FlatZinc converter, version 2.10.0, build 2699451462
+Copyright (C) 2014-2026 Monash University, NICTA, Data61
+",Gurobi,13.0.2,110.27810199104715,92.96274923998863,True,False,True,False,False,,"['n_boats', 'n_periods', 'capacity', 'crew']",[],"['hosts', 'visit', 'optVar']",[],4.0,3.0,3.0,89.0,0.0

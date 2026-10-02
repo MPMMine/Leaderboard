@@ -1,0 +1,15 @@
+{
+  "algorithm": "ESOCCS",
+  "problem_id": "P002",
+  "model_id": "M001",
+  "instance_ids": [
+    "I063"
+  ],
+  "train_sol_limit": 30,
+  "train_non_sol_limit": 0,
+  "test_sol_limit": 100,
+  "test_non_sol_limit": 100,
+  "cv_folds": 5,
+  "seed": 42,
+  "run_timeout": 1200
+}

@@ -1,0 +1,139 @@
+% Solving problem input_P015M002I003_10_1_1921113
+% ﻿  1 Setting up...
+% ﻿﻿  1 Executing...
+% ﻿﻿﻿  1 Gen=  1 Pop.best= 15.0000 Pop.avg=   9.902 Best= 15.0000
+% ﻿﻿  1 Gen=  2 Pop.best= 16.0000 Pop.avg=  10.074 Best= 16.0000
+% ﻿﻿  1 Gen=  3 Pop.best= 16.0000 Pop.avg= 10.1185 Best= 16.0000
+% ﻿  1 Gen=  4 Pop.best= 16.0000 Pop.avg= 10.1795 Best= 16.0000
+% ﻿﻿  1 Gen=  5 Pop.best= 18.0000 Pop.avg= 10.3195 Best= 18.0000
+% ﻿﻿﻿  1 Gen=  6 Pop.best= 18.0000 Pop.avg=  10.564 Best= 18.0000
+% ﻿﻿  1 Gen=  7 Pop.best= 18.0000 Pop.avg= 10.9985 Best= 18.0000
+% ﻿  1 Gen=  8 Pop.best= 18.0000 Pop.avg=   11.92 Best= 18.0000
+% ﻿﻿  1 Gen=  9 Pop.best= 18.0000 Pop.avg= 13.0535 Best= 18.0000
+% ﻿﻿﻿  1 Gen= 10 Pop.best= 18.0000 Pop.avg=  14.139 Best= 18.0000
+% ﻿  1 Gen= 11 Pop.best= 18.0000 Pop.avg= 15.3775 Best= 18.0000
+% ﻿﻿  1 Gen= 12 Pop.best= 19.0000 Pop.avg=  16.229 Best= 19.0000
+% ﻿﻿  1 Gen= 13 Pop.best= 19.0000 Pop.avg= 16.7025 Best= 19.0000
+% ﻿﻿﻿  1 Gen= 14 Pop.best= 19.0000 Pop.avg= 17.2385 Best= 19.0000
+% ﻿  1 Gen= 15 Pop.best= 19.0000 Pop.avg=  17.603 Best= 19.0000
+% ﻿﻿  1 Gen= 16 Pop.best= 19.0000 Pop.avg=   18.03 Best= 19.0000
+% ﻿﻿﻿  1 Gen= 17 Pop.best= 19.0000 Pop.avg=  18.048 Best= 19.0000
+% ﻿﻿  1 Gen= 18 Pop.best= 19.0000 Pop.avg=  18.071 Best= 19.0000
+% ﻿  1 Gen= 19 Pop.best= 19.0000 Pop.avg=  18.106 Best= 19.0000
+% ﻿﻿﻿  1 Gen= 20 Pop.best= 20.0000 Pop.avg= 18.1765 Best= 20.0000
+% ﻿  1 Gen= 21 Pop.best= 20.0000 Pop.avg= 18.3305 Best= 20.0000
+% ﻿﻿  1 Gen= 22 Pop.best= 20.0000 Pop.avg= 18.6005 Best= 20.0000
+% ﻿﻿  1 Gen= 23 Pop.best= 20.0000 Pop.avg=  18.947 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 24 Pop.best= 20.0000 Pop.avg= 19.0585 Best= 20.0000
+% ﻿  1 Gen= 25 Pop.best= 20.0000 Pop.avg=  19.095 Best= 20.0000
+% ﻿﻿  1 Gen= 26 Pop.best= 20.0000 Pop.avg= 19.1565 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 27 Pop.best= 20.0000 Pop.avg=  19.251 Best= 20.0000
+% ﻿  1 Gen= 28 Pop.best= 20.0000 Pop.avg= 19.3995 Best= 20.0000
+% ﻿﻿  1 Gen= 29 Pop.best= 20.0000 Pop.avg= 19.6675 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 30 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿  1 Gen= 31 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿  1 Gen= 32 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 33 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿  1 Gen= 34 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿  1 Gen= 35 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿  1 Gen= 36 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿  1 Gen= 37 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 38 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿  1 Gen= 39 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 40 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿  1 Gen= 41 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 42 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿  1 Gen= 43 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿  1 Gen= 44 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 45 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿  1 Gen= 46 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿  1 Gen= 47 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿﻿  1 Gen= 48 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿  1 Gen= 49 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿  1 Gen= 50 Pop.best= 20.0000 Pop.avg=      20 Best= 20.0000
+% ﻿﻿﻿  1 Best solution:
+%   1  Time: 00:00:31.8716855 Fitness: 20.0000
+%   1  Variables
+%   1 	buyᐨ4ᐨ2 in [0, 220.027594366]
+%   1 	stockᐨ2ᐨ5 in [0, 150]
+%   1 	amountᐨ3ᐨ5 in [0, 90.027594366]
+%   1 	buyᐨ1ᐨ2 in [0, 220.027594366]
+%   1 	buyᐨ1ᐨ1 in [0, 220.027594366]
+%   1 	stockᐨ4ᐨ5 in [0, 150]
+%   1 	buyᐨ4ᐨ1 in [0, 220.027594366]
+%   1 	stockᐨ4ᐨ1 in [0, 150]
+%   1 Constraints
+%   1 	(buyᐨ4ᐨ2 + (-0.295231523 * stockᐨ2ᐨ5)) <= ((amountᐨ3ᐨ5 - buyᐨ1ᐨ2) - (buyᐨ1ᐨ1 - stockᐨ4ᐨ5))
+%   1 	buyᐨ4ᐨ1 <= stockᐨ4ᐨ1
+%   1 end
+
+% Synthesized model in 31.9s:
+% Variables
+% 	amount?3?5	in[0, 90.0276];
+% 	buy?1?1	in[0, 220.028];
+% 	buy?1?2	in[0, 220.028];
+% 	buy?4?1	in[0, 220.028];
+% 	buy?4?2	in[0, 220.028];
+% 	stock?2?5	in[0, 150];
+% 	stock?4?1	in[0, 150];
+% 	stock?4?5	in[0, 150];
+% Constraints
+% 	(buy?4?2 + (-0.295231523 * stock?2?5)) + -((amount?3?5 - buy?1?2) - (buy?1?1 - stock?4?5)) <= 0;
+% 	buy?4?1 + -stock?4?1 <= 0;
+% end
+
+% Enabled model:
+% Variables
+% 	amount?3?5	in[0, 90.0276];
+% 	buy?1?1	in[0, 220.028];
+% 	buy?1?2	in[0, 220.028];
+% 	buy?4?1	in[0, 220.028];
+% 	buy?4?2	in[0, 220.028];
+% 	stock?2?5	in[0, 150];
+% 	stock?4?1	in[0, 150];
+% 	stock?4?5	in[0, 150];
+% Constraints
+% 	(buy?4?2 + (-0.295231523 * stock?2?5)) + -((amount?3?5 - buy?1?2) - (buy?1?1 - stock?4?5)) <= 0;
+% 	buy?4?1 + -stock?4?1 <= 0;
+% end
+
+% Normalized model:
+% Variables
+% 	amount?3?5	in[0, 90.0276];
+% 	buy?1?1	in[0, 220.028];
+% 	buy?1?2	in[0, 220.028];
+% 	buy?4?1	in[0, 220.028];
+% 	buy?4?2	in[0, 220.028];
+% 	stock?2?5	in[0, 150];
+% 	stock?4?1	in[0, 150];
+% 	stock?4?5	in[0, 150];
+% Constraints
+% 	-amount?3?5 + buy?1?1 + buy?1?2 + buy?4?2 + -0.295232*stock?2?5 + -stock?4?5 <= 0;
+% 	buy?4?1 + -stock?4?1 <= 0;
+% end
+
+% Model verified successfully
+% Enabled model verified successfully
+% Normalized model verified successfully
+% Statistics calculated successfully
+% Statistics saved
+
+5..5: num_ingredients;
+4..4: num_nutrients;
+6..6: num_periods;
+set of 1..5: Grains;
+array[1..5, 1..6] of 10.0..80.0: cost;
+array[1..5, 1..4] of 0.01..0.9: comp;
+array[1..4] of 2.0..60.0: min_req;
+array[1..4] of 10.0..80.0: max_req;
+100.0..100.0: total_weight;
+150.0..150.0: storage_cap;
+0.5..0.5: holding_cost;
+array[1..5] of 20.0..20.0: initial_stock;
+array[1..5, 1..6] of var 0.0..220.027594366: buy;
+array[1..5, 1..6] of var 0.0..90.027594366: amount;
+array[1..5, 1..6] of var 0.0..150.0: stock;
+
+constraint -amount[3, 5] + buy[1, 1] + buy[1, 2] + buy[4, 2] + -0.295232*stock[2, 5] + -stock[4, 5] <= 0;
+constraint buy[4, 1] + -stock[4, 1] <= 0;
+% MiniZincWarning: model inconsistency detected
