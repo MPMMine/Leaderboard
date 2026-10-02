@@ -45,6 +45,10 @@ override-dependencies = [
     "lark-parser ; python_version < '0'",
 ]
 
+[tool.poetry]
+package-mode = false
+
+
 [project.urls]
 Homepage = "https://github.com/MPMMine/Leaderboard"
 Repository = "https://github.com/MPMMine/Leaderboard.git"
