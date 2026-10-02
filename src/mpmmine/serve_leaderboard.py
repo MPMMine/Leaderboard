@@ -685,7 +685,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                        axis: Literal["left", "right"],
                        title: str,
                        x_axis="train_count",
-                       series_axis="algorithm") -> alt.Chart | alt.LayerChart | None:
+                       series_axis="algorithm") -> alt.Chart | alt.LayerChart | alt.FacetChart | None:
 
         ranking = self._filter_ranking(ranking, axis)
         is_empty = ranking.empty
@@ -697,7 +697,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
             alt.Shape(series_axis).legend(None),
         )
 
-        line_layer = base.mark_line().encode(
+        line_layer = [base.mark_line().encode(
             alt.X(x_axis).title("Training set size"),
             alt.Y("value:Q")
             .axis(orient="left" if axis == "left" else "right",
@@ -706,18 +706,19 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                   ticks=not is_empty)
             .scale(zero=(axis == "left"), type="symlog" if axis == "right" else "linear")
             .title(None if is_empty else ("Probability / Fraction" if axis == "left" else "Time [s] / Count / Size"))
-        )
+        )]
 
         # draw confidence intervals
         for measure_name, measure_desc in self.measures.selected.items():
             if measure_desc["axis"] != axis:
                 continue
-            line_layer = (alt.Chart(ranking[ranking["measure"] == measure_desc["mean"]])
+            line_layer.append(base
+            .transform_filter(measure=measure_desc["mean"])
             .mark_errorband(color=measure_desc["ci_color"]).encode(
                 alt.X(x_axis),
                 alt.Y(f"{measure_desc["mean"]}_lb:Q").title(""),
                 alt.Y2(f"{measure_desc["mean"]}_ub:Q")
-            )) + line_layer
+            ))
 
         endpoint_base = (base
         .transform_filter("datum.value != null")
@@ -730,7 +731,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
         text_marker = endpoint_base.mark_text(align="left", dx=4).encode(
             alt.Text(series_axis),
         )
-        return alt.layer(line_layer, circle_marker, text_marker)
+        return alt.layer(*line_layer, circle_marker, text_marker)
 
     @st.cache_data(show_spinner="Preparing chart...", ttl="1D", max_entries=16384)
     def _show_chart(_self,
