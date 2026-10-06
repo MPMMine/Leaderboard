@@ -46,6 +46,13 @@ class Evaluator:
     def run(self):
         cfg = self.configuration
 
+        try:
+            dataset_version = cfg.mpmmine.dataset_version
+        except FileNotFoundError:
+            # The released beta dataset has no VERSION entry.
+            dataset_version = "unknown"
+            logging.warning("MPMMine dataset has no VERSION entry; recording dataset version as unknown.")
+
         statistics = pd.DataFrame()
         for (fold_id, data) in enumerate(self.cross_validation(), start=1):
             (train, test) = data
@@ -89,7 +96,7 @@ class Evaluator:
             fold_statistics["train_non_solutions"] = len(train[~train["actual_class"].astype(bool)])
             fold_statistics["hostname"] = socket.gethostname()
             fold_statistics["cpu"] = cpuinfo.get_cpu_info()["brand_raw"]
-            fold_statistics["mpmmine_dataset_version"] = cfg.mpmmine.dataset_version
+            fold_statistics["mpmmine_dataset_version"] = dataset_version
             fold_statistics["mpmmine_library_version"] = cfg.mpmmine.library_version
             fold_statistics["minizinc_version"] = minizinc.default_driver.minizinc_version
             fold_statistics["solver"] = self.solver.name

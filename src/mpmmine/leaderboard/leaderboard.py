@@ -20,7 +20,7 @@ class Leaderboard:
 
     def report(self, raw_file: Path, agg_file: Path):
         statistics = self.collect_statistics()
-        # statistics.to_csv(raw_file, index=False)
+        statistics.to_csv(raw_file, index=False)
 
         cv_aggregates = self.calculate_fold_statistics(statistics)
         report = self.calculate_cv_statistics(cv_aggregates)
