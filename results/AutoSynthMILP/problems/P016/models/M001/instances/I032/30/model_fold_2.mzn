@@ -211,3 +211,4 @@ var 78.813088756..97.34568736145698: total_cost;
 var 37.388325275..47.68597724984892: total_earn;
 
 constraint -0.637926*soc[46] + 1.8295*cost[56] <= -1;
+% MiniZincWarning: model inconsistency detected

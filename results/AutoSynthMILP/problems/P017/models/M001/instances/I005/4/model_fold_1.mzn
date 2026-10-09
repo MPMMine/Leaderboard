@@ -93,3 +93,4 @@ array[1..27] of var 0..1: balls;
 array[1..49] of var 0..1: lines;
 
 constraint balls[1] <= 0;
+% MiniZincWarning: model inconsistency detected

@@ -3390,3 +3390,24 @@ include "globals.mzn";
 set of 1..192: periods;
 constraint link_set_to_booleans(periods, array1d(1..192, [b == 1 | b in periods_]));
 
+% MiniZincWarning: variable `a` shadows variable with the same name in line 65.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 62.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 61.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 37.19
+% MiniZincWarning: Further warnings have been suppressed.
+% MiniZincWarning: variable `a` shadows variable with the same name in line 41.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 38.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 56.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 63.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 30.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 32.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 64.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 42.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 33.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 59.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 39.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 58.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 31.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 60.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 57.19
+% MiniZincWarning: variable `a` shadows variable with the same name in line 40.19

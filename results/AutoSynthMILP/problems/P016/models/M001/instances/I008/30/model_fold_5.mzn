@@ -260,3 +260,4 @@ var 7.487230295..13.42732085046958: total_earn;
 constraint -0.342458*production[35] + -0.0836405*sell[24] + 0.245126*cost[34] <= 0;
 constraint 0.000355722*production[22] <= 0;
 constraint buy[53] + -0.0965623*soc[4] <= 0;
+% MiniZincWarning: model inconsistency detected

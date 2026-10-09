@@ -312,3 +312,4 @@ constraint balls[31] + -lines[76] <= 0;
 constraint balls[61] + -lines[54] <= 0;
 constraint balls[51] + -lines[67] <= 0;
 constraint balls[21] + -lines[21] <= 0;
+% MiniZincWarning: model inconsistency detected

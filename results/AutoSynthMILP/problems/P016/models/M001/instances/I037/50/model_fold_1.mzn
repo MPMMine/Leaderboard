@@ -180,3 +180,4 @@ var -0.2881005132267466..9.264050069: total_earn;
 
 constraint production[46] + production[48] + buy[145] + sell[103] + charge[61] + charge[65] + discharge[103] + soc[147] + 0.0860237*soc[148] + earn[10] + earn[23] + -0.213792*total_cost <= -1;
 constraint earn[166] <= 0;
+% MiniZincWarning: model inconsistency detected

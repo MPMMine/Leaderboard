@@ -197,3 +197,4 @@ var 37.684788451..54.996572701: total_cost;
 var 15.241317113..27.513596886: total_earn;
 
 constraint buy[30] + sell[28] + -0.0601075*total_cost <= -1;
+% MiniZincWarning: model inconsistency detected

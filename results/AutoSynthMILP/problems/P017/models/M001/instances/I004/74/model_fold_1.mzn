@@ -236,3 +236,4 @@ array[1..49] of var 0..1: lines;
 
 constraint 13*balls[3] + -30*balls[6] + 7*balls[7] + 37*balls[16] + 11*lines[6] + 2*lines[12] + -4*lines[13] + -20*lines[18] + -27*lines[27] + -10*lines[34] + 8*lines[47] <= 0;
 constraint balls[2] + balls[12] + -2*lines[1] <= 0;
+% MiniZincWarning: model inconsistency detected
