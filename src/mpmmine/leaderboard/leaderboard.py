@@ -2,13 +2,13 @@ import json
 import logging
 from pathlib import Path
 from typing import Generator
+from math import sqrt
 
 import numpy as np
 import pandas as pd
 import scipy.stats
 from mpmmine.dataset import MPMMine
 from pandas import DataFrame
-from sklearn.metrics import matthews_corrcoef
 
 from mpmmine.evaluator.configuration import Configuration
 
@@ -88,13 +88,6 @@ class Leaderboard:
             mpmmine_library_version=pd.NamedAgg(column="mpmmine_library_version", aggfunc=Leaderboard.keep_unique_str),
         )
 
-        mcc_values = statistics.groupby(
-            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
-             "train_non_solutions", "fold"]
-        ).apply(Leaderboard.compute_mcc, include_groups=False)
-
-        cv_aggregates["mcc"] = mcc_values  # calculated values added as a new column
-
         return cv_aggregates
 
     def calculate_cv_statistics(self, cv_aggregates: DataFrame, raw_statistics: pd.DataFrame) -> DataFrame:
@@ -118,8 +111,6 @@ class Leaderboard:
             # fitness
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
-            mcc_mean=pd.NamedAgg(column="mcc", aggfunc="mean"),
-            mcc_095ci=pd.NamedAgg(column="mcc", aggfunc=ci),
             # test count
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
@@ -163,14 +154,66 @@ class Leaderboard:
 
         report = report.join(metrics_df)
 
+
+        mcc_df = raw_statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions"]
+        ).apply(self.compute_bootstrap_mcc, include_groups = False)
+
+        report = report.join(mcc_df)
+
         return report
 
-    @staticmethod
-    def compute_mcc(group: pd.DataFrame) -> float:
-        valid = group.dropna(subset=['actual_class', 'predicted_class'])
+    def compute_bootstrap_mcc(self, rows: pd.DataFrame) -> pd.Series:
+        """
+        Calculates micro-average Matthews Correlation Coefficient (MCC) and its 95% confidence intervals with bootstrapping.
+        Utilizes a fixed random seed to ensure reproducibility.
+        """
+        rng = np.random.default_rng(self.seed)
+
+        valid = rows.dropna(subset=["true_positive", "false_positive", "false_negative", "true_negative"]).copy()
         if valid.empty:
-            return float('nan')
-        return float(matthews_corrcoef(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
+            return pd.Series(
+                [float('nan'), float('nan'), float('nan')],
+                index=["mcc", "mcc_095ci_low", "mcc_095ci_high"]
+            )
+
+        def comp_mcc(tp, fp, fn, tn):
+            num = (tp * tn) - (fp * fn)
+            den = sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
+            if den == 0:
+                return 0.0
+            return num / den
+
+        mcc = comp_mcc(
+            valid["true_positive"].sum(),
+            valid["false_positive"].sum(),
+            valid["false_negative"].sum(),
+            valid["true_negative"].sum()
+        )
+
+        mccs = []
+        for _ in range(1000):
+            sample = valid.sample(n=100, replace=True, random_state=rng)
+            mccs.append(
+                comp_mcc(
+                    sample["true_positive"].sum(),
+                    sample["false_positive"].sum(),
+                    sample["false_negative"].sum(),
+                    sample["true_negative"].sum()
+                )
+            )
+
+        mccs.sort()
+        mcc_095ci_low = mccs[24]
+        mcc_095ci_high = mccs[974]
+
+        assert mcc_095ci_high >= mcc >= mcc_095ci_low
+
+        return pd.Series(
+            [mcc, mcc_095ci_low, mcc_095ci_high],
+            index=["mcc", "mcc_095ci_low", "mcc_095ci_high"]
+        )
 
     def compute_bootstrap_metrics(self, rows: pd.DataFrame) -> pd.Series:
         """
