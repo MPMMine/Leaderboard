@@ -2,11 +2,11 @@ import logging
 from pathlib import Path
 from typing import Generator
 
+import numpy as np
 import pandas as pd
 import scipy.stats
 from mpmmine.dataset import MPMMine
 from pandas import DataFrame
-from sklearn.metrics import precision_score, recall_score, f1_score
 
 from mpmmine.evaluator.configuration import Configuration
 
@@ -14,17 +14,19 @@ from mpmmine.evaluator.configuration import Configuration
 class Leaderboard:
     result_path: Path
     mpmmine: MPMMine
+    seed: int
 
-    def __init__(self, result_path: Path, mpmmine: MPMMine):
+    def __init__(self, result_path: Path, mpmmine: MPMMine, seed: int = 123):
         self.result_path = result_path
         self.mpmmine = mpmmine
+        self.seed = seed
 
     def report(self, raw_file: Path, agg_file: Path):
         statistics = self.collect_statistics()
         # statistics.to_csv(raw_file, index=False)
 
         cv_aggregates = self.calculate_fold_statistics(statistics)
-        report = self.calculate_cv_statistics(cv_aggregates)
+        report = self.calculate_cv_statistics(cv_aggregates, statistics)
 
         report.to_csv(agg_file, index=True)
 
@@ -84,30 +86,14 @@ class Leaderboard:
             mpmmine_library_version=pd.NamedAgg(column="mpmmine_library_version", aggfunc=Leaderboard.keep_unique_str),
         )
 
-        precision_values = statistics.groupby(
-            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
-             "train_non_solutions", "fold"]
-        ).apply(Leaderboard.compute_precision, include_groups=False)
-        recall_values = statistics.groupby(
-            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
-             "train_non_solutions", "fold"]
-        ).apply(Leaderboard.compute_recall, include_groups=False)
-        f1_values = statistics.groupby(
-            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
-             "train_non_solutions", "fold"]
-        ).apply(Leaderboard.compute_f1, include_groups=False)
-
-        cv_aggregates["precision"] = precision_values
-        cv_aggregates["recall"] = recall_values
-        cv_aggregates["f1"] = f1_values
-
         return cv_aggregates
 
-    def calculate_cv_statistics(self, cv_aggregates: DataFrame) -> DataFrame:
+    def calculate_cv_statistics(self, cv_aggregates: DataFrame, raw_statistics: pd.DataFrame) -> DataFrame:
         """
         Calculates expected values and 0.95-confidence intervals of conformance measures based on values obtained for
         individual folds k-fold cross-validation.
         :param cv_aggregates:
+        :param raw_statistics: Raw per-example statistics for evaluation of metrics
         :return:
         """
         logging.info("Calculating k-fold cross-validation aggregations...")
@@ -123,12 +109,6 @@ class Leaderboard:
             # fitness
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
-            precision_mean=pd.NamedAgg(column="precision", aggfunc="mean"),
-            precision_095ci=pd.NamedAgg(column="precision", aggfunc=ci),
-            recall_mean=pd.NamedAgg(column="recall", aggfunc="mean"),
-            recall_095ci=pd.NamedAgg(column="recall", aggfunc=ci),
-            f1_mean=pd.NamedAgg(column="f1", aggfunc="mean"),
-            f1_095ci=pd.NamedAgg(column="f1", aggfunc=ci),
             # test count
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
@@ -164,28 +144,74 @@ class Leaderboard:
             mpmmine_dataset_version=pd.NamedAgg(column="mpmmine_dataset_version", aggfunc=Leaderboard.keep_unique_str),
             mpmmine_library_version=pd.NamedAgg(column="mpmmine_library_version", aggfunc=Leaderboard.keep_unique_str),
         )
+
+        metrics_df = raw_statistics.groupby(
+            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
+             "train_non_solutions"]
+        ).apply(self.compute_bootstrap_metrics, include_groups=False)
+
+        report = report.join(metrics_df)
+
         return report
 
-    @staticmethod
-    def compute_precision(group: pd.DataFrame) -> float:
-        valid = group.dropna(subset=['actual_class', 'predicted_class'])
-        if valid.empty:
-            return float("nan")
-        return float(precision_score(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
+    def compute_bootstrap_metrics(self, rows: pd.DataFrame) -> pd.Series:
+        """
+        Calculates micro-average Precision, Recall, F1 score and their 95% confidence intervals with bootstrapping.
+        Utilizes a fixed random seed to ensure reproducibility.
+        """
+        rng = np.random.default_rng(self.seed)
+        # valid = rows.dropna(subset=["true_positive", "false_positive", "false_negative", "true_negative"]).copy()
+        valid = rows.dropna(subset=["true_positive", "false_positive", "false_negative"]).copy()
 
-    @staticmethod
-    def compute_recall(group: pd.DataFrame) -> float:
-        valid = group.dropna(subset=['actual_class', 'predicted_class'])
         if valid.empty:
-            return float("nan")
-        return float(recall_score(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
+            return pd.Series(
+                [float('nan')] * 9,
+                index=[
+                    "precision", "precision_095ci_low", "precision_095ci_high",
+                    "recall", "recall_095ci_low", "recall_095ci_high",
+                    "f1", "f1_095ci_low", "f1_095ci_high"
+                ],
+            )
 
-    @staticmethod
-    def compute_f1(group: pd.DataFrame) -> float:
-        valid = group.dropna(subset=['actual_class', 'predicted_class'])
-        if valid.empty:
-            return float("nan")
-        return float(f1_score(valid['actual_class'].astype(bool), valid['predicted_class'].astype(bool)))
+        def comp_metrics(tp, fp, fn):
+            precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+            recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+            f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+            return precision, recall, f1
+
+        precision, recall, f1 = comp_metrics(valid["true_positive"].sum(), valid["false_positive"].sum(), valid["false_negative"].sum())
+
+        precisions, recalls, f1_scores = [], [], []
+
+        for _ in range(1000):
+            sample = valid.sample(n=100, replace=True, random_state=rng)
+            sample_precision, sample_recall, sample_f1 = comp_metrics(sample["true_positive"].sum(), sample["false_positive"].sum(), sample["false_negative"].sum())
+            precisions.append(sample_precision)
+            recalls.append(sample_recall)
+            f1_scores.append(sample_f1)
+
+        precisions.sort()
+        recalls.sort()
+        f1_scores.sort()
+
+        precision_095ci_low, precision_095ci_high = precisions[24], precisions[974]
+        recall_095ci_low, recall_095ci_high = recalls[24], recalls[974]
+        f1_095ci_low, f1_095ci_high = f1_scores[24], f1_scores[974]
+
+        assert precision_095ci_high >= precision >= precision_095ci_low
+        assert recall_095ci_high >= recall >= recall_095ci_low
+        assert f1_095ci_high >= f1 >= f1_095ci_low
+
+        return pd.Series(
+            [precision, precision_095ci_low, precision_095ci_high,
+            recall, recall_095ci_low, recall_095ci_high,
+            f1, f1_095ci_low, f1_095ci_high],
+            index=[
+                "precision", "precision_095ci_low", "precision_095ci_high",
+                "recall", "recall_095ci_low", "recall_095ci_high",
+                "f1", "f1_095ci_low", "f1_095ci_high"
+            ]
+        )
 
     @staticmethod
     def keep_unique_str(x):
