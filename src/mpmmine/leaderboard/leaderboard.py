@@ -154,66 +154,7 @@ class Leaderboard:
 
         report = report.join(metrics_df)
 
-
-        mcc_df = raw_statistics.groupby(
-            ["algorithm", "problem", "problem_model", "problem_instance", "train_count", "train_solutions",
-             "train_non_solutions"]
-        ).apply(self.compute_bootstrap_mcc, include_groups = False)
-
-        report = report.join(mcc_df)
-
         return report
-
-    def compute_bootstrap_mcc(self, rows: pd.DataFrame) -> pd.Series:
-        """
-        Calculates micro-average Matthews Correlation Coefficient (MCC) and its 95% confidence intervals with bootstrapping.
-        Utilizes a fixed random seed to ensure reproducibility.
-        """
-        rng = np.random.default_rng(self.seed)
-
-        valid = rows.dropna(subset=["true_positive", "false_positive", "false_negative", "true_negative"]).copy()
-        if valid.empty:
-            return pd.Series(
-                [float('nan'), float('nan'), float('nan')],
-                index=["mcc", "mcc_095ci_low", "mcc_095ci_high"]
-            )
-
-        def comp_mcc(tp, fp, fn, tn):
-            num = (tp * tn) - (fp * fn)
-            den = sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
-            if den == 0:
-                return 0.0
-            return num / den
-
-        mcc = comp_mcc(
-            valid["true_positive"].sum(),
-            valid["false_positive"].sum(),
-            valid["false_negative"].sum(),
-            valid["true_negative"].sum()
-        )
-
-        mccs = []
-        for _ in range(1000):
-            sample = valid.sample(n=100, replace=True, random_state=rng)
-            mccs.append(
-                comp_mcc(
-                    sample["true_positive"].sum(),
-                    sample["false_positive"].sum(),
-                    sample["false_negative"].sum(),
-                    sample["true_negative"].sum()
-                )
-            )
-
-        mccs.sort()
-        mcc_095ci_low = mccs[24]
-        mcc_095ci_high = mccs[974]
-
-        assert mcc_095ci_high >= mcc >= mcc_095ci_low
-
-        return pd.Series(
-            [mcc, mcc_095ci_low, mcc_095ci_high],
-            index=["mcc", "mcc_095ci_low", "mcc_095ci_high"]
-        )
 
     def compute_bootstrap_metrics(self, rows: pd.DataFrame) -> pd.Series:
         """
@@ -226,11 +167,12 @@ class Leaderboard:
             "precision", "precision_095ci_low", "precision_095ci_high",
             "recall", "recall_095ci_low", "recall_095ci_high",
             "f1", "f1_095ci_low", "f1_095ci_high",
+            "mcc", "mcc_095ci_low", "mcc_095ci_high",
         ]
 
         # Extract and filter the relevant columns only once.
         counts = (
-            rows[["true_positive", "false_positive", "false_negative"]]
+            rows[["true_positive", "false_positive", "true_negative", "false_negative"]]
             .dropna()
             .to_numpy(dtype=np.float64, copy=False)
         )
@@ -239,7 +181,7 @@ class Leaderboard:
             return pd.Series(np.nan, index=metric_names)
 
         # Calculate metrics from the aggregated counts.
-        tp, fp, fn = counts.sum(axis=0)
+        tp, fp, tn, fn = counts.sum(axis=0)
 
         precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
         recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
@@ -248,6 +190,9 @@ class Leaderboard:
             if (precision + recall) > 0
             else 0.0
         )
+        mcc_num = (tp * tn) - (fp * fn)
+        mcc_den = sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
+        mcc = mcc_num / mcc_den if mcc_den > 0 else 0.0
 
         # Generate all bootstrap samples in a single NumPy operation.
         rng = np.random.default_rng(self.seed)
@@ -264,7 +209,8 @@ class Leaderboard:
         bootstrap_counts = counts[indices].sum(axis=1)
         tp_b = bootstrap_counts[:, 0]
         fp_b = bootstrap_counts[:, 1]
-        fn_b = bootstrap_counts[:, 2]
+        tn_b = bootstrap_counts[:, 2]
+        fn_b = bootstrap_counts[:, 3]
 
         # Compute all bootstrap metrics using vectorized arithmetic.
         precision_den = tp_b + fp_b
@@ -291,6 +237,14 @@ class Leaderboard:
             where=f1_den > 0,
         )
 
+        mcc_dens = np.sqrt((tp_b + fp_b) * (tp_b + fn_b) * (tn_b + fp_b) * (tn_b + fn_b))
+        mccs = np.divide(
+            (tp_b * tn_b) - (fp_b * fn_b),
+            mcc_dens,
+            out=np.zeros(n_bootstrap),
+            where=mcc_dens > 0,
+        )
+
         # The confidence-interval order statistics:
         lower_idx = 24
         upper_idx = 974
@@ -302,16 +256,19 @@ class Leaderboard:
         precision_low, precision_high = confidence_interval(precisions)
         recall_low, recall_high = confidence_interval(recalls)
         f1_low, f1_high = confidence_interval(f1_scores)
+        mcc_low, mcc_high = confidence_interval(mccs)
 
         assert precision_high >= precision >= precision_low
         assert recall_high >= recall >= recall_low
         assert f1_high >= f1 >= f1_low
+        assert mcc_high >= mcc >= mcc_low
 
         return pd.Series(
             [
                 precision, precision_low, precision_high,
                 recall, recall_low, recall_high,
                 f1, f1_low, f1_high,
+                mcc, mcc_low, mcc_high,
             ],
             index=metric_names,
         )
