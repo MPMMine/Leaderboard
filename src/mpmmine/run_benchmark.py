@@ -171,7 +171,7 @@ def get_algorithms() -> list[str]:
     for algorithm in all_algorithms.iterdir():
         if algorithm.is_dir() and not algorithm.name.startswith('.') and (algorithm / "manifest.json").exists():
             if algorithm.name not in \
-                    {"ARNOLD", "AutoSynthMILP", "ESOCCS", "GOCCS"}:  # FIXME: temporary condition, for tests
+                    {"ARNOLD", "AutoSynthMILP", "ESOCCS", "GOCCS", "GECS"}:  # FIXME: temporary condition, for tests
                 continue
             out.append(algorithm.name)
     return out
@@ -199,7 +199,7 @@ def get_algorithm_manifest(algorithm: Path) -> AlgorithmManifest:
 
 def is_complete(cfg: Configuration) -> bool:
     return (cfg.get_results_root().exists() and
-            all(cfg.get_resulting_model_path(fold).exists() for fold in range(1, cfg.cv_folds)) and
+            all(cfg.get_resulting_model_path(fold).exists() for fold in range(1, cfg.cv_folds + 1)) and
             cfg.get_statistics_path().exists())
 
 
