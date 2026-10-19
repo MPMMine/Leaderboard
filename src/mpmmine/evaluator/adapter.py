@@ -6,6 +6,8 @@ import socket
 import subprocess
 from dataclasses import dataclass
 from enum import Enum
+from pathlib import Path
+from time import sleep
 
 import docker
 import pandas as pd
@@ -72,6 +74,18 @@ class AbstractAdapter:
         path = self._find_gurobi_license()
         path.chmod(0o777)  # workaround uid/gid mismatch between host and container to allow writing license file
         return path
+
+    def wait_for_gurobi_license(self, license_dir: Path, timeout_seconds: int = 60) -> None:
+        """Wait for the container to activate a key and write a nonempty gurobi.lic file."""
+        license_file = license_dir / "gurobi.lic"
+        for _ in range(timeout_seconds):
+            if license_file.is_file() and license_file.stat().st_size > 0:
+                return
+            self.container.reload()
+            if self.container.status in ("exited", "dead"):
+                raise AdapterException("Gurobi key activation failed inside the container.")
+            sleep(1)
+        raise AdapterException("Timeout waiting for Gurobi license to install.")
 
     def _find_gurobi_license(self):
         """
@@ -214,6 +228,8 @@ class MznVar:
         elif self.domain == Domain.enum:
             enum_decl = self._get_enum_decl(self.enum, symbols)
             out += enum_decl.name
+        elif not self.var and self.domain in (Domain.int, Domain.float): #parameter
+            out += self.domain.value
         else:
             out += f"{self.min}..{self.max}"
         out += f": {self.name};"

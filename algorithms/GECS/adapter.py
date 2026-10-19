@@ -1,16 +1,178 @@
 import logging
 import os
 import re
+import shutil
+import tempfile
 import uuid
+from dataclasses import replace
 from pathlib import Path
 
 import docker
 import pandas as pd
+from lark import Lark, Transformer, UnexpectedInput
+from lark.exceptions import VisitError
 
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, Collection, Domain, MznVar
 from mpmmine.evaluator.configuration import Configuration
 
 #according to requirements parts of the code created with the use of AI will be pointed out
+
+_ZIMPL_EXPRESSION_GRAMMAR = r"""
+start: expr
+?expr: forall_expr
+     | vif_expr
+     | or_expr
+forall_expr: "forall" binder (":" | "do") expr
+vif_expr: "vif" expr "then" expr "end"
+binder: "<" names ">" "in" set_names ["with" expr]
+names: NAME ("," NAME)*
+set_names: NAME ("*" NAME)*
+?or_expr: or_expr "or" and_expr -> or_op
+        | and_expr
+?and_expr: and_expr "and" xor_expr -> and_op
+         | xor_expr
+?xor_expr: xor_expr "xor" compare_expr -> xor_op
+         | compare_expr
+?compare_expr: "<" set_expr ">" "in" set_expr -> angle_in
+             | set_expr COMP set_expr -> compare
+             | set_expr "in" set_expr -> in_op
+             | set_expr
+?set_expr: set_expr "inter" additive -> inter_op
+         | set_expr "\\" additive -> diff_op
+         | additive
+?additive: additive "+" product -> add
+         | additive "-" product -> sub
+         | product
+?product: product "*" unary -> mul
+        | product "/" unary -> div
+        | unary
+?unary: "+" unary -> pos
+      | "-" unary -> neg
+      | "not" unary -> not_op
+      | sum_expr
+      | atom
+sum_expr: "sum" binder ":" product
+?atom: NAME "[" additive ("," additive)* "]" -> indexed
+     | NAME "(" [expr ("," expr)*] ")" -> call
+     | NAME -> name
+     | NUMBER -> number
+     | "(" expr ")" -> grouped
+     | "{" "}" -> empty_set
+     | "{" additive ".." additive "}" -> set_range
+     | "{" additive ("," additive)* "}" -> set_items
+COMP: "<=" | ">=" | "==" | "!=" | "=" | "<" | ">"
+NAME: /[A-Za-z_]\w*/
+NUMBER: /(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?/
+%import common.WS
+%ignore WS
+"""
+_ZIMPL_EXPRESSION_PARSER = Lark(_ZIMPL_EXPRESSION_GRAMMAR, parser="lalr")
+
+
+class _ZimplExpressionToMiniZinc(Transformer):
+    """
+    Turn the parsed GECS constraint into a MiniZinc expression.
+    """
+
+    def start(self, parts):
+        return parts[0]
+
+    def names(self, parts):
+        return [str(part) for part in parts]
+
+    def set_names(self, parts):
+        return [str(part) for part in parts]
+
+    def binder(self, parts):
+        variables, sets = parts[:2]
+        if len(variables) != len(sets):
+            raise AdapterException(f"A GECS binding needs one index set per variable: {variables}, {sets}")
+        result = ", ".join(f"{variable} in {index_set}" for variable, index_set in zip(variables, sets))
+        if len(parts) > 2 and parts[2] is not None:
+            result += f" where ({parts[2]})"
+        return result
+
+    def forall_expr(self, parts):
+        return f"forall({parts[0]})({parts[1]})"
+
+    def sum_expr(self, parts):
+        return f"sum({parts[0]})({parts[1]})"
+
+    def vif_expr(self, parts):
+        return f"(({parts[0]}) -> ({parts[1]}))"
+
+    def or_op(self, parts):
+        return f"({parts[0]} \\/ {parts[1]})"
+
+    def and_op(self, parts):
+        return f"({parts[0]} /\\ {parts[1]})"
+
+    def xor_op(self, parts):
+        return f"({parts[0]} xor {parts[1]})"
+
+    def compare(self, parts):
+        operator = "=" if str(parts[1]) == "==" else str(parts[1])
+        return f"({parts[0]} {operator} {parts[2]})"
+
+    def angle_in(self, parts):
+        return f"({parts[0]} in {parts[1]})"
+
+    def in_op(self, parts):
+        return f"({parts[0]} in {parts[1]})"
+
+    def inter_op(self, parts):
+        return f"({parts[0]} intersect {parts[1]})"
+
+    def diff_op(self, parts):
+        return f"({parts[0]} diff {parts[1]})"
+
+    def add(self, parts):
+        return f"({parts[0]} + {parts[1]})"
+
+    def sub(self, parts):
+        return f"({parts[0]} - {parts[1]})"
+
+    def mul(self, parts):
+        return f"({parts[0]} * {parts[1]})"
+
+    def div(self, parts):
+        return f"({parts[0]} / {parts[1]})"
+
+    def pos(self, parts):
+        return f"(+{parts[0]})"
+
+    def neg(self, parts):
+        return f"(-{parts[0]})"
+
+    def not_op(self, parts):
+        return f"(not {parts[0]})"
+
+    def indexed(self, parts):
+        return f"{parts[0]}[{', '.join(str(part) for part in parts[1:])}]"
+
+    def call(self, parts):
+        name = "abs" if str(parts[0]) == "vabs" else str(parts[0])
+        arguments = [part for part in parts[1:] if part is not None]
+        return f"{name}({', '.join(arguments)})"
+
+    def name(self, parts):
+        return str(parts[0])
+
+    def number(self, parts):
+        return str(parts[0])
+
+    def grouped(self, parts):
+        return f"({parts[0]})"
+
+    def empty_set(self, _parts):
+        return "{}"
+
+    def set_range(self, parts):
+        return f"({parts[0]}..{parts[1]})"
+
+    def set_items(self, parts):
+        return "{" + ", ".join(parts) + "}"
+
 
 class Adapter(AbstractAdapter):
     """
@@ -27,87 +189,87 @@ class Adapter(AbstractAdapter):
 
     container: docker.models.containers.Container
 
+    # Regex declarations
+    parameter_declaration_pattern = re.compile(r"([A-Za-z_]\w*)(\[(.*?)\])?\s*:=\s*(.+)", re.DOTALL)
+    variable_number_pattern = r"-?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
+    variable_declaration_pattern = re.compile(rf"([A-Za-z_]\w*)(?:\[(.*?)\])?\s+(integer|real|binary)(?:\s*>=\s*{variable_number_pattern})?(?:\s*<=\s*{variable_number_pattern})?", re.DOTALL)
+    # These patterns are used in ZIMPL->MiniZinc translation
+    statement_pattern = re.compile(r"(?ms)^[ \t]*(set|param|var|subto)[ \t]+(.*?);")
+    set_declaration_pattern = re.compile(r"([A-Za-z_]\w*)\s*:=\s*(.+)", re.DOTALL)
+    set_range_pattern = re.compile(r"\{\s*(-?\d+)\s*\.\.\s*(-?\d+)\s*\}")
+    set_values_pattern = re.compile(r"\{\s*(.*?)\s*\}", re.DOTALL)
+    dimension_name_pattern = re.compile(r"[A-Za-z_]\w*")
+    constraint_declaration_pattern = re.compile(r"([A-Za-z_]\w*)\s*:\s*(.+)", re.DOTALL)
+
     def __init__(self, configuration: Configuration):
         super().__init__(configuration) #Abstract adapter creates docker client, image etc.
         license_dir = self.find_gurobi_license()
-        if not (license_dir / "gurobi.lic").is_file():
-            raise AdapterException(f"GECS requires a Gurobi license file at {license_dir / 'gurobi.lic'}.")
+        license_file = license_dir / "gurobi.lic"
+        key_file = license_dir / "key"
+        has_license = license_file.is_file() and license_file.stat().st_size > 0
+        has_key = key_file.is_file() and key_file.stat().st_size > 0
+        if not has_license and not has_key:
+            raise AdapterException(f"GECS requires a Gurobi license file at {license_file} or a key at {key_file}.")
 
         logging.info(f"Starting {self.container_tag} docker container...")
 
-        # /data folder contains all files created by the adapter to be used during computing such as csv files
-        # with train data, /data/results folder contains GECS best results
-        self.local_data_dir = configuration.get_algorithm_root() / "data"
-        self.local_data_dir.mkdir(parents=True, exist_ok=True)
+        self.local_data_dir = Path(tempfile.mkdtemp(prefix="mpmmine_data_", suffix="_GECS")) # Shared files are kept on the local temporary disk
+        self._owns_local_data_dir = True
+        self.local_data_dir.chmod(0o777)
         self.local_results_dir = self.local_data_dir / "results"
         self.local_results_dir.mkdir(parents=True, exist_ok=True)
-        self.container = self.docker_client.containers.run(         #starting the container
+        self.container = self.docker_client.containers.run(
             image=self.image_tag,
             name=self.container_tag,
             detach=True,
-            #volumes maps local path to the path in the container, making so that files can be read both ways
-            #f.e. container can access gurobi license from local path, or we can view /app/results folder from the container
             volumes={
-                str(license_dir): {'bind': '/app/gurobi', 'mode': 'ro'},
+                str(license_dir): {'bind': '/app/gurobi', 'mode': 'ro' if has_license else 'rw'},
                 str(self.local_data_dir.resolve()): {'bind': '/app/datasets/ZIMPL/mpmmine', 'mode': 'rw'},
                 str(self.local_results_dir.resolve()): {'bind': '/app/results', 'mode': 'rw'},
             },
             environment={
                 "GRB_LICENSE_FILE": "/app/gurobi/gurobi.lic"
-            }
+            },
+            network_mode="bridge" if has_license else "host",
         )
+
+        # in dockerfile run.sh is called, which in the case of key being present instead of license activates the key and
+        # creates the license file, code below serves as mean to ensure the license is present before running GECS
+        if not has_license:
+            self.wait_for_gurobi_license(license_dir)
 
     def prepare_data_files(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
         """
-        Prepare data files class prepares training files for 1 fold instances, so that GECS can run as intended, providing
-        CSV files for it to read the data, as well as standarizing the data appropriately and creating a ZIMPL format template
-        for it to interpret.
+        Prepare data files class prepares training data for 1 fold , providing CSV files, standarizing the data appropriately and creating a ZIMPL format template
 
         In short:
-        1.  It creates three .csv files representing training, validation and testing sets, where all 3 files consist of the
-        same data - GECS requires all 3 of those files.
-
-            CSV files are required, since GECS cant read the data that is not physically stored somewhere, thus we iterate through
-            the examples and store the data in a form of csv files.
-
-            3 copies of the same file are required, since GECS implementation internally requires separate file paths for training,
-            testing and validation datasets - it creates an evaluator for each of those 3 files and lack of one of those creates errors.
-            We fill all of them with the same data since we use said dataset only for GECS training, actual examples meant for testing
-            are still hidden from it eliminating potential data leak during training.
+        1.  Creates three .csv files for training, validation and testing datasets, where all 3 consist of the same data.
+            CSV files are required, since GECS cant read the data that is not physically stored somewhere.
+            Copies are made, since GECS implementation internally requires separate file for each dataset, as well as calculating fitness for each.
+            The data is the same since those datasets are used only for GECS training, actual test examples are hidden to eliminate dataleaks.
 
         2. In order to create said csv files it is required to modify the data according to GECS requirements.
-            GECS operates only on numerical values, thus requiring us to 'flatten' multidimensional variables such as lists or matrixes to
-            a simpler version such as m[[4,5], [5,6]] -> m#1#1 = 4, m#1#2 = 5, etc. - where each subsequent index represents deeper nesting level.
-            Indices are represented after a hash not in a list form such as [1,1], since later on ZIMPL compiler names its variables that way,
-            and naming them differently caused some matching problems resulting in errors
+            GECS operates only on numerical values, requiring us to 'flatten' multidimensional variables to simpler version such as
+            m[[4,5], [5,6]] -> m#1#1 = 4, m#1#2 = 5, etc. - where each subsequent index represents deeper nesting level. Indices are represented after a hash, due to ZIMPL syntax.
 
         3. Temporarily, for a duration of using an algorithm, replaces names of all symbols.
-            In rare cases their names such as 'length' would cause issues, since ZIMPL has its own function or said name may be restricted
-            causing errors. The original names are stored for easier access later on.
+            In rare cases names such as 'length' would cause issues, since ZIMPL has its own function or said name may be restricted.
 
-        4. It creates a ready to go ZIMPL template for GECS algorithm to use.
-            a) For each decision variable there is additional 'anchor' constraint added during the creation. If a variable is
-            not used in a constraint, ZIMPL has tendency to skip them in an output, resulting in different number of variables
-            between input and output, causing errors.
+        4. Creates a ready to go ZIMPL template for GECS
+            a) For each decision variable there is an additional 'anchor' constraint added during the creation. If a variable is
+            not used in any constraint at the end, ZIMPL may skip it output, causing errors. This ensures all variables are used at least once.
 
-            b) In a case of a multidimensional symbol such as a nested array all dimensions need to be taken into an acocunt and
-            added to the ZIMPL file. For a regular two-dimensional array, symbol.indices has two entries:
-                - first one describes positions in the outer list
-                - the second one describes positions in the inner lists.
-            If there are more than 2 dimensions additional positions are added.
-            For an array of sets, the last entry instead describes possible members of those sets. For example:
-            [{0,2},{1}] would be represented in symbol.indices as: [{1,2}, {0,1,2}] where the first element describes positions of inner sets,
-            and the second one describes possible members.
+            b) For multidimensional data, all dimensions need to be taken into an account and added to the ZIMPL template.
+            For a regular two-dimensional array, symbol.indices has two entries - 1. positions in the outer list; 2. positions in the inner lists.
+            If there are more dimensions, additional positions are added. Additionally, for an array of sets, the last entry instead describes possible members of those sets.
+            For example: [{0,2},{1}] would be represented in symbol.indices as: [{1,2}, {0,1,2}]
 
-            The loop that renames the symbols temporarily saves them as Dim_name_1 and Dim_name_2
-
-            c) In a case of sets that are decision variables, 3 lines are written in a ZIMPL file:
-                I. definition of a set consisting of its domain defined in symbol, as well as appropriate prefix before the name
-                    stating it is one dimensional Dim_MPMMine_setname_1
+            c) In case of sets that are decision variables, 3 lines are written in a ZIMPL file:
+                I. definition of a set consisting of its domain defined in symbol, as well as appropriate prefix before the name stating it is one dimensional Dim_MPMMine_setname_1
                 II. a variable defining a binary array represeinting the membership to set of every value in its domain
                 III. additional anchor constraint for each item of said array, stating that each is greater or equal to 0
 
-                For an example such as setname{2,3,7} with domain stated as 1..8 (domain is established from training data for now) we get
+                For an example such as setname{2,3,7} with domain 1..8 we get
                 set Dim_MPMMine_setname_1 := {1.. 8};
                 var GECS_set_MPMMine_setname[Dim_MPMMine_setname_1] binary;
                 subto anchor_GECS_set_MPMMine_setname: forall < i1 > in Dim_MPMMine_setname_1 do GECS_set_MPMMine_setname[i1] >= 0;
@@ -138,13 +300,6 @@ class Adapter(AbstractAdapter):
         if not train_data["actual_class"].astype(bool).all():
             raise AdapterException("GECS accepts only feasible training examples - algorithm should be trained on correct examples to correctly create constraints")
 
-        #symbol consists of name and MznVar value, which has multiple fields, most notably:
-        #var = True -> decision variable, var = False -> parameter
-        # collection = [] -> scalar, [Collection.array] -> array, [Collection.set] -> set
-        # indices -> list of possible nested indices and element values, its length describes how deep the data is nested
-        # sym.min / sym.max -> variable min and max values
-        # domain -> Domain.int / float / bool / enum - domain of values
-
 # ==== According to the requirements, the naming problem and solution was detected and partly generated by AI while being supervised and corrected
         zimpl_names = {}
         self.zimpl_to_original_names = {}
@@ -152,8 +307,6 @@ class Adapter(AbstractAdapter):
             zimpl_name = f"MPMMine_{original_name}"
             zimpl_names[original_name] = zimpl_name
             self.zimpl_to_original_names[zimpl_name] = original_name
-            # Only ordinary decision variables get an anchor under their own name.
-            # Set variables use the GECS_set_ name and get their mapping below.
             if symbol.var and symbol.collection != [Collection.set]:
                 self.zimpl_to_original_names[f"anchor_{zimpl_name}"] = f"anchor_{original_name}"
 
@@ -162,17 +315,15 @@ class Adapter(AbstractAdapter):
                 original_dimension = f"Dim_{original_name}_{number}"
                 self.zimpl_to_original_names[zimpl_dimension] = original_dimension
 
-        instance_parameter_values = train_data["instance_obj"] #parameters, they are the same for all examples across one instance of the problem
+        instance_parameter_values = train_data["instance_obj"] #parameters  are the same for all examples across one instance of the problem
         instance_first_row = instance_parameter_values.iloc[0] #thus we only save the first one
         for parameter_value in instance_parameter_values:
             if parameter_value != instance_first_row:
                 raise AdapterException("GECS cannot train on examples from multiple parameter instances in one run.")
 
 
-        #GECS algorithm operates only on numerical values, it can't operate on sets, such as set={2,3,7}
-        #To bypass that, each set is unpacked into a range of its domain and assign binary values to each
-        #column, representing presence or absence of a column in a set, for example for set={2,3,7} of domain 1..8
-        # we would get [0,1,1,0,0,0,1,0]
+        #GECS operates on numerical values, it can't operate on sets. Each set is unpacked into a range of its domain and assigned binary values to each column,
+        # representing presence or absence of a value in a set, for example for set={2,3,7} of domain 1..8 the result would be [0,1,1,0,0,0,1,0]
         set_member_ranges = {}
         for name, symbol in symbols.items():
             if symbol.var and symbol.collection == [Collection.set]:
@@ -180,8 +331,6 @@ class Adapter(AbstractAdapter):
                     raise AdapterException(f"GECS supports only sets of integers as decision variables: {name}.")
                 if f"GECS_set_{name}" in symbols:
                     raise AdapterException(f"GECS set encoding collides with an existing symbol: {name}.")
-                #currently the domain is constructed based on training data as a range between smallest and highest values
-                #for example if in training data we only got values {2,3,7} we would get a range from 2 to 7
                 set_member_ranges[name] = range(min(symbol.indices[0]), max(symbol.indices[0]) + 1)
                 zimpl_set_name = f"GECS_set_{zimpl_names[name]}" #GECS_set_MPMMine_{set name}
                 original_set_name = f"GECS_set_{name}"           #GECS_set_{setname}
@@ -189,7 +338,6 @@ class Adapter(AbstractAdapter):
                 self.zimpl_to_original_names[f"anchor_{zimpl_set_name}"] = f"anchor_{original_set_name}"
 
 
-        #Here every example solution of a problem is unpacked, each example in a single csv row
         csv_rows = []
         for example in train_data["example_obj"]:
             csv_row: dict[str, int | float] = {}
@@ -200,7 +348,7 @@ class Adapter(AbstractAdapter):
                 zimpl_name = zimpl_names[variable_name]
                 # A set decision variable is represented by one CSV column for each POSSIBLE member.
                 # For hosts={2,3} and domain 1..4, the columns contain 0, 1, 1, 0. The ZIMPL declarations are created later.
-                # f.e. for hosts set {2,3,7} we have a column name such as GECS_set_MPMMine_hosts#2 = 1
+                # f.e. for hosts set {2,3} we have a column name such as GECS_set_MPMMine_hosts#2 = 1
                 if variable_name in set_member_ranges:
                     if not isinstance(value, (set, range)):
                         raise AdapterException(f"Unsupported set decision value for {variable_name}: {value!r}")
@@ -230,15 +378,13 @@ class Adapter(AbstractAdapter):
             training_table.to_csv(csv_path, index=False)
 
 
-# ==== According to the requirements, the ZIMPL template creation process along with some of the helper functions supporting it
-    #  was partly generated by AI while being supervised and corrected
+# ==== According to the requirements, the ZIMPL template creation process along with some of the helper functions supporting it was partly generated by AI while being supervised and corrected
         zpl_path = self.local_data_dir / f"{problem_name}.zpl"
         zpl_lines = []
 
         for name, symbol in symbols.items():
             zimpl_name = zimpl_names[name]
             if symbol.collection == [Collection.set]:
-                #devision variable sets
                 if symbol.var:
                     members = set_member_ranges[name]
                     zimpl_set_var_dimension = f"Dim_{zimpl_name}_1"
@@ -247,24 +393,17 @@ class Adapter(AbstractAdapter):
                     zpl_lines.append(f"var {zimpl_set_var_name}[{zimpl_set_var_dimension}] binary;")
                     zpl_lines.append(f"subto anchor_{zimpl_set_var_name}: forall <i1> in {zimpl_set_var_dimension} do {zimpl_set_var_name}[i1] >= 0;")
                     continue
-                #parameter sets, we omit dimensions (prefix Dim_) - a set parameter has a known value for training instance,
-                # so we can write it directly, for example: set MPMMine_allowed := {2,3,7}. A set decision variable can
-                # have different values in different examples. Writing `set hosts := {2,3,7}` would fix it to one value.
-                # For GECS we represent it with one binary variable per possible member, and Dim_hosts_1 contains the
-                # indices of these binary variables.
                 set_parameter_values = instance_first_row.get(name)
                 if set_parameter_values is None:
                     raise AdapterException(f"Missing value for set parameter {name}.")
                 zpl_lines.append(f"set {zimpl_name} := {self._zimpl_set(set_parameter_values)};")
                 continue
 
-            #non-set variables
             if symbol.var:
                 dimensional_depth = self._declare_dimensions(zpl_lines, zimpl_name, symbol)
                 zpl_lines.append(f"var {zimpl_name}{dimensional_depth} {self._zimpl_variable_domain(symbol)};")
                 self._append_variable_anchor(zpl_lines, zimpl_name, symbol)
             else:
-            #non-set parameters
                 parameter_values = instance_first_row.get(name)
                 if parameter_values is None:
                     raise AdapterException(f"Missing value for parameter {name}.")
@@ -288,10 +427,11 @@ class Adapter(AbstractAdapter):
         """
         Support function that flattens multidimensional arrays by recursively checking type of each element of a list.
 
-        If it is a scalar value it stops and returns nested indices of a value in original list.
-        For example for a list such as [[4,5],[6,7]], the function returns a list of tuples such as
-        [([1,1],4), ([1,2],5), ([2,1],6), ([2,2],7)], where first element of a tuple is nested index value of an item in
-        the original list, while the second one is its value
+        If it finds a scalar value, it stops and returns nested indices of said value in original list.
+
+        The output is a list of tuples in a format [([nested index value in list], value), ...]
+
+        For example for [[4,5],[6,7]], the output would be [([1,1],4), ([1,2],5), ([2,1],6), ([2,2],7)]
         """
         if indices is None:
             indices = []
@@ -308,8 +448,7 @@ class Adapter(AbstractAdapter):
             raise AdapterException(f"Unsupported data type: {value!r}")
         return [(indices, value)]
 
-# ==== As mentioned, some of the helper functions below for the ZIMPL template creation process were created with the help of AI
-    # mostly part regarding detection of arrays-of-sets
+# ==== As mentioned, some of the helper functions below for the ZIMPL template creation process were created with the help of AI, mostly part regarding detection of arrays-of-sets
     @staticmethod
     def _zimpl_set(value) -> str:
         """
@@ -346,12 +485,13 @@ class Adapter(AbstractAdapter):
         Since sets have to be represented as scalar values in GECS we need to describe each set in an array
         as binary values across the domain of possible set members.
 
-        For an example array [{0,2}, {1}] with domain of 0..2 we get an output like so:
-        [([1,0],1), ([1,1],0), ([1,2],1), ([2,0],0), ([2,1],1), ([2,2],0)]
-        Where for each tuple ([IDX1, IDX2], present):
+        The output is a list of tuples in a format [([IDX1, IDX2], presence), ...], where:
         - IDX1 represents which set are we describing
         - IDX2 represents which value from the domain are we checking for presence in set IDX1
-        - present represents whether the value is in set IDX1 or not
+        - presence represents whether the value is in set IDX1 or not
+
+        For an example array [{0,2}, {1}] with domain of 0..2 we get an output like so:
+        [([1,0],1), ([1,1],0), ([1,2],1), ([2,0],0), ([2,1],1), ([2,2],0)]
 
         Do not mistake with flatten_value used for non-array-of-sets arrays
         """
@@ -379,19 +519,17 @@ class Adapter(AbstractAdapter):
     def _append_set_array_parameter(zpl_lines: list[str], name: str, symbol: MznVar, set_array):
         """
         Support function adding arrays of sets into a ZIMPL file.
+        It uses symbol.indices to get the domain of values in given array and uses that to call _flatten_set_array function to flatten the array.
 
-        It uses symbol.indices to get the domain of values in given array and uses that to call _flatten_set_array
-        function to flatten the array.
-
-        Given the flattened array we translate each tuple to a ZIMPL format in a way like so:
-        ([1, 0], 1) - where first index states which set we refer to, second which value, and value outside whether the value is present in set
-        into
-        <1, 0> 1 - meaning the same as above, but in a notation expected by ZIMPL
-        in simpl when INITIATING a parameter we have to use <> brackets for indices
+        The output is a ready ZIMPL line in a format
+        param name[dimensions] := <IDX1, IDX2> presence, ...
+        Where:
+        - IDX1 represents which set are we describing
+        - IDX2 represents which value from the domain are we checking for presence in set IDX1
+        - presence represents whether the value is in set IDX1 or not
 
         En example output for an array of sets such as [{0,2}, {1}] looks like so:
         param GECS_set_MPMMine_exs[Dim_MPMMine_ex_1 * Dim_MPMMine_ex_2] := <1,0> 1, <1,1> 0, <1,2> 1, <2,0> 0, <2,1> 1, <2,2> 0;
-
         """
         if (len(symbol.collection) < 2 or symbol.collection[-1] != Collection.set
                 or any(kind != Collection.array for kind in symbol.collection[:-1])
@@ -399,9 +537,6 @@ class Adapter(AbstractAdapter):
             raise AdapterException(f"Invalid array-of-sets parameter: {name}.")
 
         dimensional_depth = Adapter._declare_dimensions(zpl_lines, name, symbol)
-        #symbol.indices for an array such as [{0,2},{1}] would look like [{1,2}, {0,1,2}], where each item represents
-        #possible child indices (here first and second set with no subsets) while the last one represents possible members
-        # of a single set which covers all possible values in this array
         member_domain = symbol.indices[-1]
         flattened_array = Adapter._flatten_set_array(set_array, member_domain)
 
@@ -422,11 +557,12 @@ class Adapter(AbstractAdapter):
         Support function used to declare dimensional depth of a ZIMPL array.
 
         a) returns dimensions (how nested the object is) in a string format like so:
-        "[Dim_name_1 * Dim_name_2]" for 2 dimensional array eg. [[1], [2]]
+            "[Dim_name_1 * Dim_name_2]" for 2 dimensional array eg. [[1,2], [2]]
 
-        for scalar values it returns an empty string since they have no depth
+            for scalar values it returns an empty string since they have no depth
 
-        b) adds a zimpl line declaring the domain of indices in array as a set such as set Dim_example_1 := {1..3}
+        b) adds a zimpl line declaring the domain of indices in array:
+         set Dim_example_1 := {1..3}
 
         For example for an array x=[6,7] this adds 'set Dim_x_1 := {1..2}; zimpl line, and returns '[Dim_x_1]' list.
         """
@@ -465,14 +601,10 @@ class Adapter(AbstractAdapter):
         """
         Support function that adds additional, redunant anchor constraint to each variable.
 
-        ZIMPL removed variables that were not used in final constraints, making so that interpreter had less
-        variables after than before causing some 'budget exceeded' errors.
-
         The anchor constraints redunantly repeat the lower value of a domain be it for scalar values or multidimensional values in
         which case the constraint is applied to each single indexed element of ZIMPL variable.
 
         The constraints acts only as a mean of keeping the variables in place, not adding additional new constraints
-        thus it only repeats the lower value of a domain
         """
         if not symbol.collection:
             zpl_lines.append(f"subto anchor_{name}: {name} >= {symbol.min};")
@@ -493,16 +625,14 @@ class Adapter(AbstractAdapter):
 
         This function returns value part of a ZIMPL entry describing a parameter
         a) For scalar values the function simlpy returns just the value of a parameter
-        b) For Arrays the function returns pairs <indices> value
+        b) For Arrays the function returns pairs '<indices> value'
             for example for an array [[4,5],[6,7]] the function returns  "<1,1> 4, <1,2> 5, <2,1> 6, <2,2> 7"
-            once again, the indices are declared in <> braces since ZIMPL requires the INICIATION of indices in such format
         """
         flattened_parameter = Adapter._flatten_value(parameter_values)
         if not flattened_parameter:
             raise AdapterException("Cannot write an empty GECS parameter")
         if not flattened_parameter[0][0]:
-            #flatten_value returns pairs (indices, value), so if indices are empty value is scalar and we just return it
-            #([], 7) just returns a 7
+            #flatten_value returns pairs (indices, value), so if indices are empty value is scalar and returned
             return str(flattened_parameter[0][1])
 
         zimpl_entries = []
@@ -516,30 +646,32 @@ class Adapter(AbstractAdapter):
 
     def __del__(self):
         """
-        Destructor stops and removes the container when called.
+        Stop the container and remove the temporary files when called.
         """
         container = getattr(self, "container", None)
-        if container is None:
-            return
-        logging.info(f"Cleaning up {self.container_tag} docker container...")
         try:
-            container.stop()
-            container.remove()
-        except docker.errors.NotFound:
-            pass
+            if container is not None:
+                logging.info(f"Cleaning up {self.container_tag} docker container...")
+                try:
+                    container.stop()
+                    container.remove()
+                except docker.errors.NotFound:
+                    pass
+        finally:
+            data_dir = getattr(self, "local_data_dir", None)
+            if data_dir is not None and getattr(self, "_owns_local_data_dir", False):
+                shutil.rmtree(data_dir, ignore_errors=True)
 
     def run(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
         """
         The main run function
         - prepares the data for GECS algorithm - csv files, zimpl template
         - defines grammar
-        - starts the GECS computing process in already running container and stores/prints the results in console for logging
-        - GECS automatically stores the best program for each run in best.txt file
+        - runs GECS and reads its best from best.txt file
         - translates the best output from ZIMPL to MINIZINC
         """
         internal_problem_name = self.prepare_data_files(train_data, symbols, fold_id)
         run_id = f"{internal_problem_name.rsplit('/', maxsplit=1)[-1]}_results"
-        #grammar states the rules on how GECS can create constraints, described more in gecs_support
         grammar_name = f"ZIMPL-dedicated-{run_id}.bnf"
         grammar_result = self.container.exec_run(
             cmd=["python3", "-m", "fitness.gecs_support", "grammar",
@@ -552,7 +684,6 @@ class Adapter(AbstractAdapter):
         if grammar_result.exit_code != 0:
             raise AdapterException("GECS could not generate the ZIMPL grammar:\n" + grammar_result.output.decode("utf-8", errors="replace"))
 
-        #command to run GECS with appropriate parameters in the container
         cmd_list = [
             "timeout", str(self.configuration.run_timeout),
             "python3", "-O", "ponyge.py",
@@ -577,12 +708,12 @@ class Adapter(AbstractAdapter):
 
         raw_output = result.output.decode("utf-8", errors="replace")
         output_zpl = self._read_best_program(run_id)
-        logging.info(f"=== RAW GECS OUTPUT START ===\n{raw_output}\n=== RAW GECS OUTPUT END ===")
-        logging.info(f"=== BEST GECS ZIMPL START ===\n{output_zpl}\n=== BEST GECS ZIMPL END ===")
+        logging.debug("=== RAW GECS OUTPUT START ===\n%s\n=== RAW GECS OUTPUT END ===", raw_output)
+        logging.debug("=== BEST GECS ZIMPL START ===\n%s\n=== BEST GECS ZIMPL END ===", output_zpl)
 
-        return self._translate_zimpl_to_minizinc(output_zpl, raw_output)
+        return self._translate_zimpl_to_minizinc(output_zpl, raw_output, symbols)
 
-    def _translate_zimpl_to_minizinc(self, zpl: str, raw_output: str) -> str:
+    def _translate_zimpl_to_minizinc(self, zpl: str, raw_output: str, symbols: dict[str, MznVar]) -> str:
         """
         Main translation function from ZIMPL to MINIZINC format for chosen subset of GECS grammar based on DB examples.
         NOT A COMPLETE ZIMPL TO MINIZINC TRANSLATOR
@@ -593,13 +724,12 @@ class Adapter(AbstractAdapter):
         - for debugging purposes adds raw ZIMPL and GECS console outputs
         - for each supported statement type calls appropriate translation function (eg. for sets calls _translate_set)
         - adds line 'solve satisfy' assigning a task of finding a solution that meets the requirements found by GECS
-        - returns the original names from renamed for ZIMPL purposes symbols
+        - returns the original names for symbols renamed for ZIMPL purposes
         """
         without_comments = re.sub(r"(?m)#.*$", "", zpl)
-        statement_pattern = re.compile(r"(?ms)^[ \t]*(set|param|var|subto)[ \t]+(.*?);")
         statements = []
         end_of_previous = 0
-        for match in statement_pattern.finditer(without_comments):
+        for match in Adapter.statement_pattern.finditer(without_comments):
             unparsed = without_comments[end_of_previous:match.start()].strip()
             if unparsed:
                 raise AdapterException(f"Unsupported ZIMPL text: {unparsed}")
@@ -619,28 +749,24 @@ class Adapter(AbstractAdapter):
             raw_comment_lines.append(f"% GECS: {line}")
 
         minizinc_lines = []
-        # for a statement 'param m:= 7' the pair looks like so -> ('param', 'm := 7')
-        for statement_type, statement in statements:
+        name_mapping = self.zimpl_to_original_names
+        for statement_type, statement in statements: # for a statement 'param m:= 7' the pair is -> ('param', 'm := 7')
             statement = statement.strip()
             if statement_type == "set":
                 minizinc_lines.append(self._translate_set(statement))
             elif statement_type == "param":
-                minizinc_lines.append(self._translate_parameter(statement))
+                minizinc_lines.append(self._translate_parameter(statement, symbols, name_mapping))
             elif statement_type == "var":
-                minizinc_lines.append(self._translate_variable(statement))
+                minizinc_lines.append(self._translate_variable(statement, symbols, name_mapping))
             else:
                 minizinc_lines.append(self._translate_constraint(statement))
 
         minizinc_lines.append("solve satisfy;")
         minizinc_model = "\n".join(minizinc_lines) + "\n"
 
-        name_mapping = getattr(self, "zimpl_to_original_names", {})
-
-        # Read each name only once. A restored name must not be replaced again.
         def restore_name(match: re.Match) -> str:
             identifier = match.group(0)
             return name_mapping.get(identifier, identifier)
-        #regex up to '_' to not replace 'MPMMine_x_long' with potential 'x' losing the _long part
         translated_model = re.sub(r"\b[A-Za-z_]\w*\b", restore_name, minizinc_model)
         return "\n".join(raw_comment_lines) + "\n" + translated_model
 
@@ -661,8 +787,7 @@ class Adapter(AbstractAdapter):
             raise AdapterException(f"Environment variable {name} must be positive, got {value_int}.")
         return value_int
 
-# ==== According to the requirements, the ZIMPL-MINIZINC translation process was partly generated by AI while being supervised and corrected
-    # Part regarding constraint translation in particular
+# ==== According to the requirements, the ZIMPL-MINIZINC translation process was partly generated by AI while being supervised and corrected, part regarding constraint translation in particular
     @staticmethod
     def _translate_set(statement: str) -> str:
         """
@@ -672,7 +797,7 @@ class Adapter(AbstractAdapter):
         sets containing valid array indices. A regular set parameter has no Dim_ prefix, its value comes from the
         instance data when MiniZinc evaluates the returned model.
         """
-        match = re.fullmatch(r"([A-Za-z_]\w*)\s*:=\s*(.+)", statement, re.DOTALL)
+        match = Adapter.set_declaration_pattern.fullmatch(statement)
         if match is None:
             raise AdapterException(f"Unsupported ZIMPL set declaration: {statement}")
         name, value = match.groups()
@@ -683,30 +808,25 @@ class Adapter(AbstractAdapter):
     @staticmethod
     def _translate_set_value(value: str) -> str:
         """
-        Support function for _translate_set_function used to convert set values to minizinc notation
+        Support function for _translate_set function used to convert set values to minizinc notation
         - range form, like {1..4} -> '1..4'
         - value form, like {1, 3, 7} is left as is with corrected spacing
         """
         value = value.strip()
-        range_match = re.fullmatch(r"\{\s*(-?\d+)\s*\.\.\s*(-?\d+)\s*\}", value)
+        range_match = Adapter.set_range_pattern.fullmatch(value)
         if range_match:
             return f"{range_match.group(1)}..{range_match.group(2)}"
-        values_match = re.fullmatch(r"\{\s*(.*?)\s*\}", value, re.DOTALL)
+        values_match = Adapter.set_values_pattern.fullmatch(value)
         if values_match:
             return "{" + values_match.group(1) + "}"
         raise AdapterException(f"Unsupported ZIMPL set value: {value}")
 
     @staticmethod
-    def _translate_parameter(statement: str) -> str:
+    def _translate_parameter(statement: str, symbols: dict[str, MznVar], name_mapping: dict[str, str]) -> str:
         """
         Translation function for parameters
 
-        - For an example statement 'MPMMine_ex[Dim_ex_1] := <1> 4, <2> 7' match.groups returns:
-            name - "MPMMine_ex", _ = "[Dim_ex_1]" (skipped) ,dimensional_depth - "Dim_ex_1", value - "<1> 4, <2> 7"
-
-        - scalar values return domain and name such as: 'int: ex'
-
-        - Non-set multidimensional parameter returns for example 'array[Dim_ex_1, Dim_ex_2] of int: ex'
+        - A non-set array returns for example 'array[1..2, 1..3] of int: ex'
 
         - If parameter starts with GECS_set it represents the membership bits of an array of sets, for example
             ex=[{0,2},{1}], the original parameter is an array containing two sets, GECS sees its bits as [1,0,1,0,1,0]
@@ -719,7 +839,7 @@ class Adapter(AbstractAdapter):
             - second entry adds a support view for boolean values for the set members
 
             example output:
-            array[Dim_MPMMine_ex_1] of set of Dim_MPMMine_ex_2: ex;
+            array[1..2] of set of 0..2: ex;
             array[Dim_MPMMine_ex_1, Dim_MPMMine_ex_2] of int: GECS_set_MPMMine_ex = array2d(
                 Dim_MPMMine_ex_1, Dim_MPMMine_ex_2, [bool2int(gecs_i2 in MPMMine_ex[gecs_i1]) | gecs_i1 in
                 Dim_MPMMine_ex_1, gecs_i2 in Dim_MPMMine_ex_2]);
@@ -728,30 +848,29 @@ class Adapter(AbstractAdapter):
             nested iterator (here gecs_i2) is in current gecs_i1, if yes the value is 1, if no value is set to 0
             for ex=[{0,2},{1}] the result is a list [1,0,1,0,1,0], and array2d function transforms it into a 2x3 table
         """
-        match = re.fullmatch(r"([A-Za-z_]\w*)(\[(.*?)\])?\s*:=\s*(.+)", statement, re.DOTALL)
+        match = Adapter.parameter_declaration_pattern.fullmatch(statement)
         if match is None:
             raise AdapterException(f"Unsupported ZIMPL parameter declaration: {statement}")
 
-        name, _, dimensional_depth, value = match.groups()
-        contains_float = re.search(r"(?:\.\d|\d\.|\d[eE][+-]?\d)", value) #look for dots or exp. notation
-        domain = "float" if contains_float else "int"
+        name, _, dimensional_depth, _ = match.groups()
+        is_set_array = name.startswith("GECS_set_")
+        base_name = name.removeprefix("GECS_set_") if is_set_array else name
+        original_name = name_mapping.get(base_name, base_name)
+        symbol = symbols.get(original_name)
+        if symbol is None or symbol.var:
+            raise AdapterException(f"GECS declared an unknown parameter: {name}")
+        declaration = replace(symbol, name=base_name).to_str(symbols) #MznVar.to_str() declares the parameter type and dimensions, for example 'int: ex'
 
-        #scalar returns just domain and name, such as: "int: MPMMine_ex"
-        if dimensional_depth is None:
-            return f"{domain}: {name};"
-
-        #translate_indices function replaces cartesian product "Dim_1 * Dim_2" into separate values 'Dim_1, Dim_2'
-        translated_indices = Adapter._translate_indices(dimensional_depth)
-
-        if name.startswith("GECS_set_"):
+        if is_set_array:
+            if dimensional_depth is None:
+                raise AdapterException(f"An encoded set array needs dimensions: {statement}")
+            translated_indices = Adapter._translate_indices(dimensional_depth)
             dimensions = translated_indices.split(", ")
             if len(dimensions) < 2:
                 raise AdapterException(f"An encoded set array needs an array and member dimension: {statement}")
-            set_array_name = name.removeprefix("GECS_set_")
+            set_array_name = base_name
             #dimensions is a list of dims [Dim_1, Dim_2], where each subsequent Dim is next layer of nesting in a list
-            #member dimension refers to the most nested level, where outer dimension refers to the rest
-            outer_dimensions = dimensions[:-1]
-            member_dimension = dimensions[-1]
+            #the last dimension contains possible set members
 
             #for example above with 2 dimensions, the loop below returns
             #iterator_names = ["gecs_i1", "gecs_i2"]
@@ -772,20 +891,19 @@ class Adapter(AbstractAdapter):
             array_arguments = ", ".join(dimensions)
 
             return (
-                f"array[{', '.join(outer_dimensions)}] of set of {member_dimension}: {set_array_name};\n"
+                f"{declaration}\n"
                 f"array[{translated_indices}] of int: {name} = {array_function}({array_arguments}, [bool2int({member_iterator} in {set_array_name}[{outer_indices}]) | {generator}]);"
             )
-        #not a set multidimensional parameter
-        return f"array[{translated_indices}] of {domain}: {name};"
+        return declaration
 
     @staticmethod
-    def _translate_variable(statement: str) -> str:
+    def _translate_variable(statement: str, symbols: dict[str, MznVar], name_mapping: dict[str, str]) -> str:
         """
         Translation function for variables
 
         For an example input such as: MPMMine_ex[Dim_MPMMine_ex_1] integer >= 0 <= 10
         The following are extracted:
-        name - "MPMMine_ex"; dimensional_depth - 'Dim_MPMMine_ex_1'; zimpl_type - 'integer'; lower - '0'; upper - '10'
+        name - "MPMMine_ex"; dimensional_depth - 'Dim_MPMMine_ex_1'; zimpl_type - 'integer'
 
         a) If the name starts with GECS_set_, it represents one decision variable whose value is a set
         GECS sees one binary variable per possible member. If the possible members are 1..4 and ex={2,4},
@@ -793,50 +911,48 @@ class Adapter(AbstractAdapter):
         values, not values fixed in the MiniZinc model.
 
         Two MiniZinc lines are needed:
-        - the original set variable, whose value MiniZinc will choose;
-        - an array of 0/1 values that lets GECS constraints refer to the membership bits it learned from.
+        - the original set variable, whose value MiniZinc will choose
+        - an array of 0/1 values refering to the membership bits
 
-        For ex, the lines look like this:
-        var set of Dim_MPMMine_ex_1: MPMMine_ex;
-        array[Dim_MPMMine_ex_1] of var 0..1: GECS_set_MPMMine_ex =
-            [bool2int(i in MPMMine_ex) | i in Dim_MPMMine_ex_1];
+        MznVar.to_str() creates the first line from the training metadata. For possible members 1..4, the lines look like:
+        var set of 1..4: MPMMine_ex;
+        array[Dim_MPMMine_ex_1] of var 0..1: GECS_set_MPMMine_ex = [bool2int(i in MPMMine_ex) | i in Dim_MPMMine_ex_1];
 
         The part after | checks every possible member i. `bool2int(i in MPMMine_ex)` gives 1 if i belongs to
         the chosen set and 0 otherwise. This branch is for one set variable; an array of set parameters is handled
         by _translate_parameter instead.
 
-        b) If we're working with regular non-set variable we define its domain
+        b) For a regular non-set variable, MznVar.to_str() defines its domain from `symbols`.
         - For scalar values we return "domain: name", such as "var 0..10: MPMMine_ex"
         - For multi-dimensional values we add 'array[dimensions] of' to the statement above, such as
             "array[Dim_MPMMine_ex_1] of var 0..10: MPMMine_ex"
 
         """
-        number_pattern = r"-?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
-        match = re.fullmatch(rf"([A-Za-z_]\w*)(\[(.*?)\])?\s+(integer|real|binary)(?:\s*>=\s*({number_pattern}))?(?:\s*<=\s*({number_pattern}))?",statement,re.DOTALL,)
+        match = Adapter.variable_declaration_pattern.fullmatch(statement)
         if match is None:
             raise AdapterException(f"Unsupported ZIMPL variable declaration: {statement}")
-        name, _, dimensional_depth, zimpl_type, lower, upper = match.groups()
-        if name.startswith("GECS_set_"):
+        name, dimensional_depth, zimpl_type = match.groups()
+        is_set_variable = name.startswith("GECS_set_")
+        base_name = name.removeprefix("GECS_set_") if is_set_variable else name
+        original_name = name_mapping.get(base_name, base_name)
+        symbol = symbols.get(original_name)
+        if symbol is None or not symbol.var:
+            raise AdapterException(f"GECS declared an unknown decision variable: {name}")
+        # Keep the ZIMPL-safe name here; it is restored after all statements are translated.
+        declaration = replace(symbol, name=base_name).to_str(symbols)
+
+        if is_set_variable:
             if dimensional_depth is None or zimpl_type != "binary":
                 raise AdapterException(f"Invalid encoded set variable: {statement}")
             dimension = Adapter._translate_indices(dimensional_depth)
             if "," in dimension:
                 raise AdapterException(f"Only one-dimensional set variables are supported: {statement}")
-            set_name = name.removeprefix("GECS_set_")
+            set_name = base_name
             return (
-                f"var set of {dimension}: {set_name};\n"
+                f"{declaration}\n"
                 f"array[{dimension}] of var 0..1: {name} = [bool2int(i in {set_name}) | i in {dimension}];"
             )
-        if zimpl_type == "binary":
-            domain = "bool"
-        elif zimpl_type == "integer":
-            domain = f"{lower}..{upper}" if lower is not None and upper is not None else "int"
-        else:
-            domain = f"{lower}..{upper}" if lower is not None and upper is not None else "float"
-        prefix = "var " + domain
-        if dimensional_depth is None:
-            return f"{prefix}: {name};"
-        return f"array[{Adapter._translate_indices(dimensional_depth)}] of {prefix}: {name};"
+        return declaration
 
     @staticmethod
     def _translate_indices(dimensional_depth: str) -> str:
@@ -851,7 +967,7 @@ class Adapter(AbstractAdapter):
 
         invalid_dim_found = False
         for dim in dimensions:
-            if re.fullmatch(r"[A-Za-z_]\w*", dim) is None:
+            if Adapter.dimension_name_pattern.fullmatch(dim) is None:
                 invalid_dim_found = True
                 break
 
@@ -872,7 +988,7 @@ class Adapter(AbstractAdapter):
 
         constraints name is not present in minizinc code, but is included as a comment
         """
-        match = re.fullmatch(r"([A-Za-z_]\w*)\s*:\s*(.+)", statement, re.DOTALL)
+        match = Adapter.constraint_declaration_pattern.fullmatch(statement)
         if match is None:
             raise AdapterException(f"Unsupported ZIMPL constraint declaration: {statement}")
         name, expression = match.groups()
@@ -881,189 +997,23 @@ class Adapter(AbstractAdapter):
     @staticmethod
     def _translate_expression(expression: str) -> str:
         """
-        Support function for constraint translation of an expression in ZIMPL to match minizinc syntax
+        Translate the GECS subset of ZIMPL expressions using the Lark grammar above.
 
-        The input is only the expression, without the `subto name:` part.
-        For example:
-            sum <i> in I: cost[i] * x[i] <= limit
-
-        a) Replaces simple supported ZIMPL expressions for minizinc ones:
-            vabs(x)   -> abs(x)
-            A inter B -> A intersect B
-            A \\ B     -> A diff B
-            and       -> /\\
-            or        -> \\/
-            ==      -> =
-
-        b) Translates supported sum constraints, for example 'sum <i> in I: cost[i] * x[i] <= limit'
-            - Regex checks for the part before colon 'sum <i> in I:' text
-                using translate_bidings converts it into 'i in I'
-            - Nested loop extracts the latter part by iterating from the first character after the colon up to a
-                comparison or a + or - outside brackets. Brackets are counted so an expression such as
-                '(a[i] + b[i])' stays together inside the sum. For the example above the result is
-                'cost[i] * x[i]', since < is part of a comparison.
-            - The extracted part is then put into brackets and the comparison part is put at the end resulting in a constraint
-                sum(i in I)(cost[i] * x[i]) <= limit
-
-        c) Translates 'forall', for example forall <i> in I: x[i] >= 0
-           - _translate_bindings() changes `<i> in I` into `i in I`. The replacement opens `forall(i in I)(` before the expression.
-           - Each replaced `forall` increases `opened_parentheses` by 1. After the other replacements, the function adds that many
-                closing parentheses at the end. The final result is: forall(i in I)(x[i] >= 0)
-
-        d) Translate a supported conditional constraint, for example: vif x == 1 then y >= 2 end
-            The condition is `x = 1`, and the consequence is `y >= 2`. The result uses MiniZinc implication: ((x = 1) -> (y >= 2))
-
-        At the very end before return, check for any potential ZIMPL keywords that should already be translated such as sum/vif,
-        but are still present because of some error, and close all opened parentheses in 'forall'
+        For example, `sum <i> in I: a[i] + c >= 1` is parsed as a sum of `a[i]`, followed by `+ c`.
+        Parentheses around `(a[i] + c)` make both terms part of the sum.
         """
-        expression = expression.strip().replace("==", "=")
-        expression = re.sub(r"\bvabs\s*\(", "abs(", expression)
-        expression = re.sub(r"\binter\b", "intersect", expression)
-        expression = re.sub(r"\\+", " diff ", expression)
-
-        #for 'and' and 'or' expressions we use separate functions since re.sub had problems with backshlash
-        def translate_and(_match: re.Match): return "/\\"
-        def translate_or(_match: re.Match): return "\\/"
-        expression = re.sub(r"\band\b", translate_and, expression)
-        expression = re.sub(r"\bor\b", translate_or, expression)
-
-        sum_pattern = re.compile(r"\bsum\s*<([^>]+)>\s*in\s*([^:]+?)\s*:\s*")
-        while True: #potential nested sums, after replacing first one look for next one
-            match = sum_pattern.search(expression) #'sum <i> in I:'
-            if match is None:
-                break
-
-            bindings = Adapter._translate_bindings(match.group(1), match.group(2)) #'i in I'
-            start = match.end() #first character after colon, for example 'c' from 'cost[i] * x[i] <= limit'
-            depth = 0 #used to find the end of the sum term
-            end = start
-            while end < len(expression):
-                char = expression[end]
-                if char in "([{":
-                    depth += 1
-                elif char in ")]}":
-                    if depth == 0:
-                        break
-                    depth -= 1
-
-                is_comparison = char in "<>=!" #iterates up to any comparison sign, for example < of '<= limit'
-                is_binary_plus_or_minus = False
-                if char in "+-" and depth == 0:
-                    before_sign = expression[start:end].rstrip()
-                    if before_sign:
-                        previous_char = before_sign[-1]
-                        is_exponent_sign = (
-                            previous_char in "eE"
-                            and len(before_sign) >= 2
-                            and (before_sign[-2].isdigit() or before_sign[-2] == ".")
-                        )
-                        is_unary_sign = previous_char in "([,{:+-*/"
-                        is_binary_plus_or_minus = not is_exponent_sign and not is_unary_sign
-
-                # Outside brackets, a binary + or - ends the sum in ZIMPL.
-                # Brackets are needed if both sides should be inside the sum.
-                if depth == 0 and (is_comparison or is_binary_plus_or_minus):
-                    break
-                end += 1
-            term = expression[start:end].strip() #'cost[i]*x[i]'
-            #an empty 'sum' term or a term containing another untranslated 'sum/forall <...>' is unsupported
-            if not term or re.search(r"\b(?:sum|forall)\s*<", term):
-                raise AdapterException(f"Unsupported ZIMPL sum term: {term}")
-            expression = expression[:match.start()] + f"sum({bindings})({term})" + expression[end:]
-
-        opened_parentheses = 0 #tracking opened forall parentheses, matching closing ones added before return
-        forall_pattern = re.compile(r"\bforall\s*<([^>]+)>\s*in\s*(.*?)\s*(?:\bdo\b|:)")
-
-        def translate_forall(match: re.Match) -> str:
-            nonlocal opened_parentheses
-            opened_parentheses += 1
-            return f"forall({Adapter._translate_bindings(match.group(1), match.group(2))})("
-
-        expression = forall_pattern.sub(translate_forall, expression)
-        if re.search(r"\b(?:sum|forall)\s*<", expression):
-            raise AdapterException(f"Unsupported ZIMPL quantifier: {expression}")
-
-        vif_pattern = re.compile(r"\bvif\s+(.+?)\s+then\s+(.+?)\s+end\b", re.DOTALL)
-
-        def translate_vif(match: re.Match) -> str:
-            condition = match.group(1).strip()
-            consequence = match.group(2).strip()
-            return f"(({condition}) -> ({consequence}))"
-
-        expression = vif_pattern.sub(translate_vif, expression)
-        if re.search(r"\b(?:vif|vabs|with|inter)\b", expression):
-            raise AdapterException(f"Unsupported ZIMPL expression: {expression}")
-        return expression + ")" * opened_parentheses
-
-    @staticmethod
-    def _translate_bindings(variables_text: str, sets_text: str) -> str:
-        """
-        Support function for constraint translation to MINIZINC when translating sum and forall terms
-
-        From an example constraint 'forall <i,j> in I * J with i < j: x[i,j] >= 0' it receives 2 variables in the input
-        variable_text = "i, j" - variables in constraint, and
-        sets_test = "I*J with i<j" - information about sets in the constraint, part from variables up to the colon
-
-        a) Splits the index variables for example "i, j" into variables=["i", "j"]
-        b) Separates the index sets from an optional with keyword, for example from "in I * J with i < j" extracts
-            set_and_filter = ["I * J", "i < j"] - extratcs the optional with keyword
-            set_names = ["I", "J"] - just the index sets
-
-            For examples without optional key keyword it simply extratcs variable and set for example
-            sum <i> in I: cost[i] * x[i] <= limit -> variables = ["i"], set_names = ["I"], set_and_filter = ["I"]
-
-        c) All index variables are paired with their sets in the same order as in the input
-            so for variables=["i", "j"] and set_names = ["I", "J"] we get pairs i and I, as well as j and J. They are
-            then written in a form 'i in I' and 'j in J'.
-
-            If there was no optional 'with' part this is returned as a result.
-
-            If there was an optional 'with' part, set_and_filter contains a condition as its second element set_and_filter = ["I * J", "i < j"]
-            The resulting string then on top of the paits of variable-set, contains keyword 'where' (replacement of with) and this constraint.
-
-            Example output:
-            "i in I, j in J where (i < j)"
-
-        This function also translates supported ZIMPL format of spelling into minizinc appropriate ones for example
-        <i> in { 1 .. 3 }  -> i in (1..3)
-        """
-        variables = []
-        for item in variables_text.split(","):
-            variables.append(item.strip())
-
-        set_and_filter = re.split(r"\bwith\b", sets_text, maxsplit=1)
-        set_names = []
-        for item in set_and_filter[0].split("*"):
-            set_names.append(item.strip())
-
-        invalid_name_found = False
-        all_names = variables + set_names
-        for name in all_names:
-            if re.fullmatch(r"[A-Za-z_]\w*", name) is None:
-                invalid_name_found = True
-                break
-
-        #we ensure that there is one set for each index variable
-        if len(variables) != len(set_names) or invalid_name_found:
-            raise AdapterException(f"Unsupported ZIMPL bindings: <{variables_text}> in {sets_text}")
-
-        # Pair names by position: i with I, j with J, and write them as 'i in I', and 'j in J'
-        binding_parts = []
-        for position in range(len(variables)):
-            variable = variables[position]
-            set_name = set_names[position]
-            binding_parts.append(f"{variable} in {set_name}")
-        bindings = ", ".join(binding_parts)
-        if len(set_and_filter) == 1:
-            return bindings
-
-        condition = set_and_filter[1].strip()
-        # `<i> in I with i > 2` -> `i in I where (i > 2)`.
-        condition = re.sub(r"<([^<>]+)>\s+in\b", r"\1 in", condition)
-        condition = re.sub(r"\bin\s*\{\s*([^{}]+?)\s*\.\.\s*([^{}]+?)\s*\}", r"in (\1..\2)", condition)
-        if not condition or re.search(r"\b(?:with|vif|vabs|inter)\b", condition):
-            raise AdapterException(f"Unsupported ZIMPL set filter: {sets_text}")
-        return f"{bindings} where ({condition})"
+        try:
+            tree = _ZIMPL_EXPRESSION_PARSER.parse(expression)
+            return _ZimplExpressionToMiniZinc().transform(tree)
+        except UnexpectedInput as exc:
+            raise AdapterException(
+                f"Unsupported GECS ZIMPL expression at line {exc.line}, column {exc.column}: "
+                f"{expression}"
+            ) from exc
+        except VisitError as exc:
+            if isinstance(exc.orig_exc, AdapterException):
+                raise exc.orig_exc from exc
+            raise AdapterException(f"Could not translate GECS ZIMPL expression: {expression}") from exc
 
     def _read_best_program(self, run_id: str) -> str:
         """
