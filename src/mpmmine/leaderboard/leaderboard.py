@@ -261,7 +261,8 @@ class Leaderboard:
 
     def collect_statistics(self) -> pd.DataFrame:
         logging.info("Collecting statistics...")
-        statistics = pd.DataFrame()
+
+        statistics_chunks = []
         for path in self.evaluation_runs_iterator():
             try:
                 config_path = path / "config.json"
@@ -286,10 +287,11 @@ class Leaderboard:
                 run_statistics["seed"] = config.seed
                 run_statistics["results_path"] = str(path.relative_to(self.result_path))
 
-                statistics = pd.concat([statistics, run_statistics], ignore_index=True)
+                statistics_chunks.append(run_statistics)
             except FileNotFoundError as e:
                 logging.error(e)
 
+        statistics: pd.DataFrame = pd.concat(statistics_chunks, ignore_index=True)
         statistics["train_count"] = statistics["train_solutions"] + statistics["train_non_solutions"]
 
         logging.info(f"Collected {len(statistics)} rows...")
