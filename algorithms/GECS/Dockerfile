@@ -20,7 +20,12 @@ RUN sed -i 's/, GRB\.GREATER_EQUAL, / >= /g' /app/src/utilities/ZIMPLpy/interpre
 
 #zimpl interpeter compilation
 WORKDIR /app/src/utilities/ZIMPL
-RUN make
+# The GECS fork has no ARM make options. Take only that options file from the
+# newer ZIMPL fork; replacing the whole Makefile would require newer sources.
+RUN git clone --depth 1 --branch v3.8.0 https://github.com/MPMMine/scipopt-zimpl.git /tmp/scipopt-zimpl-build \
+    && cp /tmp/scipopt-zimpl-build/make/make.linux.arm.gnu.opt /app/src/utilities/ZIMPL/make/ \
+    && rm -rf /tmp/scipopt-zimpl-build
+RUN if [ "$(uname -m)" = "aarch64" ]; then make ARCH=arm; else make; fi
 
 # GECS imports fitness.helper.pyx with pyximport at runtime. Compile it here
 # so the final image does not need gcc for the first GECS run.
@@ -36,4 +41,10 @@ COPY --from=build /app /app
 RUN pip install --no-cache-dir -r requirements.txt #dependencies stated in GECS repository
 RUN pip install --no-cache-dir "numpy<2.0.0" #after 2.0 np.NaN changed to np.nan, GECS code uses np.NaN thus the fowngrade
 
-CMD ["sleep", "infinity"]
+# The Python package has no grbgetkey command. Copy the two activation tools
+# used by ESOCCS, without bringing the entire Optimizer into the image.
+COPY --from=gurobi/optimizer:12.0.3 /opt/gurobi/linux/bin/grbprobe /usr/local/bin/grbprobe
+COPY --from=gurobi/optimizer:12.0.3 /opt/gurobi/linux/bin/grbgetkey /usr/local/bin/grbgetkey
+COPY run.sh /app/run.sh
+
+CMD ["sh", "/app/run.sh"]

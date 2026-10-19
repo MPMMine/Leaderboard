@@ -46,12 +46,13 @@ class Evaluator:
     def run(self):
         cfg = self.configuration
 
-        try:
-            dataset_version = cfg.mpmmine.dataset_version
-        except FileNotFoundError:
-            # The released beta dataset has no VERSION entry.
-            dataset_version = "unknown"
-            logging.warning("MPMMine dataset has no VERSION entry; recording dataset version as unknown.")
+        dataset_version = cfg.mpmmine.dataset_version
+        # Older DB copy can raise FileNotFoundError for VERSION column
+        #For tests with that copy , comment out the line above and uncomment the fallback below.
+        # try:
+        #     dataset_version = cfg.mpmmine.dataset_version
+        # except FileNotFoundError:
+        #     dataset_version = "unknown"
 
         statistics = pd.DataFrame()
         for (fold_id, data) in enumerate(self.cross_validation(), start=1):
