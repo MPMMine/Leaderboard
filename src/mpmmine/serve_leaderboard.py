@@ -48,6 +48,46 @@ class Model:
             "axis": "left",
             "default": True
         },
+        "MCC": {
+            "mean": "mcc",
+            "ci_low": "mcc_095ci_low",
+            "ci_high": "mcc_095ci_high",
+            "fill_na": False,
+            "color": "#b79a20",
+            "ci_color": "#f2cf5b",
+            "axis": "left",
+            "default": True
+        },
+        "F1": {
+            "mean": "f1",
+            "ci_low": "f1_095ci_low",
+            "ci_high": "f1_095ci_high",
+            "fill_na": False,
+            "color": "#f58518",
+            "ci_color": "#ffbf79",
+            "axis": "left",
+            "default": False
+        },
+        "Precision": {
+            "mean": "precision",
+            "ci_low": "precision_095ci_low",
+            "ci_high": "precision_095ci_high",
+            "fill_na": False,
+            "color": "#79706e",
+            "ci_color": "#bab0ac",
+            "axis": "left",
+            "default": False
+        },
+        "Recall": {
+            "mean": "recall",
+            "ci_low": "recall_095ci_low",
+            "ci_high": "recall_095ci_high",
+            "fill_na": False,
+            "color": "#9e765f",
+            "ci_color": "#d8b5a5",
+            "axis": "left",
+            "default": False
+        },
         "Algorithm error probability": {
             "mean": "algorithm_error_prob_mean",
             "ci": "algorithm_error_prob_095ci",
@@ -191,7 +231,8 @@ class Statistics:
         for key, group in df.groupby(groupby):
             # recalculate confidence intervals
             x_i = group[measure["mean"]]
-            me_i = group[measure["ci"]]
+            me_low_i = group[measure["ci_low"] if "ci_low" in measure else measure["ci"]]
+            me_high_i = group[measure["ci_high"] if "ci_high" in measure else measure["ci"]]
             n_i = group["folds"]
 
             N = n_i.sum()
@@ -201,29 +242,36 @@ class Statistics:
 
             # 2. Reconstruct partial variances
             t_crit_i = scipy.stats.t.ppf(0.975, df=n_i - 1)
-            se_i = me_i / t_crit_i
-            s2_i = (se_i ** 2) * n_i
+            se_low_i = me_low_i / t_crit_i
+            se_high_i = me_high_i / t_crit_i
+            s2_low_i = (se_low_i ** 2) * n_i
+            s2_high_i = (se_high_i ** 2) * n_i
 
             # 3. Square sums (intra-group and inter-group)
-            ssw = np.sum((n_i - 1) * s2_i)
+            ssw_low = np.sum((n_i - 1) * s2_low_i)
+            ssw_high = np.sum((n_i - 1) * s2_high_i)
             ssb = np.sum(n_i * ((x_i - x_glob) ** 2))
 
             # global variance
-            s2_glob = (ssw + ssb) / (N - 1)
+            s2_glob_low = (ssw_low + ssb) / (N - 1)
+            s2_glob_high = (ssw_high + ssb) / (N - 1)
 
             # 4. Global standard error and t error margin
-            se_glob = np.sqrt(s2_glob / N)
+            se_glob_low = np.sqrt(s2_glob_low / N)
+            se_glob_high = np.sqrt(s2_glob_high / N)
             t_crit_glob = scipy.stats.t.ppf(0.975, df=N - 1)
-            me_glob = t_crit_glob * se_glob
+            me_glob_low = t_crit_glob * se_glob_low
+            me_glob_high = t_crit_glob * se_glob_high
 
             # Save algorithm results
             results.append(
                 {
                     **dict(zip(groupby, key)),
                     measure["mean"]: x_glob,
-                    measure["ci"]: me_glob,
-                    f"{measure["mean"]}_lb": x_glob - me_glob,
-                    f"{measure["mean"]}_ub": x_glob + me_glob,
+                    measure["ci_low"] if "ci_low" in measure else measure["ci"] + "_low": me_glob_low,
+                    measure["ci_high"] if "ci_high" in measure else measure["ci"] + "_high": me_glob_high,
+                    f"{measure["mean"]}_lb": x_glob - me_glob_low,
+                    f"{measure["mean"]}_ub": x_glob + me_glob_high,
                     # "total_folds": N,
                 }
             )
@@ -714,7 +762,7 @@ A leaderboard of Mathematical Programming model discovery algorithms calculated 
                 continue
             line_layer.append(base
             .transform_filter(measure=measure_desc["mean"])
-            .mark_errorband(color=measure_desc["ci_color"]).encode(
+            .mark_errorband(color=measure_desc["ci_color"], opacity=0.12).encode(
                 alt.X(x_axis),
                 alt.Y(f"{measure_desc["mean"]}_lb:Q").title(""),
                 alt.Y2(f"{measure_desc["mean"]}_ub:Q")
