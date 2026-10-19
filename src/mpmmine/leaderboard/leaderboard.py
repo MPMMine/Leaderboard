@@ -156,61 +156,103 @@ class Leaderboard:
 
     def compute_bootstrap_metrics(self, rows: pd.DataFrame) -> pd.Series:
         """
-        Calculates micro-average Precision, Recall, F1 score and their 95% confidence intervals with bootstrapping.
+        Calculates micro-average Precision, Recall, F1 score and their 95%
+        confidence intervals with bootstrapping.
+
         Utilizes a fixed random seed to ensure reproducibility.
         """
+        metric_names = [
+            "precision", "precision_095ci_low", "precision_095ci_high",
+            "recall", "recall_095ci_low", "recall_095ci_high",
+            "f1", "f1_095ci_low", "f1_095ci_high",
+        ]
+
+        # Extract and filter the relevant columns only once.
+        counts = (
+            rows[["true_positive", "false_positive", "false_negative"]]
+            .dropna()
+            .to_numpy(dtype=np.float64, copy=False)
+        )
+
+        if counts.shape[0] == 0:
+            return pd.Series(np.nan, index=metric_names)
+
+        # Calculate metrics from the aggregated counts.
+        tp, fp, fn = counts.sum(axis=0)
+
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = (
+            2 * precision * recall / (precision + recall)
+            if (precision + recall) > 0
+            else 0.0
+        )
+
+        # Generate all bootstrap samples in a single NumPy operation.
         rng = np.random.default_rng(self.seed)
-        # valid = rows.dropna(subset=["true_positive", "false_positive", "false_negative", "true_negative"]).copy()
-        valid = rows.dropna(subset=["true_positive", "false_positive", "false_negative"]).copy()
+        n_bootstrap = 1000
+        sample_size = 100
 
-        if valid.empty:
-            return pd.Series(
-                [float('nan')] * 9,
-                index=[
-                    "precision", "precision_095ci_low", "precision_095ci_high",
-                    "recall", "recall_095ci_low", "recall_095ci_high",
-                    "f1", "f1_095ci_low", "f1_095ci_high"
-                ],
-            )
+        indices = rng.choice(
+            counts.shape[0],
+            size=(n_bootstrap, sample_size),
+            replace=True,
+        )
 
-        def comp_metrics(tp, fp, fn):
-            precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-            recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-            f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
-            return precision, recall, f1
+        # Aggregate TP, FP and FN for every bootstrap sample.
+        bootstrap_counts = counts[indices].sum(axis=1)
+        tp_b = bootstrap_counts[:, 0]
+        fp_b = bootstrap_counts[:, 1]
+        fn_b = bootstrap_counts[:, 2]
 
-        precision, recall, f1 = comp_metrics(valid["true_positive"].sum(), valid["false_positive"].sum(), valid["false_negative"].sum())
+        # Compute all bootstrap metrics using vectorized arithmetic.
+        precision_den = tp_b + fp_b
+        recall_den = tp_b + fn_b
 
-        precisions, recalls, f1_scores = [], [], []
+        precisions = np.divide(
+            tp_b,
+            precision_den,
+            out=np.zeros(n_bootstrap),
+            where=precision_den > 0,
+        )
+        recalls = np.divide(
+            tp_b,
+            recall_den,
+            out=np.zeros(n_bootstrap),
+            where=recall_den > 0,
+        )
 
-        for _ in range(1000):
-            sample = valid.sample(n=100, replace=True, random_state=rng)
-            sample_precision, sample_recall, sample_f1 = comp_metrics(sample["true_positive"].sum(), sample["false_positive"].sum(), sample["false_negative"].sum())
-            precisions.append(sample_precision)
-            recalls.append(sample_recall)
-            f1_scores.append(sample_f1)
+        f1_den = precisions + recalls
+        f1_scores = np.divide(
+            2 * precisions * recalls,
+            f1_den,
+            out=np.zeros(n_bootstrap),
+            where=f1_den > 0,
+        )
 
-        precisions.sort()
-        recalls.sort()
-        f1_scores.sort()
+        # The confidence-interval order statistics:
+        lower_idx = 24
+        upper_idx = 974
 
-        precision_095ci_low, precision_095ci_high = precisions[24], precisions[974]
-        recall_095ci_low, recall_095ci_high = recalls[24], recalls[974]
-        f1_095ci_low, f1_095ci_high = f1_scores[24], f1_scores[974]
+        def confidence_interval(values):
+            bounds = np.partition(values, (lower_idx, upper_idx))
+            return bounds[lower_idx], bounds[upper_idx]
 
-        assert precision_095ci_high >= precision >= precision_095ci_low
-        assert recall_095ci_high >= recall >= recall_095ci_low
-        assert f1_095ci_high >= f1 >= f1_095ci_low
+        precision_low, precision_high = confidence_interval(precisions)
+        recall_low, recall_high = confidence_interval(recalls)
+        f1_low, f1_high = confidence_interval(f1_scores)
+
+        assert precision_high >= precision >= precision_low
+        assert recall_high >= recall >= recall_low
+        assert f1_high >= f1 >= f1_low
 
         return pd.Series(
-            [precision, precision_095ci_low, precision_095ci_high,
-            recall, recall_095ci_low, recall_095ci_high,
-            f1, f1_095ci_low, f1_095ci_high],
-            index=[
-                "precision", "precision_095ci_low", "precision_095ci_high",
-                "recall", "recall_095ci_low", "recall_095ci_high",
-                "f1", "f1_095ci_low", "f1_095ci_high"
-            ]
+            [
+                precision, precision_low, precision_high,
+                recall, recall_low, recall_high,
+                f1, f1_low, f1_high,
+            ],
+            index=metric_names,
         )
 
     @staticmethod
