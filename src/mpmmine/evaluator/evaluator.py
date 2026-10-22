@@ -81,7 +81,7 @@ class Evaluator:
                 logging.error(format_error(str(e)))
                 # save mzn
                 mzn_path = self.configuration.get_resulting_model_path(fold_id)
-                with open(mzn_path, "w") as f:
+                with open(mzn_path, "w", encoding="utf-8") as f:  # fix: force utf-8 encoding Windows encoding
                     f.write(textwrap.indent(str(e), "% "))
                     f.write("\n")
                 fold_statistics["algorithm_error"] = format_error(str(e))
