@@ -18,6 +18,7 @@ from sklearn.model_selection import StratifiedShuffleSplit
 
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar, Domain, Collection
 from mpmmine.evaluator.configuration import Configuration
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, CompressionRatio
 from mpmmine.evaluator.dzn import parse_dzn
 from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size
 from mpmmine.util import load_class, format_error
@@ -29,6 +30,7 @@ class Evaluator:
     adapter: AbstractAdapter
     measures: list[AbstractMeasure] = [
         ConfusionMatrix(),
+        CompressionRatio(),
         Size(),
     ]
 
@@ -79,7 +81,7 @@ class Evaluator:
                 logging.error(format_error(str(e)))
                 # save mzn
                 mzn_path = self.configuration.get_resulting_model_path(fold_id)
-                with open(mzn_path, "w") as f:
+                with open(mzn_path, "w", encoding="utf-8") as f:  # fix: force utf-8 encoding Windows encoding
                     f.write(textwrap.indent(str(e), "% "))
                     f.write("\n")
                 fold_statistics["algorithm_error"] = format_error(str(e))
