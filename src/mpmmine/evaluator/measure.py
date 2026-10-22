@@ -1,11 +1,5 @@
-from __future__ import annotations
-
 import logging
-import os
-import re
-import tempfile
 import subprocess
-import types
 
 from datetime import timedelta
 from pathlib import Path
@@ -112,31 +106,46 @@ class ConfusionMatrix(AbstractMeasure):
         return results
 
 
+class ExtendedMznAnalyse(MznAnalyse):
+    """
+    Helper class to handle notation normalization and dropping comments
+    """
+
+    @classmethod
+    def find(cls, *args, **kwargs) -> ExtendedMznAnalyse | None:
+        base = super().find(*args, **kwargs)
+        if base is None:
+            return None
+        return cls(base._executable)
+
+    def get_constraints(self, instance: Instance) -> str:
+        tool_run_cmd: List[Union[str, Path]] = [str(self._executable), "filter-items:constraint"]
+
+        with instance.files() as files:
+            for f in files:
+                tool_run_cmd.append(str(f))
+        proc = subprocess.run(tool_run_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        if proc.returncode != 0:
+            raise MiniZincError(message=str(proc.stderr))
+        return proc.stdout.decode("utf-8")
+
+
 class Size(AbstractMeasure):
     @override
     def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.Series:
+        mzn_analyzer = ExtendedMznAnalyse.find()
 
-        def get_constraints(self):
-            tool_run_cmd: List[Union[str, Path]] = [
-                str(self._executable),
-                "filter-items:constraint",
-            ]
+        if mzn_analyzer is None:  # Fallback in case mzn-analyse.exe would not load properly
+            logging.warning("Model parser returned None. Skipping Size measure for this model.")
+            return pd.Series({
+                "parameter_count": None,
+                "variable_count": None,
+                "normalized_constraint_count": None,
+                "normalized_constraint_size": None,
+                "objective_count": None,
+            })
 
-            with instance.files() as files:
-                for f in files:
-                    tool_run_cmd.append(str(f))
-
-            proc = subprocess.run(
-                tool_run_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE
-            )
-            if proc.returncode != 0:
-                raise MiniZincError(message=str(proc.stderr))
-            return proc.stdout.decode("utf-8")
-
-        mznAnalyse = MznAnalyse.find()
-        mznAnalyse.get_constraints = types.MethodType(get_constraints, mznAnalyse)
-
-        normalized_constraints = mznAnalyse.get_constraints()
+        normalized_constraints = mzn_analyzer.get_constraints(instance)
 
         return pd.Series({
             "parameter_count": len(instance.input),
@@ -149,74 +158,45 @@ class Size(AbstractMeasure):
 
 class CompressionRatio(AbstractMeasure):
     @override
-    def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.Series:
-        # Need to access protected variable to get path
-        # noinspection PyTypeChecker
-        mzn_path: str = str(model._includes[0]) if getattr(model, "_includes", None) else None
-        if mzn_path is None:
-            raise ValueError("No mzn_path provided.")
+    def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.DataFrame:
+        mzn_analyzer = ExtendedMznAnalyse.find()
 
-        with open(file=mzn_path, mode="r") as mzn_file:
-            original_code = mzn_file.read()
+        if mzn_analyzer is None:  # Fallback in case mzn-analyse.exe would not load properly
+            logging.warning("Model parser returned None. Skipping Compression ratio measure for this model.")
+            return pd.DataFrame({"CompressionRatio": [float("nan")] * len(test_set)}, index=test_set.index)
 
-        # Getting rid of comments
-        modified_code = re.sub(r'/\*.*?\*/', '', original_code, flags=re.DOTALL)  # block comments
-        modified_code = re.sub(r'%.*', '', modified_code)                         # line comments
-        code_size = len(modified_code)
+        normalized_constraints = mzn_analyzer.get_constraints(instance)
+        code_size = len(normalized_constraints)
 
         temp_dict = {}
+
         def actual_test(row) -> float:
             if code_size == 0:
-                return float('nan')
+                return float("nan")
 
             instance_data = row["instance"]
-
             if instance_data in temp_dict:
                 return temp_dict[instance_data]
 
-            # Creating temporary file with data
-            fd_data, dzn_path = tempfile.mkstemp(suffix=".dzn", text=True)
-            fd_flat, fzn_path = tempfile.mkstemp(suffix=".fzn", text=True)
-            os.close(fd_flat)  # Close descriptor, so the file can be accessed with minizinc subprocess
-            with os.fdopen(fd_data, "w") as dzn_file:
-                dzn_file.write(instance_data)  # Saving data
-
             try:
-                res = subprocess.run(
-                    [
-                        "minizinc",
-                        "-c",
-                        "-O0",   # Optimisation turned off
-                        "--solver", instance._solver.id,
-                        mzn_path,
-                        dzn_path,
-                        "--fzn",
-                        fzn_path
-                    ],
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    text=True
-                )
+                with instance.branch() as copy:
+                    instance_dzn = parse_dzn(instance_data)
+                    for k, v in instance_dzn.items():
+                        if k in copy.input:
+                            copy[k] = v
 
-                if res.returncode == 0:
-                    with open(fzn_path, "r") as fzn_file:
-                        flattened_code_size = len(fzn_file.read().strip())
+                    with copy.flat(optimisation_level=0) as (fzn, _, _):
+                        flattened_code = Path(fzn.name).read_text(encoding="utf-8").strip()
+                        flattened_code_size = len(flattened_code)
+
                     if flattened_code_size > 0:
-                        ratio = float(code_size) / flattened_code_size
+                        ratio = float(code_size) / float(flattened_code_size)
                         temp_dict[instance_data] = ratio
                         return ratio
-                else:
-                    logging.warning(f"Compression ratio failed (code: {res.returncode}): {res.stderr}")
-                temp_dict[instance_data] = float('nan')
-                return float('nan')
             except Exception as e:
                 logging.warning(f"Exception in CompressionRatio: {e}")
-                temp_dict[instance_data] = float('nan')
-                return float('nan')
-            finally:
-                if os.path.exists(dzn_path):
-                    os.remove(dzn_path)
-                if os.path.exists(fzn_path):
-                    os.remove(fzn_path)
 
-        return test_set.apply(actual_test, axis=1)
+            temp_dict[instance_data] = float("nan")
+            return float("nan")
+
+        return pd.DataFrame({"CompressionRatio": test_set.apply(actual_test, axis=1)}, index=test_set.index)
