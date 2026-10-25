@@ -19,7 +19,7 @@ from sklearn.model_selection import StratifiedShuffleSplit
 from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar, Domain, Collection
 from mpmmine.evaluator.configuration import Configuration
 from mpmmine.evaluator.dzn import parse_dzn
-from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size, JaccardIndex
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size
 from mpmmine.util import load_class, format_error
 
 
@@ -30,7 +30,6 @@ class Evaluator:
     measures: list[AbstractMeasure] = [
         ConfusionMatrix(),
         Size(),
-        JaccardIndex()
     ]
 
     def __init__(self, configuration: Configuration):
