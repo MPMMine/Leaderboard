@@ -61,7 +61,6 @@ class Leaderboard:
         ).agg(
             # quality
             accuracy=pd.NamedAgg(column="is_correct", aggfunc="mean"),
-            jaccard_index=pd.NamedAgg(column="JaccardIndex", aggfunc="mean"),
             test_count=pd.NamedAgg(column="actual_class", aggfunc="count"),
             # error probabilities
             algorithm_error_prob=pd.NamedAgg(column="has_algorithm_error", aggfunc="mean"),
@@ -113,8 +112,6 @@ class Leaderboard:
             # fitness
             accuracy_mean=pd.NamedAgg(column="accuracy", aggfunc="mean"),
             accuracy_095ci=pd.NamedAgg(column="accuracy", aggfunc=ci),
-            jaccard_index_mean=pd.NamedAgg(column="jaccard_index", aggfunc="mean"),
-            jaccard_index_095ci=pd.NamedAgg(column="jaccard_index", aggfunc=ci),
             # test count
             test_count_mean=pd.NamedAgg(column="test_count", aggfunc="mean"),
             test_count_095ci=pd.NamedAgg(column="test_count", aggfunc=ci),
@@ -164,7 +161,7 @@ class Leaderboard:
 
     def compute_bootstrap_metrics(self, rows: pd.DataFrame) -> pd.Series:
         """
-        Calculates micro-average Precision, Recall, F1 score and their 95%
+        Calculates micro-average Precision, Recall, F1 score, MCC, Jaccard index and their 95%
         confidence intervals with bootstrapping.
 
         Utilizes a fixed random seed to ensure reproducibility.
@@ -174,6 +171,7 @@ class Leaderboard:
             "recall", "recall_095ci_low", "recall_095ci_high",
             "f1", "f1_095ci_low", "f1_095ci_high",
             "mcc", "mcc_095ci_low", "mcc_095ci_high",
+            "jaccard_index", "jaccard_index_095ci_low", "jaccard_index_095ci_high",
         ]
 
         # Extract and filter the relevant columns only once.
@@ -199,6 +197,8 @@ class Leaderboard:
         mcc_num = (tp * tn) - (fp * fn)
         mcc_den = sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
         mcc = mcc_num / mcc_den if mcc_den > 0 else 0.0
+        jaccard_den = tp + fp + fn
+        jaccard_index = tp / jaccard_den if jaccard_den > 0 else 0.0
 
         # Generate all bootstrap samples in a single NumPy operation.
         rng = np.random.default_rng(self.seed)
@@ -251,6 +251,13 @@ class Leaderboard:
             where=mcc_dens > 0,
         )
 
+        jaccard_dens = tp_b + fp_b + fn_b
+        jaccard_indices = np.divide(
+            tp_b,
+            jaccard_dens,
+            out=np.zeros(n_bootstrap),
+            where=jaccard_dens > 0,
+        )
         # The confidence-interval order statistics:
         lower_idx = 24
         upper_idx = 974
@@ -263,11 +270,13 @@ class Leaderboard:
         recall_low, recall_high = confidence_interval(recalls)
         f1_low, f1_high = confidence_interval(f1_scores)
         mcc_low, mcc_high = confidence_interval(mccs)
+        jaccard_low, jaccard_high = confidence_interval(jaccard_indices)
 
         assert precision_high >= precision >= precision_low
         assert recall_high >= recall >= recall_low
         assert f1_high >= f1 >= f1_low
         assert mcc_high >= mcc >= mcc_low
+        assert jaccard_high >= jaccard_index >= jaccard_low
 
         return pd.Series(
             [
@@ -275,6 +284,7 @@ class Leaderboard:
                 recall, recall_low, recall_high,
                 f1, f1_low, f1_high,
                 mcc, mcc_low, mcc_high,
+                jaccard_index, jaccard_low, jaccard_high,
             ],
             index=metric_names,
         )

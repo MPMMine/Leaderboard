@@ -88,6 +88,16 @@ class Model:
             "axis": "left",
             "default": False
         },
+        "Jaccard index": {
+            "mean": "jaccard_index",
+            "ci_low": "jaccard_index_095ci_low",
+            "ci_high": "jaccard_index_095ci_high",
+            "fill_na": False,
+            "color": "#7711bb",
+            "ci_color": "#9944cc",
+            "axis": "left",
+            "default": False
+        },
         "Algorithm error probability": {
             "mean": "algorithm_error_prob_mean",
             "ci": "algorithm_error_prob_095ci",
