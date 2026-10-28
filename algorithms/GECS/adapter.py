@@ -1059,7 +1059,8 @@ class Adapter(AbstractAdapter):
         if fitness_match is None:
             raise AdapterException(f"Cannot read GECS fitness from {best_files[0]}.")
         if float(fitness_match.group(1)) <= 0:
-            raise AdapterException(f"GECS found no positively scored program, best fitness was {fitness_match.group(1)} in {best_files[0]}.")
+            logging.warning(
+                f"GECS found no positively scored program, best fitness was {fitness_match.group(1)} in {best_files[0]}.")
 
         phenotype_match = re.search(r"(?ms)^Phenotype:\s*\r?\n(.*?)\r?\n\s*Genotype:", best_file_text)
         if phenotype_match is None:
