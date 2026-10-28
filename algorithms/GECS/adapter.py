@@ -194,6 +194,7 @@ class Adapter(AbstractAdapter):
     variable_number_pattern = r"-?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
     variable_declaration_pattern = re.compile(rf"([A-Za-z_]\w*)(?:\[(.*?)\])?\s+(integer|real|binary)(?:\s*>=\s*{variable_number_pattern})?(?:\s*<=\s*{variable_number_pattern})?", re.DOTALL)
     # These patterns are used in ZIMPL->MiniZinc translation
+    backspace_pattern = re.compile(r"[\b]+")
     statement_pattern = re.compile(r"(?ms)^[ \t]*(set|param|var|subto)[ \t]+(.*?);")
     set_declaration_pattern = re.compile(r"([A-Za-z_]\w*)\s*:=\s*(.+)", re.DOTALL)
     set_range_pattern = re.compile(r"\{\s*(-?\d+)\s*\.\.\s*(-?\d+)\s*\}")
@@ -745,14 +746,18 @@ class Adapter(AbstractAdapter):
         unparsed = without_comments[end_of_previous:].strip()
         if unparsed:
             raise AdapterException(f"Unsupported ZIMPL text: {unparsed}")
-        if not statements:
-            raise AdapterException("GECS produced no translatable ZIMPL statements.")
 
-        raw_comment_lines = ["% Model translated from the complete GECS ZIMPL program."]
+        raw_comment_lines = []
+        if not statements:
+            raw_comment_lines.append("% Warning: GECS produced no translatable ZIMPL statements.")
+
+        raw_comment_lines.append("% The original ZIMPL model:")
         for line in zpl.splitlines():
             raw_comment_lines.append(f"% GECS ZIMPL: {line}")
         raw_comment_lines.append("% GECS console output follows:")
+
         for line in raw_output.splitlines():
+            line = self.backspace_pattern.sub("\n% GECS: ", line)
             raw_comment_lines.append(f"% GECS: {line}")
 
         minizinc_lines = []
@@ -774,6 +779,7 @@ class Adapter(AbstractAdapter):
         def restore_name(match: re.Match) -> str:
             identifier = match.group(0)
             return name_mapping.get(identifier, identifier)
+
         translated_model = re.sub(r"\b[A-Za-z_]\w*\b", restore_name, minizinc_model)
         return "\n".join(raw_comment_lines) + "\n" + translated_model
 
