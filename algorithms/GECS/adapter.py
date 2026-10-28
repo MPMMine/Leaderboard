@@ -230,7 +230,12 @@ class Adapter(AbstractAdapter):
             environment={
                 "GRB_LICENSE_FILE": "/app/gurobi/gurobi.lic"
             },
-            network_mode="bridge" if has_license else "host",
+            cgroupns="private",
+            pid_mode="host",
+            network="host",
+            uts_mode="host",
+            userns_mode="host",
+            ipc_mode="none",
         )
 
         # in dockerfile run.sh is called, which in the case of key being present instead of license activates the key and
