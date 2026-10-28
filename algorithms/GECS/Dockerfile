@@ -42,9 +42,13 @@ RUN pip install --no-cache-dir -r requirements.txt #dependencies stated in GECS 
 RUN pip install --no-cache-dir "numpy<2.0.0" #after 2.0 np.NaN changed to np.nan, GECS code uses np.NaN thus the fowngrade
 
 # The Python package has no grbgetkey command. Copy the two activation tools
-# used by ESOCCS, without bringing the entire Optimizer into the image.
+# without bringing the entire Optimizer into the image.
 COPY --from=gurobi/optimizer:12.0.3 /opt/gurobi/linux/bin/grbprobe /usr/local/bin/grbprobe
 COPY --from=gurobi/optimizer:12.0.3 /opt/gurobi/linux/bin/grbgetkey /usr/local/bin/grbgetkey
 COPY run.sh /app/run.sh
+
+RUN adduser mpmmine
+RUN chown -R mpmmine /app
+USER mpmmine
 
 CMD ["sh", "/app/run.sh"]
