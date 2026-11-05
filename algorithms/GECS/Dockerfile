@@ -32,6 +32,9 @@ RUN if [ "$(uname -m)" = "aarch64" ]; then make ARCH=arm; else make; fi
 WORKDIR /app/src
 RUN pip install --no-cache-dir cython && CFLAGS="-O3 -march=native" python3 -c "import pyximport; pyximport.install(language_level=3, inplace=True); import fitness.helper"
 
+# Patch ZIMPLpy to handle large py files created by the *.zpl -> *.py conversion of MPMMine benchmarks
+RUN echo "\nimport sys\nsys.setrecursionlimit(2000)\n" >> /app/src/utilities/ZIMPLpy/__init__.py
+
 # Keep the runtime image free of the compiler, headers, Git and Bison.
 FROM python:3.9-slim
 RUN apt-get update && apt-get install -y --no-install-recommends libgmp10 zlib1g && rm -rf /var/lib/apt/lists/*
