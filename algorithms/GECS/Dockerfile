@@ -39,7 +39,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends libgmp10 zlib1g
 WORKDIR /app
 COPY --from=build /app /app
 RUN pip install --no-cache-dir -r requirements.txt #dependencies stated in GECS repository
-RUN pip install --no-cache-dir "numpy<2.0.0" #after 2.0 np.NaN changed to np.nan, GECS code uses np.NaN thus the fowngrade
+RUN pip install --no-cache-dir "numpy<2.0.0" #after 2.0 np.NaN changed to np.nan, GECS code uses np.NaN thus the downgrade
 
 # The Python package has no grbgetkey command. Copy the two activation tools
 # without bringing the entire Optimizer into the image.
