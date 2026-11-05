@@ -162,7 +162,7 @@ class Adapter(AbstractAdapter):
             # lookup integer value in the symbol.enum rather than rely on value.value, as the latter may come from
             # parsing DZN with incomplete enum definition, and the former contains all enum values spot in all data
             return {name_prefix: symbol.enum[value.name].value}
-        elif value_type is set or value_type is range:
+        elif isinstance(value, set) or isinstance(value, range):
             assert symbol.collection[0] == Collection.set
             assert len(symbol.indices) == 1
             if any(isinstance(i, Enum) for i in symbol.indices[0]):

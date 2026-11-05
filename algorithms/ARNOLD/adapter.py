@@ -89,7 +89,7 @@ class Adapter(AbstractAdapter):
                                              collection=symbol.collection[1:])
             translate_value = Adapter.translate_value  # optimize attribute lookup
             return f"[{",".join([translate_value(v, sub_symbol) for v in value])}]"
-        if value_type is range or value_type is set:
+        if isinstance(value, range) or isinstance(value, set):
             assert symbol.collection[0] == Collection.set
             assert len(symbol.indices) == 1
             if any(isinstance(i, Enum) for i in symbol.indices[0]):

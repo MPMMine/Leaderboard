@@ -164,7 +164,7 @@ class Evaluator:
                           max=None,
                           var=is_var,
                           enum=value_type)
-        elif value_type is set or value_type is range or value_type is list:
+        elif isinstance(value, set) or isinstance(value, range) or isinstance(value, list):
             sub_var = reduce(MznVar.merge_inplace, (self._to_MznVar(name, v, is_var) for v in value))
             col_type = [Collection.array if value_type is list else Collection.set]
             if value_type is list:
@@ -279,7 +279,7 @@ class Evaluator:
             with open(mzn_path, "at") as mzn:
                 # report only unique warnings
                 for w in set((w.category.__name__, str(w.message)) for w in caught_warnings):
-                    mzn.write(f"% {w[0]}: {w[1]}\n")
+                    mzn.write(textwrap.indent(f"{w[0]}: {w[1]}\n", prefix="% "))
 
     def __del__(self):
         if self.adapter is not None:
