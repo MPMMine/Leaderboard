@@ -209,12 +209,9 @@ class Adapter(AbstractAdapter):
 
     # These patterns are used in ZIMPL->MiniZinc translation
     backspace_pattern = re.compile(r"[\b]+")
-    statement_pattern = re.compile(r"(?ms)^[ \t]*(set|param|var|subto)[ \t]+(.*?);")
-    set_declaration_pattern = re.compile(r"([A-Za-z_]\w*)\s*:=\s*(.+)", re.DOTALL)
-    set_range_pattern = re.compile(r"\{\s*(-?\d+)\s*\.\.\s*(-?\d+)\s*\}")
-    set_values_pattern = re.compile(r"\{\s*(.*?)\s*\}", re.DOTALL)
-    dimension_name_pattern = re.compile(r"[A-Za-z_]\w*")
-    constraint_declaration_pattern = re.compile(r"([A-Za-z_]\w*)\s*:\s*(.+)", re.DOTALL)
+    subto_pattern = re.compile(r"subto\s+(\w+):\s([^;]*+);")
+    dummy_subto_pattern = re.compile(rf"subto {dummy_constraint_prefix}[^:]+:[^;]+;")
+    comment_pattern = re.compile(r"(?m)#.*$")
 
     def __init__(self, configuration: Configuration):
         super().__init__(configuration)  # Abstract adapter creates docker client, image etc.
@@ -595,67 +592,50 @@ class Adapter(AbstractAdapter):
 
         return self._translate_zimpl_to_minizinc(output_zpl, output, symbols, index_sets)
 
-    def _translate_zimpl_to_minizinc(self, zpl: str, raw_output: str, symbols: dict[str, MznVar]) -> str:
+    def _clean_raw_output(self, raw_output: str) -> str:
+        return self.backspace_pattern.sub("\n", raw_output)
+
+    def _translate_zimpl_to_minizinc(self, zpl: str, output: str, symbols: dict[str, MznVar],
+                                     index_sets: dict[str, MznVar]) -> str:
         """
         Main translation function from ZIMPL to MINIZINC format for chosen subset of GECS grammar based on DB examples.
         NOT A COMPLETE ZIMPL TO MINIZINC TRANSLATOR
 
         - clears the given ZIMPL output from comments
-        - filters the output for specified chosen subset of supported statements
-        - checks for any non-specified, unsupported type of text
-        - for debugging purposes adds raw ZIMPL and GECS console outputs
-        - for each supported statement type calls appropriate translation function (eg. for sets calls _translate_set)
-        - adds line 'solve satisfy' assigning a task of finding a solution that meets the requirements found by GECS
-        - returns the original names for symbols renamed for ZIMPL purposes
+        - filters the output for constraints
+        - adds as comment raw ZIMPL and GECS console outputs
         """
-        without_comments = re.sub(r"(?m)#.*$", "", zpl)
-        statements = []
-        end_of_previous = 0
-        for match in Adapter.statement_pattern.finditer(without_comments):
-            unparsed = without_comments[end_of_previous:match.start()].strip()
-            if unparsed:
-                raise AdapterException(f"Unsupported ZIMPL text: {unparsed}")
-            statements.append(match.groups())
-            end_of_previous = match.end()
-        unparsed = without_comments[end_of_previous:].strip()
-        if unparsed:
-            raise AdapterException(f"Unsupported ZIMPL text: {unparsed}")
+        comment = textwrap.indent(output, prefix="% ")
+        comment += "\n% The discovered ZIMPL model:\n"
+        comment += textwrap.indent(zpl, prefix="% ")
 
-        raw_comment_lines = []
-        if not statements:
-            raw_comment_lines.append("% Warning: GECS produced no translatable ZIMPL statements.")
+        mzn = ""
+        for symbol in symbols.values():
+            mzn += f"\n{symbol.to_str(symbols)}"
 
-        raw_comment_lines.append("% The original ZIMPL model:")
-        for line in zpl.splitlines():
-            raw_comment_lines.append(f"% GECS ZIMPL: {line}")
-        raw_comment_lines.append("% GECS console output follows:")
+        without_comments = self.comment_pattern.sub("", zpl)
+        without_dummy = self.dummy_subto_pattern.sub("", without_comments)
+        for subto in self.subto_pattern.finditer(without_dummy):
+            name = subto.group(1)
+            constraint = subto.group(2)
+            mzn += f"\nconstraint {Adapter._translate_expression(constraint)}; % {name}"
 
-        for line in raw_output.splitlines():
-            line = self.backspace_pattern.sub("\n% GECS: ", line)
-            raw_comment_lines.append(f"% GECS: {line}")
+        # replace escaped symbols
+        mzn = mzn.replace(self.id_escape_prefix, "")
 
-        minizinc_lines = []
-        name_mapping = self.zimpl_to_original_names
-        for statement_type, statement in statements:  # for a statement 'param m:= 7' the pair is -> ('param', 'm := 7')
-            statement = statement.strip()
-            if statement_type == "set":
-                minizinc_lines.append(self._translate_set(statement))
-            elif statement_type == "param":
-                minizinc_lines.append(self._translate_parameter(statement, symbols, name_mapping))
-            elif statement_type == "var":
-                minizinc_lines.append(self._translate_variable(statement, symbols, name_mapping))
-            else:
-                minizinc_lines.append(self._translate_constraint(statement))
+        # replace added index sets with the inline set definitions, as they are not defined in instance data
+        for name, index_set in index_sets.items():
+            if name not in symbols:
+                assert name == index_set.name
+                mzn = mzn.replace(name, f"{index_set.min}..{index_set.max}")
 
-        minizinc_lines.append("solve satisfy;")
-        minizinc_model = "\n".join(minizinc_lines) + "\n"
+        # replace calls to set variables
+        for symbol in symbols.values():
+            if symbol.var and Collection.set in symbol.collection:
+                pattern = rf"{re.escape(symbol.name)}\s*\[\s*(?P<index>[\d\w_]+)\s*]"
+                mzn = re.sub(pattern, f"bool2int(\\g<index> in {symbol.name})", mzn)
 
-        def restore_name(match: re.Match) -> str:
-            identifier = match.group(0)
-            return name_mapping.get(identifier, identifier)
-
-        translated_model = re.sub(r"\b[A-Za-z_]\w*\b", restore_name, minizinc_model)
-        return "\n".join(raw_comment_lines) + "\n" + translated_model
+        return comment + "\n" + mzn
 
     @staticmethod
     def _environment_int(name: str, default: int) -> int:
@@ -673,214 +653,6 @@ class Adapter(AbstractAdapter):
         if value_int <= 0:
             raise AdapterException(f"Environment variable {name} must be positive, got {value_int}.")
         return value_int
-
-    # ==== The ZIMPL-MINIZINC translation process was partly generated by AI while being supervised and corrected, part regarding constraint translation in particular
-    @staticmethod
-    def _translate_set(statement: str) -> str:
-        """
-        Translation function for sets
-
-        Uses _translate_set_value function to replace set values to minizinc appropriate ones. Dim_ names are helper
-        sets containing valid array indices. A regular set parameter has no Dim_ prefix, its value comes from the
-        instance data when MiniZinc evaluates the returned model.
-        """
-        match = Adapter.set_declaration_pattern.fullmatch(statement)
-        if match is None:
-            raise AdapterException(f"Unsupported ZIMPL set declaration: {statement}")
-        name, value = match.groups()
-        if name.startswith("Dim_"):
-            return f"set of int: {name} = {Adapter._translate_set_value(value)};"
-        return f"set of int: {name};"  # parameters do not start with Dim_
-
-    @staticmethod
-    def _translate_set_value(value: str) -> str:
-        """
-        Support function for _translate_set function used to convert set values to minizinc notation
-        - range form, like {1..4} -> '1..4'
-        - value form, like {1, 3, 7} is left as is with corrected spacing
-        """
-        value = value.strip()
-        range_match = Adapter.set_range_pattern.fullmatch(value)
-        if range_match:
-            return f"{range_match.group(1)}..{range_match.group(2)}"
-        values_match = Adapter.set_values_pattern.fullmatch(value)
-        if values_match:
-            return "{" + values_match.group(1) + "}"
-        raise AdapterException(f"Unsupported ZIMPL set value: {value}")
-
-    @staticmethod
-    def _translate_parameter(statement: str, symbols: dict[str, MznVar], name_mapping: dict[str, str]) -> str:
-        """
-        Translation function for parameters
-
-        - A non-set array returns for example 'array[1..2, 1..3] of int: ex'
-
-        - If parameter starts with GECS_set it represents the membership bits of an array of sets, for example
-            ex=[{0,2},{1}], the original parameter is an array containing two sets, GECS sees its bits as [1,0,1,0,1,0]
-
-            examplary zimpl input:
-            param GECS_set_MPMMine_ex[Dim_MPMMine_ex_1 * Dim_MPMMine_ex_2]:=<1,0> 1, <1,1> 0, ...;
-
-            For array of sets parameters 2 minizinc lines are added:
-            - first entry defines the parameter - array of sets
-            - second entry adds a support view for boolean values for the set members
-
-            example output:
-            array[1..2] of set of 0..2: ex;
-            array[Dim_MPMMine_ex_1, Dim_MPMMine_ex_2] of int: GECS_set_MPMMine_ex = array2d(
-                Dim_MPMMine_ex_1, Dim_MPMMine_ex_2, [bool2int(gecs_i2 in MPMMine_ex[gecs_i1]) | gecs_i1 in
-                Dim_MPMMine_ex_1, gecs_i2 in Dim_MPMMine_ex_2]);
-
-            where notation [statement | iterator] in minizinc generates a list, where for each pair it asks whether the
-            nested iterator (here gecs_i2) is in current gecs_i1, if yes the value is 1, if no value is set to 0
-            for ex=[{0,2},{1}] the result is a list [1,0,1,0,1,0], and array2d function transforms it into a 2x3 table
-        """
-        match = Adapter.parameter_declaration_pattern.fullmatch(statement)
-        if match is None:
-            raise AdapterException(f"Unsupported ZIMPL parameter declaration: {statement}")
-
-        name, _, dimensional_depth, _ = match.groups()
-        is_set_array = name.startswith("GECS_set_")
-        base_name = name.removeprefix("GECS_set_") if is_set_array else name
-        original_name = name_mapping.get(base_name, base_name)
-        symbol = symbols.get(original_name)
-        if symbol is None or symbol.var:
-            raise AdapterException(f"GECS declared an unknown parameter: {name}")
-        # MznVar.to_str() declares the parameter type and dimensions, for example 'int: ex'
-        declaration = replace(symbol, name=base_name).to_str(symbols)
-
-        if is_set_array:
-            if dimensional_depth is None:
-                raise AdapterException(f"An encoded set array needs dimensions: {statement}")
-            translated_indices = Adapter._translate_indices(dimensional_depth)
-            dimensions = translated_indices.split(", ")
-            if len(dimensions) < 2:
-                raise AdapterException(f"An encoded set array needs an array and member dimension: {statement}")
-            set_array_name = base_name
-            # dimensions is a list of dims [Dim_1, Dim_2], where each subsequent Dim is next layer of nesting in a list
-            # the last dimension contains possible set members
-
-            # for example above with 2 dimensions, the loop below returns
-            # iterator_names = ["gecs_i1", "gecs_i2"]
-            # generator_parts = ["gecs_i1 in Dim_MPMMine_ex_1", "gecs_i2 in Dim_MPMMine_ex_2"]
-            # each iterator goes through its subsequent members, so gecs_i1 iterates through initial table's children,
-            # while gecs_i2 iterates throughout those children members [gecs_i1 range [gecs_i2 range], [gecs_i2 range]]
-            iterator_names = []
-            generator_parts = []
-            for number, dimension in enumerate(dimensions, start=1):
-                iterator_name = f"gecs_i{number}"
-                iterator_names.append(iterator_name)
-                generator_parts.append(f"{iterator_name} in {dimension}")
-
-            outer_indices = ", ".join(iterator_names[:-1])
-            member_iterator = iterator_names[-1]
-            generator = ", ".join(generator_parts)
-            array_function = f"array{len(dimensions)}d"
-            array_arguments = ", ".join(dimensions)
-
-            return (
-                f"{declaration}\n"
-                f"array[{translated_indices}] of int: {name} = {array_function}({array_arguments}, [bool2int({member_iterator} in {set_array_name}[{outer_indices}]) | {generator}]);"
-            )
-        return declaration
-
-    @staticmethod
-    def _translate_variable(statement: str, symbols: dict[str, MznVar], name_mapping: dict[str, str]) -> str:
-        """
-        Translation function for variables
-
-        For an example input such as: MPMMine_ex[Dim_MPMMine_ex_1] integer >= 0 <= 10
-        The following are extracted:
-        name - "MPMMine_ex"; dimensional_depth - 'Dim_MPMMine_ex_1'; zimpl_type - 'integer'
-
-        a) If the name starts with GECS_set_, it represents one decision variable whose value is a set
-        GECS sees one binary variable per possible member. If the possible members are 1..4 and ex={2,4},
-        those four bits would have values [0,1,0,1]. The set is still a decision variable, so these are example
-        values, not values fixed in the MiniZinc model.
-
-        Two MiniZinc lines are needed:
-        - the original set variable, whose value MiniZinc will choose
-        - an array of 0/1 values refering to the membership bits
-
-        MznVar.to_str() creates the first line from the training metadata. For possible members 1..4, the lines look like:
-        var set of 1..4: MPMMine_ex;
-        array[Dim_MPMMine_ex_1] of var 0..1: GECS_set_MPMMine_ex = [bool2int(i in MPMMine_ex) | i in Dim_MPMMine_ex_1];
-
-        The part after | checks every possible member i. `bool2int(i in MPMMine_ex)` gives 1 if i belongs to
-        the chosen set and 0 otherwise. This branch is for one set variable; an array of set parameters is handled
-        by _translate_parameter instead.
-
-        b) For a regular non-set variable, MznVar.to_str() defines its domain from `symbols`.
-        - For scalar values we return "domain: name", such as "var 0..10: MPMMine_ex"
-        - For multi-dimensional values we add 'array[dimensions] of' to the statement above, such as
-            "array[Dim_MPMMine_ex_1] of var 0..10: MPMMine_ex"
-
-        """
-        match = Adapter.variable_declaration_pattern.fullmatch(statement)
-        if match is None:
-            raise AdapterException(f"Unsupported ZIMPL variable declaration: {statement}")
-        name, dimensional_depth, zimpl_type = match.groups()
-        is_set_variable = name.startswith("GECS_set_")
-        base_name = name.removeprefix("GECS_set_") if is_set_variable else name
-        original_name = name_mapping.get(base_name, base_name)
-        symbol = symbols.get(original_name)
-        if symbol is None or not symbol.var:
-            raise AdapterException(f"GECS declared an unknown decision variable: {name}")
-        # Keep the ZIMPL-safe name here; it is restored after all statements are translated.
-        declaration = replace(symbol, name=base_name).to_str(symbols)
-
-        if is_set_variable:
-            if dimensional_depth is None or zimpl_type != "binary":
-                raise AdapterException(f"Invalid encoded set variable: {statement}")
-            dimension = Adapter._translate_indices(dimensional_depth)
-            if "," in dimension:
-                raise AdapterException(f"Only one-dimensional set variables are supported: {statement}")
-            set_name = base_name
-            return (
-                f"{declaration}\n"
-                f"array[{dimension}] of var 0..1: {name} = [bool2int(i in {set_name}) | i in {dimension}];"
-            )
-        return declaration
-
-    @staticmethod
-    def _translate_indices(dimensional_depth: str) -> str:
-        """
-        Support function
-
-        Converts nested dimension description from cartesian product eg. Dim_1 * Dim_2 to separate values "Dim_1, Dim_2"
-        """
-        dimensions = []
-        for dim in dimensional_depth.split("*"):
-            dimensions.append(dim.strip())
-
-        invalid_dim_found = False
-        for dim in dimensions:
-            if Adapter.dimension_name_pattern.fullmatch(dim) is None:
-                invalid_dim_found = True
-                break
-
-        if not dimensions or invalid_dim_found:
-            raise AdapterException(f"Unsupported ZIMPL dimensional depth: {dimensional_depth}")
-        return ", ".join(dimensions)
-
-    @staticmethod
-    def _translate_constraint(statement: str) -> str:
-        """
-        Translation function for constraints
-
-        Separates constraint into name and expression and returns output of _translate_expression function
-
-        example constraint: 'knapsack_capacity: sum<i> in I: cost[i] * x[i] <= limit'
-        name - 'knapsack_capacity'
-        expression - 'sum <i> in I: cost[i] * x[i] <= limit'
-
-        constraints name is not present in minizinc code, but is included as a comment
-        """
-        match = Adapter.constraint_declaration_pattern.fullmatch(statement)
-        if match is None:
-            raise AdapterException(f"Unsupported ZIMPL constraint declaration: {statement}")
-        name, expression = match.groups()
-        return f"constraint {Adapter._translate_expression(expression)}; % {name}"
 
     @staticmethod
     def _translate_expression(expression: str) -> str:
