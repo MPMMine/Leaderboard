@@ -1,10 +1,12 @@
+import dataclasses
 import logging
 import os
 import re
 import shutil
 import tempfile
+import textwrap
 import uuid
-from dataclasses import replace
+from enum import Enum
 from pathlib import Path
 
 import docker
@@ -189,12 +191,22 @@ class Adapter(AbstractAdapter):
 
     container: docker.models.containers.Container
 
-    # Regex declarations
-    parameter_declaration_pattern = re.compile(r"([A-Za-z_]\w*)(\[(.*?)\])?\s*:=\s*(.+)", re.DOTALL)
-    variable_number_pattern = r"-?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"
-    variable_declaration_pattern = re.compile(
-        rf"([A-Za-z_]\w*)(?:\[(.*?)\])?\s+(integer|real|binary)(?:\s*>=\s*{variable_number_pattern})?(?:\s*<=\s*{variable_number_pattern})?",
-        re.DOTALL)
+    # The ZIMPL reserved keywords from https://github.com/scipopt/zimpl/blob/master/src/zimpl/mmlscan.l#L91
+    # Set/parameters/variables with this name are to be escaped using self._zpl_escape()
+    zimpl_keywords = {"not", "and", "or", "xor", "set", "param", "var", "maximize", "minimize", "subto", "sos",
+                      "defnumb", "defstrg", "defbool", "defset", "in", "with", "do", "binary", "integer", "real", "sum",
+                      "prod", "forall", "exists", "vif", "if", "then", "else", "end", "to", "by", "union", "inter",
+                      "symdiff", "cross", "proj", "without", "mod", "modulo", "div", "min", "max", "argmin", "argmax",
+                      "read", "as", "skip", "use", "comment", "scale", "separate", "checkonly", "indicator", "qubo",
+                      "penalty1", "penalty2", "penalty3", "penalty4", "penalty5", "penalty6", "penalty7", "penalty8",
+                      "card", "abs", "vabs", "sgn", "round", "floor", "ceil", "log", "ln", "exp", "sqrt", "sin", "cos",
+                      "tan", "asin", "acos", "atan", "pow", "sgnpow", "priority", "startval", "default", "subsets",
+                      "powerset", "indexset", "permute", "print", "check", "infinity", "random", "ord", "type1",
+                      "type2", "implicit", "length", "substr", "match"}
+
+    id_escape_prefix = "_esc_"
+    dummy_constraint_prefix = "_dummy_"
+
     # These patterns are used in ZIMPL->MiniZinc translation
     backspace_pattern = re.compile(r"[\b]+")
     statement_pattern = re.compile(r"(?ms)^[ \t]*(set|param|var|subto)[ \t]+(.*?);")
@@ -247,417 +259,259 @@ class Adapter(AbstractAdapter):
         if not has_license:
             self.wait_for_gurobi_license(license_dir)
 
-    def prepare_data_files(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], fold_id: int) -> str:
-        """
-        Prepare data files class prepares training data for 1 fold , providing CSV files, standarizing the data appropriately and creating a ZIMPL format template
-
-        In short:
-        1.  Creates three .csv files for training, validation and testing datasets, where all 3 consist of the same data.
-            CSV files are required, since GECS cant read the data that is not physically stored somewhere.
-            Copies are made, since GECS implementation internally requires separate file for each dataset, as well as calculating fitness for each.
-            The data is the same since those datasets are used only for GECS training, actual test examples are hidden to eliminate dataleaks.
-
-        2. In order to create said csv files it is required to modify the data according to GECS requirements.
-            GECS operates only on numerical values, requiring us to 'flatten' multidimensional variables to simpler version such as
-            m[[4,5], [5,6]] -> m#1#1 = 4, m#1#2 = 5, etc. - where each subsequent index represents deeper nesting level. Indices are represented after a hash, due to ZIMPL syntax.
-
-        3. Temporarily, for a duration of using an algorithm, replaces names of all symbols.
-            In rare cases names such as 'length' would cause issues, since ZIMPL has its own function or said name may be restricted.
-
-        4. Creates a ready to go ZIMPL template for GECS
-            a) For each decision variable there is an additional 'anchor' constraint added during the creation. If a variable is
-            not used in any constraint at the end, ZIMPL may skip it output, causing errors. This ensures all variables are used at least once.
-
-            b) For multidimensional data, all dimensions need to be taken into an account and added to the ZIMPL template.
-            For a regular two-dimensional array, symbol.indices has two entries - 1. positions in the outer list; 2. positions in the inner lists.
-            If there are more dimensions, additional positions are added. Additionally, for an array of sets, the last entry instead describes possible members of those sets.
-            For example: [{0,2},{1}] would be represented in symbol.indices as: [{1,2}, {0,1,2}]
-
-            c) In case of sets that are decision variables, 3 lines are written in a ZIMPL file:
-                I. definition of a set consisting of its domain defined in symbol, as well as appropriate prefix before the name stating it is one dimensional Dim_MPMMine_setname_1
-                II. a variable defining a binary array representing the membership to set of every value in its domain
-                III. additional anchor constraint for each item of said array, stating that each is greater or equal to 0
-
-                For an example such as setname{2,3,7} with domain 1..8 we get
-                set Dim_MPMMine_setname_1 := {1.. 8};
-                var GECS_set_MPMMine_setname[Dim_MPMMine_setname_1] binary;
-                subto anchor_GECS_set_MPMMine_setname: forall < i1 > in Dim_MPMMine_setname_1 do GECS_set_MPMMine_setname[i1] >= 0;
-
-            d) If a set is not a decision variable it is a parameter,defined only by name and values
-                For example above it would be: set MPMMine_setname:= {2,3,7}
-
-            e) For non-set decision variables its dimensions need to be declared (how nested it is represented as a cartesian product)
-                and add appropriate line including its name, dimensions and variable domain, as well as additional anchor constraint
-                For example
-                var varname[Dim_varname_1 * Dim_varname_2] integer >= min_value <= max_value
-                subto anchor_varname: forall < i1, i2 > in Dim_varname_1 * Dim_varname_2 do varname[i1, i2] >= min_value
-
-            f) For non-set parameters we have to take into consideration arrays of sets since in DB there exists such a problem
-                with such a dataset - explained more in detail in _append_set_array_parameter function.
-
-                Regular non array-of-sets parameters add a simple line containing its dimensional depth and values
-                f.e. param parname[Dim_parname_1] := <1> 4, <2> 5, <3> 6;
-                where in a pair <i> j, i is values indices, j is its value
-
-        """
-        # unique id for each run, due to possible race conditions in some test runs
-        unique_run_id = uuid.uuid4().hex[:8]
-        problem_name = f"task_fold_{fold_id}_{unique_run_id}"
+    def _prepare_zimpl_template(self, train_data: pd.DataFrame, symbols: dict[str, MznVar],
+                                index_sets: dict[str, MznVar], output_path: Path):
 
         if train_data.empty:
             raise AdapterException("GECS received an empty training set")
         if not train_data["actual_class"].astype(bool).all():
-            raise AdapterException(
-                "GECS accepts only feasible training examples - algorithm should be trained on correct examples to correctly create constraints")
+            raise AdapterException("GECS accepts only feasible training examples")
 
-        # ==== According to the requirements, the naming problem and solution was detected and partly generated by AI while being supervised and corrected
-        zimpl_names = {}
-        self.zimpl_to_original_names = {}
-        for original_name, symbol in symbols.items():
-            zimpl_name = f"MPMMine_{original_name}"
-            zimpl_names[original_name] = zimpl_name
-            self.zimpl_to_original_names[zimpl_name] = original_name
-            if symbol.var and symbol.collection != [Collection.set]:
-                self.zimpl_to_original_names[f"anchor_{zimpl_name}"] = f"anchor_{original_name}"
+        instance_obj = train_data["instance_obj"].iloc[0]
+        if not (train_data["instance_obj"] == instance_obj).all():
+            raise AdapterException(f"GECS supports only a single instance of parameters in one run.")
 
-            for number in range(1, len(symbol.indices) + 1):  # multidimensional symbols, look point 4.
-                zimpl_dimension = f"Dim_{zimpl_name}_{number}"
-                original_dimension = f"Dim_{original_name}_{number}"
-                self.zimpl_to_original_names[zimpl_dimension] = original_dimension
+        with output_path.open("w", encoding="utf-8") as zpl:
+            # print index sets
+            key = lambda x: x.value if isinstance(x, Enum) else x
+            for s in index_sets.values():
+                assert not s.var
+                values = instance_obj[s.name] if s.name in instance_obj else range(s.min, s.max + 1)
+                if s.name not in symbols:
+                    zpl.write(f"# Added to allow producing forall and sum with {s.name}\n")
+                zpl.write(self._zpl_format_param(s, values, index_sets) + "\n")
 
-        # parameters  are the same for all examples across one instance of the problem
-        # thus we only save the first one
-        instance_parameter_values = train_data["instance_obj"]
-        instance_first_row = instance_parameter_values.iloc[0]
-        for parameter_value in instance_parameter_values:
-            if parameter_value != instance_first_row:
-                raise AdapterException("GECS implementation supports only one set of parameter values in one run.")
-
-        # GECS operates on numerical values, it can't operate on sets. Each set is unpacked into a range of its domain and assigned binary values to each column,
-        # representing presence or absence of a value in a set, for example for set={2,3,7} of domain 1..8 the result would be [0,1,1,0,0,0,1,0]
-        set_member_ranges = {}
-        for name, symbol in symbols.items():
-            if symbol.var and symbol.collection == [Collection.set]:
-                if symbol.domain != Domain.int or len(symbol.indices) != 1:
-                    raise AdapterException(f"GECS supports only sets of integers as decision variables: {name}.")
-                if f"GECS_set_{name}" in symbols:
-                    raise AdapterException(f"GECS set encoding collides with an existing symbol: {name}.")
-                set_member_ranges[name] = range(min(symbol.indices[0]), max(symbol.indices[0]) + 1)
-                zimpl_set_name = f"GECS_set_{zimpl_names[name]}"  # GECS_set_MPMMine_{set name}
-                original_set_name = f"GECS_set_{name}"  # GECS_set_{setname}
-                self.zimpl_to_original_names[zimpl_set_name] = original_set_name
-                self.zimpl_to_original_names[f"anchor_{zimpl_set_name}"] = f"anchor_{original_set_name}"
-
-        csv_rows = []
-        for example in train_data["example_obj"]:
-            csv_row: dict[str, int | float] = {}
-            for variable_name, value in example.items():
-                symbol = symbols.get(variable_name)
-                if symbol is None or not symbol.var:
+            # print the defined symbols
+            for s in symbols.values():
+                if s.var or s.name in index_sets:
                     continue
-                zimpl_name = zimpl_names[variable_name]
-                # A set decision variable is represented by one CSV column for each POSSIBLE member.
-                # For hosts={2,3} and domain 1..4, the columns contain 0, 1, 1, 0. The ZIMPL declarations are created later.
-                # f.e. for hosts set {2,3} we have a column name such as GECS_set_MPMMine_hosts#2 = 1
-                if variable_name in set_member_ranges:
-                    if not isinstance(value, (set, range)):
-                        raise AdapterException(f"Unsupported set decision value for {variable_name}: {value!r}")
-                    members = set(value)
-                    for member in set_member_ranges[variable_name]:
-                        column_name = f"GECS_set_{zimpl_name}#{member}"
-                        csv_row[column_name] = int(member in members)
+                values = instance_obj[s.name]
+                zpl.write(self._zpl_format_param(s, values, index_sets))
+
+            # print variable declarations
+            for s in symbols.values():
+                if not s.var:
                     continue
+                zpl.write(self._zpl_format_var(s, index_sets))
 
-                # flatten value for a list such as m=[[4,5],[6,7]] returns a list
-                # [([1,1],4), ([1,2],5), ([2,1],6), ([2, 2],7)] where the first element is a nested index of item in matrix
-                for indices, scalar_value in self._flatten_value(value):
-                    column_name = zimpl_name
-                    for index in indices:
-                        column_name += f"#{index}"
-                    csv_row[column_name] = scalar_value  # MPMMine_m#1#1 = 4 in csv_row for example above
+            zpl.write("### END OF TEMPLATE ###\n")
 
-            csv_rows.append(csv_row)
-
-        training_table = pd.DataFrame(csv_rows)
-        if training_table.isna().any().any():  # missing values treated as errors, since value 0 may impact training
-            missing = training_table.columns[training_table.isna().any()].tolist()
-            raise AdapterException(f"GECS input has missing variable values in columns: {missing}")
-
-        train_csv_path = self.local_data_dir / f"{problem_name}_training.csv"
-        training_table.to_csv(train_csv_path, index=False)
-
-        for suffix in ["_test", "_validation"]:
-            csv_path = self.local_data_dir / f"{problem_name}{suffix}.csv"
-            os.link(train_csv_path, csv_path)
-
-        # ==== According to the requirements, the ZIMPL template creation process along with some of the helper functions supporting it was partly generated by AI while being supervised and corrected
-        zpl_path = self.local_data_dir / f"{problem_name}.zpl"
-        zpl_lines = []
-
-        for name, symbol in symbols.items():
-            zimpl_name = zimpl_names[name]
-            if symbol.collection == [Collection.set]:
-                if symbol.var:
-                    members = set_member_ranges[name]
-                    zimpl_set_var_dimension = f"Dim_{zimpl_name}_1"
-                    zimpl_set_var_name = f"GECS_set_{zimpl_name}"
-                    zpl_lines.append(f"set {zimpl_set_var_dimension} := {{ {members.start} .. {members.stop - 1} }};")
-                    zpl_lines.append(f"var {zimpl_set_var_name}[{zimpl_set_var_dimension}] binary;")
-                    zpl_lines.append(
-                        f"subto anchor_{zimpl_set_var_name}: forall <i1> in {zimpl_set_var_dimension} do {zimpl_set_var_name}[i1] >= 0;")
-                    continue
-                set_parameter_values = instance_first_row.get(name)
-                if set_parameter_values is None:
-                    raise AdapterException(f"Missing value for set parameter {name}.")
-                zpl_lines.append(f"set {zimpl_name} := {self._zimpl_set(set_parameter_values)};")
-                continue
-
-            if symbol.var:
-                dimensional_depth = self._declare_dimensions(zpl_lines, zimpl_name, symbol)
-                zpl_lines.append(f"var {zimpl_name}{dimensional_depth} {self._zimpl_variable_domain(symbol)};")
-                self._append_variable_anchor(zpl_lines, zimpl_name, symbol)
-            else:
-                parameter_values = instance_first_row.get(name)
-                if parameter_values is None:
-                    raise AdapterException(f"Missing value for parameter {name}.")
-                if self._is_array_of_sets(parameter_values):
-                    self._append_set_array_parameter(zpl_lines, zimpl_name, symbol, parameter_values)
-                    zimpl_arr_set_name = f"GECS_set_{zimpl_name}"
-                    self.zimpl_to_original_names[zimpl_arr_set_name] = f"GECS_set_{name}"
+    def _find_index_sets(self, symbols: dict[str, MznVar]) -> dict[str, MznVar]:
+        # key: name, value: MznVar that defines set
+        index_sets = {s.name: s
+                      for s in symbols.values()
+                      if not s.var and len(s.collection) == 1 and s.collection[0] == Collection.set}
+        # GECS cannot build an index set in place due to limitations of the adopted grammar, so it must not iterate over
+        # arrays with set indices defined in place using, e.g., the {min..max} notation. Therefore, we scan all index
+        # sets and if they are not equal to sets contained in `index_sets`, we add them to enable indexing.
+        for s in symbols.values():
+            for dim, bounds in enumerate(s.indices, start=1):
+                key = lambda x: x.value if isinstance(x, Enum) else x
+                lb = min(bounds, key=key)
+                ub = max(bounds, key=key)
+                assert key(lb) <= key(ub)
+                if any(lb == min(i := ps.indices[0], key=key) and max(i, key=key) == ub for ps in index_sets.values()):
+                    pass  # a parameter set exists that contains required indices for s
                 else:
-                    dimensional_depth = self._declare_dimensions(zpl_lines, zimpl_name, symbol)
-                    zpl_lines.append(
-                        f"param {zimpl_name}{dimensional_depth} := {self._zimpl_parameter_value(parameter_values)};")
+                    name = f"_indexset_{s.name}_{dim}"
+                    # Note that Evaluation class parses DZN converting enum indices to ints
+                    assert isinstance(lb, int) and isinstance(ub, int)
+                    assert name not in index_sets and name not in symbols
+                    index_sets[name] = MznVar(
+                        name=name,
+                        domain=Domain.int,
+                        collection=[Collection.set],
+                        indices=[{lb, ub}],
+                        min=lb,
+                        max=ub,
+                        var=False,
+                        enum=None
+                    )
+        return index_sets
 
-        zpl_lines.append("# END OF TEMPLATE #")
+    def _zpl_escape(self, id: str) -> str:
+        id_without_idx = re.split("[#$]", id, 1)[0]
+        if id_without_idx in self.zimpl_keywords:
+            return f"{self.id_escape_prefix}{id}"
+        return id
 
-        with zpl_path.open("w", encoding="utf-8") as zpl_file:
-            zpl_file.write("\n".join(zpl_lines))
+    def _zpl_format_indices(self, symbol: MznVar, index_sets: dict[str, MznVar]) -> str:
+        index_str = ""
+        for indices, collection in zip(symbol.indices, symbol.collection):
+            if collection == Collection.set and not symbol.var:
+                continue
+            key = lambda x: x.value if isinstance(x, Enum) else x
+            ilb = min(indices, key=key)
+            iub = max(indices, key=key)
+            matching_index_sets = [s for s in index_sets.values()
+                                   if ilb == min(i := s.indices[0], key=key) and iub == max(i, key=key)]
+            if len(matching_index_sets) >= 1:
+                index_str += matching_index_sets[0].name + " * "
+            else:
+                index_str += f"{{{ilb}..{iub}}} * "
+        index_str = index_str.rstrip("* ")
+        if index_str != "":
+            index_str = f"[{index_str}]"
+        return index_str
 
-        return f"mpmmine/{problem_name}"
+    def _zpl_format_param(self, symbol: MznVar, value, index_sets: dict[str, MznVar]):
+        assert not symbol.var
+        decl_type = "set" if Collection.set in symbol.collection else "param"
+        index_str = self._zpl_format_indices(symbol, index_sets)
+        return f"{decl_type} {self._zpl_escape(symbol.name)}{index_str} := {self._zpl_format_value(symbol, value)};\n"
 
-    @staticmethod
-    def _flatten_value(value, indices=None):
-        """
-        Support function that flattens multidimensional arrays by recursively checking type of each element of a list.
-
-        If it finds a scalar value, it stops and returns nested indices of said value in original list.
-
-        The output is a list of tuples in a format [([nested index value in list], value), ...]
-
-        For example for [[4,5],[6,7]], the output would be [([1,1],4), ([1,2],5), ([2,1],6), ([2,2],7)]
-        """
-        if indices is None:
-            indices = []
-
-        if isinstance(value, list):
-            flattened_values = []
-            for position, nested_value in enumerate(value, start=1):
-                nested_indices = indices + [position]
-                nested_entries = Adapter._flatten_value(nested_value, nested_indices)
-                flattened_values.extend(nested_entries)
-            return flattened_values
-
-        if not isinstance(value, (int, float)):
-            raise AdapterException(f"Unsupported data type: {value!r}")
-        return [(indices, value)]
-
-    # ==== Some of the helper functions below for the ZIMPL template creation process were created with the help of AI, mostly part regarding detection of arrays-of-sets
-    @staticmethod
-    def _zimpl_set(value) -> str:
-        """
-        Support function that translates a set from DB format to unified one, supported by ZIMPL.
-        """
-        if isinstance(value, range):
-            value = list(value)
-        if not isinstance(value, (set, list, tuple)):
-            raise AdapterException(f"Unsupported ZIMPL set value: {value!r}")
-
-        text_values = []
-        for item in sorted(value):
-            text_values.append(str(item))
-        return "{ " + ", ".join(text_values) + " }"
-
-    @staticmethod
-    def _is_array_of_sets(value) -> bool:
-        """
-        Support function that checks whether the parameter is an array of sets.
-        It goes to the first element of each array and checks if its a set.
-        """
-        if not isinstance(value, list) or not value:
-            return False
-
-        current_value = value
-        while isinstance(current_value, list) and current_value:
-            current_value = current_value[0]
-        return isinstance(current_value, (set, range))
-
-    @staticmethod
-    def _flatten_set_array(set_array, member_domain, indices=None):
-        """
-        Support function used by append_set_array function, used to recursively flatten an array of sets.
-        Since sets have to be represented as scalar values in GECS we need to describe each set in an array
-        as binary values across the domain of possible set members.
-
-        The output is a list of tuples in a format [([IDX1, IDX2], presence), ...], where:
-        - IDX1 represents which set are we describing
-        - IDX2 represents which value from the domain are we checking for presence in set IDX1
-        - presence represents whether the value is in set IDX1 or not
-
-        For an example array [{0,2}, {1}] with domain of 0..2 we get an output like so:
-        [([1,0],1), ([1,1],0), ([1,2],1), ([2,0],0), ([2,1],1), ([2,2],0)]
-
-        Do not mistake with flatten_value used for non-array-of-sets arrays
-        """
-        if indices is None:
-            indices = []
-
-        if isinstance(set_array, list):
-            flattened_values = []
-            for position, nested_value in enumerate(set_array, start=1):
-                nested_indices = indices + [position]
-                nested_entries = Adapter._flatten_set_array(nested_value, member_domain, nested_indices)
-                flattened_values.extend(nested_entries)
-            return flattened_values
-        if not isinstance(set_array, (set, range)):
-            raise AdapterException(f"Expected a set inside a GECS set array, got: {set_array!r}")
-
-        members = set(set_array)
-        flattened_values = []
-        for member in sorted(member_domain):
-            entry_indices = indices + [member]
-            flattened_values.append((entry_indices, int(member in members)))
-        return flattened_values
-
-    @staticmethod
-    def _append_set_array_parameter(zpl_lines: list[str], name: str, symbol: MznVar, set_array):
-        """
-        Support function adding arrays of sets into a ZIMPL file.
-        It uses symbol.indices to get the domain of values in given array and uses that to call _flatten_set_array function to flatten the array.
-
-        The output is a ready ZIMPL line in a format
-        param name[dimensions] := <IDX1, IDX2> presence, ...
-        Where:
-        - IDX1 represents which set are we describing
-        - IDX2 represents which value from the domain are we checking for presence in set IDX1
-        - presence represents whether the value is in set IDX1 or not
-
-        En example output for an array of sets such as [{0,2}, {1}] looks like so:
-        param GECS_set_MPMMine_exs[Dim_MPMMine_ex_1 * Dim_MPMMine_ex_2] := <1,0> 1, <1,1> 0, <1,2> 1, <2,0> 0, <2,1> 1, <2,2> 0;
-        """
-        if (len(symbol.collection) < 2 or symbol.collection[-1] != Collection.set
-                or any(kind != Collection.array for kind in symbol.collection[:-1])
-                or len(symbol.indices) != len(symbol.collection)):
-            raise AdapterException(f"Invalid array-of-sets parameter: {name}.")
-
-        dimensional_depth = Adapter._declare_dimensions(zpl_lines, name, symbol)
-        member_domain = symbol.indices[-1]
-        flattened_array = Adapter._flatten_set_array(set_array, member_domain)
-
-        zimpl_entries = []
-        for indices, membership in flattened_array:
-            text_indices = []
-            for index in indices:
-                text_indices.append(str(index))
-            joined_indices = ",".join(text_indices)
-            zimpl_entries.append(f"<{joined_indices}> {membership}")
-
-        indicator_name = f"GECS_set_{name}"
-        zpl_lines.append(f"param {indicator_name}{dimensional_depth} := " + ", ".join(zimpl_entries) + ";")
-
-    @staticmethod
-    def _declare_dimensions(zpl_lines: list[str], name: str, symbol: MznVar) -> str:
-        """
-        Support function used to declare dimensional depth of a ZIMPL array.
-
-        a) returns dimensions (how nested the object is) in a string format like so:
-            "[Dim_name_1 * Dim_name_2]" for 2 dimensional array eg. [[1,2], [2]]
-
-            for scalar values it returns an empty string since they have no depth
-
-        b) adds a zimpl line declaring the domain of indices in array:
-         set Dim_example_1 := {1..3}
-
-        For example for an array x=[6,7] this adds 'set Dim_x_1 := {1..2}; zimpl line, and returns '[Dim_x_1]' list.
-        """
-        if not symbol.collection:
-            return ""
-        if not (all(kind == Collection.array for kind in symbol.collection)
-                or (symbol.collection[-1] == Collection.set
-                    and all(kind == Collection.array for kind in symbol.collection[:-1]))):
-            raise AdapterException(f"Unsupported GECS collection type {symbol.collection!r} for {name}.")
-
-        dimension_names = []
-        for number, index_set in enumerate(symbol.indices, start=1):
-            lower, upper = min(index_set), max(index_set)
-            dimension_name = f"Dim_{name}_{number}"
-            zpl_lines.append(f"set {dimension_name} := {{ {lower} .. {upper} }};")
-            dimension_names.append(dimension_name)
-        return "[" + " * ".join(dimension_names) + "]"
-
-    @staticmethod
-    def _zimpl_variable_domain(symbol: MznVar) -> str:
-        """
-        Support function to deremine decision variable's domain and construct appropriate zimpl input
-        """
-        if symbol.domain == Domain.int:
-            type_name = "integer"
-        elif symbol.domain == Domain.float:
-            type_name = "real"
-        else:
-            raise AdapterException(
-                f"Unsupported GECS variable domain {symbol.domain!r} for {symbol.name}."
+    def _zpl_format_value(self, symbol: MznVar, value, index_prefix: str = "") -> str:
+        value_type = type(value)
+        if value_type is int or value_type is float:
+            return str(value)
+        elif isinstance(value, Enum):
+            # ZIMPL does not support enums, but supports strings
+            return f'"{value.name}"'
+        elif isinstance(value, set):
+            assert symbol.collection[0] == Collection.set
+            assert len(symbol.indices) == 1
+            subsymbol = dataclasses.replace(
+                symbol,
+                indices=symbol.indices[1:],
+                collection=symbol.collection[1:],
             )
-        return f"{type_name} >= {symbol.min} <= {symbol.max}"
+            contents = [self._zpl_format_value(subsymbol, v) for v in value]
+            return f"{{{", ".join(contents)}}}"
+        elif isinstance(value, range):
+            assert symbol.collection[0] == Collection.set
+            assert len(symbol.indices) == 1
+            assert symbol.enum is None
+            return f"{{{symbol.min}..{symbol.max}}}"
+        elif value_type is list:
+            indices = range(min(symbol.indices[0]), max(symbol.indices[0]) + 1)
+            indices_prefixes = [f"{index_prefix}, {i}".lstrip(", ") for i in indices]
+            subsymbol = dataclasses.replace(
+                symbol,
+                indices=symbol.indices[1:],
+                collection=symbol.collection[1:],
+            )
+            if len(symbol.indices) == 1 or (len(symbol.indices) == 2 and symbol.collection[1] == Collection.set):
+                contents = [self._zpl_format_value(subsymbol, v, i)
+                            for i, v in zip(indices_prefixes, value)]
+                return ", ".join(f"<{i}> {c}" for i, c in zip(indices_prefixes, contents))
+            else:
+                return ", ".join([self._zpl_format_value(subsymbol, v, i)
+                                  for i, v in zip(indices_prefixes, value)])
 
-    @staticmethod
-    def _append_variable_anchor(zpl_lines: list[str], name: str, symbol: MznVar) -> None:
-        """
-        Support function that adds additional, redundant anchor constraint to each variable.
+        raise TypeError(f"Unknown value type: {value}: {value_type}")
 
-        The anchor constraints redundantly repeat the lower value of a domain be it for scalar values or multidimensional values in
-        which case the constraint is applied to each single indexed element of ZIMPL variable.
+    def _zpl_format_var(self, symbol: MznVar, index_sets: dict[str, MznVar]) -> str:
+        assert symbol.var
 
-        The constraints acts only as a mean of keeping the variables in place, not adding additional new constraints
-        """
-        if not symbol.collection:
-            zpl_lines.append(f"subto anchor_{name}: {name} >= {symbol.min};")
-            return
-        index_names = []
-        dimension_names = []
-        for number in range(1, len(symbol.indices) + 1):
-            index_names.append(f"i{number}")
-            dimension_names.append(f"Dim_{name}_{number}")
-        joined_indices = ",".join(index_names)
-        joined_dimensions = " * ".join(dimension_names)
-        zpl_lines.append(
-            f"subto anchor_{name}: forall <{joined_indices}> in {joined_dimensions} do {name}[{joined_indices}] >= {symbol.min};")
+        lb = symbol.min
+        ub = symbol.max
+        match symbol.domain:
+            case Domain.int:
+                if lb == ub:  # prevent ZIMPL from optimizing out the variable
+                    lb -= 1
+                domain = f"integer >= {lb} <= {ub}"
+            case Domain.float:
+                if lb == ub:  # prevent ZIMPL from optimizing out the variable
+                    lb -= 0.0001
+                domain = f"real >= {lb} <= {ub}"
+            case Domain.bool:
+                if lb == ub:  # prevent ZIMPL from optimizing out the variable
+                    lb = 0
+                domain = "binary"
+            case Domain.enum:
+                lb = min(symbol.enum, key=lambda x: x.value).value
+                ub = max(symbol.enum, key=lambda x: x.value).value
+                if lb == ub:  # prevent ZIMPL from optimizing out the variable
+                    lb -= 1
+                domain = f"integer >= {lb} <= {ub}"
+            case _:
+                raise TypeError(f"Unknown domain: {symbol.domain}")
 
-    @staticmethod
-    def _zimpl_parameter_value(parameter_values) -> str:
-        """
-        Support function adding a value part of a parameter line definition in a ZIMPL template.
+        if Collection.set in symbol.collection:
+            domain = "binary"
 
-        This function returns value part of a ZIMPL entry describing a parameter
-        a) For scalar values the function simlpy returns just the value of a parameter
-        b) For Arrays the function returns pairs '<indices> value'
-            for example for an array [[4,5],[6,7]] the function returns  "<1,1> 4, <1,2> 5, <2,1> 6, <2,2> 7"
-        """
-        flattened_parameter = Adapter._flatten_value(parameter_values)
-        if not flattened_parameter:
-            raise AdapterException("Cannot write an empty GECS parameter")
-        if not flattened_parameter[0][0]:
-            # flatten_value returns pairs (indices, value), so if indices are empty value is scalar and returned
-            return str(flattened_parameter[0][1])
+        name = self._zpl_escape(symbol.name)
+        index_str = self._zpl_format_indices(symbol, index_sets)
+        var_decl = f"var {name}{index_str} {domain};\n"
 
-        zimpl_entries = []
-        for indices, scalar_value in flattened_parameter:
-            text_indices = []
-            for index in indices:
-                text_indices.append(str(index))
-            joined_indices = ",".join(text_indices)
-            zimpl_entries.append(f"<{joined_indices}> {scalar_value}")
-        return ", ".join(zimpl_entries)
+        # Add a dummy anchor constraint that prevents ZIMPL from optimizing out this variable if unused in the actual
+        # constraints. This is crucial for the grammar generation phase, as variables not referenced by constraints
+        # are removed from the model by the ZIMPL interpreter and must not be used by GECS.
+        dummy_constraint = f"subto {self.dummy_constraint_prefix}{name}: "
+        if index_str:
+            idx_var = ", ".join("ijklmnoprstuvwxyz"[:len(symbol.indices)])
+            dummy_constraint += f"forall <{idx_var}> in {index_str.strip("[]")}: {name}[{idx_var}]"
+        else:
+            dummy_constraint += name
+        dummy_constraint += f" >= {lb};\n"
+
+        return var_decl + dummy_constraint
+
+    def _prepare_csv(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], output_path: Path):
+        def format_example(row) -> pd.Series:
+            nonlocal symbols
+            vars_flat = self._csv_format(row["example_obj"], symbols)
+            return pd.Series(vars_flat)
+
+        # noinspection PyTypeChecker
+        csv: pd.DataFrame = train_data.apply(format_example, axis=1)
+        csv.to_csv(output_path, index=False)
+
+    def _csv_format(self,
+                    dictionary: dict[str, int | float | set | list],
+                    symbols: dict[str, MznVar]) -> dict[str, int | float]:
+        output = {}
+        for name, value in dictionary.items():
+            output.update(self._csv_format_value(symbols[name], value))
+        return output
+
+    def _csv_format_value(self, symbol: MznVar, value, index: str = "") -> dict[str, int | float]:
+        assert symbol.var
+        value_type = type(value)
+        if value_type is int or value_type is float:
+            return {self._zpl_escape(symbol.name) + index: value}
+        elif isinstance(value, Enum):
+            # ZIMPL does not support enums, so we convert it to integer
+            # lookup integer value in the symbol.enum rather than rely on value.value, as the latter may come from
+            # parsing DZN with incomplete enum definition, and the former contains all enum values spot in all data
+            return {self._zpl_escape(symbol.name) + index: symbol.enum[value.name].value}
+        elif isinstance(value, set) or isinstance(value, range):
+            assert symbol.collection[0] == Collection.set
+            assert len(symbol.indices) == 1
+            # ZIMPL does not support set variables, encode them as binary arrays
+            if any(isinstance(i, Enum) for i in symbol.indices[0]):
+                indices = symbol.indices[0]
+            else:
+                indices = range(min(symbol.indices[0]), max(symbol.indices[0]) + 1)
+            subsymbol = dataclasses.replace(
+                symbol,
+                indices=symbol.indices[1:],
+                collection=symbol.collection[1:],
+            )
+            output = {}
+            for i in indices:
+                if type(i) is int:
+                    i_print = f"#{i}"
+                elif isinstance(i, Enum):
+                    i_print = f"${i.name}"
+                else:
+                    raise ValueError(f"Indices must be integer or enum: {i}")
+                output.update(self._csv_format_value(subsymbol, int(i in value), index + i_print))
+            return output
+        elif value_type is list:
+            indices = range(min(symbol.indices[0]), max(symbol.indices[0]) + 1)
+            subsymbol = dataclasses.replace(
+                symbol,
+                indices=symbol.indices[1:],
+                collection=symbol.collection[1:],
+            )
+            output = {}
+            for i, v in zip(indices, value):
+                assert type(i) is int
+                output.update(self._csv_format_value(subsymbol, v, index + f"#{i}"))
+            return output
+
+        raise TypeError(f"Unknown value type: {value}: {value_type}")
 
     def __del__(self):
         """
@@ -685,14 +539,27 @@ class Adapter(AbstractAdapter):
         - runs GECS and reads its best from best.txt file
         - translates the best output from ZIMPL to MINIZINC
         """
-        internal_problem_name = self.prepare_data_files(train_data, symbols, fold_id)
-        run_id = f"{internal_problem_name.rsplit('/', maxsplit=1)[-1]}_results"
+        # unique id for each run, due to possible race conditions in some test runs
+        run_id = uuid.uuid4().hex[:8]
+        problem_name = f"task_fold_{fold_id}_{run_id}"
+
+        index_sets = self._find_index_sets(symbols)
+        self._prepare_zimpl_template(train_data, symbols, index_sets, self.local_data_dir / f"{problem_name}.zpl")
+
+        train_path = self.local_data_dir / f"{problem_name}_training.csv"
+        test_path = self.local_data_dir / f"{problem_name}_test.csv"
+        validation_path = self.local_data_dir / f"{problem_name}_validation.csv"
+
+        self._prepare_csv(train_data, symbols, self.local_data_dir / f"{problem_name}_training.csv")
+        os.link(train_path, test_path)
+        os.link(train_path, validation_path)
+
         grammar_name = f"ZIMPL-dedicated-{run_id}.bnf"
         grammar_result = self.container.exec_run(
             cmd=["python3", "-m", "fitness.gecs_support", "grammar",
-                 f"/app/datasets/ZIMPL/{internal_problem_name}.zpl",
+                 f"/app/datasets/ZIMPL/mpmmine/{problem_name}.zpl",
                  f"/app/grammars/{grammar_name}",
-                 f"/app/datasets/ZIMPL/{internal_problem_name}_training.csv",
+                 f"/app/datasets/ZIMPL/mpmmine/{problem_name}_training.csv",
                  ],
             workdir="/app/src",
         )
@@ -705,7 +572,7 @@ class Adapter(AbstractAdapter):
             "python3", "-O", "ponyge.py",
             "--parameters", "ZIMPL-experiment.txt",
             "--grammar", grammar_name,
-            "--extra_parameters", f"PROBLEM='{internal_problem_name}'",
+            "--extra_parameters", f"PROBLEM='mpmmine/{problem_name}'",
             "--experiment_name", run_id,
             "--population_size", str(self._environment_int("MPMMINE_GECS_POPULATION_SIZE", 500)),
             "--generations", str(self._environment_int("MPMMINE_GECS_GENERATIONS", 60)),
@@ -716,18 +583,17 @@ class Adapter(AbstractAdapter):
         logging.info(f"Running GECS command: {' '.join(cmd_list)}")
         result = self.container.exec_run(cmd=cmd_list, workdir="/app/src")
 
+        output = self._clean_raw_output(result.output.decode("utf-8", errors="replace"))
         if result.exit_code != 0:
-            error_msg = result.output.decode('utf-8')
             if result.exit_code == 124:  # Linux timeout error code
-                raise AdapterException(f"GECS timed out after {self.configuration.run_timeout} seconds.")
-            raise AdapterException(f"GECS failed with exit code {result.exit_code}:\n{error_msg}")
+                raise AdapterException(f"GECS timed out after {self.configuration.run_timeout} seconds.\n{output}")
+            raise AdapterException(f"GECS failed with exit code {result.exit_code}:\n{output}")
 
-        raw_output = result.output.decode("utf-8", errors="replace")
         output_zpl = self._read_best_program(run_id)
-        logging.debug("=== RAW GECS OUTPUT START ===\n%s\n=== RAW GECS OUTPUT END ===", raw_output)
+        logging.debug("=== RAW GECS OUTPUT START ===\n%s\n=== RAW GECS OUTPUT END ===", output)
         logging.debug("=== BEST GECS ZIMPL START ===\n%s\n=== BEST GECS ZIMPL END ===", output_zpl)
 
-        return self._translate_zimpl_to_minizinc(output_zpl, raw_output, symbols)
+        return self._translate_zimpl_to_minizinc(output_zpl, output, symbols, index_sets)
 
     def _translate_zimpl_to_minizinc(self, zpl: str, raw_output: str, symbols: dict[str, MznVar]) -> str:
         """
