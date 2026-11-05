@@ -283,29 +283,6 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
         self._get_enum(s)  # just register value
         return EnumValue(s[0])
 
-    @override
-    def transform(self, tree: Tree[_Leaf_T]) -> _Return_T:
-        transformed = super().transform(tree)
-
-        def replace_enums(obj):
-            obj_type = type(obj)
-            if isinstance(obj, enum.Enum):
-                return self._enums[obj.name][obj.name]
-            elif obj_type is list:
-                for i, elem in enumerate(obj):
-                    obj[i] = replace_enums(elem)
-            elif obj_type is set:
-                replacement = {replace_enums(v) for v in obj}
-                obj.clear()
-                obj.update(replacement)
-            elif obj_type is dict:
-                replacement = {replace_enums(k): replace_enums(v) for k, v in obj.items()}
-                obj.clear()
-                obj.update(replacement)
-            return obj
-
-        return replace_enums(transformed)
-
 
 dzn_transformer = TreeToDZN()
 dzn_parser = Lark(dzn_grammar, start="items", parser="lalr", transformer=dzn_transformer)
