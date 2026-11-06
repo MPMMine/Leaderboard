@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import override, List, Union
 
 import pandas as pd
-from minizinc import Model, Instance, Status, Method
+from minizinc import Model, Instance, Status, Method, default_driver
 from minizinc.analyse import MznAnalyse
 from minizinc.error import MiniZincError
 
@@ -119,16 +119,22 @@ class Size(AbstractMeasure):
                 for f in files:
                     tool_run_cmd.append(str(f))
 
-            proc = subprocess.run(
-                tool_run_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE
-            )
+                proc = subprocess.run(
+                    tool_run_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE
+                )
             if proc.returncode != 0:
                 raise MiniZincError(message=str(proc.stderr))
             return proc.stdout.decode("utf-8")
 
         mznAnalyse = MznAnalyse.find()
+        if mznAnalyse is None and default_driver is not None:
+            # On Windows, recent MiniZinc installers place this tool in bin/
+            # while minizinc.exe itself is in the parent directory.
+            minizinc_bin = Path(default_driver.executable).parent / "bin"
+            mznAnalyse = MznAnalyse.find(path=[str(minizinc_bin)])
+        if mznAnalyse is None:
+            raise RuntimeError("mzn-analyse is required for the Size measure; install it or add it to PATH.")
         mznAnalyse.get_constraints = types.MethodType(get_constraints, mznAnalyse)
-
         normalized_constraints = mznAnalyse.get_constraints()
 
         return pd.Series({
