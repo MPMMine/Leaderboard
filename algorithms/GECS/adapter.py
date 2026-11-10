@@ -192,6 +192,8 @@ class Adapter(AbstractAdapter):
     container: docker.models.containers.Container
 
     # The ZIMPL reserved keywords from https://github.com/scipopt/zimpl/blob/master/src/zimpl/mmlscan.l#L91
+    # plus single letter index variables i,j,k,l,m,n introduced by ZIMPL grammar in GECS:
+    # https://github.com/MPMMine/tomash87-GECS/blob/master/grammars/ZIMPL-dedicated.bnf#L24
     # Set/parameters/variables with this name are to be escaped using self._zpl_escape()
     zimpl_keywords = {"not", "and", "or", "xor", "set", "param", "var", "maximize", "minimize", "subto", "sos",
                       "defnumb", "defstrg", "defbool", "defset", "in", "with", "do", "binary", "integer", "real", "sum",
@@ -202,7 +204,7 @@ class Adapter(AbstractAdapter):
                       "card", "abs", "vabs", "sgn", "round", "floor", "ceil", "log", "ln", "exp", "sqrt", "sin", "cos",
                       "tan", "asin", "acos", "atan", "pow", "sgnpow", "priority", "startval", "default", "subsets",
                       "powerset", "indexset", "permute", "print", "check", "infinity", "random", "ord", "type1",
-                      "type2", "implicit", "length", "substr", "match"}
+                      "type2", "implicit", "length", "substr", "match", "i", "j", "k", "l", "m", "n"}
 
     id_escape_prefix = "_esc_"
     dummy_constraint_prefix = "_dummy_"
