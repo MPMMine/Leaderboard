@@ -13,10 +13,13 @@ COPY gecs_support.py /app/src/fitness/gecs_support.py
 # Couple of changes in GECS repo code on the go:
 # ZIMPL.py - in case of an empty output console was flooded with errors, added a safety check in case of failure
 RUN sed -i 's/return self.zimpl_template + ZIMPL.set_names(phenotype)/return self.zimpl_template if phenotype is None else self.zimpl_template + ZIMPL.set_names(phenotype)/g' /app/src/fitness/ZIMPL.py
-#interpreter.py had some gurobi operators that caused errors, swapped them for classic counterparts
-RUN sed -i 's/, GRB\.EQUAL, / == /g' /app/src/utilities/ZIMPLpy/interpreter.py
-RUN sed -i 's/, GRB\.LESS_EQUAL, / <= /g' /app/src/utilities/ZIMPLpy/interpreter.py
-RUN sed -i 's/, GRB\.GREATER_EQUAL, / >= /g' /app/src/utilities/ZIMPLpy/interpreter.py
+# interpreter.py had some gurobi operators that caused errors, swapped them for classic counterparts
+RUN sed -i 's/, GRB\.EQUAL, / == /g' /app/src/utilities/ZIMPLpy/interpreter.py \
+ && sed -i 's/, GRB\.LESS_EQUAL, / <= /g' /app/src/utilities/ZIMPLpy/interpreter.py \
+ && sed -i 's/, GRB\.GREATER_EQUAL, / >= /g' /app/src/utilities/ZIMPLpy/interpreter.py
+
+# Patch ZIMPLpy to handle large py files created by the *.zpl -> *.py conversion of MPMMine benchmarks
+RUN echo "\nimport sys\nsys.setrecursionlimit(3000)\n" >> /app/src/utilities/ZIMPLpy/__init__.py
 
 # Patch race condition in Interpreter
 RUN awk '/^        self\.unlink_files = unlink_files$/ && !started {print "        try:"; started=1} started {print "    " $0; if ($0 ~ /raise ValueError\("The ZIMPL program transformed to LP format exceeded the size limit. The file is %dMB large.\"/) {started=0; print "        finally:"; print "            for proc in (py_process, lp_process):"; print "                if proc is not None:"; print "                    proc.wait()"}; next} {print}' /app/src/utilities/ZIMPLpy/interpreter.py > /tmp/interpreter.py && mv /tmp/interpreter.py /app/src/utilities/ZIMPLpy/interpreter.py
@@ -34,9 +37,6 @@ RUN if [ "$(uname -m)" = "aarch64" ]; then make ARCH=arm; else make; fi
 # so the final image does not need gcc for the first GECS run.
 WORKDIR /app/src
 RUN pip install --no-cache-dir cython && CFLAGS="-O3 -march=native" python3 -c "import pyximport; pyximport.install(language_level=3, inplace=True); import fitness.helper"
-
-# Patch ZIMPLpy to handle large py files created by the *.zpl -> *.py conversion of MPMMine benchmarks
-RUN echo "\nimport sys\nsys.setrecursionlimit(3000)\n" >> /app/src/utilities/ZIMPLpy/__init__.py
 
 # Keep the runtime image free of the compiler, headers, Git and Bison.
 FROM python:3.9-slim
