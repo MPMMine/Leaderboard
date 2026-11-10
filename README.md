@@ -62,8 +62,7 @@ Raw results must be aggregated before feeding to the interactive dashboard. To a
 PYTHONPATH=src python3 src/mpmmine/calculate_leaderboard.py /path/to/MPMMine-zstd.sqlite
 ```
 
-This will create `leaderboard.csv` and `leaderboard_raw.csv` files. The former is actually required to run the
-dashboard.
+This will create `leaderboard.csv` file required to run the dashboard.
 
 To run dashboard locally, execute:
 
@@ -249,8 +248,9 @@ leaderboard.
 
 ### Adding conformance measures
 
-The Leaderboard shows accuracy, error probability, and discovery times of algorithms by default. However, this framework
-is extensible. To implement new measure follow these steps.
+The Leaderboard shows accuracy, Matthews correlation coefficient, discovery times, and generated constraint counts by 
+default, while other measures are available. 
+This framework is extensible. To implement new measure follow these steps.
 
 1. If existing per-example statistics collected in the `results` directory in files `test_statistics.csv` are enough for
    calculating a new measure, extend `calculate_fold_statistics()` and `calculate_cv_statistics()` in
