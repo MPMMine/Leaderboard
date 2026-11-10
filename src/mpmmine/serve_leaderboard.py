@@ -93,8 +93,8 @@ class Model:
             "ci_low": "jaccard_index_095ci_low",
             "ci_high": "jaccard_index_095ci_high",
             "fill_na": False,
-            "color": "#7711bb",
-            "ci_color": "#9944cc",
+            "color": "#c90076",
+            "ci_color": "#de66ac",
             "axis": "left",
             "default": False
         },
