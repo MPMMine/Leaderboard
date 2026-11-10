@@ -1,5 +1,5 @@
 # Build GECS and its modified ZIMPL interpreter from the requested fork.
-#Python 3.9 image, since there were a couple of library compatibility issues for python 3.11
+# Python 3.9 image, since there were a couple of library compatibility issues for python 3.11
 FROM python:3.9-slim AS build
 
 #system dependencies and essential libraries such as git, essentials (C, make) and zlib.g and gmp.h required for ZIMPL
@@ -10,15 +10,18 @@ RUN git clone https://github.com/MPMMine/tomash87-GECS.git .
 
 COPY gecs_support.py /app/src/fitness/gecs_support.py
 
-#Couple of changes in GECS repo code on the go:
-#ZIMPL.py - in case of an empty output console was flooded with errors, added a safety check in case of failure
+# Couple of changes in GECS repo code on the go:
+# ZIMPL.py - in case of an empty output console was flooded with errors, added a safety check in case of failure
 RUN sed -i 's/return self.zimpl_template + ZIMPL.set_names(phenotype)/return self.zimpl_template if phenotype is None else self.zimpl_template + ZIMPL.set_names(phenotype)/g' /app/src/fitness/ZIMPL.py
 #interpreter.py had some gurobi operators that caused errors, swapped them for classic counterparts
 RUN sed -i 's/, GRB\.EQUAL, / == /g' /app/src/utilities/ZIMPLpy/interpreter.py
 RUN sed -i 's/, GRB\.LESS_EQUAL, / <= /g' /app/src/utilities/ZIMPLpy/interpreter.py
 RUN sed -i 's/, GRB\.GREATER_EQUAL, / >= /g' /app/src/utilities/ZIMPLpy/interpreter.py
 
-#zimpl interpeter compilation
+# Patch race condition in Interpreter
+RUN awk '/^        self\.unlink_files = unlink_files$/ && !started {print "        try:"; started=1} started {print "    " $0; if ($0 ~ /raise ValueError\("The ZIMPL program transformed to LP format exceeded the size limit. The file is %dMB large.\"/) {started=0; print "        finally:"; print "            for proc in (py_process, lp_process):"; print "                if proc is not None:"; print "                    proc.wait()"}; next} {print}' /app/src/utilities/ZIMPLpy/interpreter.py > /tmp/interpreter.py && mv /tmp/interpreter.py /app/src/utilities/ZIMPLpy/interpreter.py
+
+# ZIMPL interpeter compilation
 WORKDIR /app/src/utilities/ZIMPL
 # The GECS fork has no ARM make options. Take only that options file from the
 # newer ZIMPL fork; replacing the whole Makefile would require newer sources.
