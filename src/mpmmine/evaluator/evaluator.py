@@ -46,6 +46,14 @@ class Evaluator:
     def run(self):
         cfg = self.configuration
 
+        dataset_version = cfg.mpmmine.dataset_version
+        # Older DB copy can raise FileNotFoundError for VERSION column
+        #For tests with that copy , comment out the line above and uncomment the fallback below.
+        # try:
+        #     dataset_version = cfg.mpmmine.dataset_version
+        # except FileNotFoundError:
+        #     dataset_version = "unknown"
+
         statistics = pd.DataFrame()
         for (fold_id, data) in enumerate(self.cross_validation(), start=1):
             (train, test) = data
@@ -89,7 +97,7 @@ class Evaluator:
             fold_statistics["train_non_solutions"] = len(train[~train["actual_class"].astype(bool)])
             fold_statistics["hostname"] = socket.gethostname()
             fold_statistics["cpu"] = cpuinfo.get_cpu_info()["brand_raw"]
-            fold_statistics["mpmmine_dataset_version"] = cfg.mpmmine.dataset_version
+            fold_statistics["mpmmine_dataset_version"] = dataset_version
             fold_statistics["mpmmine_library_version"] = cfg.mpmmine.library_version
             fold_statistics["minizinc_version"] = minizinc.default_driver.minizinc_version
             fold_statistics["solver"] = self.solver.name
@@ -156,7 +164,7 @@ class Evaluator:
                           max=None,
                           var=is_var,
                           enum=value_type)
-        elif value_type is set or value_type is range or value_type is list:
+        elif isinstance(value, set) or isinstance(value, range) or isinstance(value, list):
             sub_var = reduce(MznVar.merge_inplace, (self._to_MznVar(name, v, is_var) for v in value))
             col_type = [Collection.array if value_type is list else Collection.set]
             if value_type is list:
@@ -271,7 +279,7 @@ class Evaluator:
             with open(mzn_path, "at") as mzn:
                 # report only unique warnings
                 for w in set((w.category.__name__, str(w.message)) for w in caught_warnings):
-                    mzn.write(f"% {w[0]}: {w[1]}\n")
+                    mzn.write(textwrap.indent(f"{w[0]}: {w[1]}\n", prefix="% "))
 
     def __del__(self):
         if self.adapter is not None:

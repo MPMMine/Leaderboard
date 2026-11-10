@@ -11,10 +11,10 @@ from pathlib import Path
 from typing import Union, override
 
 import minizinc
-from lark import Lark, Tree
-from lark.visitors import _Leaf_T, _Return_T
+from lark import Lark
 from minizinc.dzn import TreeToDZN, arg1_construct
 
+from mpmmine.sets import OrderedSet
 from mpmmine.util import merge_ordered_lists
 
 dzn_grammar = r"""
@@ -270,41 +270,18 @@ class TreeToDZN(minizinc.dzn.TreeToDZN):
     def set(self, s):
         if len(s) == 1:
             if any(isinstance(v, EnumValue) for v in s[0]):
-                e = self._get_enum(list(str(v) for v in s[0]), order_important=False)
-                return set(e)
-            return set(s[0])
+                e = self._get_enum(list(str(v) for v in s[0]))
+                return OrderedSet(e)
+            return OrderedSet(s[0])
         else:
             if type(s[0]) is int and type(s[1]) is int:
                 return range(s[0], s[1] + 1)
             else:
-                return self._get_enum([str(e) for e in s])
+                return OrderedSet(self._get_enum([str(e) for e in s]))
 
     def enum(self, s):
         self._get_enum(s)  # just register value
         return EnumValue(s[0])
-
-    @override
-    def transform(self, tree: Tree[_Leaf_T]) -> _Return_T:
-        transformed = super().transform(tree)
-
-        def replace_enums(obj):
-            obj_type = type(obj)
-            if isinstance(obj, enum.Enum):
-                return self._enums[obj.name][obj.name]
-            elif obj_type is list:
-                for i, elem in enumerate(obj):
-                    obj[i] = replace_enums(elem)
-            elif obj_type is set:
-                replacement = {replace_enums(v) for v in obj}
-                obj.clear()
-                obj.update(replacement)
-            elif obj_type is dict:
-                replacement = {replace_enums(k): replace_enums(v) for k, v in obj.items()}
-                obj.clear()
-                obj.update(replacement)
-            return obj
-
-        return replace_enums(transformed)
 
 
 dzn_transformer = TreeToDZN()
@@ -351,8 +328,8 @@ def replace_enums(obj, enums):
         for i, elem in enumerate(obj):
             obj[i] = replace_enums(elem, enums)
 
-    elif obj_type is set:
-        replacement = {replace_enums(v, enums) for v in obj}
+    elif isinstance(obj, set):
+        replacement = [replace_enums(v, enums) for v in obj]
         obj.clear()
         obj.update(replacement)
 
