@@ -1,12 +1,12 @@
-import logging
 import subprocess
+import logging
 
 from datetime import timedelta
 from pathlib import Path
 from typing import override, List, Union
 
 import pandas as pd
-from minizinc import Model, Instance, Status, Method
+from minizinc import Model, Instance, Status, Method, Solver
 from minizinc.analyse import MznAnalyse
 from minizinc.error import MiniZincError
 
@@ -118,9 +118,8 @@ class ExtendedMznAnalyse(MznAnalyse):
             return None
         return cls(base._executable)
 
-    def get_constraints(self, instance: Instance) -> str:
-        tool_run_cmd: List[Union[str, Path]] = [str(self._executable), "filter-items:constraint"]
-
+    def _run_cmd(self, instance: Instance, pass_cmd: str) -> str:
+        tool_run_cmd: List[Union[str, Path]] = [str(self._executable), pass_cmd]
         with instance.files() as files:
             for f in files:
                 tool_run_cmd.append(str(f))
@@ -129,6 +128,11 @@ class ExtendedMznAnalyse(MznAnalyse):
             raise MiniZincError(message=str(proc.stderr))
         return proc.stdout.decode("utf-8")
 
+    def get_constraints(self, instance: Instance) -> str:
+        return self._run_cmd(instance, "filter-items:constraint")
+
+    def remove_solve(self, instance: Instance) -> str:
+        return self._run_cmd(instance, "remove-items:solve")
 
 class Size(AbstractMeasure):
     @override
@@ -200,3 +204,65 @@ class CompressionRatio(AbstractMeasure):
             return float("nan")
 
         return pd.DataFrame({"CompressionRatio": test_set.apply(actual_test, axis=1)}, index=test_set.index)
+
+
+class FeasibleRegionVolume(AbstractMeasure):
+    """
+    Counts all feasible solutions of the model for each instance.
+    """
+    solver = Solver.lookup("gecode")
+
+    @override
+    def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.DataFrame:
+        try:
+            if instance.method == Method.SATISFY:
+                counting_instance = Instance(self.solver, model)
+            else:
+                mzn_analyse = ExtendedMznAnalyse.find()
+                if mzn_analyse is None:
+                    logging.warning("Model parser returned None. Skipping Feasible Region Volume measure for this model.")
+                    return pd.DataFrame({"feasible_region_volume": [float("nan")] * len(test_set)}, index=test_set.index)
+
+                satisfaction_source = mzn_analyse.remove_solve(instance)
+                counting_model = Model()
+                counting_model.add_string(f"{satisfaction_source}\nsolve satisfy;\n")
+                counting_instance = Instance(self.solver, counting_model)
+
+        except Exception as e:
+            logging.warning(f"Could not initialize FeasibleRegionVolume: {e}")
+            return pd.DataFrame({"feasible_region_volume": [float("nan")] * len(test_set)}, index=test_set.index)
+
+        cache: dict[str, float | int] = {}
+
+        def count_solutions(row) -> float | int:
+            instance_data = row["instance"]
+
+            if instance_data in cache:
+                return cache[instance_data]
+
+            volume = float("nan")
+            try:
+                with counting_instance.branch() as copy:
+                    instance_dzn = parse_dzn(instance_data)
+                    for k, v in instance_dzn.items():
+                        if k in copy.input:
+                            copy[k] = v
+
+                    result = copy.solve(all_solutions=True, time_limit=timedelta(seconds=60), optimisation_level=0)
+
+                    match result.status:
+                        case Status.ALL_SOLUTIONS | Status.UNSATISFIABLE | Status.SATISFIED:
+                            volume = float(len(result))
+                            if result.status == Status.SATISFIED:
+                                logging.warning(f"Feasible region enumeration hit the time limit (status: {result.status})")
+                        case _:
+                            logging.warning(f"Feasible region enumeration was incomplete (status: {result.status})")
+
+            except Exception as e_in:
+                logging.warning(f"FeasibleRegionVolume failed for instance: {e_in}")
+
+            cache[instance_data] = volume
+            return volume
+
+        return pd.DataFrame({"feasible_region_volume": test_set.apply(count_solutions, axis=1)}, index=test_set.index)
+
