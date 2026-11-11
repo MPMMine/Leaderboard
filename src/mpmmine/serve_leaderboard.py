@@ -123,6 +123,15 @@ class Model:
             "ci_color": "slateblue",
             "axis": "right",
             "default": False
+        },
+        "Feasible region volume": {
+            "mean": "feasible_region_volume_mean",
+            "ci": "feasible_region_volume_095ci",
+            "fill_na": False,
+            "color": "#17becf",
+            "ci_color": "#9edae5",
+            "axis": "right",
+            "default": False
         }
     }
 

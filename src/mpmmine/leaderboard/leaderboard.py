@@ -80,6 +80,7 @@ class Leaderboard:
             normalized_constraint_size=pd.NamedAgg(column="normalized_constraint_size", aggfunc="mean"),
             # text length of constraints
             objective_count=pd.NamedAgg(column="objective_count", aggfunc="mean"),  # number of objective functions
+            feasible_region_volume=pd.NamedAgg(column="feasible_region_volume", aggfunc="mean"),
             # other
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
             hostname=pd.NamedAgg(column="hostname", aggfunc=Leaderboard.keep_unique_str),
@@ -138,6 +139,8 @@ class Leaderboard:
             normalized_constraint_size_095ci=pd.NamedAgg(column="normalized_constraint_size", aggfunc=ci),
             objective_mean=pd.NamedAgg(column="objective_count", aggfunc="mean"),
             objective_095ci=pd.NamedAgg(column="objective_count", aggfunc=ci),
+            feasible_region_volume_mean=pd.NamedAgg(column="feasible_region_volume", aggfunc="mean"),
+            feasible_region_volume_095ci=pd.NamedAgg(column="feasible_region_volume", aggfunc=ci),
             # other
             input_path=pd.NamedAgg(column="problem_instance", aggfunc=Leaderboard.keep_unique_str),
             results_path=pd.NamedAgg(column="results_path", aggfunc=Leaderboard.keep_unique_str),
