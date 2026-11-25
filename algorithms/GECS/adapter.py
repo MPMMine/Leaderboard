@@ -305,11 +305,14 @@ class Adapter(AbstractAdapter):
         # sets and if they are not equal to sets contained in `index_sets`, we add them to enable indexing.
         for s in symbols.values():
             for dim, bounds in enumerate(s.indices, start=1):
+                if s.collection[dim - 1] == Collection.set:
+                    continue
                 key = lambda x: x.value if isinstance(x, Enum) else x
                 lb = min(bounds, key=key)
                 ub = max(bounds, key=key)
                 assert key(lb) <= key(ub)
-                if any(lb == min(i := ps.indices[0], key=key) and max(i, key=key) == ub for ps in index_sets.values()):
+                if any(lb == min(i := ps.indices[0], key=key) and max(i, key=key) == ub and len(i) == ub - lb + 1 \
+                       for ps in index_sets.values()):
                     pass  # a parameter set exists that contains required indices for s
                 else:
                     name = f"_indexset_{s.name}_{dim}"
@@ -320,7 +323,7 @@ class Adapter(AbstractAdapter):
                         name=name,
                         domain=Domain.int,
                         collection=[Collection.set],
-                        indices=[{lb, ub}],
+                        indices=[set(range(lb, ub + 1))],
                         min=lb,
                         max=ub,
                         var=False,
@@ -343,7 +346,9 @@ class Adapter(AbstractAdapter):
             ilb = min(indices, key=key)
             iub = max(indices, key=key)
             matching_index_sets = [s for s in index_sets.values()
-                                   if ilb == min(i := s.indices[0], key=key) and iub == max(i, key=key)]
+                                   if ilb == min(i := s.indices[0], key=key) and \
+                                   iub == max(i, key=key) and \
+                                   len(i) == iub - ilb + 1]
             if len(matching_index_sets) >= 1:
                 index_str += matching_index_sets[0].name + " * "
             else:
