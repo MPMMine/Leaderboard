@@ -152,15 +152,17 @@ def get_training_limits(algorithm: AlgorithmManifest, instance: Instance, train_
     else:
         raise NotImplementedError
 
-    sol_count = len(instance.solutions)
-    non_sol_count = len(instance.non_solutions)
-    if sol_count < train_sol_limit:
-        raise ContinueException(
-            f"The total number of training solutions {sol_count} for {instance.full_id} is smaller than requested {train_sol_limit}, skipping...")
+    if train_sol_limit > 0:
+        sol_count = len(instance.solutions)
+        if sol_count < train_sol_limit:
+            raise ContinueException(
+                f"The total number of training solutions {sol_count} for {instance.full_id} is smaller than requested {train_sol_limit}, skipping...")
 
-    if non_sol_count < train_non_sol_limit:
-        raise ContinueException(
-            f"The total number of training non solutions {non_sol_count} for {instance.full_id} is smaller than requested {train_non_sol_limit}, skipping...")
+    if train_non_sol_limit > 0:
+        non_sol_count = len(instance.non_solutions)
+        if non_sol_count < train_non_sol_limit:
+            raise ContinueException(
+                f"The total number of training non solutions {non_sol_count} for {instance.full_id} is smaller than requested {train_non_sol_limit}, skipping...")
 
     return train_sol_limit, train_non_sol_limit
 
