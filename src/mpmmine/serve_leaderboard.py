@@ -133,6 +133,15 @@ class Model:
             "ci_color": "slateblue",
             "axis": "right",
             "default": False
+        },
+        "Compression ratio": {
+            "mean": "compression_ratio_mean",
+            "ci": "compression_ratio_095ci",
+            "fill_na": False,
+            "color": "#8b3d80",
+            "ci_color": "#b85dab",
+            "axis": "left",
+            "default": False
         }
     }
 
