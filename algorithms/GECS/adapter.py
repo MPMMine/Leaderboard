@@ -451,15 +451,28 @@ class Adapter(AbstractAdapter):
 
         return var_decl + dummy_constraint
 
-    def _prepare_csv(self, train_data: pd.DataFrame, symbols: dict[str, MznVar], output_path: Path):
+    def _prepare_csv(self,
+                     train_data: pd.DataFrame,
+                     symbols: dict[str, MznVar],
+                     output_train_path: Path,
+                     output_validation_path: Path,
+                     output_test_path: Path):
         def format_example(row) -> pd.Series:
             nonlocal symbols
             vars_flat = self._csv_format(row["example_obj"], symbols)
             return pd.Series(vars_flat)
 
         # noinspection PyTypeChecker
-        csv: pd.DataFrame = train_data.apply(format_example, axis=1)
-        csv.to_csv(output_path, index=False)
+        train_csv: pd.DataFrame = train_data.apply(format_example, axis=1)
+        train_csv.to_csv(output_train_path, index=False)
+
+        # The Leaderboard does not use validation and test results calculated by GECS, instead Leaderboard calculates
+        # these values using a unified procedure for all algorithms. However, GECS fails if validation and test data
+        # are empty. Calculating these statistics by GECS is not free. To reduce the computational overhead, we provide
+        # GECS with validation and test files but truncate them to just one training example.
+        validation_csv = train_csv[:1]
+        validation_csv.to_csv(output_validation_path, index=False)
+        os.link(output_validation_path, output_test_path)
 
     def _csv_format(self,
                     dictionary: dict[str, int | float | set | list],
@@ -551,12 +564,10 @@ class Adapter(AbstractAdapter):
         self._prepare_zimpl_template(train_data, symbols, index_sets, self.local_data_dir / f"{problem_name}.zpl")
 
         train_path = self.local_data_dir / f"{problem_name}_training.csv"
-        test_path = self.local_data_dir / f"{problem_name}_test.csv"
         validation_path = self.local_data_dir / f"{problem_name}_validation.csv"
+        test_path = self.local_data_dir / f"{problem_name}_test.csv"
 
-        self._prepare_csv(train_data, symbols, self.local_data_dir / f"{problem_name}_training.csv")
-        os.link(train_path, test_path)
-        os.link(train_path, validation_path)
+        self._prepare_csv(train_data, symbols, train_path, validation_path, test_path)
 
         grammar_name = f"ZIMPL-dedicated-{run_id}.bnf"
         grammar_result = self.container.exec_run(
