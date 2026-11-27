@@ -1,6 +1,5 @@
-import subprocess
 import logging
-
+import subprocess
 from datetime import timedelta
 from pathlib import Path
 from typing import override, List, Union
@@ -135,6 +134,7 @@ class ExtendedMznAnalyse(MznAnalyse):
     def remove_solve(self, instance: Instance) -> str:
         return self._run_cmd(instance, "remove-items:solve")
 
+
 class Size(AbstractMeasure):
     @override
     def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.Series:
@@ -227,7 +227,7 @@ class SolutionCount(AbstractMeasure):
     """
     Counts all feasible solutions of the model for each instance.
     """
-    solver = Solver.lookup("gecode")
+    solver: Solver = Solver.lookup("gecode")
 
     @override
     def calculate(self, model: Model, instance: Instance, test_set: pd.DataFrame) -> pd.DataFrame:
@@ -283,4 +283,3 @@ class SolutionCount(AbstractMeasure):
             return volume
 
         return pd.DataFrame({"solution_count": test_set.apply(count_solutions, axis=1)}, index=test_set.index)
-
