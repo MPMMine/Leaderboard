@@ -585,8 +585,8 @@ class Adapter(AbstractAdapter):
         # Although the best parameter values found in Pawlak, O'Neill, Grammatical evolution for constraint synthesis
         # for mixed-integer linear programming, SWEVO, 2021, involve population size of 500 and max generations of 60,
         # these values lead to excessive computational cost on MPMMine benchmarks, resultin in virtually all runs
-        # timing out. Here, we reduce these two parameters by 55%, i.e. population size to 225, and max generations to
-        # 27, reducing the total computational cost five times at the cost of possibly worse output models.
+        # timing out. Here, we reduce these two parameters by 60%, i.e. population size to 200, and max generations to
+        # 24, reducing the total computational cost six times at the cost of possibly worse output models.
         cmd_list = [
             "timeout", str(self.configuration.run_timeout),
             "python3", "-O", "ponyge.py",
@@ -594,8 +594,8 @@ class Adapter(AbstractAdapter):
             "--grammar", grammar_name,
             "--extra_parameters", f"PROBLEM='mpmmine/{problem_name}'",
             "--experiment_name", run_id,
-            "--population_size", str(self._environment_int("MPMMINE_GECS_POPULATION_SIZE", 225)),
-            "--generations", str(self._environment_int("MPMMINE_GECS_GENERATIONS", 27)),
+            "--population_size", str(self._environment_int("MPMMINE_GECS_POPULATION_SIZE", 200)),
+            "--generations", str(self._environment_int("MPMMINE_GECS_GENERATIONS", 24)),
             "--crossover", "variable_onepoint",
             "--mutation", "int_flip_per_ind",
             "--tournament_size", str(self._environment_int("MPMMINE_GECS_TOURNAMENT_SIZE", 5)),
