@@ -266,7 +266,7 @@ class SolutionCount(AbstractMeasure):
                         if k in copy.input:
                             copy[k] = v
 
-                    result = copy.solve(all_solutions=True, time_limit=timedelta(seconds=60), optimisation_level=0)
+                    result = copy.solve(all_solutions=True, time_limit=timedelta(seconds=120), optimisation_level=0)
 
                     match result.status:
                         case Status.ALL_SOLUTIONS | Status.UNSATISFIABLE | Status.SATISFIED:
