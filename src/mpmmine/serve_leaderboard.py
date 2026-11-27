@@ -143,9 +143,9 @@ class Model:
             "axis": "left",
             "default": False
         },
-        "Feasible region volume": {
-            "mean": "feasible_region_volume_mean",
-            "ci": "feasible_region_volume_095ci",
+        "Solution count": {
+            "mean": "solution_count_mean",
+            "ci": "solution_count_095ci",
             "fill_na": False,
             "color": "#17becf",
             "ci_color": "#9edae5",

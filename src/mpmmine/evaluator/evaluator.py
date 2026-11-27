@@ -20,7 +20,7 @@ from mpmmine.evaluator.adapter import AbstractAdapter, AdapterException, MznVar,
 from mpmmine.evaluator.configuration import Configuration
 from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, CompressionRatio
 from mpmmine.evaluator.dzn import parse_dzn
-from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size, JaccardIndex, FeasibleRegionVolume
+from mpmmine.evaluator.measure import AbstractMeasure, ConfusionMatrix, Size, JaccardIndex, SolutionCount
 from mpmmine.util import load_class, format_error
 
 
@@ -33,7 +33,7 @@ class Evaluator:
         CompressionRatio(),
         Size(),
         JaccardIndex(),
-        FeasibleRegionVolume(),
+        SolutionCount(),
     ]
 
     def __init__(self, configuration: Configuration):
