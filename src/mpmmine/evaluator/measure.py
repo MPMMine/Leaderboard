@@ -223,7 +223,7 @@ class CompressionRatio(AbstractMeasure):
         return pd.DataFrame({"CompressionRatio": test_set.apply(actual_test, axis=1)}, index=test_set.index)
 
 
-class FeasibleRegionVolume(AbstractMeasure):
+class SolutionCount(AbstractMeasure):
     """
     Counts all feasible solutions of the model for each instance.
     """
@@ -237,8 +237,9 @@ class FeasibleRegionVolume(AbstractMeasure):
             else:
                 mzn_analyse = ExtendedMznAnalyse.find()
                 if mzn_analyse is None:
-                    logging.warning("Model parser returned None. Skipping Feasible Region Volume measure for this model.")
-                    return pd.DataFrame({"feasible_region_volume": [float("nan")] * len(test_set)}, index=test_set.index)
+                    logging.warning(
+                        "Model parser returned None. Skipping SolutionCount measure for this model.")
+                    return pd.DataFrame({"solution_count": [float("nan")] * len(test_set)}, index=test_set.index)
 
                 satisfaction_source = mzn_analyse.remove_solve(instance)
                 counting_model = Model()
@@ -246,8 +247,8 @@ class FeasibleRegionVolume(AbstractMeasure):
                 counting_instance = Instance(self.solver, counting_model)
 
         except Exception as e:
-            logging.warning(f"Could not initialize FeasibleRegionVolume: {e}")
-            return pd.DataFrame({"feasible_region_volume": [float("nan")] * len(test_set)}, index=test_set.index)
+            logging.warning(f"Could not initialize SolutionCount: {e}")
+            return pd.DataFrame({"solution_count": [float("nan")] * len(test_set)}, index=test_set.index)
 
         cache: dict[str, float | int] = {}
 
@@ -271,15 +272,15 @@ class FeasibleRegionVolume(AbstractMeasure):
                         case Status.ALL_SOLUTIONS | Status.UNSATISFIABLE | Status.SATISFIED:
                             volume = float(len(result))
                             if result.status == Status.SATISFIED:
-                                logging.warning(f"Feasible region enumeration hit the time limit (status: {result.status})")
+                                logging.warning(f"Solution counting hit the time limit (status: {result.status})")
                         case _:
-                            logging.warning(f"Feasible region enumeration was incomplete (status: {result.status})")
+                            logging.warning(f"Solution counting was incomplete (status: {result.status})")
 
             except Exception as e_in:
-                logging.warning(f"FeasibleRegionVolume failed for instance: {e_in}")
+                logging.warning(f"SolutionCount failed for instance: {e_in}")
 
             cache[instance_data] = volume
             return volume
 
-        return pd.DataFrame({"feasible_region_volume": test_set.apply(count_solutions, axis=1)}, index=test_set.index)
+        return pd.DataFrame({"solution_count": test_set.apply(count_solutions, axis=1)}, index=test_set.index)
 
