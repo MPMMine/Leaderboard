@@ -23,7 +23,7 @@ image build context.
 Run the normal Leaderboard scripts as described in [Usage](../../README.md#usage). To run GECS only, pass
 `--algorithm GECS --` before the dataset path. The adapter uses the parameter file `parameters/ZIMPL-experiment.txt`
 from the fork. Though the original paper recommends setting population size to 500 and generations to 60, by default, it
-sets population size 225, generations 27 to reduce five times the giant computational cost observed for MPMMine 
+sets population size 200, generations 24 to reduce five times the giant computational cost observed for MPMMine 
 benchmarks. It also sets tournament size 5, crossover `variable_onepoint`, and mutation `int_flip_per_ind`. For short 
 diagnostic runs, the three numeric values can be overridden with `MPMMINE_GECS_POPULATION_SIZE`, 
 `MPMMINE_GECS_GENERATIONS`, and `MPMMINE_GECS_TOURNAMENT_SIZE` on the host.
